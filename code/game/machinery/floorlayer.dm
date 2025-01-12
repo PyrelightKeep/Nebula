@@ -82,7 +82,7 @@
 	if(istype(new_turf, /turf/floor))
 		var/turf/floor/T = new_turf
 		if(!T.is_plating())
-			T.set_flooring(null, place_product = !T.is_floor_damaged())
+			T.clear_flooring(place_product = !T.is_floor_damaged())
 	return new_turf.is_plating()
 
 /obj/machinery/floorlayer/proc/TakeNewStack()

@@ -15,7 +15,7 @@
 /datum/map/shaded_hills/get_available_skill_types()
 	. = ..()
 	. -= list(
-		SKILL_EVA,\
+		SKILL_EVA,
 		SKILL_MECH,
 		SKILL_PILOT,
 		SKILL_COMPUTER,

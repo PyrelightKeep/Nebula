@@ -28,9 +28,6 @@
 /obj/item/tool/axe/ebony/bronze
 	material = /decl/material/solid/metal/bronze
 
-/obj/item/tool/axe/iron
-	material = /decl/material/solid/metal/iron
-
 // Legacy SS13 hatchet.
 /obj/item/tool/axe/hatchet
 	name                             = "hatchet"

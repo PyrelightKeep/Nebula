@@ -7,7 +7,6 @@
 
 /datum/map_template/fantasy
 	abstract_type = /datum/map_template/fantasy
-	template_parent_type = /datum/map_template/fantasy
 	template_flags = TEMPLATE_FLAG_CLEAR_CONTENTS | TEMPLATE_FLAG_NO_RUINS
 	area_usage_test_exempted_root_areas = list(
 		/area/fantasy/outside/point_of_interest

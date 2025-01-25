@@ -36,8 +36,6 @@
 	// Mechanical concerns.
 	var/plant_health = 0       // Plant health.
 	var/lastproduce = 0        // Last time tray was harvested
-	var/lastcycle = 0          // Cycle timing/tracking var.
-	var/cycledelay = 150       // Delay per cycle.
 	var/closed_system          // If set, the tray will attempt to take atmos from a pipe.
 	var/force_update           // Set this to bypass the cycle time check.
 	var/obj/temp_chem_holder   // Something to hold reagents during process_reagents()
@@ -328,7 +326,6 @@
 		return //Weed does not exist, someone fucked up.
 
 	age = 0
-	lastcycle = world.time
 	harvest = 0
 	weedlevel = 0
 	pestlevel = 0
@@ -397,7 +394,6 @@
 	set_seed(SSplants.seeds[newseed])
 	mutate(1)
 	plant_health = seed.get_trait(TRAIT_ENDURANCE) // re-run in case mutation changed our endurance
-	lastcycle = world.time
 
 	update_icon()
 	visible_message("<span class='danger'>The </span><span class='notice'>[previous_plant]</span><span class='danger'> has suddenly mutated into </span><span class='notice'>[seed.display_name]!</span>")
@@ -498,15 +494,16 @@
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 		return TRUE
 
-	var/force = used_item.get_attack_force(user)
-	if(force && seed)
-		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-		user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [used_item]!</span>")
-		playsound(get_turf(src), used_item.hitsound, 100, 1)
-		if(!dead)
-			plant_health -= force
-			check_plant_health()
-		return TRUE
+	if(seed)
+		var/force = used_item.expend_attack_force(user)
+		if(force)
+			user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+			user.visible_message("<span class='danger'>\The [seed.display_name] has been attacked by [user] with \the [used_item]!</span>")
+			playsound(get_turf(src), used_item.hitsound, 100, 1)
+			if(!dead)
+				plant_health -= force
+				check_plant_health()
+			return TRUE
 
 	if(mechanical)
 		return component_attackby(used_item, user)
@@ -556,7 +553,6 @@
 	//Snowflakey, maybe move this to the seed datum
 	// re-running to adjust based on planting method
 	plant_health = (istype(S, /obj/item/seeds/extracted/cutting) ? round(seed.get_trait(TRAIT_ENDURANCE)/rand(2,5)) : seed.get_trait(TRAIT_ENDURANCE))
-	lastcycle = world.time
 
 	var/needed_skill = seed.mysterious ? SKILL_ADEPT : SKILL_BASIC
 	if(prob(user.skill_fail_chance(SKILL_BOTANY, 40, needed_skill)))
@@ -654,7 +650,6 @@
 		age = 1
 		// re-running to adjust for planting method
 		plant_health = (istype(S, /obj/item/seeds/extracted/cutting) ? round(seed.get_trait(TRAIT_ENDURANCE)/rand(2,5)) : seed.get_trait(TRAIT_ENDURANCE))
-		lastcycle = world.time
 		check_plant_health()
 	qdel(S)
 
@@ -691,7 +686,7 @@
 	examine_desc = "take a sample"
 
 /decl/interaction_handler/hydroponics/sample/is_possible(atom/target, mob/user, obj/item/prop)
-	return ..() && istype(prop) && prop.edge && prop.w_class < ITEM_SIZE_NORMAL
+	return ..() && istype(prop) && prop.has_edge() && prop.w_class < ITEM_SIZE_NORMAL
 
 /decl/interaction_handler/hydroponics/sample/invoked(atom/target, mob/user, obj/item/prop)
 	var/obj/machinery/portable_atmospherics/hydroponics/tray = target

@@ -1,5 +1,0 @@
-author: MistakeNot4892
-changes:
-  - {tweak: 'Intents have been rewritten and moved, please report any issues with
-      intent selection.'}
-delete-after: true

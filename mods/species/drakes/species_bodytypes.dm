@@ -38,7 +38,8 @@
 	override_limb_types  = list(
 		BP_TAIL   = /obj/item/organ/external/tail/grafadreka,
 		BP_L_HAND = /obj/item/organ/external/hand/quadruped/grafadreka,
-		BP_R_HAND = /obj/item/organ/external/hand/right/quadruped/grafadreka
+		BP_R_HAND = /obj/item/organ/external/hand/right/quadruped/grafadreka,
+		BP_HEAD   = /obj/item/organ/external/head/gripper/grafadreka
 	)
 	base_color           = "#608894"
 	base_eye_color       = COLOR_SILVER
@@ -202,9 +203,14 @@
 		/datum/ability_handler/predator/grafadreka/hatchling
 	)
 	z_flags             = 0
+	// TODO: weaker attack subtypes for the baby
 	override_limb_types = list(
-		BP_TAIL = /obj/item/organ/external/tail/grafadreka/hatchling
+		BP_TAIL   = /obj/item/organ/external/tail/grafadreka/hatchling,
+		BP_L_HAND = /obj/item/organ/external/hand/quadruped/grafadreka,
+		BP_R_HAND = /obj/item/organ/external/hand/right/quadruped/grafadreka,
+		BP_HEAD   = /obj/item/organ/external/head/gripper/grafadreka
 	)
+
 	default_emotes      = list(
 		/decl/emote/audible/drake_hatchling_growl,
 		/decl/emote/audible/drake_hatchling_whine,
@@ -307,6 +313,10 @@
 	_base_attack_force = 8
 	needs_attack_dexterity = DEXTERITY_NONE
 
+/obj/item/organ/external/hand/quadruped/grafadreka/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
+	return unarmed_attack
+
 /obj/item/organ/external/hand/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
@@ -323,6 +333,10 @@
 	_base_attack_force = 8
 	needs_attack_dexterity = DEXTERITY_NONE
 
+/obj/item/organ/external/hand/right/quadruped/grafadreka/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/claws/strong/drake)
+	return unarmed_attack
+
 /obj/item/organ/external/hand/right/quadruped/grafadreka/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
 	. = ..()
 	item_flags |= ITEM_FLAG_NO_BLUDGEON
@@ -334,3 +348,7 @@
 /obj/item/organ/external/hand/right/quadruped/grafadreka/set_bodytype(decl/bodytype/new_bodytype, override_material, apply_to_internal_organs)
 	override_material = /decl/material/solid/organic/bone
 	. = ..()
+
+/obj/item/organ/external/head/gripper/grafadreka/get_natural_attacks()
+	var/static/unarmed_attack = GET_DECL(/decl/natural_attack/bite/sharp/drake)
+	return unarmed_attack

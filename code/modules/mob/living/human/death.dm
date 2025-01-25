@@ -40,11 +40,8 @@
 	if(!gibbed)
 		set_tail_animation_state(null, TRUE)
 		handle_organs()
-		if(species.death_sound)
-			playsound(loc, species.death_sound, 80, 1, 1)
 	if(SSticker.mode)
 		SSticker.mode.check_win()
-	species.handle_death(src)
 
 	if(!QDELETED(src) && !gibbed && has_trait(/decl/trait/undead, TRAIT_LEVEL_MODERATE))
 		gib()

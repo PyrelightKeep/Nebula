@@ -593,13 +593,20 @@
 	return null
 
 /atom/movable/immune_to_floor_hazards()
-	return ..() || throwing
+	return ..() || !!throwing
 
 // TODO: make everything use this.
 /atom/movable/proc/set_anchored(new_anchored)
 	SHOULD_CALL_PARENT(TRUE)
 	if(anchored != new_anchored)
 		anchored = new_anchored
+		return TRUE
+	return FALSE
+
+// updates pixel offsets, triggers fluids, etc.
+/atom/movable/proc/on_turf_height_change(new_height)
+	if(simulated)
+		reset_offsets()
 		return TRUE
 	return FALSE
 

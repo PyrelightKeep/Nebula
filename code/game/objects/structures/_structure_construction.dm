@@ -62,7 +62,7 @@
 /obj/structure/attackby(obj/item/used_item, mob/user)
 
 	if(used_item.user_can_attack_with(user, silent = TRUE))
-		var/force = used_item.get_attack_force(user)
+		var/force = used_item.expend_attack_force(user)
 		if(force && user.check_intent(I_FLAG_HARM))
 			attack_animation(user)
 			visible_message(SPAN_DANGER("\The [src] has been [pick(used_item.attack_verb)] with \the [used_item] by \the [user]!"))

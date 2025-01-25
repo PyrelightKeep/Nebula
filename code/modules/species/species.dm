@@ -79,10 +79,6 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 
 	// Combat vars.
 	var/total_health = DEFAULT_SPECIES_HEALTH  // Point at which the mob will enter crit.
-	var/list/unarmed_attacks = list(           // Possible unarmed attacks that the mob will use in combat,
-		/decl/natural_attack,
-		/decl/natural_attack/bite
-		)
 
 	var/brute_mod =      1                    // Physical damage multiplier.
 	var/burn_mod =       1                    // Burn damage multiplier.
@@ -491,23 +487,6 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 	if(!H.is_physically_disabled())
 		return TRUE //We could tie it to stamina
 	return FALSE
-
-// Called when using the shredding behavior.
-/decl/species/proc/can_shred(var/mob/living/human/H, var/ignore_intent, var/ignore_antag)
-
-	if((!ignore_intent && !H.check_intent(I_FLAG_HARM)) || H.pulling_punches)
-		return 0
-
-	if(!ignore_antag && H.mind && !player_is_antag(H.mind))
-		return 0
-
-	for(var/attack_type in unarmed_attacks)
-		var/decl/natural_attack/attack = GET_DECL(attack_type)
-		if(!istype(attack) || !attack.is_usable(H))
-			continue
-		if(attack.shredding)
-			return 1
-	return 0
 
 /decl/species/proc/handle_vision(var/mob/living/human/H)
 	var/list/vision = H.get_accumulated_vision_handlers()

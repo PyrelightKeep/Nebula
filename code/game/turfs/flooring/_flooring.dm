@@ -378,6 +378,8 @@ var/global/list/flooring_cache = list()
 /decl/flooring/proc/try_place_footprints(atom/movable/crosser, turf/target, turf/from_turf, turf/to_turf, use_state = "going")
 	if(!ismob(crosser) || !crosser.simulated || !isturf(from_turf) || !isturf(to_turf))
 		return FALSE
+	if(target.check_fluid_depth(FLUID_QDEL_POINT))
+		return FALSE
 	var/movement_dir = get_dir(from_turf, to_turf)
 	if(!movement_dir)
 		return FALSE
@@ -391,5 +393,7 @@ var/global/list/flooring_cache = list()
 /decl/flooring/proc/turf_crossed(atom/movable/crosser)
 	return
 
-/decl/flooring/proc/can_show_coating_footprints(turf/target)
+/// target is the turf that wants to know if it supports footprints
+/// contaminant is, optionally, the material of the coating that wants to be added.
+/decl/flooring/proc/can_show_coating_footprints(turf/target, decl/material/contaminant)
 	return TRUE

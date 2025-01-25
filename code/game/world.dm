@@ -126,7 +126,7 @@ var/global/world_topic_last = world.timeofday
 	throttle[2] = reason
 
 /world/Topic(T, addr, master, key)
-	direct_output(diary, "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]")
+	to_file(diary, "TOPIC: \"[T]\", from:[addr], master:[master], key:[key][log_end]")
 
 	if (global.world_topic_last > world.timeofday)
 		global.world_topic_throttle = list() //probably passed midnight
@@ -201,7 +201,7 @@ var/global/_reboot_announced = FALSE
 /world/proc/save_mode(var/the_mode)
 	var/F = file("data/mode.txt")
 	fdel(F)
-	direct_output(F, the_mode)
+	to_file(F, the_mode)
 
 /world/proc/load_motd()
 	join_motd = safe_file2text("config/motd.txt", FALSE)

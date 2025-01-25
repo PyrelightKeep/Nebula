@@ -25,10 +25,12 @@
 	if(!isliving(crosser))
 		return
 	var/mob/living/walker = crosser
-	walker.add_walking_contaminant(/decl/material/solid/soil, rand(2,3))
+	walker.add_walking_contaminant(force_material.type, rand(2,3))
 
-/decl/flooring/mud/can_show_coating_footprints(turf/target)
-	return FALSE // So we don't end up covered in a million footsteps that we provided.
+/decl/flooring/mud/can_show_coating_footprints(turf/target, decl/material/contaminant)
+	if(force_material.type == contaminant) // So we don't end up covered in a million footsteps that we provided.
+		return FALSE
+	return ..()
 
 /decl/flooring/dry_mud
 	name            = "dry mud"

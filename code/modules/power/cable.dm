@@ -188,9 +188,10 @@ By design, d1 is the smallest direction and d2 is the highest
 			to_chat(user, SPAN_WARNING("\The [src] is not powered."))
 		return TRUE
 
-	if(used_item.edge)
+	else if(used_item.has_edge())
+
 		var/delay_holder
-		if(used_item.get_attack_force(user) < 5)
+		if(used_item.expend_attack_force(user) < 5)
 			visible_message(SPAN_WARNING("[user] starts sawing away roughly at \the [src] with \the [used_item]."))
 			delay_holder = 8 SECONDS
 		else

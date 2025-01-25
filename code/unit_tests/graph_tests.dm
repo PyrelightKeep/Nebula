@@ -430,7 +430,7 @@
 * Base Test Setup *
 ******************/
 /datum/unit_test/graph_test
-	template = /datum/unit_test/graph_test
+	abstract_type = /datum/unit_test/graph_test
 	async = TRUE
 	var/list/graphs
 
@@ -489,6 +489,7 @@
 
 /atom/movable/graph_test/Destroy()
 	QDEL_NULL(node)
+	neighboursByDirection.Cut()
 	return ..()
 
 /atom/movable/graph_test/forceMove()
@@ -524,7 +525,7 @@
 	var/on_split_was_called
 	var/issues
 
-/datum/graph/testing/New(var/node, var/edges, var/name)
+/datum/graph/testing/New(var/node, var/edges, var/previous_owner, var/name)
 	..()
 	src.name = name || "Graph"
 	issues = list()
@@ -558,8 +559,10 @@
 /datum/graph/testing/proc/CheckExpectations()
 	if(on_check_expectations)
 		issues += DoCheckExpectations(on_check_expectations)
+		QDEL_NULL(on_check_expectations) // stop holding up GC!
 	if(length(split_expectations) && !on_split_was_called)
 		issues += "Had split expectations but OnSplit was not called"
+		QDEL_LIST(split_expectations) // stop holding up GC!
 	if(!length(split_expectations) && on_split_was_called)
 		issues += "Had no split expectations but OnSplit was called"
 	if(expecting_merge != on_merge_was_called)
@@ -575,6 +578,11 @@
 	..()
 	src.expected_nodes = expected_nodes || list()
 	src.expected_edges = expected_edges || list()
+
+/datum/graph_expectation/Destroy(force)
+	expected_nodes.Cut()
+	expected_edges.Cut()
+	return ..()
 
 // Stub for subtype-specific functionality for DoCheckExpectations.
 // Should not access graph.nodes or graph.edges.

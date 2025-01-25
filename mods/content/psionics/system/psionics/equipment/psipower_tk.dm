@@ -106,5 +106,4 @@
 		O.icon = 'icons/effects/effects.dmi'
 		O.icon_state = "nothing"
 		flick("empdisable",O)
-		sleep(5)
-		qdel(O)
+		QDEL_IN(src, 0.5 SECONDS)

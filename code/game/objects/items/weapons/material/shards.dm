@@ -6,8 +6,8 @@
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
 	randpixel = 8
-	sharp = 1
-	edge = 1
+	sharp = TRUE
+	edge = TRUE
 	w_class = ITEM_SIZE_SMALL
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
@@ -96,7 +96,7 @@
 	playsound(src.loc, 'sound/effects/glass_step.ogg', 50, 1) // not sure how to handle metal shards with sounds
 
 	var/decl/species/walker_species = victim.get_species()
-	if(walker_species && (walker_species.get_shock_vulnerability(victim) < 0.5 || (walker_species.species_flags & (SPECIES_FLAG_NO_EMBED|SPECIES_FLAG_NO_MINOR_CUT)))) //Thick skin.
+	if(walker_species?.species_flags & (SPECIES_FLAG_NO_EMBED|SPECIES_FLAG_NO_MINOR_CUT)) //Thick skin.
 		return
 
 	var/obj/item/shoes = victim.get_equipped_item(slot_shoes_str)

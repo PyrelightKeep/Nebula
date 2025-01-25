@@ -86,6 +86,9 @@
 
 	var/paint_color
 
+	/// Floorlike structures like catwalks. Updated/retrieved by get_supporting_platform()
+	var/obj/structure/supporting_platform
+
 /turf/Initialize(mapload, ...)
 	. = null && ..()	// This weird construct is to shut up the 'parent proc not called' warning without disabling the lint for child types. We explicitly return an init hint so this won't change behavior.
 
@@ -139,6 +142,8 @@
 		weather.examine(user)
 
 /turf/Destroy()
+
+	supporting_platform = null
 
 	if(zone)
 		if(can_safely_remove_from_zone())
@@ -204,7 +209,7 @@
 	if(weather)
 		. += weather.get_movement_delay(return_air(), travel_dir)
 	// TODO: check user species webbed feet, wearing swimming gear
-	if(reagents?.total_volume > FLUID_PUDDLE)
+	if(!get_supporting_platform() && reagents?.total_volume > FLUID_PUDDLE)
 		. += (reagents.total_volume > FLUID_SHALLOW) ? 6 : 3
 
 /turf/attack_hand(mob/user)
@@ -247,6 +252,12 @@
 
 		if(IS_SHOVEL(W))
 
+			// TODO: move these checks into the interaction handlers.
+			var/atom/platform = get_supporting_platform()
+			if(platform)
+				to_chat(user, SPAN_WARNING("\The [platform] [platform.get_pronouns().is] in the way!"))
+				return TRUE
+
 			if(!can_be_dug(W.material?.hardness))
 				to_chat(user, SPAN_WARNING("\The [src] is too hard to be dug with \the [W]."))
 				return TRUE
@@ -261,6 +272,12 @@
 
 		var/decl/material/material = get_material()
 		if(IS_PICK(W) && material)
+
+			// TODO: move these checks into the interaction handlers.
+			var/atom/platform = get_supporting_platform()
+			if(platform)
+				to_chat(user, SPAN_WARNING("\The [platform] [platform.get_pronouns().is] in the way!"))
+				return TRUE
 
 			if(material?.hardness <= MAT_VALUE_FLEXIBLE)
 				to_chat(user, SPAN_WARNING("\The [src] is too soft to be excavated with \the [W]. Use a shovel."))
@@ -331,7 +348,7 @@
 				return 0
 
 	// Check if they need to climb out of a hole.
-	if(has_gravity())
+	if(has_gravity() && !get_supporting_platform())
 		var/mob/mover_mob = mover
 		if(!istype(mover_mob) || (!mover_mob.throwing && !mover_mob.can_overcome_gravity()))
 			var/turf/old_turf  = mover.loc
@@ -445,7 +462,7 @@
 
 /turf/proc/try_graffiti(var/mob/vandal, var/obj/item/tool)
 
-	if(!tool.sharp || !can_engrave() || !vandal.check_intent(I_FLAG_HELP))
+	if(!tool.is_sharp() || !can_engrave() || !vandal.check_intent(I_FLAG_HELP))
 		return FALSE
 
 	if(jobban_isbanned(vandal, "Graffiti"))
@@ -517,7 +534,7 @@
 		if(below)
 			below.update_weather(new_weather)
 
-// Updates turf participation in ZAS according to outside status. Must be called whenever the outside status of a turf may change.
+/// Updates turf participation in ZAS according to outside status and atmosphere participation bools. Must be called whenever any of those values may change.
 /turf/proc/update_external_atmos_participation()
 	var/old_outside = last_outside_check
 	last_outside_check = OUTSIDE_UNCERTAIN
@@ -701,8 +718,11 @@
 	var/mob/living/human/H = M
 	var/unique_enzymes = H.get_unique_enzymes()
 	var/blood_type     = H.get_blood_type()
+	var/blood_reagent  = H.species.blood_reagent
 	if(unique_enzymes && blood_type)
 		for(var/obj/effect/decal/cleanable/blood/B in contents)
+			if(B.chemical != blood_reagent)
+				continue
 			if(!LAZYACCESS(B.blood_DNA, unique_enzymes))
 				LAZYSET(B.blood_DNA, unique_enzymes, blood_type)
 				LAZYSET(B.blood_data, unique_enzymes, REAGENT_DATA(H.vessel, H.species.blood_reagent))
@@ -712,13 +732,29 @@
 		blood_splatter(src, M, 1)
 	return TRUE
 
-/turf/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor=COLOR_BLOOD_HUMAN)
-	if(!simulated)
+/// Creates a new /obj/effect/decal/cleanable/blood/tracks instance of a given type,
+/// or merges it with an existing (not-yet-cleaned) one that matches typepath and chemical.
+/// typepath is a type, not an instance
+/// new_chemical is optional argument for things like muddy footprints, where typepath isn't enough
+/turf/proc/AddTracks(obj/effect/decal/cleanable/blood/tracks/typepath, bloodDNA, comingdir, goingdir, bloodcolor = COLOR_BLOOD_HUMAN, new_chemical = null)
+	if(!simulated || check_fluid_depth(FLUID_QDEL_POINT))
 		return
-	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src
+	// Populate defaults from the given typepath, where possible.
+	if(isnull(new_chemical))
+		new_chemical = typepath::chemical || /decl/material/liquid/blood
+
+	var/obj/effect/decal/cleanable/blood/tracks/tracks = null
+	for(var/obj/effect/decal/cleanable/blood/tracks/candidate in src)
+		if(!istype(candidate, typepath))
+			continue
+		if(candidate.invisibility >= INVISIBILITY_ABSTRACT) // has been cleaned
+			continue
+		if(candidate.chemical != new_chemical)
+			continue
+		tracks = candidate
 	if(!tracks)
-		tracks = new typepath(src)
-	tracks.AddTracks(bloodDNA,comingdir,goingdir,bloodcolor)
+		tracks = new typepath(src, null, new_chemical)
+	tracks.AddTracks(bloodDNA, comingdir, goingdir, bloodcolor)
 
 // Proc called in /turf/Entered() to supply an appropriate fluid overlay.
 /turf/proc/get_movable_alpha_mask_state(atom/movable/mover)
@@ -728,12 +764,13 @@
 		var/mob/moving_mob = mover
 		if(moving_mob.can_overcome_gravity())
 			return null
-	var/fluid_depth = get_fluid_depth()
-	if(fluid_depth > FLUID_PUDDLE)
-		if(fluid_depth <= FLUID_SHALLOW)
-			return "mask_shallow"
-		if(fluid_depth <= FLUID_DEEP)
-			return "mask_deep"
+	if(!get_supporting_platform())
+		var/fluid_depth = get_fluid_depth()
+		if(fluid_depth > FLUID_PUDDLE)
+			if(fluid_depth <= FLUID_SHALLOW)
+				return "mask_shallow"
+			if(fluid_depth <= FLUID_DEEP)
+				return "mask_deep"
 
 /turf/spark_act(obj/effect/sparks/sparks)
 	if(simulated)
@@ -798,6 +835,14 @@
 /turf/can_be_poured_into(atom/source)
 	return !density
 
+/turf/proc/get_supporting_platform()
+	if(isnull(supporting_platform))
+		for(var/obj/structure/platform in get_contained_external_atoms())
+			if(platform.is_platform())
+				supporting_platform = platform
+				break
+	return supporting_platform
+
 /turf/get_alt_interactions(mob/user)
 	. = ..()
 	LAZYADD(., /decl/interaction_handler/show_turf_contents)
@@ -814,7 +859,9 @@
 	if(IS_HOE(held) && can_dig_farm(held.material?.hardness))
 		LAZYADD(., /decl/interaction_handler/dig/farm)
 
-/turf/proc/can_show_coating_footprints()
+/// Contaminant may be the chemical type of the footprint being provided,
+/// or null if we just want to know if we support footprints, at all, ever.
+/turf/proc/can_show_coating_footprints(decl/material/contaminant)
 	return simulated
 
 /decl/interaction_handler/show_turf_contents
@@ -835,6 +882,12 @@
 /decl/interaction_handler/dig/trench
 	name = "Dig Trench"
 	examine_desc = "dig a trench"
+
+/decl/interaction_handler/dig/trench/is_possible(atom/target, mob/user, obj/item/prop)
+	. = ..()
+	if(. && istype(target, /turf/floor))
+		var/turf/floor/target_turf = target
+		return target_turf.flooring_is_diggable()
 
 /decl/interaction_handler/dig/trench/invoked(atom/target, mob/user, obj/item/prop)
 	prop ||= user.get_usable_hand_slot_organ() // Allows drakes to dig.

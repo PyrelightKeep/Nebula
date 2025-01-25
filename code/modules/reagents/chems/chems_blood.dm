@@ -72,7 +72,7 @@
 
 /decl/material/liquid/blood/get_reagent_color(datum/reagents/holder)
 	var/list/blood_data = REAGENT_DATA(holder, type)
-	return blood_data?["blood_color"] || ..()
+	return blood_data?[DATA_BLOOD_COLOR] || ..()
 
 /decl/material/liquid/coagulated_blood
 	name = "coagulated blood"

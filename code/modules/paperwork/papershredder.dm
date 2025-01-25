@@ -89,7 +89,7 @@
 /obj/machinery/papershredder/proc/is_bin_empty()
 	return !(length(shredder_bin) > 0 && cached_total_matter)
 
-/obj/machinery/papershredder/proc/can_shred(var/obj/item/I, var/mob/user = null)
+/obj/machinery/papershredder/proc/can_shred_document(var/obj/item/I, var/mob/user = null)
 	if(!istype(I))
 		if(user)
 			to_chat(user, SPAN_WARNING("\The [I] cannot be shredded by \the [src]!"))
@@ -120,7 +120,7 @@
 			empty_bin(user, used_item)
 			return TRUE
 
-		else if(!trying_to_smack && can_shred(used_item))
+		else if(!trying_to_smack && can_shred_document(used_item))
 			shred(used_item, user)
 			return TRUE
 	return ..()

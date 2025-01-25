@@ -67,9 +67,10 @@
 		if(!invalid_area)
 			A.update_icon()
 
+// TODO: Should this be changed to use the actual ambient lights system...?
 /datum/universal_state/supermatter_cascade/OverlayAndAmbientSet()
 	spawn(0)
-		for(var/datum/lighting_corner/L in world)
+		for(var/datum/lighting_corner/L in SSlighting.lighting_corners)
 			if(isAdminLevel(L.z))
 				L.update_lumcount(1,1,1)
 			else

@@ -1,6 +1,6 @@
 /datum/unit_test/icon_test
 	name = "ICON STATE template"
-	template = /datum/unit_test/icon_test
+	abstract_type = /datum/unit_test/icon_test
 
 /datum/unit_test/icon_test/food_shall_have_icon_states
 	name = "ICON STATE: Food And Drink Subtypes Shall Have Icon States"

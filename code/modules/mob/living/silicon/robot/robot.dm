@@ -183,14 +183,7 @@
 	return 0
 
 /mob/living/silicon/robot/Destroy()
-	if(central_processor)
-		central_processor.dropInto(loc)
-		var/mob/living/brainmob = central_processor.get_brainmob()
-		if(mind && brainmob)
-			mind.transfer_to(brainmob)
-		else
-			ghostize()
-		central_processor = null
+	QDEL_NULL(central_processor)
 	if(connected_ai)
 		connected_ai.connected_robots -= src
 	connected_ai = null
@@ -511,8 +504,8 @@
 					SPAN_NOTICE("\The [user] begins ripping \the [central_processor] out of \the [src]."),
 					SPAN_NOTICE("You jam the crowbar into the robot and begin levering out \the [central_processor]."))
 
-				if(do_after(user, 50, src))
-					dismantle(user)
+				if(do_after(user, 5 SECONDS, src))
+					dismantle_robot(user)
 			else
 				// Okay we're not removing the cell or a CPU, but maybe something else?
 				var/list/removable_components = list()
@@ -626,7 +619,7 @@
 			else
 				to_chat(user, "Upgrade error!")
 		return TRUE
-	if(!(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/scanner/health)) && W.get_attack_force(user) && !user.check_intent(I_FLAG_HELP))
+	if(!(istype(W, /obj/item/robotanalyzer) || istype(W, /obj/item/scanner/health)) && !user.check_intent(I_FLAG_HELP) && W.expend_attack_force(user))
 		spark_at(src, 5, holder=src)
 	return ..()
 
@@ -643,8 +636,7 @@
 	return user?.attempt_hug(src)
 
 /mob/living/silicon/robot/default_hurt_interaction(mob/user)
-	var/decl/species/user_species = user.get_species()
-	if(user_species?.can_shred(user))
+	if(user.can_shred())
 		attack_generic(user, rand(30,50), "slashed")
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		return TRUE
@@ -1013,7 +1005,7 @@
 					sleep(5)
 					to_chat(src, "<span class='danger'>Would you like to send a report to the vendor? Y/N</span>")
 					sleep(10)
-					to_chat(src, "<span class='danger'>> N</span>")
+					to_chat(src, "<span class='danger'>\> N</span>")
 					sleep(20)
 					to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
 					to_chat(src, "<b>Obey these laws:</b>")
@@ -1034,10 +1026,29 @@
 		return 1
 	return ..()
 
-/mob/living/silicon/robot/proc/dismantle(var/mob/user)
-	to_chat(user, SPAN_NOTICE("You damage some parts of the chassis, but eventually manage to rip out the central processor."))
-	var/obj/item/robot_parts/robot_suit/C = new dismantle_type(loc)
-	C.dismantled_from(src)
+/mob/living/silicon/robot/gib(do_gibs)
+	SHOULD_CALL_PARENT(FALSE)
+	var/lastloc = loc
+	dismantle_robot()
+	if(lastloc && do_gibs)
+		spawn_gibber(lastloc)
+
+/mob/living/silicon/robot/proc/dismantle_robot(var/mob/user)
+
+	if(central_processor)
+		if(user)
+			to_chat(user, SPAN_NOTICE("You damage some parts of the chassis, but eventually manage to rip out \the [central_processor]."))
+		central_processor.dropInto(loc)
+		var/mob/living/brainmob = central_processor.get_brainmob(create_if_missing = TRUE)
+		if(mind && brainmob)
+			mind.transfer_to(brainmob)
+		else
+			ghostize()
+		central_processor.update_icon()
+		central_processor = null
+
+	var/obj/item/robot_parts/robot_suit/chassis = new dismantle_type(loc)
+	chassis.dismantled_from(src)
 	qdel(src)
 
 /mob/living/silicon/robot/try_stock_parts_install(obj/item/stock_parts/W, mob/user)
@@ -1065,8 +1076,7 @@
 	animation.icon_state = "blank"
 	animation.icon = 'icons/mob/mob.dmi'
 	flick("blspell", animation)
-	sleep(5)
-	qdel(animation)
+	QDEL_IN(animation, 0.5 SECONDS)
 
 /mob/living/silicon/robot/proc/handle_radio_transmission()
 	if(!is_component_functioning("radio"))

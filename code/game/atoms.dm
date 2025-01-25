@@ -997,5 +997,11 @@
 /atom/proc/can_drink_from(mob/user)
 	return ATOM_IS_OPEN_CONTAINER(src) && reagents?.total_volume && user.check_has_mouth()
 
+/atom/proc/adjust_required_attack_dexterity(mob/user, required_dexterity)
+	if(storage) // TODO: possibly check can_be_inserted() to avoid being able to shoot mirrors as a drake.
+		return DEXTERITY_HOLD_ITEM
+	return required_dexterity
+
 /atom/proc/immune_to_floor_hazards()
 	return !simulated
+

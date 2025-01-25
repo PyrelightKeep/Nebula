@@ -2,7 +2,6 @@
 
 /datum/map_template/karzerfeste
 	abstract_type = /datum/map_template/karzerfeste
-	template_parent_type = /datum/map_template/karzerfeste
 	template_flags = TEMPLATE_FLAG_CLEAR_CONTENTS | TEMPLATE_FLAG_NO_RUINS
 	area_usage_test_exempted_root_areas = list(
 		/area/karzerfeste/caves/point_of_interest
@@ -25,7 +24,6 @@
 /datum/map_template/karzerfeste/dungeon
 	abstract_type = /datum/map_template/karzerfeste/dungeon
 	template_categories = list(MAP_TEMPLATE_CATEGORY_KARZ_DUNGEON)
-	template_parent_type = /datum/map_template/karzerfeste/dungeon
 	area_usage_test_exempted_root_areas = list(
 		/area/karzerfeste/caves/point_of_interest/dungeon
 	)

@@ -53,9 +53,8 @@
 
 /obj/item/bladed/folding/update_attack_force()
 	..()
-	// TODO: check sharp/edge.
-	edge  = open
-	sharp = open
+	set_edge(open)
+	set_sharp(open)
 	if(open)
 		w_class     = open_item_size
 		attack_verb = open_attack_verbs

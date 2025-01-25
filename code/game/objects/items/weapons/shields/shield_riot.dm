@@ -24,7 +24,7 @@
 	if(istype(damage_source, /obj/item/projectile))
 		var/obj/item/projectile/P = damage_source
 		//plastic shields do not stop bullets or lasers, even in space. Will block beanbags, rubber bullets, and stunshots just fine though.
-		if(is_sharp(P) && damage >= max_block)
+		if((P.is_sharp() || P.has_edge()) && damage >= max_block)
 			return 0
 		if(istype(P, /obj/item/projectile/beam) && (!can_block_lasers || (P.armor_penetration >= max_block)))
 			return 0

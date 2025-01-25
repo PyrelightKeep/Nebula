@@ -17,7 +17,7 @@ SUBSYSTEM_DEF(garbage)
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	init_order = SS_INIT_GARBAGE
 
-	var/list/collection_timeout = list(0, 3 MINUTES, 10 SECONDS)	// deciseconds to wait before moving something up in the queue to the next level
+	var/list/collection_timeout = list(GC_FILTER_QUEUE, GC_CHECK_QUEUE, GC_DEL_QUEUE)	// deciseconds to wait before moving something up in the queue to the next level
 
 	//Stat tracking
 	var/delslasttick = 0            // number of del()'s we've done this tick
@@ -173,10 +173,10 @@ SUBSYSTEM_DEF(garbage)
 				var/remaining_refs = refcount(D) - REFS_WE_EXPECT
 				var/refID = ref(D)
 				if(reference_find_on_fail[refID])
-					D.find_references(remaining_refs)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/datum, find_references), remaining_refs)
 				#ifdef GC_FAILURE_HARD_LOOKUP
 				else
-					D.find_references(remaining_refs)
+					INVOKE_ASYNC(D, TYPE_PROC_REF(/datum, find_references), remaining_refs)
 				#endif
 				reference_find_on_fail -= refID
 				#endif
@@ -204,8 +204,6 @@ SUBSYSTEM_DEF(garbage)
 /datum/controller/subsystem/garbage/proc/Queue(datum/D, level = GC_QUEUE_FILTER)
 	if (isnull(D))
 		return
-	if (D.gc_destroyed == GC_QUEUED_FOR_HARD_DEL)
-		level = GC_QUEUE_HARDDELETE
 	if (level > GC_QUEUE_COUNT)
 		HardDelete(D)
 		return
@@ -281,13 +279,13 @@ SUBSYSTEM_DEF(garbage)
 	qdel(D, force)
 #endif
 
-// Should be treated as a replacement for the 'del' keyword.
-// Datums passed to this will be given a chance to clean up references to allow the GC to collect them.
+/// Should be treated as a replacement for the 'del' keyword.
+/// Datums passed to this will be given a chance to clean up references to allow the GC to collect them.
+/// Non-datums passed to this will be hard-deleted.
 /proc/qdel(datum/D, force=FALSE)
 	if(isnull(D))
 		return
 	if(!istype(D))
-		PRINT_STACK_TRACE("qdel() can only handle /datum (sub)types, was passed: [log_info_line(D)]")
 		del(D)
 		return
 	var/datum/qdel_item/I = SSgarbage.items[D.type]
@@ -474,6 +472,7 @@ SUBSYSTEM_DEF(garbage)
 	if(usr && usr.client && !usr.client.running_find_references)
 		return
 	if (!recursive_limit)
+		testing("Recursion limit reached. [container_name]")
 		return
 	if(references_to_clear == 0)
 		return
@@ -541,6 +540,10 @@ SUBSYSTEM_DEF(garbage)
 			else if (I && !isnum(I) && normal)
 				if(X[I] == src)
 					testing("Found [src.type] \ref[src] in list [container_name]\[[I]\]")
+					references_to_clear -= 1
+					if(references_to_clear == 0)
+						testing("All references to [type] \ref[src] found, exiting.")
+						return
 				else if(islist(X[I]))
 					DoSearchVar(X[I], "[container_name]\[[I]\]", recursive_limit-1)
 

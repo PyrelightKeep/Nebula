@@ -147,21 +147,23 @@
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 	if (user.check_intent(I_FLAG_HARM))
 
-		if (ishuman(user))
-			var/mob/living/human/H = user
-			if(H.species.can_shred(H))
-				return attack_generic(H,25)
+		if(user.can_shred())
+			return attack_generic(user, 25)
 
 		playsound(src.loc, 'sound/effects/glassknock.ogg', 80, 1)
 		user.do_attack_animation(src)
-		user.visible_message(SPAN_DANGER("\The [user] bangs against \the [src]!"),
-							SPAN_DANGER("You bang against \the [src]!"),
-							"You hear a banging sound.")
+		user.visible_message(
+			SPAN_DANGER("\The [user] bangs against \the [src]!"),
+			SPAN_DANGER("You bang against \the [src]!"),
+			"You hear a banging sound."
+		)
 	else
 		playsound(src.loc, 'sound/effects/glassknock.ogg', 80, 1)
-		user.visible_message("[user.name] knocks on \the [src].",
-							"You knock on \the [src].",
-							"You hear a knocking sound.")
+		user.visible_message(
+			SPAN_NOTICE("\The [user] knocks on \the [src]."),
+			SPAN_NOTICE("You knock on \the [src]."),
+			"You hear a knocking sound."
+		)
 	return TRUE
 
 /obj/structure/window/do_simple_ranged_interaction(var/mob/user)
@@ -292,7 +294,7 @@
 	// physical damage types that can impart force; swinging a bat or energy sword
 	if(weapon.atom_damage_type == BRUTE || weapon.atom_damage_type == BURN)
 		user.do_attack_animation(src)
-		hit(weapon.get_attack_force(user))
+		hit(weapon.expend_attack_force(user))
 		if(current_health <= 7)
 			set_anchored(FALSE)
 			step(src, get_dir(user, src))

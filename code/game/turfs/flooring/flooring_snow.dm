@@ -4,6 +4,7 @@
 	icon            = 'icons/turf/flooring/snow.dmi'
 	icon_base       = "snow"
 	icon_edge_layer = FLOOR_EDGE_SNOW
+	flooring_flags  = TURF_REMOVE_SHOVEL
 	footstep_type   = /decl/footsteps/snow
 	has_base_range  = 13
 	force_material  = /decl/material/solid/ice/snow
@@ -29,6 +30,19 @@
 		else if(target.get_base_flooring() == src)
 			target.set_base_flooring(/decl/flooring/permafrost)
 		return
+	return ..()
+
+/decl/flooring/snow/turf_crossed(atom/movable/crosser)
+	if(!isliving(crosser))
+		return
+	var/mob/living/walker = crosser
+	// at some point this might even be able to use the height
+	// of the snow flooring layer, so deep snow gives you more coating
+	walker.add_walking_contaminant(force_material.type, rand(1, 2))
+
+/decl/flooring/snow/can_show_coating_footprints(turf/target, decl/material/contaminant)
+	if(force_material.type == contaminant) // So we don't end up covered in a million footsteps that we provided.
+		return FALSE
 	return ..()
 
 /decl/flooring/permafrost

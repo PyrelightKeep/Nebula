@@ -82,7 +82,7 @@
 	return ..()
 
 /obj/item/chems/glass/use_on_mob(mob/living/target, mob/living/user, animate = TRUE)
-	if(get_attack_force(user) && !(item_flags & ITEM_FLAG_NO_BLUDGEON) && user.check_intent(I_FLAG_HARM))
+	if(expend_attack_force(user) && !(item_flags & ITEM_FLAG_NO_BLUDGEON) && user.check_intent(I_FLAG_HARM))
 		return ..()
 	return FALSE
 

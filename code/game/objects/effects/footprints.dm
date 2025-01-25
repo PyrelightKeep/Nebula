@@ -7,7 +7,7 @@
 	is_spawnable_type = FALSE
 	blend_mode        = BLEND_SUBTRACT
 	alpha             = 128
-	var/list/footprints
+	var/list/image/footprints
 
 /obj/effect/footprints/Initialize(mapload)
 	. = ..()
@@ -15,8 +15,14 @@
 	name = null
 
 /obj/effect/footprints/Destroy()
-	QDEL_NULL(footprints)
+	footprints.Cut() // don't qdel images
 	. = ..()
+
+/obj/effect/footprints/on_turf_height_change(new_height)
+	if(simulated)
+		qdel(src)
+		return TRUE
+	return FALSE
 
 /obj/effect/footprints/on_update_icon()
 	set_overlays(footprints?.Copy())

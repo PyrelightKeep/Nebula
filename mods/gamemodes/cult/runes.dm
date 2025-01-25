@@ -322,7 +322,7 @@
 		user.visible_message(SPAN_NOTICE("\The [user] touches \the [src] with \the [I], and it disappears."), SPAN_NOTICE("You disrupt the vile magic with the deadening field of \the [I]."))
 		qdel(src)
 		return TRUE
-	var/force = I.get_attack_force(user)
+	var/force = I.expend_attack_force(user)
 	if(force)
 		user.visible_message(SPAN_NOTICE("\The [user] hits \the [src] with \the [I]."), SPAN_NOTICE("You hit \the [src] with \the [I]."))
 		take_damage(force, I.atom_damage_type)

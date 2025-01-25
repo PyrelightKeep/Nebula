@@ -30,9 +30,11 @@
 
 	var/list/hand_hud_objects
 	var/list/swaphand_hud_objects
-	var/obj/screen/intent/action_intent
 	var/obj/screen/movement/move_intent
 	var/obj/screen/stamina/stamina_bar
+
+	var/action_intent_type = /obj/screen/intent
+	var/obj/screen/intent/action_intent
 
 	var/list/adding = list()
 	var/list/other = list()
@@ -118,9 +120,17 @@
 	return FALSE
 
 /datum/hud/proc/FinalizeInstantiation()
+
 	SHOULD_CALL_PARENT(TRUE)
+
+	if(!action_intent && action_intent_type) // Everyone needs an intent selector.
+		action_intent = new action_intent_type(null, mymob)
+		adding |= action_intent
+		hud_elements |= action_intent
+
 	BuildInventoryUI()
 	BuildHandsUI()
+
 	if(mymob.client)
 		mymob.client.screen = list()
 		if(length(hand_hud_objects))
@@ -133,6 +143,7 @@
 			mymob.client.screen |= adding
 		if(length(hotkeybuttons))
 			mymob.client.screen |= hotkeybuttons
+
 	hide_inventory()
 
 /datum/hud/proc/get_ui_style_data()

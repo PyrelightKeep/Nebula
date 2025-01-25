@@ -290,8 +290,8 @@
 			return
 		var/list/possible_ailments = list()
 		for(var/atype in subtypesof(/datum/ailment))
-			var/datum/ailment/ailment = get_ailment_reference(atype)
-			if(ailment && ailment.category != ailment.type && ailment.can_apply_to(limb))
+			var/datum/ailment/ailment = get_ailment_reference(atype) // will not get abstract ailments
+			if(ailment && ailment.can_apply_to(limb))
 				possible_ailments |= ailment
 
 		var/datum/ailment/ailment = input("Select an ailment type to add.", "Add Ailment") as null|anything in possible_ailments

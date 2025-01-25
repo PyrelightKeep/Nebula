@@ -28,7 +28,7 @@
 	return TRUE
 
 /obj/structure/cult/pylon/attackby(obj/item/W, mob/user)
-	attackpylon(user, W.get_attack_force(user))
+	attackpylon(user, W.expend_attack_force(user))
 	return TRUE
 
 /obj/structure/cult/pylon/proc/attackpylon(mob/user, var/damage)

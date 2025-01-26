@@ -1474,3 +1474,6 @@
 		if(istype(limb_unarmed_attacks, /decl/natural_attack) || (islist(limb_unarmed_attacks) && length(limb_unarmed_attacks)))
 			LAZYDISTINCTADD(., limb_unarmed_attacks)
 
+// Returns true if the mob is cloaked, otherwise false
+/mob/proc/is_cloaked()
+	return FALSE

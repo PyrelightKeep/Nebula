@@ -10,6 +10,7 @@
 	taste_mult = 1.3
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
+	coated_adjective = "bloody"
 	value = 2.5
 	opacity = TRUE
 	min_fluid_opacity = FLUID_MAX_ALPHA

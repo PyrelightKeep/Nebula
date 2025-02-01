@@ -377,33 +377,35 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/port_gen/pacman/Topic(href, href_list)
-	if(..())
+/obj/machinery/port_gen/pacman/OnTopic(mob/user, href_list)
+	if((. = ..()))
 		return
 
-	src.add_fingerprint(usr)
 	if(href_list["action"])
 		if(href_list["action"] == "enable")
 			if(!active && HasFuel() && !IsBroken())
-				active = 1
-				update_icon()
+				active = TRUE
+				. = TOPIC_REFRESH
 		if(href_list["action"] == "disable")
 			if (active)
-				active = 0
-				update_icon()
+				active = FALSE
+				. = TOPIC_REFRESH
 		if(href_list["action"] == "eject")
 			if(!active)
 				DropFuel()
+				. = TOPIC_REFRESH
 		if(href_list["action"] == "lower_power")
 			if (power_output > 1)
 				power_output--
+				. = TOPIC_REFRESH
 		if (href_list["action"] == "higher_power")
 			if (power_output < max_power_output || (emagged && power_output < round(max_power_output*2.5)))
 				power_output++
+				. = TOPIC_REFRESH
 
 /obj/machinery/port_gen/pacman/super
 	name = "portable fission generator"
-	desc = "A power generator that utilizes uranium sheets as fuel. Can run for much longer than the standard portabke generators. Rated for 80 kW max safe output."
+	desc = "A power generator that utilizes uranium sheets as fuel. Can run for much longer than the standard portable generators. Rated for 80 kW max safe output."
 	icon_state = "portgen1"
 	sheet_path = /obj/item/stack/material/puck
 	sheet_material = /decl/material/solid/metal/uranium

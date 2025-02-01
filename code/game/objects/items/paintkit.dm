@@ -71,12 +71,12 @@
 // Mechs are handled in their attackby (mech_interaction.dm).
 /obj/item/kit/paint
 	name = "exosuit decal kit"
-	desc = "A kit containing all the needed tools and parts to repaint a exosuit."
+	desc = "A kit containing all the needed tools and parts to repaint an exosuit."
 	abstract_type = /obj/item/kit/paint
 
 /obj/item/kit/paint/examine(mob/user)
 	. = ..()
-	to_chat(user, "This kit will add a '[new_name]' decal to a exosuit'.")
+	to_chat(user, "This kit will add a '[new_name]' decal to an exosuit'.")
 
 // exosuit kits.
 /obj/item/kit/paint/flames_red

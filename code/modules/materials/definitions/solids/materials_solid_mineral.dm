@@ -279,6 +279,17 @@
 		/decl/flooring/mud,
 		/decl/flooring/dirt
 	)
+	solution_name = "mud"
+	coated_adjective = "muddy"
+
+// todo: make mud either its own material or a mix of dirt and water
+// or let dirt be in the liquid volumes list for mud?
+// would a ball of mud just be a ball of dirt coated with water?
+// or would water be part of its matter?
+// well anyway.
+// for now, at least, we assume dirt coatings are always mud.
+/decl/material/solid/soil/get_primary_coating_name(datum/reagents/coating)
+	return solution_name
 
 /decl/material/solid/hematite
 	name = "hematite"

@@ -2259,7 +2259,7 @@
 /area/ministation/hall/e2)
 "kR" = (
 /obj/structure/table,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/trash/stick,
 /obj/item/utensil/spoon,
 /turf/floor/tiled/white,

@@ -249,7 +249,7 @@
 "aM" = (
 /obj/structure/table/marble,
 /obj/item/pizzabox/vegetable,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/laminate/yew,
 /area/yacht/living)

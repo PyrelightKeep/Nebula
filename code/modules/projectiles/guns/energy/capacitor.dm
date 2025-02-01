@@ -147,9 +147,6 @@ var/global/list/laser_wavelengths
 			update_icon()
 	return TRUE
 
-/obj/item/gun/energy/capacitor/Process()
-	. = ..()
-
 /obj/item/gun/energy/capacitor/proc/charge(var/mob/user)
 	. = FALSE
 	if(!charging && istype(user))
@@ -259,7 +256,7 @@ var/global/list/laser_wavelengths
 // Subtypes.
 /obj/item/gun/energy/capacitor/rifle
 	name = "capacitor rifle"
-	desc = "A heavy, unwieldly directed energy weapon that uses a linear capacitor array to charge a powerful beam."
+	desc = "A heavy, unwieldy directed energy weapon that uses a linear capacitor array to charge a powerful beam."
 	max_capacitors = 4
 	icon = 'icons/obj/guns/capacitor_rifle.dmi'
 	slot_flags = SLOT_BACK

@@ -1,6 +1,6 @@
 /obj/machinery/recharge_station
 	name = "robot recharging station"
-	desc = "A heavy duty rapid charging system, designed to quickly recharge autonomous system power reserves."
+	desc = "A heavy-duty rapid charging system, designed to quickly recharge autonomous system power reserves."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "borgcharger0"
 	density = TRUE

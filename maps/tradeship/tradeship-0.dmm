@@ -1325,7 +1325,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/visible,
 /obj/item/backpack/dufflebag,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/chems/glass/bucket,
 /obj/machinery/firealarm{
 	pixel_y = 21
@@ -1518,7 +1518,7 @@
 /obj/item/assembly/mousetrap,
 /obj/item/radio,
 /obj/item/bag/trash,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/caution,
 /obj/item/caution,
 /obj/item/caution,

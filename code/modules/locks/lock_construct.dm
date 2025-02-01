@@ -1,6 +1,6 @@
 /obj/item/lock_construct
 	name = "lock"
-	desc = "a simple tumbler lock and bolt, suitable for affixing to a door or closet."
+	desc = "A simple tumbler lock and bolt, suitable for affixing to a door or closet."
 	icon = 'icons/obj/items/doorlock.dmi'
 	icon_state = "lock_construct"
 	w_class = ITEM_SIZE_TINY

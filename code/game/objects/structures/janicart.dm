@@ -111,49 +111,50 @@
 		ui.set_initial_data(data)
 		ui.open()
 
-/obj/structure/janitorialcart/Topic(href, href_list)
-	if(!in_range(src, usr))
-		return
-	if(!isliving(usr))
-		return
-	var/mob/living/user = usr
-
-	if(href_list["take"])
-		switch(href_list["take"])
-			if("garbage")
-				if(mybag)
-					user.put_in_hands(mybag)
-					to_chat(user, "<span class='notice'>You take [mybag] from [src].</span>")
-					mybag = null
-			if("mop")
-				if(mymop)
-					user.put_in_hands(mymop)
-					to_chat(user, "<span class='notice'>You take [mymop] from [src].</span>")
-					mymop = null
-			if("spray")
-				if(myspray)
-					user.put_in_hands(myspray)
-					to_chat(user, "<span class='notice'>You take [myspray] from [src].</span>")
-					myspray = null
-			if("replacer")
-				if(myreplacer)
-					user.put_in_hands(myreplacer)
-					to_chat(user, "<span class='notice'>You take [myreplacer] from [src].</span>")
-					myreplacer = null
-			if("sign")
-				if(signs)
-					var/obj/item/caution/Sign = locate() in src
-					if(Sign)
-						user.put_in_hands(Sign)
-						to_chat(user, "<span class='notice'>You take \a [Sign] from [src].</span>")
-						signs--
-					else
-						warning("[src] signs ([signs]) didn't match contents")
-						signs = 0
-
-	update_icon()
-	updateUsrDialog()
-
+/obj/structure/janitorialcart/OnTopic(mob/user, href_list)
+	switch(href_list["take"])
+		if("garbage")
+			if(mybag)
+				user.put_in_hands(mybag)
+				to_chat(user, "<span class='notice'>You take [mybag] from [src].</span>")
+				mybag = null
+				return TOPIC_REFRESH
+			return TOPIC_HANDLED
+		if("mop")
+			if(mymop)
+				user.put_in_hands(mymop)
+				to_chat(user, "<span class='notice'>You take [mymop] from [src].</span>")
+				mymop = null
+				return TOPIC_REFRESH
+			return TOPIC_HANDLED
+		if("spray")
+			if(myspray)
+				user.put_in_hands(myspray)
+				to_chat(user, "<span class='notice'>You take [myspray] from [src].</span>")
+				myspray = null
+				return TOPIC_REFRESH
+			return TOPIC_HANDLED
+		if("replacer")
+			if(myreplacer)
+				user.put_in_hands(myreplacer)
+				to_chat(user, "<span class='notice'>You take [myreplacer] from [src].</span>")
+				myreplacer = null
+				return TOPIC_REFRESH
+			return TOPIC_HANDLED
+		if("sign")
+			if(signs)
+				var/obj/item/caution/Sign = locate() in src
+				if(Sign)
+					user.put_in_hands(Sign)
+					to_chat(user, "<span class='notice'>You take \a [Sign] from [src].</span>")
+					signs--
+				else
+					warning("[src] signs ([signs]) didn't match contents")
+					signs = 0
+				return TOPIC_REFRESH
+			return TOPIC_HANDLED
+		else
+			return TOPIC_NOACTION
 
 /obj/structure/janitorialcart/on_update_icon()
 	..()

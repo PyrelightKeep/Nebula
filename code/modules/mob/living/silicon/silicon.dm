@@ -457,3 +457,4 @@
 /mob/living/silicon/handle_stance()
 	stance_damage = 0
 	return
+

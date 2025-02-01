@@ -16348,7 +16348,7 @@
 /area/exodus/hallway/secondary/entry/starboard)
 "aIe" = (
 /obj/structure/table/reinforced,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/structure/noticeboard{
 	default_pixel_x = -30
 	},
@@ -26783,7 +26783,7 @@
 	},
 /obj/structure/table/marble,
 /obj/item/stack/package_wrap,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/chems/spray/cleaner,
 /turf/floor/tiled/white,
 /area/exodus/crew_quarters/kitchen)
@@ -32641,7 +32641,7 @@
 	tag_door = "cargo_bay_door"
 	},
 /obj/machinery/camera/network/civilian_west{
-	c_tag = "Cargo Recieving Dock";
+	c_tag = "Cargo Receiving Dock";
 	dir = 4
 	},
 /turf/floor/tiled/steel_grid,

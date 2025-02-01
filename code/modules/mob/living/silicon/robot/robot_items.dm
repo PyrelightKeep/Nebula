@@ -87,7 +87,7 @@
 //A harvest item for serviceborgs.
 /obj/item/robot_harvester
 	name = "auto harvester"
-	desc = "A hand-held harvest tool that resembles a sickle.  It uses energy to cut plant matter very efficently."
+	desc = "A hand-held harvest tool that resembles a sickle.  It uses energy to cut plant matter very efficiently."
 	icon = 'icons/obj/items/borg_module/autoharvester.dmi'
 	icon_state = "autoharvester"
 	max_health = ITEM_HEALTH_NO_DAMAGE

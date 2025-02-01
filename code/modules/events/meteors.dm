@@ -431,7 +431,7 @@ var/global/list/meteors_major = list(
 //Missiles, for events and so on
 /obj/effect/meteor/destroyer/missile
 	name = "photon torpedo"
-	desc = "An advanded warhead designed to tactically destroy space installations."
+	desc = "An advanced warhead designed to tactically destroy space installations."
 	icon = 'icons/obj/missile.dmi'
 	icon_state = "photon"
 	meteordrop = null

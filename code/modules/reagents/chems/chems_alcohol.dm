@@ -121,7 +121,7 @@
 
 /decl/material/liquid/alcohol/ale
 	name = "ale"
-	lore_text = "A dark alchoholic beverage made by malted barley and yeast."
+	lore_text = "A dark alcoholic beverage made by malted barley and yeast."
 	taste_description = "hearty barley ale"
 	color = "#4c3100"
 	strength = 50
@@ -174,7 +174,7 @@
 
 /decl/material/liquid/alcohol/cognac
 	name = "cognac"
-	lore_text = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. Classy as fornication."
+	lore_text = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. Classy as fornication."
 	taste_description = "rich and smooth alcohol"
 	taste_mult = 1.1
 	color = "#ab3c05"
@@ -199,7 +199,7 @@
 	glass_name = "gin"
 	glass_desc = "A crystal clear glass of Griffeater gin."
 
-//Base type for alchoholic drinks containing coffee
+//Base type for alcoholic drinks containing coffee
 /decl/material/liquid/alcohol/coffee
 	name = "coffee liqueur"
 	lore_text = "A widely known, Mexican coffee-flavoured liqueur. In production since 1936!"
@@ -362,7 +362,7 @@
 
 /decl/material/liquid/alcohol/wine
 	name = "red wine"
-	lore_text = "An premium alchoholic beverage made from distilled grape juice."
+	lore_text = "An premium alcoholic beverage made from distilled grape juice."
 	taste_description = "bitter sweetness"
 	color = "#7e4043" // rgb: 126, 64, 67
 	strength = 15
@@ -375,7 +375,7 @@
 
 /decl/material/liquid/alcohol/wine/premium
 	name = "white wine"
-	lore_text = "An exceptionally expensive alchoholic beverage made from distilled white grapes."
+	lore_text = "An exceptionally expensive alcoholic beverage made from distilled white grapes."
 	taste_description = "white velvet"
 	color = "#ffddaa" // rgb: 255, 221, 170 - a light cream
 	strength = 20

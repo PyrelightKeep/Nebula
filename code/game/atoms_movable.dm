@@ -49,7 +49,7 @@
 
 //call this proc to start space drifting
 /atom/movable/proc/space_drift(direction)//move this down
-	if(!loc || direction & (UP|DOWN) || Process_Spacemove(0))
+	if(!loc || direction & (UP|DOWN) || is_space_movement_permitted() != SPACE_MOVE_FORBIDDEN)
 		inertia_dir = 0
 		inertia_ignore = null
 		return 0
@@ -62,29 +62,22 @@
 	return 1
 
 //return 0 to space drift, 1 to stop, -1 for mobs to handle space slips
-/atom/movable/proc/Process_Spacemove(var/allow_movement)
+/atom/movable/proc/is_space_movement_permitted(allow_movement = FALSE)
 	if(!simulated)
-		return 1
-
+		return SPACE_MOVE_PERMITTED
 	if(has_gravity())
-		return 1
-
+		return SPACE_MOVE_PERMITTED
 	if(length(grabbed_by))
-		return 1
-
+		return SPACE_MOVE_PERMITTED
 	if(throwing)
-		return 1
-
+		return SPACE_MOVE_PERMITTED
 	if(anchored)
-		return 1
-
+		return SPACE_MOVE_PERMITTED
 	if(!isturf(loc))
-		return 1
-
+		return SPACE_MOVE_PERMITTED
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
-		return -1
-
-	return 0
+		return SPACE_MOVE_SUPPORTED
+	return SPACE_MOVE_FORBIDDEN
 
 /atom/movable/attack_hand(mob/user)
 	// Unbuckle anything buckled to us.
@@ -502,7 +495,7 @@
 		return 0
 	return max(ITEM_SIZE_MIN, get_object_size()) * THERMAL_MASS_CONSTANT
 
-/atom/movable/get_thermal_mass_coefficient()
+/atom/movable/get_thermal_mass_coefficient(delta)
 	if(!simulated)
 		return 0
 	return (max(ITEM_SIZE_MIN, MOB_SIZE_MIN) * THERMAL_MASS_CONSTANT) / get_thermal_mass()
@@ -566,7 +559,7 @@
 		appearance_flags &= ~remove_flags
 	return old_appearance != appearance_flags
 
-/atom/movable/proc/end_throw()
+/atom/movable/proc/end_throw(datum/thrownthing/TT)
 	throwing = null
 
 /atom/movable/proc/reset_movement_delay()

@@ -1,6 +1,6 @@
 /obj/structure/mech_wreckage
 	name = "wreckage"
-	desc = "It might have some salvagable parts."
+	desc = "It might have some salvageable parts."
 	density = TRUE
 	opacity = TRUE
 	anchored = TRUE

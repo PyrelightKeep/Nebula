@@ -56,7 +56,7 @@
 /mob/living/human/dummy/mannequin/fully_replace_character_name(new_name, in_depth = TRUE)
 	..("[new_name] (mannequin)", FALSE)
 
-/mob/living/human/dummy/mannequin/InitializeHud()
+/mob/living/human/dummy/mannequin/initialize_hud()
 	return	// Mannequins don't get HUDs
 
 /mob/living/human/monkey

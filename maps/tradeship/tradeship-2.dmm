@@ -2009,7 +2009,7 @@
 	pixel_x = 3
 	},
 /obj/item/chems/condiment/enzyme,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/chems/cooking_vessel/pot,
 /turf/floor/tiled,
 /area/ship/trade/crew/kitchen)
@@ -4759,7 +4759,7 @@
 /obj/machinery/light,
 /obj/machinery/optable,
 /obj/item/chems/drinks/glass2/coffeecup/britcup,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /turf/floor/tiled/white,
 /area/ship/trade/crew/medbay)
 "op" = (
@@ -5672,7 +5672,7 @@
 /obj/random/clothing,
 /obj/random/clothing,
 /obj/random/clothing,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/item/firstaid/regular,
 /turf/floor/tiled/freezer,
 /area/ship/trade/crew/wash)

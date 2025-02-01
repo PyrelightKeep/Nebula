@@ -16,7 +16,7 @@
 	. = ..()
 	icon_state = "coin[rand(1,10)]"
 	if(material)
-		desc = "A old-style coin stamped out of [material.solid_name]."
+		desc = "An old-style coin stamped out of [material.solid_name]."
 	set_extension(src, /datum/extension/tool, list(TOOL_SCREWDRIVER = TOOL_QUALITY_BAD))
 
 // "Coin Flipping, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org

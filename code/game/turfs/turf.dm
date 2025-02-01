@@ -54,7 +54,7 @@
 	// get overridden almost immediately.
 
 	// TL;DR: just leave these vars alone.
-	var/is_outside = OUTSIDE_AREA
+	var/is_outside = OUTSIDE_AREA // non-tmp to allow visibility in mapper.
 	var/tmp/obj/abstract/weather_system/weather
 	var/tmp/last_outside_check = OUTSIDE_UNCERTAIN
 
@@ -117,6 +117,10 @@
 		update_weather(force_update_below = TRUE)
 	else if (permit_ao)
 		queue_ao()
+
+	// we're being loaded in a new z-level, we need to build lighting
+	if(mapload && !changing_turf && SSlighting.initialized)
+		lighting_build_overlay()
 
 	if(simulated)
 		updateVisibility(src, FALSE)
@@ -416,15 +420,15 @@
 				L.Add(t)
 	return L
 
-/turf/proc/contains_dense_objects(exceptions)
+/turf/proc/contains_dense_objects(list/exceptions)
 	if(density)
-		return 1
+		return TRUE
 	for(var/atom/A in src)
+		if(exceptions && (exceptions == A || (islist(exceptions) && (A in exceptions))))
+			continue
 		if(A.density && !(A.atom_flags & ATOM_FLAG_CHECKS_BORDER))
-			if(exceptions && (exceptions == A || (A in exceptions)))
-				continue
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /turf/proc/remove_cleanables()
 	for(var/obj/effect/decal/cleanable/cleanable in src)

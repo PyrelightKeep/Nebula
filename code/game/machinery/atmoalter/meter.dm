@@ -1,6 +1,6 @@
 /obj/machinery/meter
 	name = "meter"
-	desc = "A gas flow meter."
+	desc = "A meter that monitors gas composition, pressure, and temperature in the attached pipe."
 	icon = 'icons/obj/meter.dmi'
 	icon_state = "meterX"
 	var/atom/target = null //A pipe for the base type

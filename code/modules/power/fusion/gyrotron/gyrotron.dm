@@ -3,7 +3,7 @@
 /obj/machinery/emitter/gyrotron
 	name = "gyrotron"
 	icon = 'icons/obj/machines/power/fusion.dmi'
-	desc = "It is a heavy duty industrial gyrotron suited for powering fusion reactors."
+	desc = "It is a heavy-duty industrial gyrotron suited for powering fusion reactors."
 	icon_state = "emitter-off"
 	initial_access = list(access_engine)
 	use_power = POWER_USE_IDLE

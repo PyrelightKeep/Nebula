@@ -448,6 +448,10 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!should_do_hud_updates())
 		return FALSE
+
+	if(istype(hud_used))
+		hud_used.handle_life_hud_update()
+
 	handle_hud_icons()
 	handle_vision()
 	handle_low_light_vision()
@@ -554,12 +558,9 @@
 				if(prob(current_size*5) && hand.w_class >= (11-current_size)/2 && try_unequip(hand))
 					to_chat(src, SPAN_WARNING("\The [S] pulls \the [hand] from your grip!"))
 					hand.singularity_pull(S, current_size)
-			var/obj/item/shoes = get_equipped_item(slot_shoes_str)
-			if(!current_posture.prone && !(shoes?.item_flags & ITEM_FLAG_NOSLIP))
-				var/decl/species/my_species = get_species()
-				if(!my_species?.check_no_slip(src) && prob(current_size*5))
-					to_chat(src, SPAN_DANGER("A strong gravitational force slams you to the ground!"))
-					SET_STATUS_MAX(src, STAT_WEAK, current_size)
+			if(prob(current_size*5) && can_slip())
+				to_chat(src, SPAN_DANGER("A strong gravitational force slams you to the ground!"))
+				SET_STATUS_MAX(src, STAT_WEAK, current_size)
 		apply_damage(current_size * 3, IRRADIATE, damage_flags = DAM_DISPERSED)
 	return ..()
 

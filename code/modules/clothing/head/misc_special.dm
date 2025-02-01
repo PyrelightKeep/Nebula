@@ -84,7 +84,7 @@
 
 /obj/item/clothing/head/welding/knight
 	name = "knightly welding helmet"
-	desc = "A painted welding helmet, this one looks like a knights helmet."
+	desc = "A painted welding helmet, this one looks like a knight's helmet."
 	icon = 'icons/clothing/head/welding/knight.dmi'
 
 /obj/item/clothing/head/welding/fancy
@@ -214,7 +214,7 @@
 	. = ..()
 	update_icon()
 
-/obj/item/clothing/head/cakehat/on_update_icon(mob/user)
+/obj/item/clothing/head/cakehat/on_update_icon()
 	. = ..()
 	z_flags &= ~ZMM_MANGLE_PLANES
 	if(is_on_fire() && check_state_in_icon("[icon_state]-flame", icon))
@@ -224,7 +224,7 @@
 			add_overlay(emissive_overlay(icon, "[icon_state]-flame"))
 			z_flags |= ZMM_MANGLE_PLANES
 
-// Overidable so species with limited headspace in the sprite bounding area can offset it (scavs)
+// Overrideable so species with limited headspace in the sprite bounding area can offset it (scavs)
 /obj/item/clothing/head/cakehat/proc/get_mob_flame_overlay(var/image/overlay, var/bodytype)
 	if(overlay && check_state_in_icon("[overlay.icon_state]-flame", overlay.icon))
 		return emissive_overlay(overlay.icon, "[overlay.icon_state]-flame")

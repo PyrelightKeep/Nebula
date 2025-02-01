@@ -55,8 +55,9 @@
 	update_icon()
 
 	events_repository.register(/decl/observ/moved, affecting, src, PROC_REF(on_affecting_move))
-	if(assailant.zone_sel)
-		events_repository.register(/decl/observ/zone_selected, assailant.zone_sel, src, PROC_REF(on_target_change))
+	var/obj/screen/zone_selector/zone_selector = assailant.get_hud_element(HUD_ZONE_SELECT)
+	if(zone_selector)
+		events_repository.register(/decl/observ/zone_selected, zone_selector, src, PROC_REF(on_target_change))
 
 	var/obj/item/organ/O = get_targeted_organ()
 	var/decl/pronouns/pronouns = assailant.get_pronouns()
@@ -138,8 +139,9 @@
 		affecting.reset_plane_and_layer()
 		affecting = null
 	if(assailant)
-		if(assailant.zone_sel)
-			events_repository.unregister(/decl/observ/zone_selected, assailant.zone_sel, src)
+		var/obj/screen/zone_selector/zone_selector = assailant.get_hud_element(HUD_ZONE_SELECT)
+		if(zone_selector)
+			events_repository.unregister(/decl/observ/zone_selected, zone_selector, src)
 		assailant = null
 	. = ..()
 	if(old_affecting)

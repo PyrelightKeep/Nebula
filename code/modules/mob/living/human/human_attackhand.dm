@@ -409,7 +409,7 @@
 		var/image/radial_button = new
 		radial_button.name = capitalize(u_attack.name)
 		LAZYSET(choices, u_attack, radial_button)
-	var/decl/natural_attack/new_attack = show_radial_menu(src, (attack_selector || src), choices, radius = 42, use_labels = RADIAL_LABELS_OFFSET)
+	var/decl/natural_attack/new_attack = show_radial_menu(src, src, choices, radius = 42, use_labels = RADIAL_LABELS_OFFSET)
 	if(QDELETED(src) || !istype(new_attack) || !(new_attack in get_mob_natural_attacks()))
 		return
 	default_attack = new_attack
@@ -418,7 +418,7 @@
 		var/summary = default_attack.summarize()
 		if(summary)
 			to_chat(src, SPAN_NOTICE(summary))
-	attack_selector?.update_icon()
+	refresh_hud_element(HUD_ATTACK)
 
 /mob/living/human/UnarmedAttack(atom/A, proximity_flag)
 	// Hackfix for humans trying to attack someone without hands.

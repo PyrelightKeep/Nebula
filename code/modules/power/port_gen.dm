@@ -403,7 +403,7 @@
 
 /obj/machinery/port_gen/pacman/super
 	name = "portable fission generator"
-	desc = "A power generator that utilizes uranium sheets as fuel. Can run for much longer than the standard portabke generators. Rated for 80 kW max safe output."
+	desc = "A power generator that utilizes uranium sheets as fuel. Can run for much longer than the standard portable generators. Rated for 80 kW max safe output."
 	icon_state = "portgen1"
 	sheet_path = /obj/item/stack/material/puck
 	sheet_material = /decl/material/solid/metal/uranium

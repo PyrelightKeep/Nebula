@@ -22,7 +22,7 @@
 	)
 
 	// autoinjectors takes less time than a normal syringe (overriden for hypospray).
-	// This delay is only applied when injecting concious mobs, and is not applied for self-injection
+	// This delay is only applied when injecting conscious mobs, and is not applied for self-injection
 	// The 1.9 factor scales it so it takes the following number of seconds:
 	// NONE   1.47
 	// BASIC  1.00
@@ -57,7 +57,7 @@
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	user.do_attack_animation(target)
 
-	if(user != target && !target.incapacitated() && time) // you're injecting someone else who is concious, so apply the device's intrisic delay
+	if(user != target && !target.incapacitated() && time) // you're injecting someone else who is conscious, so apply the device's intrisic delay
 		to_chat(user, SPAN_WARNING("\The [user] is trying to inject \the [target] with \the [name]."))
 		if(!user.do_skilled(time, SKILL_MEDICAL, target))
 			return TRUE
@@ -83,7 +83,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /obj/item/chems/hypospray/vial
 	name = "hypospray"
-	desc = "A sterile, air-needle autoinjector for rapid administration of drugs to patients. Uses a replacable 30u vial."
+	desc = "A sterile, air-needle autoinjector for rapid administration of drugs to patients. Uses a replaceable 30u vial."
 	possible_transfer_amounts = @"[1,2,5,10,15,20,30]"
 	amount_per_transfer_from_this = 5
 	volume = 0

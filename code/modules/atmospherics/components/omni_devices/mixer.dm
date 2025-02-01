@@ -3,6 +3,7 @@
 //--------------------------------------------
 /obj/machinery/atmospherics/omni/mixer
 	name = "omni gas mixer"
+	desc = "A device that combines two or more gases to produce a mix with a specific ratio."
 	icon_state = "map_mixer"
 	core_icon = "mixer"
 

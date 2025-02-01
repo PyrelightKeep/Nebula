@@ -9,7 +9,7 @@
 
 /obj/machinery/washing_machine
 	name = "washing machine"
-	desc = "A commerical washing machine used to wash clothing items and linens. It requires detergent for efficient washing."
+	desc = "A commercial washing machine used to wash clothing items and linens. It requires detergent for efficient washing."
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_00"
 	density = TRUE

@@ -82,7 +82,7 @@
 /obj/item/food/can/beans
 	name = "baked beans"
 	icon_state = "beans"
-	desc = "Carefully synthethized from soy."
+	desc = "Carefully synthesized from soy."
 	trash = /obj/item/trash/beans
 	filling_color = "#ff6633"
 	nutriment_desc = list("beans" = 1)

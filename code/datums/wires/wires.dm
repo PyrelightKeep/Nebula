@@ -192,7 +192,7 @@ var/global/list/wireColourNames = list("darkred" = "dark red")
 		usr.unset_machine(holder)
 
 //
-// Overridable Procs
+// Overrideable Procs
 //
 
 // Called when wires cut/mended.

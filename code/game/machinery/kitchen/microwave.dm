@@ -87,7 +87,7 @@
 		dispose()
 		return
 	else if(dirty==100) // The microwave is all dirty so can't be used!
-		if(istype(O, /obj/item/chems/spray/cleaner) || istype(O, /obj/item/chems/glass/rag)) // If they're trying to clean it then let them
+		if(istype(O, /obj/item/chems/spray/cleaner) || istype(O, /obj/item/chems/rag)) // If they're trying to clean it then let them
 			user.visible_message(
 				SPAN_NOTICE("\The [user] starts to clean [src]."),
 				SPAN_NOTICE("You start to clean [src].")

@@ -49,8 +49,8 @@
 			add_stressor(/datum/stressor/fatigued, 5 MINUTES)
 			if(MOVING_QUICKLY(src))
 				set_moving_slowly()
-	if(last_stamina != stamina && istype(hud_used))
-		hud_used.update_stamina()
+	if(last_stamina != stamina)
+		refresh_hud_element(HUD_STAMINA)
 
 /mob/living/human/proc/handle_stamina()
 	if((world.time - last_quick_move_time) > 5 SECONDS)
@@ -85,7 +85,7 @@
 
 	return pressure_adjustment_coefficient
 
-// Calculate how much of the enviroment pressure-difference affects the human.
+// Calculate how much of the environment pressure-difference affects the human.
 /mob/living/human/calculate_affecting_pressure(var/pressure)
 	var/pressure_difference
 
@@ -181,7 +181,7 @@
 		var/loc_temp = environment.temperature
 
 		if(adjusted_pressure < species.get_warning_high_pressure(src) && adjusted_pressure > species.get_warning_low_pressure(src) && abs(loc_temp - bodytemperature) < 20 && bodytemperature < get_mob_temperature_threshold(HEAT_LEVEL_1) && bodytemperature > get_mob_temperature_threshold(COLD_LEVEL_1) && species.body_temperature)
-			SET_HUD_ALERT(src, /decl/hud_element/condition/pressure, 0)
+			SET_HUD_ALERT(src, HUD_PRESSURE, 0)
 			return // Temperatures are within normal ranges, fuck all this processing. ~Ccomp
 
 		//Body temperature adjusts depending on surrounding atmosphere based on your thermal protection (convection)
@@ -210,10 +210,10 @@
 		else
 			burn_dam = HEAT_DAMAGE_LEVEL_3
 		take_overall_damage(burn=burn_dam, used_weapon = "High Body Temperature")
-		SET_HUD_ALERT_MAX(src, /decl/hud_element/condition/fire, 2)
+		SET_HUD_ALERT_MAX(src, HUD_FIRE, 2)
 
 	else if(bodytemperature <= get_mob_temperature_threshold(COLD_LEVEL_1))
-		SET_HUD_ALERT_MAX(src, /decl/hud_element/condition/fire, 1)
+		SET_HUD_ALERT_MAX(src, HUD_FIRE, 1)
 		if(status_flags & GODMODE)	return 1	//godmode
 
 		var/burn_dam = 0
@@ -227,7 +227,7 @@
 		set_stasis(get_cryogenic_factor(bodytemperature), STASIS_COLD)
 		if(!has_chemical_effect(CE_CRYO, 1))
 			take_overall_damage(burn=burn_dam, used_weapon = "Low Body Temperature")
-			SET_HUD_ALERT_MAX(src, /decl/hud_element/condition/fire, 1)
+			SET_HUD_ALERT_MAX(src, HUD_FIRE, 1)
 
 	// Account for massive pressure differences.  Done by Polymorph
 	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
@@ -237,13 +237,13 @@
 	if(adjusted_pressure >= high_pressure)
 		var/pressure_damage = min( ( (adjusted_pressure / high_pressure) -1 )*PRESSURE_DAMAGE_COEFFICIENT , MAX_HIGH_PRESSURE_DAMAGE)
 		take_overall_damage(brute=pressure_damage, used_weapon = "High Pressure")
-		SET_HUD_ALERT(src, /decl/hud_element/condition/pressure, 2)
+		SET_HUD_ALERT(src, HUD_PRESSURE, 2)
 	else if(adjusted_pressure >= species.get_warning_high_pressure(src))
-		SET_HUD_ALERT(src, /decl/hud_element/condition/pressure, 1)
+		SET_HUD_ALERT(src, HUD_PRESSURE, 1)
 	else if(adjusted_pressure >= species.get_warning_low_pressure(src))
-		SET_HUD_ALERT(src, /decl/hud_element/condition/pressure, 0)
+		SET_HUD_ALERT(src, HUD_PRESSURE, 0)
 	else if(adjusted_pressure >= species.get_hazard_low_pressure(src))
-		SET_HUD_ALERT(src, /decl/hud_element/condition/pressure, -1)
+		SET_HUD_ALERT(src, HUD_PRESSURE, -1)
 	else
 		var/list/obj/item/organ/external/parts = get_damageable_organs()
 		for(var/obj/item/organ/external/O in parts)
@@ -253,7 +253,7 @@
 				O.take_external_damage(brute = LOW_PRESSURE_DAMAGE, used_weapon = "Low Pressure")
 		if(getOxyLossPercent() < 55) // 11 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 			take_damage(4)  // 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, OXY, roughly twenty seconds
-		SET_HUD_ALERT(src, /decl/hud_element/condition/pressure, -2)
+		SET_HUD_ALERT(src, HUD_PRESSURE, -2)
 
 	return
 
@@ -464,130 +464,6 @@
 		else
 			clear_fullscreen("brute")
 
-		if(healths)
-
-			var/mutable_appearance/healths_ma = new(healths)
-			healths_ma.icon_state = "blank"
-			healths_ma.overlays = null
-
-			if(has_chemical_effect(CE_PAINKILLER, 100))
-				healths_ma.icon_state = "health_numb"
-			else
-				// Generate a by-limb health display.
-				var/no_damage = 1
-				var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.
-				if(can_feel_pain())
-					trauma_val = max(shock_stage,get_shock())/(species.total_health-100)
-				// Collect and apply the images all at once to avoid appearance churn.
-				var/list/health_images = list()
-				for(var/obj/item/organ/external/E in get_external_organs())
-					if(no_damage && (E.brute_dam || E.burn_dam))
-						no_damage = 0
-					var/damage_image = E.get_damage_hud_image()
-					if(damage_image)
-						health_images += damage_image
-
-
-				// Apply a fire overlay if we're burning.
-				var/crit_markers = get_ui_icon(client?.prefs?.UI_style, UI_ICON_CRIT_MARKER)
-				if(is_on_fire())
-					health_images += image(crit_markers, "burning")
-
-				// Show a general pain/crit indicator if needed.
-				if(is_asystole())
-					health_images += image(crit_markers, "hardcrit")
-				else if(trauma_val)
-					if(can_feel_pain())
-						if(trauma_val > 0.7)
-							health_images += image(crit_markers, "softcrit")
-						if(trauma_val >= 1)
-							health_images += image(crit_markers, "hardcrit")
-				else if(no_damage)
-					health_images += image(crit_markers, "fullhealth")
-				healths_ma.overlays += health_images
-			healths.appearance = healths_ma
-
-		if(nutrition_icon)
-			switch(nutrition)
-				if(450 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(350 to 450)					nutrition_icon.icon_state = "nutrition1"
-				if(250 to 350)					nutrition_icon.icon_state = "nutrition2"
-				if(150 to 250)					nutrition_icon.icon_state = "nutrition3"
-				else							nutrition_icon.icon_state = "nutrition4"
-
-		if(hydration_icon)
-			switch(hydration)
-				if(450 to INFINITY)				hydration_icon.icon_state = "hydration0"
-				if(350 to 450)					hydration_icon.icon_state = "hydration1"
-				if(250 to 350)					hydration_icon.icon_state = "hydration2"
-				if(150 to 250)					hydration_icon.icon_state = "hydration3"
-				else							hydration_icon.icon_state = "hydration4"
-
-		if(isSynthetic())
-			var/obj/item/organ/internal/cell/C = get_organ(BP_CELL, /obj/item/organ/internal/cell)
-			if(C)
-				var/chargeNum = clamp(ceil(C.percent()/25), 0, 4)	//0-100 maps to 0-4, but give it a paranoid clamp just in case.
-				cells.icon_state = "charge[chargeNum]"
-			else
-				cells.icon_state = "charge-empty"
-
-		if(pressure)
-			pressure.icon_state = "pressure[GET_HUD_ALERT(src, /decl/hud_element/condition/pressure)]"
-		if(toxin)
-			toxin.icon_state = "tox[GET_HUD_ALERT(src, /decl/hud_element/condition/toxins)]"
-		if(oxygen)
-			oxygen.icon_state = "oxy[GET_HUD_ALERT(src, /decl/hud_element/condition/oxygen)]"
-		if(fire)
-			fire.icon_state = "fire[GET_HUD_ALERT(src, /decl/hud_element/condition/fire)]"
-
-		if(bodytemp)
-			if (!species)
-				switch(bodytemperature) //310.055 optimal body temp
-					if(370 to INFINITY)		bodytemp.icon_state = "temp4"
-					if(350 to 370)			bodytemp.icon_state = "temp3"
-					if(335 to 350)			bodytemp.icon_state = "temp2"
-					if(320 to 335)			bodytemp.icon_state = "temp1"
-					if(300 to 320)			bodytemp.icon_state = "temp0"
-					if(295 to 300)			bodytemp.icon_state = "temp-1"
-					if(280 to 295)			bodytemp.icon_state = "temp-2"
-					if(260 to 280)			bodytemp.icon_state = "temp-3"
-					else					bodytemp.icon_state = "temp-4"
-			else
-				var/heat_1 = get_mob_temperature_threshold(HEAT_LEVEL_1)
-				var/cold_1 = get_mob_temperature_threshold(COLD_LEVEL_1)
-				//TODO: precalculate all of this stuff when the species datum is created
-				var/base_temperature = species.body_temperature
-				if(base_temperature == null) //some species don't have a set metabolic temperature
-					base_temperature = (heat_1 + cold_1)/2
-
-				var/temp_step
-				if (bodytemperature >= base_temperature)
-					temp_step = (heat_1 - base_temperature)/4
-
-					if (bodytemperature >= heat_1)
-						bodytemp.icon_state = "temp4"
-					else if (bodytemperature >= base_temperature + temp_step*3)
-						bodytemp.icon_state = "temp3"
-					else if (bodytemperature >= base_temperature + temp_step*2)
-						bodytemp.icon_state = "temp2"
-					else if (bodytemperature >= base_temperature + temp_step*1)
-						bodytemp.icon_state = "temp1"
-					else
-						bodytemp.icon_state = "temp0"
-
-				else if (bodytemperature < base_temperature)
-					temp_step = (base_temperature - cold_1)/4
-
-					if (bodytemperature <= cold_1)
-						bodytemp.icon_state = "temp-4"
-					else if (bodytemperature <= base_temperature - temp_step*3)
-						bodytemp.icon_state = "temp-3"
-					else if (bodytemperature <= base_temperature - temp_step*2)
-						bodytemp.icon_state = "temp-2"
-					else if (bodytemperature <= base_temperature - temp_step*1)
-						bodytemp.icon_state = "temp-1"
-					else
-						bodytemp.icon_state = "temp0"
 	return 1
 
 /mob/living/human/handle_random_events()

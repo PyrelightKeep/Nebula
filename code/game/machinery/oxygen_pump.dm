@@ -90,8 +90,7 @@
 		visible_message(SPAN_NOTICE("\The [user] detaches \the [contained] and it rapidly retracts back into \the [src]!"))
 	else
 		visible_message(SPAN_NOTICE("\The [contained] rapidly retracts back into \the [src]!"))
-	if(breather.internals)
-		breather.internals.icon_state = "internal0"
+	breather.refresh_hud_element(HUD_INTERNALS)
 	breather = null
 	update_use_power(POWER_USE_IDLE)
 

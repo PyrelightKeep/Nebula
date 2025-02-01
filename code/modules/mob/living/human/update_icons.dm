@@ -356,5 +356,5 @@ Please contact me on #coderbus IRC. ~Carn x
 	set_current_mob_overlay(HO_CONDITION_LAYER, condition_overlays, update_icons)
 
 /mob/living/human/hud_reset(full_reset = FALSE)
-	if((. = ..()) && internals && internal)
-		internals.icon_state = "internal1"
+	if((. = ..()))
+		refresh_hud_element(HUD_INTERNALS)

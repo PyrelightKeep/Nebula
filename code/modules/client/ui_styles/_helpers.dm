@@ -5,9 +5,10 @@
 		if(!ui.restricted || !filter_available)
 			LAZYADD(., ui)
 
-/proc/get_default_ui_icon(ui_key)
-	return get_ui_icon(global.using_map.default_ui_style, ui_key)
+/proc/get_ui_icon(decl/ui_style/ui_style, ui_key)
 
-/proc/get_ui_icon(ui_style, ui_key)
-	var/decl/ui_style/style = GET_DECL(ui_style)
-	return style?.get_icon(ui_key) || get_default_ui_icon(ui_key)
+	if(ispath(ui_style))
+		ui_style = GET_DECL(ui_style)
+	if(!istype(ui_style))
+		ui_style = GET_DECL(global.using_map.default_ui_style)
+	return ui_style.get_icon(ui_key)

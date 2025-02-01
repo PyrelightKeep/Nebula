@@ -1,7 +1,7 @@
 var/global/list/all_gps_units = list()
 /obj/item/gps
 	name = "global coordinate system"
-	desc = "A handheld relay used to triangulates the approximate co-ordinates of the device."
+	desc = "A handheld relay used to triangulate the approximate coordinates of the device in spacetime."
 	icon = 'icons/obj/items/device/locator.dmi'
 	icon_state = ICON_STATE_WORLD
 	origin_tech = @'{"materials":2,"programming":2,"wormholes":2}'

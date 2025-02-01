@@ -11,8 +11,8 @@
 	icon = 'icons/atmos/vent_pump.dmi'
 	icon_state = "map_vent"
 
-	name = "Air Vent"
-	desc = "Has a valve and pump attached to it."
+	name = "air vent"
+	desc = "A vent that moves air into or out of the attached pipe system, and uses a valve and pump to prevent backflow."
 	use_power = POWER_USE_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 30000			// 30000 W ~ 40 HP
@@ -160,6 +160,7 @@
 
 /obj/machinery/atmospherics/unary/vent_pump/high_volume
 	name = "large air vent"
+	desc = "A high-volume vent that moves lots of air into or out of the attached pipe system, and uses a valve and pump to prevent backflow."
 	power_channel = EQUIP
 	power_rating = 45000
 	base_type = /obj/machinery/atmospherics/unary/vent_pump/high_volume/buildable

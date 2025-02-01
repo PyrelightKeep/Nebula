@@ -18,7 +18,7 @@
 	status_flags = CANPARALYSE|CANPUSH
 	butchery_data = null
 	ai = /datum/mob_controller/slime
-	hud_used = /datum/hud/animal
+	hud_used = /datum/hud
 	nutrition = 800
 
 	var/is_adult = FALSE

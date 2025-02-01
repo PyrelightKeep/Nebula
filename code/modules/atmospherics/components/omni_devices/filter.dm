@@ -3,6 +3,7 @@
 //--------------------------------------------
 /obj/machinery/atmospherics/omni/filter
 	name = "omni gas filter"
+	desc = "A device that can separate components of a gas mixture and redirect them to different pipes."
 	icon_state = "map_filter"
 	core_icon = "filter"
 

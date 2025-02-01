@@ -210,7 +210,9 @@
 
 /decl/material/liquid/tar
 	name = "tar"
+	solid_name = "asphalt"
 	uid = "liquid_tar"
+	coated_adjective = "tarry"
 	lore_text = "A dark, viscous liquid."
 	taste_description = "petroleum"
 	color = "#140b30"

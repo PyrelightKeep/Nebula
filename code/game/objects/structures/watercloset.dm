@@ -497,7 +497,7 @@ var/global/list/hygiene_props = list()
 /decl/barricade_tape_template/toilet
 	tape_kind         = "toilet paper"
 	tape_desc         = "A length of toilet paper. Seems like custodia is marking their territory again."
-	roll_desc         = "A unbranded roll of standard issue two ply toilet paper. Refined from carefully rendered down sea shells due to the government's 'Abuse Of The Trees Act'."
+	roll_desc         = "An unbranded roll of standard-issue two-ply toilet paper. Refined from carefully rendered-down seashells due to the government's 'Abuse Of The Trees Act'."
 	base_icon_state   = "stripetape"
 	tape_color        = COLOR_WHITE
 	detail_overlay    = "stripes"
@@ -530,7 +530,7 @@ var/global/list/hygiene_props = list()
 ////////////////////////////////////////////////////
 /obj/item/paper/crumpled/bog
 	name       = "sheet of toilet paper"
-	desc       = "A single sheet of toilet paper. Two ply."
+	desc       = "A single sheet of toilet paper. Two-ply."
 	icon       = 'icons/obj/items/paperwork/toilet_paper.dmi'
 
 /obj/structure/hygiene/faucet

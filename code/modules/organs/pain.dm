@@ -1,3 +1,14 @@
+/mob
+	var/obj/screen/fullscreen/pain/pain
+
+/mob/Initialize()
+	pain = new(null, src)
+	. = ..()
+
+/mob/Destroy()
+	QDEL_NULL(pain)
+	. = ..()
+
 /mob/proc/flash_pain(var/target)
 	if(pain)
 		var/matrix/M

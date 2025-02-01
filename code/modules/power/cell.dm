@@ -1,7 +1,7 @@
 // Power Cells
 /obj/item/cell
 	name = "power cell"
-	desc = "A rechargable electrochemical power cell."
+	desc = "A rechargeable electrochemical power cell."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "cell"
 	item_state = "cell"
@@ -315,13 +315,13 @@
 
 /obj/item/cell/potato
 	name = "potato battery"
-	desc = "A rechargable starch based power cell."
+	desc = "A rechargeable starch based power cell."
 	origin_tech = @'{"powerstorage":1}'
 	icon = 'icons/obj/power.dmi'
 	icon_state = "potato_cell"
 	maxcharge = 20
 
-//Generic battery cell for guns with rechargable batteries.
+//Generic battery cell for guns with rechargeable batteries.
 /obj/item/cell/gun
 	name = "weapon energy cell"
 	desc = "A military grade high-density battery, expected to deplete after tens of thousands of complete charge cycles."

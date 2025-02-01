@@ -120,7 +120,7 @@
 
 /obj/machinery/recharger/wallcharger
 	name = "wall recharger"
-	desc = "A heavy duty wall recharger specialized for energy weaponry."
+	desc = "A heavy-duty wall recharger specialized for energy weaponry."
 	icon = 'icons/obj/machines/recharger_wall.dmi'
 	icon_state = "wrecharger0"
 	active_power_usage = 50 KILOWATTS	//It's more specialized than the standalone recharger (guns and batons only) so make it more powerful

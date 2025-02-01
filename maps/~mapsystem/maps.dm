@@ -2,8 +2,8 @@ var/global/datum/map/using_map  = new USING_MAP_DATUM
 var/global/list/all_maps        = list()
 var/global/list/votable_maps    = list()
 
-var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, togglable
-var/global/const/MAP_HAS_RANK   = 2		//Rank system, also togglable
+var/global/const/MAP_HAS_BRANCH = 1	//Branch system for occupations, toggleable
+var/global/const/MAP_HAS_RANK   = 2		//Rank system, also toggleable
 
 /proc/initialise_map_list()
 	for(var/map_type in subtypesof(/datum/map))

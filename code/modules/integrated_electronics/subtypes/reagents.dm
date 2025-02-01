@@ -343,7 +343,7 @@
 
 /obj/item/integrated_circuit/reagent/storage/grinder
 	name = "reagent grinder"
-	desc = "This is a reagent grinder. It accepts a ref to something, and refines it into reagents. It cannot grind materials. It can store up to 100u."
+	desc = "This is a reagent grinder. It accepts a ref to something and refines it into reagents. It cannot grind materials and can store up to 100u."
 	icon_state = "blender"
 	extended_desc = ""
 	inputs = list(

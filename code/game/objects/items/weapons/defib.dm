@@ -465,7 +465,7 @@
 
 /obj/item/shockpaddles/robot
 	name = "defibrillator paddles"
-	desc = "A pair of advanced shockpaddles powered by a robot's internal power cell, able to penetrate thick clothing."
+	desc = "A pair of advanced shock paddles powered by a robot's internal power cell, able to penetrate thick clothing."
 	chargecost = 50
 	combat = 1
 	cooldowntime = (3 SECONDS)
@@ -542,7 +542,7 @@
 */
 
 /obj/item/shockpaddles/standalone
-	desc = "A pair of shockpaddles powered by an experimental miniaturized reactor" //Inspired by the advanced e-gun
+	desc = "A pair of shock paddles powered by an experimental miniaturized reactor" //Inspired by the advanced e-gun
 	var/fail_counter = 0
 
 /obj/item/shockpaddles/standalone/Destroy()

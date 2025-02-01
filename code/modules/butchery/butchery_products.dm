@@ -128,7 +128,7 @@
 
 /obj/item/food/butchery/offal
 	name                = "offal"
-	desc                = "An assortmant of organs and lumps of unidentified gristle. Packed with nutrients and bile."
+	desc                = "An assortment of organs and lumps of unidentified gristle. Packed with nutrients and bile."
 	icon                = 'icons/obj/food/butchery/offal.dmi'
 	material            = /decl/material/solid/organic/meat/gut
 	nutriment_amt       = 15

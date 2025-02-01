@@ -2,7 +2,7 @@
 //malfunctioning combat drones
 /mob/living/simple_animal/hostile/malf_drone
 	name = "combat drone"
-	desc = "An automated combat drone armed with state of the art weaponry and shielding."
+	desc = "An automated combat drone armed with state-of-the-art weaponry and shielding."
 	icon = 'icons/mob/simple_animal/drone_combat.dmi'
 	burst_projectile = 0
 	max_health = 300

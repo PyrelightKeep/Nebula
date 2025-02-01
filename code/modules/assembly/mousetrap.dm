@@ -1,6 +1,6 @@
 /obj/item/assembly/mousetrap
 	name = "rat trap"
-	desc = "A handy little spring-loaded trap for catching pesty rodents."
+	desc = "A handy little spring-loaded trap for catching pesky pests."
 	icon_state = "mousetrap"
 	origin_tech = @'{"combat":1}'
 	material = /decl/material/solid/organic/wood/oak

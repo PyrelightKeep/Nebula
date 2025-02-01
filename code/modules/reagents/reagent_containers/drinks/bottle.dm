@@ -290,7 +290,7 @@
 
 /obj/item/chems/drinks/bottle/patron
 	name = "Wrapp Artiste Patron"
-	desc = "Silver laced tequila, served in space night clubs across the galaxy."
+	desc = "Silver laced tequila, served in space nightclubs across the galaxy."
 	icon_state = "patronbottle"
 	center_of_mass = @'{"x":16,"y":6}'
 
@@ -346,7 +346,7 @@
 
 /obj/item/chems/drinks/bottle/cognac
 	name = "Chateau De Baton Premium Cognac"
-	desc = "A sweet and strongly alchoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
+	desc = "A sweet and strongly alcoholic drink, made after numerous distillations and years of maturing. You might as well not scream 'SHITCURITY' this time."
 	icon_state = "cognacbottle"
 	center_of_mass = @'{"x":16,"y":6}'
 
@@ -409,7 +409,7 @@
 
 /obj/item/chems/drinks/bottle/cola
 	name = "\improper Space Cola"
-	desc = "Cola. in space."
+	desc = "Cola... in space."
 	icon_state = "colabottle"
 	center_of_mass = @'{"x":16,"y":6}'
 

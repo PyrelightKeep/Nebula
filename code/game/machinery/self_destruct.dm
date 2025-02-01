@@ -1,6 +1,6 @@
 /obj/machinery/self_destruct
 	name = "\improper Nuclear Cylinder Inserter"
-	desc = "A hollow space used to insert nuclear cylinders for arming the self destruct."
+	desc = "A hollow space used to insert nuclear cylinders for arming the self-destruct mechanism."
 	icon = 'icons/obj/machines/self_destruct.dmi'
 	icon_state = "empty"
 	density = FALSE
@@ -48,10 +48,10 @@
 				return
 			var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in get_area(src)
 			if(!nuke)
-				to_chat(user, "<span class='warning'>Unable to interface with the self destruct terminal, unable to disarm.</span>")
+				to_chat(user, "<span class='warning'>Unable to interface with the self-destruct terminal, unable to disarm.</span>")
 				return
 			if(nuke.timing)
-				to_chat(user, "<span class='warning'>The self destruct sequence is in progress, unable to disarm.</span>")
+				to_chat(user, "<span class='warning'>The self-destruct sequence is in progress, unable to disarm.</span>")
 				return
 			user.visible_message("[user] begins extracting [cylinder].", "You begin extracting [cylinder].")
 			if(do_after(user, 40, src))

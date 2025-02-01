@@ -10,7 +10,7 @@
 
 /obj/machinery/door/firedoor
 	name = "emergency shutter"
-	desc = "Emergency air-tight shutters, capable of sealing off breached areas."
+	desc = "Emergency airtight shutters, capable of sealing off breached areas."
 	icon = 'icons/obj/doors/hazard/door.dmi'
 	var/panel_file = 'icons/obj/doors/hazard/panel.dmi'
 	var/welded_file = 'icons/obj/doors/hazard/welded.dmi'

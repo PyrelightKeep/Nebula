@@ -194,7 +194,7 @@
 			if(nuke)
 				visible_message(SPAN_WARNING("\The [src] blinks and displays a message: The nuclear authorization code is [nuke.r_code]"), range=2)
 			else
-				visible_message(SPAN_WARNING("\The [src] blinks and displays a message: No self destruct terminal found."), range=2)
+				visible_message(SPAN_WARNING("\The [src] blinks and displays a message: No self-destruct terminal found."), range=2)
 			SSstatistics.add_field("alert_keycard_auth_nukecode",1)
 
 /obj/machinery/keycard_auth/proc/is_ert_blocked()

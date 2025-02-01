@@ -375,13 +375,18 @@
 
 /**
 	Update this atom's icon.
+	If prior to the first SSicon_update flush (i.e. it's during init), icon updates are forced to queue instead.
+	This saves a lot of init time.
 
 	- Events: `updated_icon`
 */
 /atom/proc/update_icon()
 	SHOULD_CALL_PARENT(TRUE)
-	on_update_icon(arglist(args))
-	RAISE_EVENT(/decl/observ/updated_icon, src)
+	if(SSicon_update.init_state == SS_INITSTATE_NONE)
+		queue_icon_update()
+	else
+		on_update_icon()
+		RAISE_EVENT(/decl/observ/updated_icon, src)
 
 /**
 	Update this atom's icon.
@@ -966,7 +971,7 @@
 /atom/proc/get_thermal_mass()
 	return 0
 
-/atom/proc/get_thermal_mass_coefficient()
+/atom/proc/get_thermal_mass_coefficient(delta)
 	return 1
 
 /atom/proc/spark_act(obj/effect/sparks/sparks)

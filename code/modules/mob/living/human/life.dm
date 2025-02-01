@@ -85,7 +85,7 @@
 
 	return pressure_adjustment_coefficient
 
-// Calculate how much of the enviroment pressure-difference affects the human.
+// Calculate how much of the environment pressure-difference affects the human.
 /mob/living/human/calculate_affecting_pressure(var/pressure)
 	var/pressure_difference
 

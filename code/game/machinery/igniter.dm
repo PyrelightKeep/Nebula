@@ -1,6 +1,6 @@
 /obj/machinery/igniter
 	name = "igniter"
-	desc = "It's useful for igniting flammable items."
+	desc = "A device that ignites flammable items and gases nearby when activated."
 	icon = 'icons/obj/machines/igniter.dmi'
 	icon_state = "igniter1"
 	var/on = 0

@@ -572,7 +572,7 @@
 /obj/item/gun/energy/plasmacutter/mounted/mech/auto
 	charge_cost = 13
 	name = "rotatory plasma cutter"
-	desc = "A state of the art rotating, variable intensity, sequential-cascade plasma cutter. Resist the urge to aim this at your coworkers."
+	desc = "A state-of-the-art rotating, variable intensity, sequential-cascade plasma cutter. Resist the urge to aim this at your coworkers."
 	max_shots = 15
 	firemodes = list(
 		list(mode_name="single shot", autofire_enabled=0, burst=1, fire_delay=6, dispersion = list(0.0)),

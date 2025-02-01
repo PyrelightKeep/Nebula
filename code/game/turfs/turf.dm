@@ -54,7 +54,7 @@
 	// get overridden almost immediately.
 
 	// TL;DR: just leave these vars alone.
-	var/is_outside = OUTSIDE_AREA
+	var/is_outside = OUTSIDE_AREA // non-tmp to allow visibility in mapper.
 	var/tmp/obj/abstract/weather_system/weather
 	var/tmp/last_outside_check = OUTSIDE_UNCERTAIN
 
@@ -117,6 +117,10 @@
 		update_weather(force_update_below = TRUE)
 	else if (permit_ao)
 		queue_ao()
+
+	// we're being loaded in a new z-level, we need to build lighting
+	if(mapload && !changing_turf && SSlighting.initialized)
+		lighting_build_overlay()
 
 	if(simulated)
 		updateVisibility(src, FALSE)

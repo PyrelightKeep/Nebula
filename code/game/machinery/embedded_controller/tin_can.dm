@@ -54,7 +54,7 @@
 				return
 			state = STATE_EVACUATE
 			toggleDoor(memory["exterior_status"], tag_exterior_door, door_safety, "close")
-			signalPump(tag_pump_out_internal, 1, 0, 0) // Interior pump, target is a vaccum
+			signalPump(tag_pump_out_internal, 1, 0, 0) // Interior pump, target is a vacuum
 			signalPump(tag_pump_out_external, 1, 1, 10000) // Exterior pump, target is infinite
 		if("fill_atmos")
 			if(state == STATE_FILL)

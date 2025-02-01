@@ -10,7 +10,7 @@
 
 /obj/item/rig_module
 	name = "hardsuit upgrade"
-	desc = "It looks pretty sciency."
+	desc = "It looks pretty science-y."
 	icon = 'icons/obj/rig_modules.dmi'
 	icon_state = "module"
 	material = /decl/material/solid/metal/steel

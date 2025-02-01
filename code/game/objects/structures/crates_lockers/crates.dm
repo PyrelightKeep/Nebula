@@ -90,7 +90,7 @@
 
 /obj/structure/closet/crate/internals
 	name = "internals crate"
-	desc = "A internals crate."
+	desc = "An internals crate."
 
 /obj/structure/closet/crate/internals/fuel
 	name = "\improper Fuel tank crate"
@@ -179,7 +179,7 @@
 
 /obj/structure/closet/crate/radiation
 	name = "radioactive crate"
-	desc = "A leadlined crate with a radiation sign on it."
+	desc = "A lead-lined crate with a radiation sign on it."
 	closet_appearance = /decl/closet_appearance/crate/radiation
 
 /obj/structure/closet/crate/radiation_gear
@@ -197,7 +197,7 @@
 
 /obj/structure/closet/crate/secure/explosives
 	name = "explosives crate"
-	desc = "A secure exploxives crate."
+	desc = "A secure explosives crate."
 	closet_appearance = /decl/closet_appearance/crate/secure/hazard
 
 /obj/structure/closet/crate/secure/shuttle

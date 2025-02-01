@@ -80,7 +80,7 @@
 
 /mob/living/simple_animal/crow/cyber
 	name = "cybercrow"
-	desc = "A large cybercrow. k4w k4w."
+	desc = "A large cybercrow. K4w k4w."
 	speak_emote = list("beeps")
 
 /mob/living/simple_animal/crow/cyber/on_update_icon()

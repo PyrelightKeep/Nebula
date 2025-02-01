@@ -150,7 +150,7 @@
 
 /obj/item/knife/folding/swiss/explorer
 	name = "explorer's combi-knife"
-	desc = "A small, purple, multi-purpose folding knife. This one adds a wood saw and pry bar."
+	desc = "A small, purple, multi-purpose folding knife. This one adds a wood saw and prybar."
 	handle_color = COLOR_PURPLE
 	tools = list(SWISSKNF_LBLADE, SWISSKNF_SBLADE, SWISSKNF_CLIFTER, SWISSKNF_COPENER, SWISSKNF_WBLADE, SWISSKNF_CROWBAR)
 

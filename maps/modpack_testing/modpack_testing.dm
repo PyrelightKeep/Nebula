@@ -24,6 +24,7 @@
 	#include "../../mods/content/shackles/_shackles.dme"
 	#include "../../mods/content/supermatter/_supermatter.dme"
 	#include "../../mods/content/xenobiology/_xenobiology.dme"
+	#include "../../mods/content/blacksmithy/_blacksmithy.dme"
 	#include "../../mods/content/item_sharpening/_item_sharpening.dme"
 	#include "../../mods/pyrelight/_pyrelight.dme" // include after _fantasy.dme so overrides work
 
@@ -40,7 +41,11 @@
 	#include "../../mods/mobs/dionaea/_dionaea.dme"
 
 	#include "../../mods/species/ascent/_ascent.dme"
-	#include "../../mods/species/bayliens/_bayliens.dme"
+	#include "../../mods/species/tajaran/_tajaran.dme"
+	#include "../../mods/species/unathi/_unathi.dme"
+	#include "../../mods/species/skrell/_skrell.dme"
+	#include "../../mods/species/adherent/_adherent.dme"
+	#include "../../mods/species/tritonian/_tritonian.dme"
 	#include "../../mods/species/drakes/_drakes.dme"
 	#include "../../mods/species/neoavians/_neoavians.dme"
 	#include "../../mods/species/serpentid/_serpentid.dme"

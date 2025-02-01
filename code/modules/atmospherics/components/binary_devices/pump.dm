@@ -18,7 +18,7 @@ Thus, the two variables affect pump operation are set in New():
 	level = LEVEL_BELOW_PLATING
 
 	name = "gas pump"
-	desc = "A pump."
+	desc = "A pump that can pressurize gas and restrict flow to one direction."
 
 	var/target_pressure = ONE_ATMOSPHERE
 

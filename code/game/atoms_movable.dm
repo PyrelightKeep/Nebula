@@ -502,7 +502,7 @@
 		return 0
 	return max(ITEM_SIZE_MIN, get_object_size()) * THERMAL_MASS_CONSTANT
 
-/atom/movable/get_thermal_mass_coefficient()
+/atom/movable/get_thermal_mass_coefficient(delta)
 	if(!simulated)
 		return 0
 	return (max(ITEM_SIZE_MIN, MOB_SIZE_MIN) * THERMAL_MASS_CONSTANT) / get_thermal_mass()
@@ -566,7 +566,7 @@
 		appearance_flags &= ~remove_flags
 	return old_appearance != appearance_flags
 
-/atom/movable/proc/end_throw()
+/atom/movable/proc/end_throw(datum/thrownthing/TT)
 	throwing = null
 
 /atom/movable/proc/reset_movement_delay()

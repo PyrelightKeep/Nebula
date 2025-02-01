@@ -1,7 +1,7 @@
 /decl/material/gas/oxygen
 	name = "oxygen"
 	uid = "gas_oxygen"
-	lore_text = "An ubiquitous oxidizing agent."
+	lore_text = "A ubiquitous oxidizing agent."
 	flags = MAT_FLAG_FUSION_FUEL
 	gas_specific_heat = 20
 	molar_mass = 0.032
@@ -153,7 +153,7 @@
 /decl/material/gas/nitrogen
 	name = "nitrogen"
 	uid = "gas_nitrogen"
-	lore_text = "An ubiquitous noble gas."
+	lore_text = "A ubiquitous noble gas."
 	gas_specific_heat = 20
 	molar_mass = 0.028
 	latent_heat = 199

@@ -36,7 +36,7 @@
 	src.stabilization_on = !( src.stabilization_on )
 	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
-/obj/item/tank/jetpack/on_update_icon(override)
+/obj/item/tank/jetpack/on_update_icon()
 	. = ..()
 	if(on)
 		add_overlay("[icon_state]-on")
@@ -110,8 +110,8 @@
 	starting_pressure = list(/decl/material/gas/carbon_dioxide = 6 ATM)
 
 /obj/item/tank/jetpack/rig
-	name = "integrated manuvering module thrusterpack"
-	desc = "The 'manuvering' part of a manuvering jet module for a hardsuit. You could... probably use this standalone?"
+	name = "integrated maneuvering module thrusterpack"
+	desc = "The 'maneuvering' part of a maneuvering jet module for a hardsuit. You could... probably use this standalone?"
 	starting_pressure = list(/decl/material/gas/oxygen = 6 ATM)
 	var/obj/item/rig/holder
 

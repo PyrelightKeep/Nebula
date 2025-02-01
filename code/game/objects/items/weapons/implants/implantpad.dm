@@ -1,6 +1,6 @@
 /obj/item/implantpad
 	name = "implant pad"
-	desc = "Used to reprogramm implants."
+	desc = "Used to reprogram implants."
 	icon = 'icons/obj/items/implant/implantpad.dmi'
 	icon_state = ICON_STATE_WORLD
 	w_class = ITEM_SIZE_SMALL

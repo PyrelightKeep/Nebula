@@ -1,6 +1,6 @@
 /obj/item/board
 	name = "board"
-	desc = "A standard 16\" checkerboard. Well used." //Goddamn imperial system.
+	desc = "A standard 16\" checkerboard. Well-used." //Goddamn imperial system.
 	icon = 'icons/obj/pieces.dmi'
 	icon_state = "board"
 	material = /decl/material/solid/organic/wood/oak
@@ -236,7 +236,7 @@
 
 /obj/item/checker/bishop
 	name = "bishop"
-	desc = "What corruption occured, urging holy men to fight?"
+	desc = "What corruption occurred, urging holy men to fight?"
 
 /obj/item/checker/bishop/red
 	piece_color ="red"

@@ -410,7 +410,7 @@
 
 /obj/item/backpack/messenger/chem
 	name = "pharmacy messenger bag"
-	desc = "A serile backpack worn over one shoulder. This one is in Chemistry colors."
+	desc = "A sterile backpack worn over one shoulder. This one is in Chemistry colors."
 	icon = 'icons/obj/items/storage/backpack/messenger_chem.dmi'
 
 /obj/item/backpack/messenger/med

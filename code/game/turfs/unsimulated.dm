@@ -3,6 +3,7 @@
 	initial_gas = GAS_STANDARD_AIRMIX
 	abstract_type = /turf/unsimulated
 	simulated = FALSE
+	dynamic_lighting = FALSE
 
 // Shortcut a bunch of simulation stuff since this turf just needs to sit there.
 // We don't even call Initialize(), how cool is that???

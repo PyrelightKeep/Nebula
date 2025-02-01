@@ -64,7 +64,7 @@
 
 /obj/item/clothing/mask/smokable/ecig/deluxe
 	name = "deluxe electronic cigarette"
-	desc = "A premium model eGavana MK3 electronic cigarette, shaped like a cigar."
+	desc = "A premium model eHavana MK3 electronic cigarette, shaped like a cigar."
 	icon = 'icons/clothing/mask/smokables/cigarette_electronic_deluxe.dmi'
 
 /obj/item/clothing/mask/smokable/ecig/deluxe/setup_power_supply(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value)

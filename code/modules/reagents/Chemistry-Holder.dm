@@ -186,7 +186,7 @@ var/global/datum/reagents/sink/infinite_reagent_sink = new
 	if((check_flags & ATOM_FLAG_NO_REACT) && (check_flags & ATOM_FLAG_NO_PHASE_CHANGE) && (check_flags & ATOM_FLAG_NO_DISSOLVE))
 		return 0
 
-	var/reaction_occured = FALSE
+	var/reaction_occurred = FALSE
 	var/list/eligible_reactions = list()
 
 	var/temperature = location?.temperature || T20C
@@ -228,7 +228,7 @@ var/global/datum/reagents/sink/infinite_reagent_sink = new
 			clear_reagent(R.type)
 			for(var/product in replace_self_with)
 				add_reagent(product, replace_self_with[product] * replace_amount)
-			reaction_occured = TRUE
+			reaction_occurred = TRUE
 
 			if(location)
 				if(replace_message)
@@ -245,7 +245,7 @@ var/global/datum/reagents/sink/infinite_reagent_sink = new
 		for(var/decl/chemical_reaction/reaction in eligible_reactions)
 			if(reaction.can_happen(src))
 				active_reactions[reaction] = 1 // The number is going to be 1/(fraction of remaining reagents we are allowed to use), computed below
-				reaction_occured = 1
+				reaction_occurred = 1
 
 		var/list/used_reagents = list()
 		// if two reactions share a reagent, each is allocated half of it, so we compute this here
@@ -273,10 +273,10 @@ var/global/datum/reagents/sink/infinite_reagent_sink = new
 
 	update_total()
 
-	if(reaction_occured)
+	if(reaction_occurred)
 		HANDLE_REACTIONS(src) // Check again in case the new reagents can react again
 
-	return reaction_occured
+	return reaction_occurred
 
 /* Holder-to-chemical */
 /datum/reagents/proc/handle_update(var/safety)

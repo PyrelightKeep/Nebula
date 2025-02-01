@@ -117,7 +117,7 @@
 
 /obj/item/chems/borghypo/service
 	name = "cyborg drink synthesizer"
-	desc = "A portable drink dispencer."
+	desc = "A portable drink dispenser."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "shaker"
 	charge_cost = 5

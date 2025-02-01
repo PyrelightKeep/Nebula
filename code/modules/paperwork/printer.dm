@@ -5,7 +5,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 /obj/item/stock_parts/printer
 	name       = "printer"
-	desc       = "A full fledged laser printer. This one is meant to be installed inside another machine. Comes with its own paper feeder and toner slot."
+	desc       = "A full-fledged laser printer. This one is meant to be installed inside another machine. Comes with its own paper feeder and toner slot."
 	icon       = 'icons/obj/items/stock_parts/modular_components.dmi'
 	icon_state = "printer"
 	randpixel  = 5

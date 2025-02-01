@@ -1,6 +1,6 @@
 /obj/machinery/disposal/deliveryChute
 	name = "delivery chute"
-	desc = "A chute for big and small packages alike!"
+	desc = "A chute to put things into a disposal network. Takes big and small packages alike!"
 	density = TRUE
 	icon = 'icons/obj/pipes/disposal_chute.dmi'
 	icon_state = "chute"

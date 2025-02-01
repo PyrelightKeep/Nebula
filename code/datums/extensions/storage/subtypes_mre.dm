@@ -20,7 +20,7 @@
 
 /datum/storage/mrebag/open(mob/user)
 	if(!opened)
-		to_chat(user, "<span class='notice'>The pouch heats up as you break the vaccum seal.</span>")
+		to_chat(user, "<span class='notice'>The pouch heats up as you break the vacuum seal.</span>")
 	. = ..()
 
 /datum/storage/mrebag/dessert

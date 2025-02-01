@@ -236,6 +236,7 @@
 
 // a straight or bent segment
 /obj/structure/disposalpipe/segment
+	desc = "A linear segment of disposal piping that simply moves things from one end to the other."
 	icon_state = "pipe-s" // Sadly this var stores state. "pipe-c" is corner. Should be changed, but requires huge map diff.
 	turn = DISPOSAL_FLIP_FLIP
 
@@ -364,6 +365,7 @@
 
 //a three-way junction with dir being the dominant direction
 /obj/structure/disposalpipe/junction
+	desc = "A three-way segment of disposal piping that merges two incoming directions into a third outgoing one."
 	icon_state = "pipe-j1"
 	turn = DISPOSAL_FLIP_RIGHT|DISPOSAL_FLIP_FLIP
 	flipped_state = /obj/structure/disposalpipe/junction/mirrored
@@ -413,6 +415,7 @@
 
 /obj/structure/disposalpipe/tagger
 	name = "package tagger"
+	desc = "A pipe that tags things passing through it with a sorting tag."
 	icon_state = "pipe-tagger"
 	var/sort_tag = ""
 	var/partial = 0
@@ -459,6 +462,7 @@
 
 /obj/structure/disposalpipe/tagger/partial //needs two passes to tag
 	name = "partial package tagger"
+	desc = "A pipe that tags things passing through it with a sorting tag... but only the second time around."
 	icon_state = "pipe-tagger-partial"
 	partial = 1
 	turn = DISPOSAL_FLIP_FLIP
@@ -480,7 +484,7 @@
 /obj/structure/disposalpipe/diversion_junction/proc/updatedesc()
 	desc = initial(desc)
 	if(sort_type)
-		desc += "\nIt's currently [active ? "" : "un"]active!"
+		desc += "\nIt's currently [active ? "" : "in"]active!"
 
 /obj/structure/disposalpipe/diversion_junction/proc/updatedir()
 	inactive_dir = dir
@@ -687,6 +691,7 @@
 
 //a trunk joining to a disposal bin or outlet on the same turf
 /obj/structure/disposalpipe/trunk
+	desc = "A section of pneumatic piping made to connect to a bin or outlet."
 	icon_state = "pipe-t"
 	var/obj/linked 	// the linked obj/machinery/disposal or obj/disposaloutlet
 

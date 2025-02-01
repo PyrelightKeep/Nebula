@@ -32641,7 +32641,7 @@
 	tag_door = "cargo_bay_door"
 	},
 /obj/machinery/camera/network/civilian_west{
-	c_tag = "Cargo Recieving Dock";
+	c_tag = "Cargo Receiving Dock";
 	dir = 4
 	},
 /turf/floor/tiled/steel_grid,

@@ -380,7 +380,7 @@ var/global/list/_test_storage_items = list()
 /datum/storage/proc/can_view(mob/viewer)
 	return (holder in viewer.contents) || viewer.Adjacent(holder)
 
-///Overridable sound playback parameters. Since not all sounds are created equal.
+///Overrideable sound playback parameters. Since not all sounds are created equal.
 /datum/storage/proc/play_open_sound(volume = 50)
 	if(!length(open_sound) || !holder)
 		return

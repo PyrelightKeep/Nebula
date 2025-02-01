@@ -57,7 +57,8 @@
 	return
 
 /obj/item/organ/proc/refresh_action_button()
-	return action
+	if(!QDELETED(src) && istype(action))
+		return action
 
 /obj/item/organ/attack_self(var/mob/user)
 	return (owner && loc == owner && owner == user)
@@ -632,7 +633,7 @@ var/global/list/ailment_reference_cache = list()
 	STOP_PROCESSING(SSobj, src)
 	vital_to_owner = null
 
-//Since some types of organs completely ignore being detached, moved it to an overridable organ proc for external prosthetics
+//Since some types of organs completely ignore being detached, moved it to an overrideable organ proc for external prosthetics
 /obj/item/organ/proc/set_detached(var/is_detached)
 	if(is_detached)
 		status |= ORGAN_CUT_AWAY

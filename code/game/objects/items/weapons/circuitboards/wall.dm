@@ -4,7 +4,7 @@
 	name = "circuitboard (fire alarm)"
 	icon = 'icons/obj/doors/door_assembly.dmi'
 	icon_state = "door_electronics"
-	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees celsius!\"."
+	desc = "A circuit. It has a label on it, it says \"Can handle heat levels up to 40 degrees Celsius!\"."
 	build_path = /obj/machinery/firealarm
 	board_type = "wall"
 	origin_tech = @'{"programming":1,"engineering":1}'

@@ -1,7 +1,7 @@
 // Robobrain.
 /obj/item/organ/internal/brain/robotic
 	name = "computer intelligence core"
-	desc = "The pinnacle of artifical intelligence technology, conveniently stored in a fist-sized cube."
+	desc = "The pinnacle of artificial intelligence technology, conveniently stored in a fist-sized cube."
 	icon = 'icons/obj/items/brain_interface_robotic.dmi'
 	origin_tech = @'{"engineering":4,"materials":4,"wormholes":2,"programming":4}'
 	material = /decl/material/solid/metal/steel

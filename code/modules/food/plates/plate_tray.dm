@@ -157,10 +157,10 @@ TRAY TYPES GO HERE
 
 /obj/item/plate/tray/metal/silver
 	name = "platter"
-	desc = "You lazy bum."
+	desc = "The new generation is so lazy, they expect everything to be handed to them on this."
 	material = /decl/material/solid/metal/silver
 
 /obj/item/plate/tray/metal/gold
 	name = "platter"
-	desc = "A gold tray to serve food on. But oh sofancy."
+	desc = "A gold tray to serve food on. Heavy, but oh-so-fancy."
 	material = /decl/material/solid/metal/gold

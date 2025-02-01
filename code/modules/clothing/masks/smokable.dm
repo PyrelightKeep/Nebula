@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/smokable
+	abstract_type = /obj/item/clothing/mask/smokable
 	name = "smokable item"
-	desc = "You're not sure what this is. You should probably ahelp it."
 	icon = 'icons/clothing/mask/smokables/cigarette.dmi'
 	body_parts_covered = 0
 	bodytype_equip_flags = null
@@ -492,7 +492,7 @@
 /////////////////
 /obj/item/clothing/mask/smokable/pipe
 	name = "smoking pipe"
-	desc = "A pipe, for smoking. Probably made of meershaum or something."
+	desc = "A pipe, for smoking. Probably made of meerschaum or something."
 	icon = 'icons/clothing/mask/smokables/pipe.dmi'
 	w_class = ITEM_SIZE_TINY
 	smoketime = 0

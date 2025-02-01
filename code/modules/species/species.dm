@@ -176,7 +176,7 @@ var/global/const/DEFAULT_SPECIES_HEALTH = 200
 
 	var/list/base_auras
 
-	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job recieves.
+	var/job_skill_buffs = list()				// A list containing jobs (/datum/job), with values the extra points that job receives.
 
 	var/standing_jump_range = 2
 	var/list/maneuvers = list(/decl/maneuver/leap)

@@ -2,7 +2,7 @@
 /obj/item/bodybag/rescue
 	name = "rescue bag"
 	desc = "A folded, reusable bag designed to prevent additional damage to an occupant, especially useful if short on time or in \
-	a hostile enviroment."
+	a hostile environment."
 	icon = 'icons/obj/closets/rescuebag.dmi'
 	icon_state = "folded"
 	origin_tech = @'{"biotech":2}'
@@ -60,7 +60,7 @@
 /obj/structure/closet/body_bag/rescue
 	name = "rescue bag"
 	desc = "A reusable plastic bag designed to prevent additional damage to an occupant, especially useful if short on time or in \
-	a hostile enviroment."
+	a hostile environment."
 	icon = 'icons/obj/closets/rescuebag.dmi'
 	item_path = /obj/item/bodybag/rescue
 	storage_types = CLOSET_STORAGE_MOBS

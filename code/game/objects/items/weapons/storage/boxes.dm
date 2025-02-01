@@ -284,7 +284,7 @@
 
 /obj/item/box/trackimp
 	name = "boxed tracking implant kit"
-	desc = "Box full of scum-bag tracking utensils."
+	desc = "Box full of scumbag-tracking utensils."
 	icon_state = "implant"
 /obj/item/box/trackimp/WillContain()
 	return list(/obj/item/implantcase/tracking = 4,
@@ -567,7 +567,7 @@
 
 /obj/item/box/armband/engine
 	name = "box of spare engineering armbands"
-	desc = "A box full of engineering armbands. For use in emergencies when provisional engineering peronnel are needed."
+	desc = "A box full of engineering armbands. For use in emergencies when provisional engineering personnel are needed."
 /obj/item/box/armband/engine/WillContain()
 	return list(/obj/item/clothing/armband/engine = 5)
 
@@ -717,7 +717,7 @@
 
 /obj/item/box/parts_pack
 	name = "parts pack"
-	desc = "A densely-stuffed box containing some small eletrical parts."
+	desc = "A densely-stuffed box containing some small electrical parts."
 	icon = 'icons/obj/items/storage/part_pack.dmi'
 	icon_state = "part"
 	w_class = ITEM_SIZE_SMALL

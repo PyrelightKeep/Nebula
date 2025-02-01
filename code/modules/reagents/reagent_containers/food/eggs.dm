@@ -96,7 +96,7 @@
 
 /obj/item/food/boiledegg
 	name = "boiled egg"
-	desc = "A hard boiled egg."
+	desc = "A hard-boiled egg."
 	icon = 'icons/obj/food/eggs/egg.dmi'
 	icon_state = ICON_STATE_WORLD
 	filling_color = "#ffffff"

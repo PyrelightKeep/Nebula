@@ -259,7 +259,7 @@ var/global/list/laser_wavelengths
 // Subtypes.
 /obj/item/gun/energy/capacitor/rifle
 	name = "capacitor rifle"
-	desc = "A heavy, unwieldly directed energy weapon that uses a linear capacitor array to charge a powerful beam."
+	desc = "A heavy, unwieldy directed energy weapon that uses a linear capacitor array to charge a powerful beam."
 	max_capacitors = 4
 	icon = 'icons/obj/guns/capacitor_rifle.dmi'
 	slot_flags = SLOT_BACK

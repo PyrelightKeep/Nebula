@@ -1,6 +1,6 @@
 /obj/structure/fire_source/heater
 	name                = "heater"
-	desc                = "An small, squat burner, generally used for heating reagents."
+	desc                = "A small, squat burner, generally used for heating reagents."
 	icon                = 'icons/obj/structures/alembic.dmi'
 	icon_state          = ICON_STATE_WORLD
 	material            = /decl/material/solid/stone/pottery

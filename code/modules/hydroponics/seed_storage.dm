@@ -286,8 +286,8 @@
 	show_browser(user, dat, "window=seedstorage;size=800x500")
 	onclose(user, "seedstorage")
 
-/obj/machinery/seed_storage/Topic(var/href, var/list/href_list)
-	if (..())
+/obj/machinery/seed_storage/OnTopic(mob/user, href_list)
+	if((. = ..()))
 		return
 	var/task = href_list["task"]
 	var/id = text2num(href_list["id"])
@@ -304,13 +304,14 @@
 					qdel(our_pile)
 				flick("[initial(icon_state)]-vend", src)
 				O.dropInto(loc)
+			. = TOPIC_REFRESH
 		if ("purge")
 			QDEL_LIST(our_pile.seeds)
 			our_pile.seeds.Cut()
+			. = TOPIC_REFRESH
 	if(!length(our_pile.seeds))
 		piles -= our_pile
 		QDEL_NULL(our_pile)
-	updateUsrDialog()
 
 /obj/machinery/seed_storage/attackby(var/obj/item/O, var/mob/user)
 

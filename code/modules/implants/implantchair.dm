@@ -9,13 +9,13 @@
 	opacity = FALSE
 	anchored = TRUE
 
-	var/ready = 1
+	var/ready = TRUE
 	var/list/obj/item/implant/loyalty/implant_list = list()
 	var/max_implants = 5
 	var/injection_cooldown = 600
 	var/replenish_cooldown = 6000
 	var/mob/living/occupant = null
-	var/injecting = 0
+	var/injecting = FALSE
 
 /obj/machinery/implantchair/Initialize()
 	. = ..()
@@ -47,26 +47,24 @@
 	onclose(user, "implant")
 
 
-/obj/machinery/implantchair/Topic(href, href_list)
+/obj/machinery/implantchair/OnTopic(mob/user, href_list)
 	if((. = ..()))
 		return
-	if((get_dist(src, usr) <= 1) || isAI(usr))
-		if(href_list["implant"])
-			if(src.occupant)
-				injecting = 1
-				go_out()
-				ready = 0
-				spawn(injection_cooldown)
-					ready = 1
+	if(!ready) // avoid topic hacking
+		return TOPIC_NOACTION
+	if(href_list["implant"] && occupant)
+		injecting = TRUE
+		go_out()
+		ready = FALSE
+		addtimer(CALLBACK(src, PROC_REF(make_ready)), injection_cooldown)
 
-		if(href_list["replenish"])
-			ready = 0
-			spawn(replenish_cooldown)
-				add_implants()
-				ready = 1
+	if(href_list["replenish"])
+		ready = 0
+		addtimer(CALLBACK(src, PROC_REF(add_implants)), replenish_cooldown)
+		addtimer(CALLBACK(src, PROC_REF(make_ready)), replenish_cooldown)
 
-		src.updateUsrDialog()
-		src.add_fingerprint(usr)
+/obj/machinery/implantchair/proc/make_ready()
+	ready = TRUE
 
 /obj/machinery/implantchair/grab_attack(obj/item/grab/grab, mob/user)
 	var/mob/living/victim = grab.get_affecting_mob()
@@ -87,7 +85,7 @@
 	occupant.dropInto(loc)
 	if(injecting)
 		implant(src.occupant)
-		injecting = 0
+		injecting = FALSE
 	src.occupant = null
 	icon_state = "implantchair"
 	return

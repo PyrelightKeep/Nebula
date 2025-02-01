@@ -69,22 +69,20 @@
 		// auto update every Master Controller tick
 		ui.set_auto_update(1)
 
-/obj/machinery/atmospherics/unary/freezer/Topic(href, href_list)
-	if(..())
-		return 1
+/obj/machinery/atmospherics/unary/freezer/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
 	if(href_list["toggleStatus"])
 		update_use_power(!use_power)
+		. = TOPIC_REFRESH
 	if(href_list["temp"])
 		var/amount = text2num(href_list["temp"])
-		if(amount > 0)
-			set_temperature = min(set_temperature + amount, 1000)
-		else
-			set_temperature = max(set_temperature + amount, 0)
+		set_temperature = clamp(set_temperature + amount, 0, 1000)
+		. = TOPIC_REFRESH
 	if(href_list["setPower"]) //setting power to 0 is redundant anyways
 		var/new_setting = clamp(text2num(href_list["setPower"]), 0, 100)
 		set_power_level(new_setting)
-
-	add_fingerprint(usr)
+		. = TOPIC_REFRESH
 
 /obj/machinery/atmospherics/unary/freezer/Process()
 	..()

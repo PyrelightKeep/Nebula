@@ -427,14 +427,15 @@ var/global/list/solars_list = list()
 	updateDialog()
 
 /obj/machinery/power/solar_control/Topic(href, href_list)
-	if(..())
+	. = ..()
+	if(. == TOPIC_CLOSE)
 		close_browser(usr, "window=solcon")
-		usr.unset_machine()
-		return 0
-	if(href_list["close"] )
-		close_browser(usr, "window=solcon")
-		usr.unset_machine()
-		return 0
+
+/obj/machinery/power/solar_control/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
+	if(href_list["close"])
+		return TOPIC_CLOSE
 
 	if(href_list["rate control"])
 		if(href_list["cdir"])
@@ -442,11 +443,11 @@ var/global/list/solars_list = list()
 			targetdir = cdir
 			if(track == 2) //manual update, so losing auto-tracking
 				track = 0
-			spawn(1)
-				set_panels(cdir)
+			addtimer(CALLBACK(src, PROC_REF(set_panels), cdir), 1)
 		if(href_list["tdir"])
 			trackrate = clamp(trackrate+text2num(href_list["tdir"]), -7200, 7200)
 			if(trackrate) nexttime = world.time + 36000/abs(trackrate)
+		return TOPIC_REFRESH
 
 	if(href_list["track"])
 		track = text2num(href_list["track"])
@@ -459,6 +460,7 @@ var/global/list/solars_list = list()
 			targetdir = cdir
 			if(trackrate) nexttime = world.time + 36000/abs(trackrate)
 			set_panels(targetdir)
+		return TOPIC_REFRESH
 
 	if(href_list["search_connected"])
 		search_for_connected()
@@ -466,9 +468,7 @@ var/global/list/solars_list = list()
 		if(connected_tracker && track == 2 && sun)
 			connected_tracker.set_angle(sun.angle)
 		set_panels(cdir)
-
-	interact(usr)
-	return 1
+		return TOPIC_REFRESH
 
 //rotates the panel to the passed angle
 /obj/machinery/power/solar_control/proc/set_panels(var/cdir)

@@ -240,6 +240,9 @@ Class Procs:
 /obj/machinery/CouldNotUseTopic(var/mob/user)
 	user.unset_machine()
 
+// This must not be converted to use OnTopic.
+// mechanics_text and power_text can be done at a distance (via examination)
+// while the TOPIC_REFRESH handling must come after OnTopic has resolved in the parent call of Topic.
 /obj/machinery/Topic(href, href_list, datum/topic_state/state)
 	if(href_list["mechanics_text"] && construct_state) // This is an OOC examine thing handled via Topic; specifically bypass all checks, but do nothing other than message to chat.
 		var/list/info = get_tool_manipulation_info()
@@ -254,6 +257,13 @@ Class Procs:
 	. = ..()
 	if(. == TOPIC_REFRESH)
 		updateUsrDialog() // Update legacy UIs to the extent possible.
+		SSnano.update_uis(src) // And our modern NanoUI ones, too.
+		update_icon() // A lot of machines like to do icon updates on refresh, so we'll handle it for them here.
+	else if(. == TOPIC_CLOSE)
+		usr.unset_machine()
+		var/datum/nanoui/open_ui = SSnano.get_open_ui(usr, src, "main")
+		if(open_ui)
+			open_ui.close()
 
 /obj/machinery/proc/get_tool_manipulation_info()
 	return construct_state?.mechanics_info()

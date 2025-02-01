@@ -79,7 +79,7 @@
 	if(command == "dock" || command == "undock")
 
 		if(!tag_target)			//Prevents from self-destructing if no docking buddy
-			return FALSE
+			return TOPIC_NOACTION
 
 		var/datum/signal/signal = new()
 		signal.data["tag"] = tag_target
@@ -87,7 +87,8 @@
 		signal.data["recipient"] = id_tag
 		signal.data["code"] = docking_codes
 		receive_signal(signal)
-		return TRUE
+		return TOPIC_REFRESH
+	return TOPIC_NOACTION
 
 /datum/computer/file/embedded_program/docking/get_receive_filters()
 	return list("[id_tag]" = "primary controller")

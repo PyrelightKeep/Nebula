@@ -129,7 +129,7 @@
 	if(!cult.can_become_antag(target.mind, 1))
 		to_chat(target, SPAN_DANGER("Are you going insane?"))
 	else
-		to_chat(target, SPAN_OCCULT("Do you want to join the cult of Nar'Sie? You can choose to ignore offer... <a href='byond://?src=\ref[src];join=1'>Join the cult</a>."))
+		to_chat(target, SPAN_OCCULT("Do you want to join the cult of Nar'Sie? You can choose to ignore the offer... <a href='byond://?src=\ref[src];join=1'>Join the cult</a>."))
 
 	spamcheck = 1
 	spawn(40)
@@ -150,10 +150,10 @@
 						to_chat(target, SPAN_OCCULT("Your mind turns to ash as the burning flames engulf your very soul and images of an unspeakable horror begin to bombard the last remnants of mental resistance."))
 						target.take_overall_damage(0, 10)
 
-/obj/effect/rune/convert/Topic(href, href_list)
-	if(href_list["join"] && usr.loc == loc && !iscultist(usr))
+/obj/effect/rune/convert/OnTopic(mob/user, href_list)
+	if(href_list["join"] && user.loc == loc && !iscultist(user))
 		var/decl/special_role/cult = GET_DECL(/decl/special_role/cultist)
-		cult.add_antagonist(usr.mind, ignore_role = 1, do_not_equip = 1)
+		cult.add_antagonist(user.mind, ignore_role = 1, do_not_equip = 1)
 
 /obj/effect/rune/teleport
 	cultname = "teleport"
@@ -214,16 +214,16 @@
 			return
 		destination = sanitize(input)
 
-/obj/effect/rune/teleport/Topic(href, href_list)
-	if(usr.loc != src)
+/obj/effect/rune/teleport/OnTopic(mob/user, href_list)
+	if(user.loc != src)
 		return
 	if(href_list["target"])
 		var/obj/effect/rune/teleport/targ = locate(href_list["target"])
 		if(istype(targ)) // Checks for null, too
-			usr.forceMove(targ)
-			targ.showOptions(usr)
+			user.forceMove(targ)
+			targ.showOptions(user)
 	else if(href_list["leave"])
-		leaveRune(usr)
+		leaveRune(user)
 
 /obj/effect/rune/teleport/proc/showOptions(var/mob/living/user)
 	var/list/t = list()

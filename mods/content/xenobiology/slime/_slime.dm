@@ -296,9 +296,6 @@
 /mob/living/slime/check_has_mouth()
 	return FALSE
 
-/mob/living/slime/set_nutrition(amt)
-	..()
-
 /mob/living/slime/get_hydration()
 	return get_nutrition()
 

@@ -147,9 +147,6 @@ var/global/list/laser_wavelengths
 			update_icon()
 	return TRUE
 
-/obj/item/gun/energy/capacitor/Process()
-	. = ..()
-
 /obj/item/gun/energy/capacitor/proc/charge(var/mob/user)
 	. = FALSE
 	if(!charging && istype(user))

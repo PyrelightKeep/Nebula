@@ -220,9 +220,9 @@ var/global/bomb_set
 		return 1
 	return 0
 
-/obj/machinery/nuclearbomb/Topic(href, href_list)
-	if(..())
-		return 1
+/obj/machinery/nuclearbomb/OnTopic(mob/user, href_list, datum/topic_state/state)
+	if((. = ..()))
+		return
 
 	if(href_list["auth"])
 		if(auth)
@@ -230,13 +230,14 @@ var/global/bomb_set
 			yes_code = 0
 			auth = null
 		else
-			var/obj/item/I = usr.get_active_held_item()
+			var/obj/item/I = user.get_active_held_item()
 			if(istype(I, /obj/item/disk/nuclear))
-				if(!usr.try_unequip(I, src))
-					return 1
+				if(!user.try_unequip(I, src))
+					return TOPIC_HANDLED
 				auth = I
-	if(is_auth(usr))
+	if(is_auth(user))
 		if(href_list["type"])
+			. = TOPIC_REFRESH
 			if(href_list["type"] == "E")
 				if(code == r_code)
 					yes_code = 1
@@ -259,52 +260,56 @@ var/global/bomb_set
 		if(yes_code)
 			if(href_list["time"])
 				if(timing)
-					to_chat(usr, "<span class='warning'>Cannot alter the timing during countdown.</span>")
-					return
+					to_chat(user, SPAN_WARNING("Cannot alter the timing during countdown."))
+					return TOPIC_HANDLED
 
 				var/time = text2num(href_list["time"])
 				timeleft += time
 				timeleft = clamp(timeleft, minTime, maxTime)
+				. = TOPIC_HANDLED
 			if(href_list["timer"])
 				if(timing == -1)
-					return 1
+					return TOPIC_NOACTION
 				if(!anchored)
-					to_chat(usr, "<span class='warning'>\The [src] needs to be anchored.</span>")
-					return 1
+					to_chat(user, SPAN_WARNING("\The [src] needs to be anchored."))
+					return TOPIC_HANDLED
 				if(safety)
-					to_chat(usr, "<span class='warning'>The safety is still on.</span>")
-					return 1
+					to_chat(user, SPAN_WARNING("The safety is still on."))
+					return TOPIC_HANDLED
 				if(wires.IsIndexCut(NUCLEARBOMB_WIRE_TIMING))
-					to_chat(usr, "<span class='warning'>Nothing happens, something might be wrong with the wiring.</span>")
-					return 1
+					to_chat(user, SPAN_WARNING("Nothing happens, something might be wrong with the wiring."))
+					return TOPIC_HANDLED
 				if(!timing && !safety)
-					start_bomb(usr)
+					start_bomb(user)
+					. = TOPIC_HANDLED
 				else
 					check_cutoff()
+					. = TOPIC_HANDLED
 			if(href_list["safety"])
 				if (wires.IsIndexCut(NUCLEARBOMB_WIRE_SAFETY))
-					to_chat(usr, "<span class='warning'>Nothing happens, something might be wrong with the wiring.</span>")
-					return 1
+					to_chat(user, SPAN_WARNING("Nothing happens, something might be wrong with the wiring."))
+					return TOPIC_HANDLED
 				safety = !safety
 				if(safety)
 					secure_device()
 				update_icon()
+				return TOPIC_REFRESH
 			if(href_list["anchor"])
 				if(removal_stage == 5)
 					anchored = FALSE
-					visible_message("<span class='warning'>\The [src] makes a highly unpleasant crunching noise. It looks like the anchoring bolts have been cut.</span>")
-					return 1
+					visible_message(SPAN_WARNING("\The [src] makes a highly-unpleasant crunching noise. It looks like the anchoring bolts have been cut."), blind_message = SPAN_NOTICE("You hear a highly-unpleasant crunching noise."))
+					return TOPIC_HANDLED
 
 				if(!isspaceturf(get_turf(src)))
 					anchored = !anchored
 					if(anchored)
-						visible_message("<span class='warning'>With a steely snap, bolts slide out of \the [src] and anchor it to the flooring.</span>")
+						visible_message(SPAN_WARNING("With a steely snap, bolts slide out of \the [src] and anchor it to the flooring."), blind_message = SPAN_NOTICE("You hear a steely snap."))
 					else
 						secure_device()
-						visible_message("<span class='warning'>The anchoring bolts slide back into the depths of \the [src].</span>")
+						visible_message(SPAN_WARNING("The anchoring bolts slide back into the depths of \the [src]."), blind_message = SPAN_NOTICE("You hear a steely snap."))
+					return TOPIC_HANDLED
 				else
-					to_chat(usr, "<span class='warning'>There is nothing to anchor to!</span>")
-	return 1
+					to_chat(user, SPAN_WARNING("There is nothing to anchor to!"))
 
 /obj/machinery/nuclearbomb/proc/start_bomb(user)
 	timing = 1
@@ -472,12 +477,10 @@ var/global/bomb_set
 /obj/machinery/nuclearbomb/station/attackby(obj/item/O, mob/user)
 	return TRUE // cannot be moved
 
-/obj/machinery/nuclearbomb/station/Topic(href, href_list)
-	if((. = ..()))
-		return
-
+/obj/machinery/nuclearbomb/station/OnTopic(mob/user, href_list, datum/topic_state/state)
 	if(href_list["anchor"])
-		return
+		return TOPIC_NOACTION
+	return ..()
 
 /obj/machinery/nuclearbomb/station/start_bomb(mob/user)
 	for(var/inserter in inserters)

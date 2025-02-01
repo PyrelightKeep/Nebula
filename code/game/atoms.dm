@@ -620,7 +620,7 @@
 	Used for atoms performing audible actions
 
 	- `message`: The string to show to anyone who can hear this atom
-	- `dead_message?`: The string deaf mobs will see
+	- `deaf_message?`: The string deaf mobs will see
 	- `hearing_distance?`: The number of tiles away the message can be heard. Defaults to world.view
 	- `check_ghosts?`: TRUE if ghosts should hear the message if their preferences allow
 	- `radio_message?`: The string to send over radios

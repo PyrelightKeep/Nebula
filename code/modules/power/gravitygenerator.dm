@@ -85,13 +85,12 @@
 	onclose(user, "gravgen")
 
 
-/obj/machinery/computer/gravity_control_computer/Topic(href, href_list)
-	set background = 1
+/obj/machinery/computer/gravity_control_computer/OnTopic(user, href_list)
 	if((. = ..()))
-		close_browser(usr, "window=air_alarm")
 		return
 
 	if(href_list["gentoggle"])
+		. = TOPIC_REFRESH
 		if(gravity_generator.on)
 			gravity_generator.on = 0
 
@@ -102,9 +101,9 @@
 						break
 				if(!G)
 					A.gravitychange(0)
+				CHECK_TICK
 		else
 			for(var/area/A in gravity_generator.localareas)
 				gravity_generator.on = 1
 				A.gravitychange(1)
-
-	src.updateUsrDialog()
+				CHECK_TICK

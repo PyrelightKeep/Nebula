@@ -49,6 +49,14 @@
 	value = 0.1
 	uid = "chem_blackpepper"
 
+/decl/material/solid/cinnamon
+	name = "cinnamon"
+	lore_text = "A powder used to flavor food and drinks. Unpleasant to eat a full spoonful of."
+	taste_description = "cinnamon"
+	color = "#a34b0d"
+	value = 0.2
+	uid = "chem_cinnamon"
+
 /decl/material/liquid/enzyme
 	name = "universal enzyme"
 	uid = "chem_enzyme"
@@ -315,7 +323,7 @@
 	color = "#684b3c"
 	scannable = 1
 	scent = "cigarette smoke"
-	scent_descriptor = SCENT_DESC_ODOR
+	scent_descriptor = "odour"
 	scent_range = 4
 	hidden_from_codex = TRUE
 	uid = "chem_tobacco"
@@ -331,7 +339,7 @@
 	taste_description = "fine tobacco"
 	value = 1.5
 	scent = "fine tobacco smoke"
-	scent_descriptor = SCENT_DESC_FRAGRANCE
+	scent_descriptor = "fragrance"
 	uid = "chem_tobacco_fine"
 
 /decl/material/solid/tobacco/bad
@@ -340,7 +348,7 @@
 	value = 0.5
 	scent = "acrid tobacco smoke"
 	scent_intensity = /decl/scent_intensity/strong
-	scent_descriptor = SCENT_DESC_ODOR
+	scent_descriptor = "odour"
 	uid = "chem_tobacco_terrible"
 
 /decl/material/solid/tobacco/liquid

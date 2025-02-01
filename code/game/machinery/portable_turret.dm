@@ -199,9 +199,9 @@ var/global/list/turret_icons
 	return ..()
 
 
-/obj/machinery/porta_turret/Topic(href, href_list)
-	if(..())
-		return 1
+/obj/machinery/porta_turret/OnTopic(mob/user, href_list, datum/topic_state/state)
+	if((. = ..()))
+		return
 
 	if(href_list["command"] && href_list["value"])
 		var/value = text2num(href_list["value"])
@@ -221,8 +221,7 @@ var/global/list/turret_icons
 			check_access = value
 		else if(href_list["command"] == "check_anomalies")
 			check_anomalies = value
-
-		return 1
+		. = TOPIC_REFRESH
 
 /obj/machinery/porta_turret/physically_destroyed(skip_qdel)
 	if(installation)

@@ -3696,7 +3696,7 @@
 /area/liberia/bar)
 "gz" = (
 /obj/structure/table/laminate,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},

@@ -25,6 +25,7 @@
 	value = 0.1
 	slipperiness = 80
 	exoplanet_rarity_gas = MAT_RARITY_EXOTIC
+	coated_adjective = "oily"
 
 // Prevent oil stains from drying.
 /decl/material/liquid/lube/get_time_to_dry_stain(obj/effect/decal/cleanable/blood/stain)

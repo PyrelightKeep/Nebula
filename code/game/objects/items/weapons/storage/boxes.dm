@@ -359,10 +359,17 @@
 
 /obj/item/box/animal_cubes/spiders
 	name = "spiderling cube box"
-	desc = "Drymate brand Instant spiders. WHY WOULD YOU ORDER THIS!?"
+	desc = "Drymate brand spider cubes. WHY WOULD YOU ORDER THIS!?"
 
 /obj/item/box/animal_cubes/spiders/WillContain()
 	return list(/obj/item/food/animal_cube/wrapped/spider = 5)
+
+/obj/item/box/animal_cubes/carp
+	name = "space carp cube box"
+	desc = "Drymate brand carp cubes. Allergen information: May contain traces of pike."
+
+/obj/item/box/animal_cubes/carp/WillContain()
+	return list(/obj/item/food/animal_cube/wrapped/carp = 5)
 
 /obj/item/box/ids
 	name = "box of spare IDs"

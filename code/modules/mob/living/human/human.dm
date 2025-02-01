@@ -37,7 +37,6 @@
 
 	LAZYCLEARLIST(smell_cooldown)
 
-	QDEL_NULL(attack_selector)
 	QDEL_NULL(vessel)
 	QDEL_NULL(touching)
 

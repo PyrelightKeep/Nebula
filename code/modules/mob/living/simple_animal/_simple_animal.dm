@@ -12,10 +12,15 @@
 	icon_state = ICON_STATE_WORLD
 	buckle_pixel_shift = @"{'x':0,'y':0,'z':8}"
 
+	hud_used = /datum/hud/animal
+
 	move_intents = list(
 		/decl/move_intent/walk/animal,
 		/decl/move_intent/run/animal
 	)
+
+	// Set to TRUE to ignore slipping while EVA
+	var/skip_spacemove = FALSE
 
 	/// Added to the delay expected from movement decls.
 	var/base_movement_delay = 0
@@ -274,13 +279,13 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 			bodytemperature += ((environment.temperature - bodytemperature) / 5)
 
 	if(bodytemperature < minbodytemp)
-		SET_HUD_ALERT(src, /decl/hud_element/condition/fire, 2)
+		SET_HUD_ALERT(src, HUD_FIRE, 2)
 		take_damage(cold_damage_per_tick, BURN)
 	else if(bodytemperature > maxbodytemp)
-		SET_HUD_ALERT(src, /decl/hud_element/condition/fire, 1)
+		SET_HUD_ALERT(src, HUD_FIRE, 1)
 		take_damage(heat_damage_per_tick, BURN)
 	else
-		SET_HUD_ALERT(src, /decl/hud_element/condition/fire, 0)
+		SET_HUD_ALERT(src, HUD_FIRE, 0)
 
 	if(!atmos_suitable)
 		take_damage(unsuitable_atmos_damage)
@@ -590,3 +595,6 @@ var/global/list/simplemob_icon_bitflag_cache = list()
 /mob/living/simple_animal/set_stat(var/new_stat)
 	if((. = ..()))
 		queue_icon_update()
+
+/mob/living/simple_animal/is_space_movement_permitted(allow_movement = FALSE)
+	return skip_spacemove ? SPACE_MOVE_PERMITTED : ..()

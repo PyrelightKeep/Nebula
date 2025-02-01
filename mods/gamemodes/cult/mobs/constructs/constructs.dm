@@ -26,7 +26,7 @@
 	bleed_colour = "#331111"
 	gene_damage = -1
 	butchery_data = /decl/butchery_data/occult
-	hud_used = /datum/hud/construct
+	hud_used = /datum/hud/animal/construct
 	z_flags = ZMM_MANGLE_PLANES
 	glowing_eyes = TRUE
 	ai = /datum/mob_controller/aggressive/construct
@@ -109,7 +109,7 @@
 	construct_spells = list(
 		/decl/ability/cult/construct/forcewall/lesser
 	)
-	hud_used = /datum/hud/construct/juggernaut
+	hud_used = /datum/hud/animal/construct/juggernaut
 	base_movement_delay = 2
 	ai = /datum/mob_controller/aggressive/construct_armoured
 
@@ -167,7 +167,7 @@
 	construct_spells = list(
 		/decl/ability/cult/construct/shift
 	)
-	hud_used = /datum/hud/construct/wraith
+	hud_used = /datum/hud/animal/construct/wraith
 
 /obj/item/natural_weapon/wraith
 	name = "wicked blade"
@@ -203,7 +203,7 @@
 		/decl/ability/cult/construct/soulstone,
 		/decl/ability/cult/construct/pylon
 	)
-	hud_used = /datum/hud/construct/artificer
+	hud_used = /datum/hud/animal/construct/artificer
 	base_movement_delay = 0
 
 /obj/item/natural_weapon/cult_builder
@@ -234,7 +234,7 @@
 	construct_spells = list(
 		/decl/ability/cult/construct/lesser
 	)
-	hud_used = /datum/hud/construct/juggernaut
+	hud_used = /datum/hud/animal/construct/juggernaut
 	base_movement_delay = 2
 	ai = /datum/mob_controller/aggressive/construct_armoured
 
@@ -252,7 +252,7 @@
 	natural_weapon = /obj/item/natural_weapon/harvester
 	environment_smash = 1
 	see_in_dark = 7
-	hud_used = /datum/hud/construct/harvester
+	hud_used = /datum/hud/animal/construct/harvester
 	construct_spells = list(
 		/decl/ability/cult/construct/harvest
 	)
@@ -274,16 +274,4 @@
 /mob/living/simple_animal/construct/handle_regular_hud_updates()
 	. = ..()
 	if(.)
-		if(fire)
-			fire.icon_state = "fire[!!GET_HUD_ALERT(src, /decl/hud_element/condition/fire)]"
 		disable_abilities(purge)
-		if(healths)
-			switch(current_health)
-				if(250 to INFINITY)		healths.icon_state = "health0"
-				if(208 to 249)			healths.icon_state = "health1"
-				if(167 to 207)			healths.icon_state = "health2"
-				if(125 to 166)			healths.icon_state = "health3"
-				if(84 to 124)			healths.icon_state = "health4"
-				if(42 to 83)			healths.icon_state = "health5"
-				if(1 to 41)				healths.icon_state = "health6"
-				else					healths.icon_state = "health7"

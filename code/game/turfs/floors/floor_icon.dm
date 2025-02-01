@@ -108,7 +108,7 @@
 	color = get_color()
 
 	cut_overlays()
-	update_height_appearance() // Also refreshes out base layer.
+	update_height_appearance() // Also refreshes our base layer.
 	update_floor_icon()
 
 	for(var/image/I in decals)

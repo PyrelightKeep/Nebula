@@ -36,7 +36,7 @@
 	add_to_reagents(/decl/material/solid/organic/meat, 10)
 
 /obj/item/food/animal_cube/get_single_monetary_worth()
-	. = (spawn_type ? round(atom_info_repository.get_combined_worth_for(spawn_type) * 1.25) : 5)
+	. = (spawn_type ? round(atom_info_repository.get_combined_worth_for((islist(spawn_type) ? spawn_type[1] : spawn_type)) * 1.25) : 5)
 	if(wrapper_type)
 		. += atom_info_repository.get_combined_worth_for(wrapper_type)
 
@@ -51,6 +51,8 @@
 		return
 	growing = TRUE
 	visible_message(SPAN_NOTICE("\The [src] expands!"))
+	if(islist(spawn_type))
+		spawn_type = pickweight(spawn_type)
 	var/mob/critter = new spawn_type
 	critter.dropInto(force_loc || loc)
 	qdel(src)
@@ -96,3 +98,19 @@
 /obj/item/food/animal_cube/wrapped/monkey
 	name = "monkey cube"
 	spawn_type = /mob/living/human/monkey
+
+/obj/item/food/animal_cube/carp
+	name = "carp cube"
+	spawn_type = list(
+		/mob/living/simple_animal/hostile/carp       = 10,
+		/mob/living/simple_animal/hostile/carp/pike  =  3,
+		/mob/living/simple_animal/hostile/carp/shark =  1
+	)
+
+/obj/item/food/animal_cube/wrapped/carp
+	name = "carp cube"
+	spawn_type = list(
+		/mob/living/simple_animal/hostile/carp       = 10,
+		/mob/living/simple_animal/hostile/carp/pike  =  3,
+		/mob/living/simple_animal/hostile/carp/shark =  1
+	)

@@ -272,8 +272,6 @@
 
 #define SPECIES_HUMAN            "Human"
 #define SPECIES_MONKEY           "Monkey"
-#define SPECIES_ALIEN            "Humanoid"
-#define SPECIES_GOLEM            "Golem"
 
 #define SURGERY_CLOSED 0
 #define SURGERY_OPEN 1

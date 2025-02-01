@@ -107,7 +107,6 @@
 	if(can_overcome_gravity(H)) return "\nThey are floating on a cloud of shimmering distortion."
 
 /datum/hud_data/adherent
-	has_internals = FALSE
 	inventory_slots = list(
 		/datum/inventory_slot/handcuffs,
 		/datum/inventory_slot/ear/adherent,

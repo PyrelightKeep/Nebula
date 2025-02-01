@@ -77,13 +77,13 @@
 	H.heal_damage(OXY, HUMAN_MAX_OXYLOSS * oxygenated)
 
 	if(breath_fail_ratio < 0.25 && oxygenated)
-		SET_HUD_ALERT(H, /decl/hud_element/condition/oxygen, 0)
+		SET_HUD_ALERT(H, HUD_OXY, 0)
 	if(breath_fail_ratio >= 0.25 && (damage || world.time > last_successful_breath + 2 MINUTES))
 		H.take_damage(HUMAN_MAX_OXYLOSS * breath_fail_ratio, OXY)
 		if(oxygenated)
-			SET_HUD_ALERT(H, /decl/hud_element/condition/oxygen, 1)
+			SET_HUD_ALERT(H, HUD_OXY, 1)
 		else
-			SET_HUD_ALERT(H, /decl/hud_element/condition/oxygen, 2)
+			SET_HUD_ALERT(H, HUD_OXY, 2)
 
 /obj/item/organ/internal/brain/insectoid/serpentid
 	var/lowblood_tally = 0

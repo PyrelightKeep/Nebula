@@ -35,13 +35,13 @@
 	/// If icon selection has been completed yet
 	var/icon_selected = TRUE
 	/// Hud stuff
-	var/obj/screen/robot_module/one/inv1
-	var/obj/screen/robot_module/two/inv2
-	var/obj/screen/robot_module/three/inv3
-	var/obj/screen/robot_drop_grab/ui_drop_grab
+	var/obj/screen/robot/module/one/inv1
+	var/obj/screen/robot/module/two/inv2
+	var/obj/screen/robot/module/three/inv3
+
 	/// Used to determine whether they have the module menu shown or not
 	var/shown_robot_modules = 0
-	var/obj/screen/robot_modules_background/robot_modules_background
+	var/obj/screen/robot/modules_background/robot_modules_background
 	/// 3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module = null
 	var/obj/item/module_active
@@ -199,8 +199,7 @@
 	if(shown_robot_modules)
 		hud_used.toggle_show_robot_modules()
 	modtype = initial(modtype)
-	if(hands)
-		hands.icon_state = initial(hands.icon_state)
+	refresh_hud_element(HUD_ROBOT_MODULE)
 	// If the robot had a module and this wasn't an uncertified change, let the AI know.
 	if(module)
 		if (!suppress_alert)
@@ -236,9 +235,7 @@
 		return
 
 	new module_type(src)
-
-	if(hands)
-		hands.icon_state = lowertext(modtype)
+	refresh_hud_element(HUD_ROBOT_MODULE)
 	SSstatistics.add_field("cyborg_[lowertext(modtype)]",1)
 	updatename()
 	recalculate_synth_capacities()
@@ -314,7 +311,7 @@
 	var/dat = "<HEAD><TITLE>[src.name] Self-Diagnosis Report</TITLE></HEAD><BODY>\n"
 	for (var/V in components)
 		var/datum/robot_component/C = components[V]
-		dat += "<b>[C.name]</b><br><table><tr><td>Brute Damage:</td><td>[C.brute_damage]</td></tr><tr><td>Electronics Damage:</td><td>[C.electronics_damage]</td></tr><tr><td>Powered:</td><td>[(!C.idle_usage || C.is_powered()) ? "Yes" : "No"]</td></tr><tr><td>Toggled:</td><td>[ C.toggled ? "Yes" : "No"]</td></table><br>"
+		dat += "<b>[C.name]</b><br><table><tr><td>Brute Damage:</td><td>[C.brute_damage]</td></tr><tr><td>Electronics Damage:</td><td>[C.burn_damage]</td></tr><tr><td>Powered:</td><td>[(!C.idle_usage || C.is_powered()) ? "Yes" : "No"]</td></tr><tr><td>Toggled:</td><td>[ C.toggled ? "Yes" : "No"]</td></table><br>"
 
 	return dat
 
@@ -446,7 +443,7 @@
 				var/obj/item/robot_parts/robot_component/WC = W
 				if(istype(WC))
 					C.brute_damage = WC.brute_damage
-					C.electronics_damage = WC.burn_damage
+					C.burn_damage = WC.burn_damage
 
 				to_chat(user, "<span class='notice'>You install the [W.name].</span>")
 				return TRUE
@@ -524,7 +521,7 @@
 					var/obj/item/robot_parts/robot_component/I = C.wrapped
 					if(istype(I))
 						I.set_bruteloss(C.brute_damage)
-						I.set_burnloss(C.electronics_damage)
+						I.set_burnloss(C.burn_damage)
 
 					removed_item = I
 					if(C.installed == 1)
@@ -563,7 +560,7 @@
 			C.install()
 			// This means that removing and replacing a power cell will repair the mount.
 			C.brute_damage = 0
-			C.electronics_damage = 0
+			C.burn_damage = 0
 		return TRUE
 	else if(IS_WIRECUTTER(W) || IS_MULTITOOL(W))
 		if (wiresexposed)
@@ -630,7 +627,6 @@
 			return
 		else if (H.wrapped == W)
 			H.wrapped = null
-
 
 /mob/living/silicon/robot/try_awaken(mob/user)
 	return user?.attempt_hug(src)
@@ -808,16 +804,11 @@
 
 /mob/living/silicon/robot/Move(a, b, flag)
 	. = ..()
-	if(.)
-
-		if(module && isturf(loc))
-			var/obj/item/ore/orebag = locate() in list(module_state_1, module_state_2, module_state_3)
-			if(orebag)
-				loc.attackby(orebag, src)
-			module.handle_turf(loc, src)
-
-		if(client)
-			up_hint.update_icon()
+	if(. && module && isturf(loc))
+		var/obj/item/ore/orebag = locate() in list(module_state_1, module_state_2, module_state_3)
+		if(orebag)
+			loc.attackby(orebag, src)
+		module.handle_turf(loc, src)
 
 /mob/living/silicon/robot/proc/UnlinkSelf()
 	disconnect_from_ai()

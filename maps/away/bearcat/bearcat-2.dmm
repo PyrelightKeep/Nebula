@@ -150,6 +150,7 @@
 	pixel_x = 32;
 	initial_network_id = "freightnet_0451";
 	dir = 4;
+	
 	},
 /obj/structure/bed/chair{
 	dir = 1
@@ -1860,7 +1861,7 @@
 	pixel_x = 3
 	},
 /obj/item/chems/condiment/enzyme,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /turf/floor/tiled/usedup,
 /area/ship/scrap/crew/kitchen)
 "dU" = (
@@ -2428,7 +2429,7 @@
 /obj/machinery/light,
 /obj/machinery/optable,
 /obj/item/chems/drinks/glass2/coffeecup/britcup,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /turf/floor/tiled/white,
 /area/ship/scrap/crew/medbay)
 "eQ" = (
@@ -3000,7 +3001,7 @@
 /obj/random/clothing,
 /obj/random/clothing,
 /obj/random/clothing,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/effect/floor_decal/corner/white/diagonal,
 /turf/floor/tiled/usedup,
 /area/ship/scrap/crew/wash)
@@ -5161,12 +5162,6 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/floor/reinforced/airless,
 /area/ship/scrap/maintenance/atmos)
-"Ix" = (
-/obj/machinery/network/router{
-	initial_network_id = "freightnet_0451"
-	},
-/turf/floor/bluegrid/airless,
-/area/ship/scrap/comms)
 "IG" = (
 /obj/item/shard,
 /obj/machinery/atmospherics/unary/outlet_injector{

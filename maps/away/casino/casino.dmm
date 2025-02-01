@@ -3543,7 +3543,7 @@
 "kf" = (
 /obj/structure/table/marble,
 /obj/item/chems/drinks/bottle/rum,
-/obj/item/chems/glass/rag,
+/obj/item/chems/rag,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,
 /obj/random/drinkbottle,

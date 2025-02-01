@@ -136,13 +136,12 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/machinery/atmospherics/binary/oxyregenerator/Topic(href, href_list)
-	if(..())
-		return 1
+/obj/machinery/atmospherics/binary/oxyregenerator/OnTopic(mob/user, href_list)
+	if((. = ..()))
+		return
 	if(href_list["toggleStatus"])
 		update_use_power(!use_power)
-		update_icon()
-		return 1
+		return TOPIC_REFRESH
 	if(href_list["setPower"]) //setting power to 0 is redundant anyways
 		power_setting = clamp(text2num(href_list["setPower"]), 1, 5)
-		return 1
+		return TOPIC_REFRESH

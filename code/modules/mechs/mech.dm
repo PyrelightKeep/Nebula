@@ -128,7 +128,7 @@
 		desc = "[desc] It has been built with [english_list(component_descriptions)]."
 
 	// Create HUD.
-	InitializeHud()
+	initialize_hud()
 
 	// Build icon.
 	queue_icon_update()

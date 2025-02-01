@@ -13,7 +13,7 @@
 	abstract_type = /obj/item/chems/drinks/bottle
 
 	var/smash_duration = 5 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
-	var/obj/item/chems/glass/rag/rag = null
+	var/obj/item/chems/rag/rag = null
 	var/rag_underlay = "rag"
 	var/stop_spin_bottle = FALSE //Gotta stop the rotation.
 
@@ -95,7 +95,7 @@
 
 /obj/item/chems/drinks/bottle/attackby(obj/item/W, mob/user)
 	if(!rag)
-		if(istype(W, /obj/item/chems/glass/rag))
+		if(istype(W, /obj/item/chems/rag))
 			insert_rag(W, user)
 			return TRUE
 	else if(W.isflamesource())
@@ -105,7 +105,7 @@
 /obj/item/chems/drinks/bottle/attack_self(mob/user)
 	return rag ? remove_rag(user) : ..()
 
-/obj/item/chems/drinks/bottle/proc/insert_rag(obj/item/chems/glass/rag/R, mob/user)
+/obj/item/chems/drinks/bottle/proc/insert_rag(obj/item/chems/rag/R, mob/user)
 	if(material?.type != /decl/material/solid/glass)
 		to_chat(user, SPAN_WARNING("\The [src] isn't made of glass, you can't make a good Molotov with it."))
 		return TRUE

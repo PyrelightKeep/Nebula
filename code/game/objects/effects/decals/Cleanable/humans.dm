@@ -15,7 +15,7 @@
 	persistent = TRUE
 	appearance_flags = NO_CLIENT_COLOR
 	cleanable_scent = "blood"
-	scent_descriptor = SCENT_DESC_ODOR
+	scent_descriptor = "odour"
 
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/basecolor=COLOR_BLOOD_HUMAN // Color when wet.

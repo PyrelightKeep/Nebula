@@ -277,23 +277,20 @@
 
 	- `user`: The mob examining this atom
 	- `distance`: The distance this atom is from the `user`
-	- `infix`: TODO
-	- `suffix`: TODO
+	- `infix`: An optional string appended directly to the 'That's an X' string, between the name the end of the sentence.
+	- `suffix`: An optional string appended in a separate sentence after the initial introduction line.
 	- Return: `TRUE` when the call chain is valid, otherwise `FALSE`
 	- Events: `atom_examined`
 */
 /atom/proc/examine(mob/user, distance, infix = "", suffix = "")
 	SHOULD_CALL_PARENT(TRUE)
-	//This reformat names to get a/an properly working on item descriptions when they are bloody
-	var/f_name = "\a [src][infix]."
-	if(blood_color && !istype(src, /obj/effect/decal))
-		if(gender == PLURAL)
-			f_name = "some "
-		else
-			f_name = "a "
-		f_name += "<font color ='[blood_color]'>stained</font> [name][infix]!"
+	//This reformats names to get a/an properly working on item descriptions when they are bloody or coated in reagents.
+	var/examine_prefix = get_examine_prefix()
+	if(examine_prefix)
+		examine_prefix += " " // add a space to the end to be polite
+	var/composed_name = ADD_ARTICLE_GENDER("[examine_prefix][name]", gender)
 
-	to_chat(user, "[html_icon(src)] That's [f_name] [suffix]")
+	to_chat(user, "[html_icon(src)] That's [composed_name][infix][get_examine_punctuation()] [suffix]")
 	to_chat(user, desc)
 
 	var/list/alt_interactions = get_alt_interactions(user)
@@ -623,7 +620,7 @@
 	Used for atoms performing audible actions
 
 	- `message`: The string to show to anyone who can hear this atom
-	- `dead_message?`: The string deaf mobs will see
+	- `deaf_message?`: The string deaf mobs will see
 	- `hearing_distance?`: The number of tiles away the message can be heard. Defaults to world.view
 	- `check_ghosts?`: TRUE if ghosts should hear the message if their preferences allow
 	- `radio_message?`: The string to send over radios
@@ -1008,5 +1005,15 @@
 	return required_dexterity
 
 /atom/proc/immune_to_floor_hazards()
-	return !simulated
+	return !simulated || !has_gravity()
+/// The punctuation used for the "That's an X." string.
+/atom/proc/get_examine_punctuation()
+	// Could theoretically check if reagents in a coating are 'dangerous' or 'suspicious' (blood, acid, etc)
+	// in an override, but that'd require setting such a var on a bunch of materials and I'm lazy.
+	return blood_color ? "!" : "."
 
+/// The prefix that goes before the atom name on examine.
+/atom/proc/get_examine_prefix()
+	if(blood_color)
+		return FONT_COLORED(blood_color, "stained")
+	return null

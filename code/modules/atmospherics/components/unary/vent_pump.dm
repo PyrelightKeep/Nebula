@@ -357,7 +357,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/OnTopic(mob/user, href_list, datum/topic_state/state)
 	if((. = ..()))
 		return
-	if(href_list["switchMode"])
+	if(href_list["switchMode"]) // todo: this could easily be refhacked if you don't have a multitool
 		toggle_pump_dir()
 		to_chat(user, "<span class='notice'>The multitool emits a short beep confirming the change.</span>")
 		return TOPIC_REFRESH

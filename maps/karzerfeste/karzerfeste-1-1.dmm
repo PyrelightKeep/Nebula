@@ -504,6 +504,15 @@
 /obj/abstract/landmark/start/karzerfeste/guild_clerk,
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/keep)
+"iv" = (
+/obj/effect/floor_decal/spline/fancy/wood/walnut{
+	dir = 8
+	},
+/obj/item/towel/doormat/flat{
+	dir = 4
+	},
+/turf/floor/wood/maple,
+/area/karzerfeste/keep/gatehouse)
 "iB" = (
 /obj/structure/railing/mapped/wooden/ebony{
 	dir = 1
@@ -710,6 +719,15 @@
 /obj/structure/table/wood/ebony,
 /obj/structure/curtain/open/bar,
 /turf/floor/path/running_bond/granite,
+/area/karzerfeste/keep/gatehouse/west)
+"mA" = (
+/obj/effect/floor_decal/spline/fancy/wood/walnut{
+	dir = 1
+	},
+/obj/item/towel/doormat/flat{
+	dir = 1
+	},
+/turf/floor/wood/maple,
 /area/karzerfeste/keep/gatehouse/west)
 "mD" = (
 /obj/effect/floor_decal/industrial/outline/red,
@@ -1405,6 +1423,10 @@
 /obj/structure/reagent_dispensers/barrel/ebony/oil,
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/keep)
+"AG" = (
+/obj/item/towel/doormat/flat,
+/turf/floor/path/running_bond/granite,
+/area/karzerfeste/keep)
 "AH" = (
 /obj/structure/table/marble,
 /obj/item/chems/condiment/flour,
@@ -1588,6 +1610,12 @@
 /obj/abstract/landmark/start/karzerfeste/adventurer,
 /turf/floor/wood/maple,
 /area/karzerfeste/keep)
+"Dy" = (
+/obj/item/towel/doormat/flat{
+	dir = 8
+	},
+/turf/floor/path/running_bond/granite,
+/area/karzerfeste/keep)
 "DE" = (
 /obj/structure/wall_sconce/lantern{
 	dir = 4
@@ -1599,6 +1627,12 @@
 /obj/item/chems/cooking_vessel/baking_dish/earthenware,
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/keep)
+"DI" = (
+/obj/item/towel/doormat/flat{
+	dir = 1
+	},
+/turf/floor/path/running_bond/granite,
+/area/karzerfeste/ward/shrine)
 "DL" = (
 /obj/structure/reagent_dispensers/barrel/ebony,
 /obj/item/seeds/extracted/foxglove,
@@ -1661,6 +1695,15 @@
 	},
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/keep/gatehouse/west)
+"Ez" = (
+/obj/effect/floor_decal/spline/fancy/wood/walnut{
+	dir = 1
+	},
+/obj/item/towel/doormat/flat{
+	dir = 1
+	},
+/turf/floor/wood/maple,
+/area/karzerfeste/keep/gatehouse)
 "EJ" = (
 /turf/open,
 /area/karzerfeste/outside/ward)
@@ -1698,6 +1741,12 @@
 	},
 /turf/floor/path/granite,
 /area/karzerfeste/ward/shrine)
+"FY" = (
+/obj/item/towel/doormat/flat{
+	dir = 4
+	},
+/turf/floor/path/running_bond/granite,
+/area/karzerfeste/keep)
 "Gb" = (
 /turf/floor/mud/water/deep,
 /area/karzerfeste/outside/ward)
@@ -1779,6 +1828,12 @@
 	},
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/ward/wall/two)
+"Hu" = (
+/obj/item/towel/doormat/flat{
+	dir = 4
+	},
+/turf/floor/path/granite,
+/area/karzerfeste/ward/shrine)
 "Hy" = (
 /turf/floor/mud,
 /area/karzerfeste/outside/keep/courtyard)
@@ -2040,6 +2095,10 @@
 	},
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/keep/gatehouse)
+"Nk" = (
+/obj/item/towel/doormat/flat,
+/turf/floor/carpet/blue,
+/area/karzerfeste/keep)
 "No" = (
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/keep/gatehouse/west)
@@ -2301,6 +2360,14 @@
 /obj/abstract/landmark/start/karzerfeste/servant,
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/keep)
+"RY" = (
+/obj/effect/floor_decal/spline/fancy/wood/walnut,
+/obj/effect/floor_decal/spline/fancy/wood/walnut{
+	dir = 1
+	},
+/obj/item/towel/doormat/flat,
+/turf/floor/wood/maple,
+/area/karzerfeste/keep)
 "Sf" = (
 /obj/structure/working/spinning_wheel/ebony,
 /turf/floor/path/running_bond/granite,
@@ -2359,10 +2426,22 @@
 "TJ" = (
 /turf/floor/path/basalt,
 /area/karzerfeste/outside/keep)
+"Ud" = (
+/obj/item/towel/doormat/flat{
+	dir = 8
+	},
+/turf/floor/path/running_bond/granite,
+/area/karzerfeste/ward/shrine)
 "Uf" = (
 /obj/abstract/landmark/latejoin/observer,
 /turf/floor/mud,
 /area/karzerfeste/outside/keep)
+"Ur" = (
+/obj/item/towel/doormat/flat{
+	dir = 8
+	},
+/turf/floor/path/running_bond/granite,
+/area/karzerfeste/keep/gatehouse/west)
 "Uu" = (
 /obj/structure/door/basalt,
 /turf/floor/path/running_bond/granite,
@@ -12565,7 +12644,7 @@ ZM
 Xj
 ZM
 Xa
-Je
+Dy
 MH
 ZM
 DF
@@ -12580,7 +12659,7 @@ Je
 Je
 Je
 sR
-Je
+AG
 kW
 yI
 yI
@@ -13018,7 +13097,7 @@ Lp
 SQ
 SQ
 ZM
-Xj
+RY
 kW
 sB
 Hy
@@ -13053,7 +13132,7 @@ TJ
 cb
 yI
 IK
-zk
+mA
 dk
 Fa
 CN
@@ -14118,8 +14197,8 @@ yI
 Sm
 Sm
 ka
-No
-No
+Ur
+Ur
 No
 No
 UE
@@ -14556,7 +14635,7 @@ ex
 Wd
 Wd
 Wd
-Wd
+Nk
 kW
 TJ
 Pp
@@ -15822,7 +15901,7 @@ gZ
 gZ
 gZ
 pa
-Ft
+Hu
 Ft
 gZ
 gZ
@@ -15942,7 +16021,7 @@ TJ
 vR
 At
 Oy
-Kx
+iv
 id
 Kx
 hp
@@ -16093,7 +16172,7 @@ yI
 Pp
 TJ
 eO
-sr
+Ez
 NL
 NL
 dT
@@ -16219,7 +16298,7 @@ Je
 Qo
 Je
 YF
-Je
+FY
 jW
 Je
 ZM
@@ -18704,7 +18783,7 @@ gZ
 lm
 yA
 gZ
-nD
+Ud
 Ip
 gZ
 HT
@@ -18865,7 +18944,7 @@ Jk
 dd
 dd
 YN
-nD
+DI
 nD
 nD
 nD
@@ -18874,7 +18953,7 @@ gZ
 cx
 nD
 nD
-nD
+Ud
 nD
 gZ
 dd

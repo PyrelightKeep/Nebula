@@ -21,10 +21,10 @@
 	global.registered_weapons -= src
 	. = ..()
 
-/obj/item/gun/examine(mob/user, distance)
+/obj/item/gun/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 0 && is_secure_gun())
-		to_chat(user, "The registration screen shows, \"" + (registered_owner ? "[registered_owner]" : "unregistered") + "\".")
+		. += "The registration screen shows, \"" + (registered_owner ? "[registered_owner]" : "unregistered") + "\"."
 
 /obj/item/gun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/card/id) && is_secure_gun())

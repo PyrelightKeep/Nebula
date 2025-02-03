@@ -26,12 +26,12 @@
 	// update icon/harvestability as appropriate
 */
 
-/obj/structure/flora/plant/examine(mob/user, distance)
+/obj/structure/flora/plant/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(dead)
-		to_chat(user, SPAN_OCCULT("It is dead."))
+		. += SPAN_OCCULT("It is dead.")
 	else if(harvestable)
-		to_chat(user, SPAN_NOTICE("You can see [harvestable] harvestable fruit\s."))
+		. += SPAN_NOTICE("You can see [harvestable] harvestable fruit\s.")
 
 /obj/structure/flora/plant/dismantle_structure(mob/user)
 	if(plant)

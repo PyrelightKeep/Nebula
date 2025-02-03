@@ -103,7 +103,7 @@
 		return food.try_create_combination(src, user)
 	return FALSE
 
-/obj/item/food/examine(mob/user, distance)
+/obj/item/food/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1)
 		return
@@ -120,7 +120,7 @@
 			product_string = english_list(names, and_text = " or ")
 		else
 			product_string = "\a [atom_info_repository.get_name_for(product)]"
-		to_chat(user, SPAN_NOTICE("With this and \a [ispath(thing_type) ? atom_info_repository.get_name_for(thing_type): thing_type], you could make [product_string]."))
+		. += SPAN_NOTICE("With this and \a [ispath(thing_type) ? atom_info_repository.get_name_for(thing_type): thing_type], you could make [product_string].")
 
 /obj/item/food/bun/get_combined_food_products()
 	var/static/list/combined_food_products = list(

@@ -99,12 +99,12 @@
 	safety = !safety
 	to_chat(user, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
 
-/obj/item/chems/spray/examine(mob/user, distance)
+/obj/item/chems/spray/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(loc == user)
-		to_chat(user, "[round(reagents.total_volume)] unit\s left.")
+		. += "[round(reagents.total_volume)] unit\s left."
 	if(has_safety() && distance <= 1)
-		to_chat(user, "The safety is [safety ? "on" : "off"].")
+		. += "The safety is [safety ? "on" : "off"]."
 
 /obj/item/chems/spray/get_alt_interactions(mob/user)
 	. = ..()

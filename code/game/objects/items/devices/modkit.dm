@@ -62,6 +62,6 @@
 	if(!parts)
 		qdel(src)
 
-/obj/item/modkit/examine(mob/user)
+/obj/item/modkit/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
-	to_chat(user, "It looks as though it modifies hardsuits to fit [target_bodytype] users.")
+	. += "It looks as though it modifies hardsuits to fit [target_bodytype] users."

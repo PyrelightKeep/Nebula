@@ -70,57 +70,54 @@
 	if(!CanFluidPass())
 		fluid_update(TRUE)
 
-/obj/structure/examine(mob/user, distance, infix, suffix)
+/obj/structure/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-
 	if(distance <= 3)
-
 		if(distance <= 1 && lock)
-			to_chat(user, SPAN_NOTICE("\The [src] appears to have a lock, opened by '[lock.lock_data]'."))
-
+			. += SPAN_NOTICE("\The [src] appears to have a lock, opened by '[lock.lock_data]'.")
 		var/damage_desc = get_examined_damage_string()
 		if(length(damage_desc))
-			to_chat(user, damage_desc)
-
+			. += damage_desc
 		if(paint_color)
 			var/decl/pronouns/structure_pronouns = get_pronouns() // so we can do 'have' for plural objects like sheets
-			to_chat(user, "\The [src] [structure_pronouns.has] been <font color='[paint_color]'>[paint_verb]</font>.")
+			. += "\The [src] [structure_pronouns.has] been <font color='[paint_color]'>[paint_verb]</font>."
 
+/obj/structure/get_examine_hints(mob/user, distance, infix, suffix)
+	. = ..()
+	if(distance <= 3)
 		if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
 			if(anchored)
-				to_chat(user, SPAN_SUBTLE("Can be unanchored with a wrench or hammer, and moved around."))
+				LAZYADD(., SPAN_SUBTLE("Can be unanchored with a wrench or hammer, and moved around."))
 			else
-				to_chat(user, SPAN_SUBTLE("Can be anchored in place with a wrench or hammer."))
-
+				LAZYADD(., SPAN_SUBTLE("Can be anchored in place with a wrench or hammer."))
 		if(tool_interaction_flags & TOOL_INTERACTION_DECONSTRUCT)
 			var/removed_with = "a crowbar or hammer"
 			if(material && material.removed_by_welder)
 				removed_with = "a welding torch"
 			if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
 				if(anchored)
-					to_chat(user, SPAN_SUBTLE("Can be deconstructed with [removed_with]."))
+					LAZYADD(., SPAN_SUBTLE("Can be deconstructed with [removed_with]."))
 				else
-					to_chat(user, SPAN_SUBTLE("Can be deconstructed with [removed_with], if anchored down with a wrench or hammer first."))
+					LAZYADD(., SPAN_SUBTLE("Can be deconstructed with [removed_with], if anchored down with a wrench or hammer first."))
 			else
-				to_chat(user, SPAN_SUBTLE("Can be deconstructed with [removed_with]."))
-
+				LAZYADD(., SPAN_SUBTLE("Can be deconstructed with [removed_with]."))
 		if(tool_interaction_flags & TOOL_INTERACTION_WIRING)
 			if(tool_interaction_flags & TOOL_INTERACTION_ANCHOR)
 				if(wired)
 					if(anchored)
-						to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters."))
+						LAZYADD(., SPAN_SUBTLE("Can have its wiring removed with wirecutters."))
 					else
-						to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters, if anchored down with a wrench first."))
+						LAZYADD(., SPAN_SUBTLE("Can have its wiring removed with wirecutters, if anchored down with a wrench first."))
 				else
 					if(anchored)
-						to_chat(user, SPAN_SUBTLE("Can have wiring installed with a cable coil."))
+						LAZYADD(., SPAN_SUBTLE("Can have wiring installed with a cable coil."))
 					else
-						to_chat(user, SPAN_SUBTLE("Can have wiring installed with a cable coil, if anchored down with a wrench first."))
+						LAZYADD(., SPAN_SUBTLE("Can have wiring installed with a cable coil, if anchored down with a wrench first."))
 			else
 				if(wired)
-					to_chat(user, SPAN_SUBTLE("Can have its wiring removed with wirecutters."))
+					LAZYADD(., SPAN_SUBTLE("Can have its wiring removed with wirecutters."))
 				else
-					to_chat(user, SPAN_SUBTLE("Can have wiring installed with a cable coil."))
+					LAZYADD(., SPAN_SUBTLE("Can have wiring installed with a cable coil."))
 
 /obj/structure/proc/mob_breakout(var/mob/living/escapee)
 	set waitfor = FALSE

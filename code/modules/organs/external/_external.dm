@@ -226,23 +226,23 @@
 		return //no eating the limb until everything's been removed
 	return ..()
 
-/obj/item/organ/external/examine(mob/user, distance)
+/obj/item/organ/external/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1 || isghost(user))
 		for(var/obj/item/embedded in contents)
 			if(istype(embedded, /obj/item/organ))
 				continue
-			to_chat(user, SPAN_DANGER("There is \a [embedded] sticking out of it."))
+			. += SPAN_DANGER("There is \a [embedded] sticking out of it.")
 		var/ouchies = get_wounds_desc()
 		if(ouchies != "nothing")
-			to_chat(user, SPAN_NOTICE("There is [ouchies] visible on it."))
+			. += SPAN_NOTICE("There is [ouchies] visible on it.")
 
-	return
-
-/obj/item/organ/external/show_decay_status(mob/user)
-	..(user)
+/obj/item/organ/external/get_decay_status(mob/user)
+	. = ..()
 	for(var/obj/item/organ/external/child in children)
-		child.show_decay_status(user)
+		var/decay_status = child.get_decay_status(user)
+		if(decay_status)
+			. += decay_status
 
 /obj/item/organ/external/attackby(obj/item/used_item, mob/user)
 

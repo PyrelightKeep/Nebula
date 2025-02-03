@@ -37,7 +37,7 @@
 	// would this have any use aside from fluff strings? sandpaper grit maybe?
 	desc = "A [is_soft ? "soft" : "rugged"] [material.adjective_name] [base_name][additional_description ? " [additional_description]" : null]." // 'a soft cotton towel' by default. also supports 'a rugged leather doormat used to blah blah' etc
 
-/obj/item/towel/examine(mob/user, distance, infix, suffix)
+/obj/item/towel/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(reagents?.total_volume && distance <= 1)
 		var/liquid_adjective = "damp"
@@ -52,7 +52,7 @@
 				liquid_adjective = "soaked through"
 			if(1)
 				liquid_adjective = "entirely saturated"
-		to_chat(user, "It is [liquid_adjective] with [reagents.get_coated_name()].")
+		. += "It is [liquid_adjective] with [reagents.get_coated_name()]."
 
 /obj/item/towel/set_material(new_material)
 	. = ..()

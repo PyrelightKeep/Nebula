@@ -104,13 +104,13 @@
 	return PROCESS_KILL
 
 
-/obj/item/assembly/examine(mob/user, distance)
+/obj/item/assembly/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1 || loc == user)
 		if(secured)
-			to_chat(user, "\The [src] is ready!")
+			. += "\The [src] is ready!"
 		else
-			to_chat(user, "\The [src] can be attached!")
+			. += "\The [src] can be attached!"
 
 
 /obj/item/assembly/attack_self(mob/user)

@@ -117,16 +117,17 @@
 	RETURN_TYPE(/decl/material)
 	return GET_DECL(/decl/material/solid/metal/steel)
 
-/obj/machinery/door/firedoor/examine(mob/user, distance)
+/obj/machinery/door/firedoor/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1 || !density)
 		return
 
 	if(pdiff >= FIREDOOR_MAX_PRESSURE_DIFF)
-		to_chat(user, "<span class='warning'>WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!</span>")
-	to_chat(user, "<b>Sensor readings:</b>")
+		. += SPAN_DANGER("WARNING: Current pressure differential is [pdiff]kPa! Opening door may result in injury!")
+
+	. += "<b>Sensor readings:</b>"
 	for(var/index = 1; index <= tile_info.len; index++)
-		var/o = "&nbsp;&nbsp;"
+		var/list/o = list("&nbsp;&nbsp;")
 		switch(index)
 			if(1)
 				o += "NORTH: "
@@ -146,13 +147,13 @@
 		o += "[celsius]&deg;C</span> "
 		o += "<span style='color:blue'>"
 		o += "[pressure]kPa</span></li>"
-		to_chat(user, o)
+		. += JOINTEXT(o)
 	if(islist(users_to_open) && users_to_open.len)
 		var/users_to_open_string = users_to_open[1]
 		if(users_to_open.len >= 2)
 			for(var/i = 2 to users_to_open.len)
 				users_to_open_string += ", [users_to_open[i]]"
-		to_chat(user, "These people have opened \the [src] during an alert: [users_to_open_string].")
+		. += "These people have opened \the [src] during an alert: [users_to_open_string]."
 
 /obj/machinery/door/firedoor/Bumped(atom/AM)
 	if(panel_open || operating)

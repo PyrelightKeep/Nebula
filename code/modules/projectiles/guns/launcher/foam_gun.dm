@@ -75,10 +75,10 @@
 	release_force = 3
 	throw_distance = 12
 
-/obj/item/gun/launcher/foam/revolver/tampered/examine(mob/user, distance)
+/obj/item/gun/launcher/foam/revolver/tampered/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "The hammer is a lot more resistant than you'd expect.")
+		. += "The hammer is a lot more resistant than you'd expect."
 
 /obj/item/gun/launcher/foam/machine_gun
 	name = "foam machine gun"
@@ -120,10 +120,10 @@
 /obj/item/foam_dart/tampered
 	_base_attack_force = 1
 
-/obj/item/foam_dart/tampered/examine(mob/user, distance)
+/obj/item/foam_dart/tampered/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, SPAN_WARNING("Closer inspection reveals some weights in the rubber dome."))
+		. += SPAN_WARNING("Closer inspection reveals some weights in the rubber dome.")
 
 //boxes of the projectile
 /obj/item/box/foam_darts

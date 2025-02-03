@@ -164,7 +164,7 @@
 	. = ..()
 	add_overlay("[icon_state]-loaded")
 
-/obj/item/gun/launcher/syringe/disguised/examine(mob/user, distance)
+/obj/item/gun/launcher/syringe/disguised/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "The button is a little stiff.")
+		. += "The button is a little stiff."

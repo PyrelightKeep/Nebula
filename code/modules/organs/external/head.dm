@@ -54,11 +54,10 @@
 /obj/item/organ/external/head/get_manual_dexterity()
 	. = DEXTERITY_SIMPLE_MACHINES | DEXTERITY_HOLD_ITEM | DEXTERITY_EQUIP_ITEM | DEXTERITY_KEYBOARDS | DEXTERITY_TOUCHSCREENS
 
-/obj/item/organ/external/head/examine(mob/user)
+/obj/item/organ/external/head/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-
 	if(forehead_graffiti && graffiti_style)
-		to_chat(user, "<span class='notice'>It has \"[forehead_graffiti]\" written on it in [graffiti_style]!</span>")
+		. += SPAN_NOTICE("It has \"[forehead_graffiti]\" written on it in [graffiti_style]!")
 
 /obj/item/organ/external/head/proc/write_on(var/mob/penman, var/style)
 	var/head_name = name

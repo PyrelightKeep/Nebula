@@ -11,10 +11,10 @@
 	. = ..()
 	set_extension(src, /datum/extension/tool, list(TOOL_HEMOSTAT = TOOL_QUALITY_WORST))
 
-/obj/item/assembly/mousetrap/examine(mob/user)
+/obj/item/assembly/mousetrap/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(armed)
-		to_chat(user, "It looks like it's armed.")
+		. += "It looks like it's armed."
 
 /obj/item/assembly/mousetrap/on_update_icon()
 	. = ..()

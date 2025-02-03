@@ -187,7 +187,7 @@
 		"<span class='[span_class]'>You hold \the [P] up to \the [src], burning it slowly.</span>")
 	addtimer(CALLBACK(src, PROC_REF(burn_callback), P, user, span_class), 2 SECONDS)
 
-/obj/item/paper_bundle/examine(mob/user, distance)
+/obj/item/paper_bundle/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 		interact(user)

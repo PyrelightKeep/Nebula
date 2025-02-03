@@ -43,17 +43,16 @@
 	)
 	return _can_be_placed_into
 
-/obj/item/chems/glass/examine(mob/user, distance)
+/obj/item/chems/glass/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 2)
 		return
-
 	if(reagents?.total_volume)
-		to_chat(user, SPAN_NOTICE("It contains [reagents.total_volume] units of reagents."))
+		. += SPAN_NOTICE("It contains [reagents.total_volume] units of reagents.")
 	else
-		to_chat(user, SPAN_NOTICE("It is empty."))
+		. += SPAN_NOTICE("It is empty.")
 	if(!ATOM_IS_OPEN_CONTAINER(src))
-		to_chat(user,SPAN_NOTICE("The airtight lid seals it completely."))
+		. += SPAN_NOTICE("The airtight lid seals it completely.")
 
 /obj/item/chems/glass/proc/can_lid()
 	return TRUE

@@ -294,10 +294,10 @@
 
 	return TRUE
 
-/obj/machinery/cryopod/examine(mob/user)
+/obj/machinery/cryopod/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (occupant && user.Adjacent(src))
-		occupant.examine(arglist(args))
+		. += occupant.get_examine_strings(user, distance, infix, suffix)
 
 //Lifted from Unity stasis.dm and refactored.
 /obj/machinery/cryopod/Process()

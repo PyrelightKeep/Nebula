@@ -361,9 +361,9 @@
 		update_icon()
 
 
-/obj/item/paint_sprayer/examine(mob/user)
+/obj/item/paint_sprayer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
-	to_chat(user, "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [spray_color] paint.")
+	. += "It is configured to produce the '[decal]' decal with a direction of '[paint_dir]' using [spray_color] paint."
 
 /obj/item/paint_sprayer/CtrlClick()
 	if (!isturf(loc))

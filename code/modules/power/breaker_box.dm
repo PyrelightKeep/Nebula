@@ -37,12 +37,12 @@
 	set_state(1)
 	. = ..()
 
-/obj/machinery/power/breakerbox/examine(mob/user)
+/obj/machinery/power/breakerbox/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(on)
-		to_chat(user, "<span class='good'>It seems to be online.</span>")
+		. += "<span class='good'>It seems to be online.</span>"
 	else
-		to_chat(user, "<span class='warning'>It seems to be offline.</span>")
+		. += "<span class='warning'>It seems to be offline.</span>"
 
 /obj/machinery/power/breakerbox/attack_ai(mob/living/silicon/ai/user)
 	if(update_locked)

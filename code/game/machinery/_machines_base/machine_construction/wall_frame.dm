@@ -32,7 +32,7 @@
 		var/obj/item/part_replacer/replacer = I
 		if(replacer.remote_interaction)
 			machine.part_replacement(user, replacer)
-		machine.display_parts(user)
+		machine.display_parts(user, show_directly = TRUE)
 		return TRUE
 	return down_interaction(I, user, machine)
 

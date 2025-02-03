@@ -107,13 +107,12 @@
 			to_chat(user, "<span class='notice'>Synthesizer is now producing '[initial(R.name)]'.</span>")
 		return TOPIC_REFRESH
 
-/obj/item/chems/borghypo/examine(mob/user, distance)
+/obj/item/chems/borghypo/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 2)
 		return
-
 	var/decl/material/R = reagent_ids[mode]
-	to_chat(user, "<span class='notice'>It is currently producing [initial(R.name)] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.</span>")
+	. += SPAN_NOTICE("It is currently producing [initial(R.name)] and has [reagent_volumes[reagent_ids[mode]]] out of [volume] units left.")
 
 /obj/item/chems/borghypo/service
 	name = "cyborg drink synthesizer"

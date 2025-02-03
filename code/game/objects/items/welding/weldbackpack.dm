@@ -146,9 +146,9 @@
 		welder_image.pixel_x = 15
 		add_overlay(welder_image)
 
-/obj/item/chems/weldpack/examine(mob/user)
+/obj/item/chems/weldpack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "[html_icon(src)] [reagents.total_volume] unit\s of fuel left!")
+	. += "[html_icon(src)] [reagents.total_volume] unit\s of fuel left!"
 
 /obj/item/chems/weldpack/dropped(mob/user)
 	. = ..()

@@ -445,16 +445,16 @@
 	if(can_transmit_binary())
 		LAZYADD(., "<b>- Robot talk:</b> [prefix]+")
 
-/obj/item/radio/examine(mob/user, distance)
+/obj/item/radio/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (distance <= 1 || loc == user)
 		var/list/channel_descriptions = get_accessible_channel_descriptions(user)
 		if(length(channel_descriptions))
-			to_chat(user, "\The [src] has the following channel [length(channel_descriptions) == 1 ? "shortcut" : "shortcuts"] configured:")
+			. += "\The [src] has the following channel [length(channel_descriptions) == 1 ? "shortcut" : "shortcuts"] configured:"
 			for(var/line in channel_descriptions)
-				to_chat(user, line)
+				. += line
 		if(panel_open)
-			to_chat(user, SPAN_WARNING("A panel on the back of \the [src] is hanging open."))
+			. += SPAN_WARNING("A panel on the back of \the [src] is hanging open.")
 
 /obj/item/radio/attackby(obj/item/W, mob/user)
 	user.set_machine(src)

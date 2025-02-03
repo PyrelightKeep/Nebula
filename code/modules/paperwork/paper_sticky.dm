@@ -50,10 +50,10 @@
 		return .
 	return ..()
 
-/obj/item/sticky_pad/examine(mob/user)
+/obj/item/sticky_pad/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("It has [papers] sticky note\s left."))
-	to_chat(user, SPAN_NOTICE("You can click it on grab intent to pick it up."))
+	. += SPAN_NOTICE("It has [papers] sticky note\s left.")
+	. += SPAN_NOTICE("You can click it on grab intent to pick it up.")
 
 /obj/item/sticky_pad/dragged_onto(mob/user)
 	user.put_in_hands(top)

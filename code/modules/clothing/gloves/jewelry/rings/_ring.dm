@@ -71,7 +71,7 @@
 		if(istype(user))
 			var/mob/living/human/H = get_recursive_loc_of_type(/mob/living/human)
 			if(H.Adjacent(user))
-				user.examinate(src)
+				user.examine_verb(src)
 				return TOPIC_HANDLED
 	return ..()
 

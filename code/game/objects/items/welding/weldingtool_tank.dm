@@ -23,15 +23,15 @@
 /obj/item/chems/welder_tank/populate_reagents()
 	add_to_reagents(/decl/material/liquid/fuel, reagents.maximum_volume)
 
-/obj/item/chems/welder_tank/examine(mob/user, distance)
+/obj/item/chems/welder_tank/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1)
 		return
 	if(reagents.total_volume <= 0)
-		to_chat(user, "It is empty.")
+		. += SPAN_WARNING("It is empty.")
 	else
-		to_chat(user, "It contains [reagents.total_volume] units of liquid.")
-	to_chat(user, " It can hold up to [reagents.maximum_volume] units.")
+		. += "It contains [reagents.total_volume] units of liquid."
+	. += "It can hold up to [reagents.maximum_volume] units."
 
 /obj/item/chems/welder_tank/afterattack(obj/O, mob/user, proximity, click_parameters)
 	if (!ATOM_IS_OPEN_CONTAINER(src) || !proximity)

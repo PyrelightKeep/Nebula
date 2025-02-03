@@ -79,14 +79,14 @@
 		return
 	return ..()
 
-/mob/living/simple_animal/construct/show_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
+/mob/living/simple_animal/construct/get_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
 	. = ..(user)
 	var/current_max_health = get_max_health()
 	if(current_health < current_max_health)
 		if(current_health >= current_max_health/2)
-			to_chat(user, SPAN_WARNING("It looks slightly dented."))
+			. += SPAN_WARNING("It looks slightly dented.")
 		else
-			to_chat(user, SPAN_DANGER("It looks severely dented!"))
+			. += SPAN_DANGER("It looks severely dented!")
 
 /////////////////Juggernaut///////////////
 

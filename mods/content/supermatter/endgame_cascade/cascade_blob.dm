@@ -52,14 +52,14 @@
 /turf/unsimulated/wall/cascade/attack_robot(mob/user)
 	. = attack_hand_with_interaction_checks(user)
 	if(!.)
-		user.examinate(src)
+		user.examine_verb(src)
 
 // /vg/: Don't let ghosts fuck with this.
 /turf/unsimulated/wall/cascade/attack_ghost(mob/user)
-	user.examinate(src)
+	user.examine_verb(src)
 
 /turf/unsimulated/wall/cascade/attack_ai(mob/living/silicon/ai/user)
-	user.examinate(src)
+	user.examine_verb(src)
 
 /turf/unsimulated/wall/cascade/attack_hand(mob/user)
 	if(try_supermatter_consume(null, user, src, TRUE))

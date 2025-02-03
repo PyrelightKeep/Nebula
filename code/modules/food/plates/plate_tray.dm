@@ -122,16 +122,16 @@
 		I.appearance_flags |= RESET_COLOR
 		add_vis_contents(I)
 
-/obj/item/plate/tray/examine(mob/user) // So when you look at the tray you can see whats on it.
+/obj/item/plate/tray/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(.)
 		if(contents.len)
 			var/tray_examine = list()
 			for(var/obj/item/I in contents)
 				tray_examine += "\a [I.name]"
-			to_chat(user, "There is [english_list(tray_examine)] on the tray.")
+			. += "There is [english_list(tray_examine)] on the tray."
 		else
-			to_chat(user, "\The [src] is empty.")
+			. += "\The [src] is empty."
 
 /*
 -----------------------------------------------------------------

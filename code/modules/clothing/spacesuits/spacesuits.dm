@@ -70,10 +70,10 @@
 		else
 			to_chat(user, "<span class='notice'>Camera deactivated.</span>")
 
-/obj/item/clothing/head/helmet/space/examine(mob/user, distance)
+/obj/item/clothing/head/helmet/space/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1 && camera)
-		to_chat(user, "This helmet has a built-in camera. It's [!ispath(camera) && camera.status ? "" : "in"]active.")
+		. += "This helmet has a built-in camera. It's [!ispath(camera) && camera.status ? "" : "in"]active."
 
 /obj/item/clothing/head/helmet/space/proc/update_tint()
 	if(tinted)

@@ -320,14 +320,14 @@
 
 	return ..()
 
-/obj/machinery/atmospherics/unary/vent_pump/examine(mob/user, distance)
+/obj/machinery/atmospherics/unary/vent_pump/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W.")
+		. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W."
 	else
-		to_chat(user, "You are too far away to read the gauge.")
+		. += "You are too far away to read the gauge."
 	if(welded)
-		to_chat(user, "It seems welded shut.")
+		. += "It seems welded shut."
 
 /obj/machinery/atmospherics/unary/vent_pump/cannot_transition_to(state_path, mob/user)
 	if(state_path == /decl/machine_construction/default/deconstructed)

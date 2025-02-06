@@ -59,7 +59,7 @@
 				. += "irrecoverably damaged"
 			else
 				. += "grey and necrotic"
-		else if(_organ_damage >= max_damage && germ_level >= INFECTION_LEVEL_TWO)
+		else if((brute_dam + burn_dam) >= max_damage && germ_level >= INFECTION_LEVEL_TWO)
 			. += "likely beyond saving and decay has set in"
 
 	if(!is_usable() || is_dislocated()) // This one is special and has a different message for visible/pain modes.

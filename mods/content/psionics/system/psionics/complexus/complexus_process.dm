@@ -183,7 +183,7 @@
 
 			// Heal organ damage.
 			if(heal_internal)
-				for(var/obj/item/organ/organ in H.get_internal_organs())
+				for(var/obj/item/organ/internal/organ in H.get_internal_organs())
 
 					if(BP_IS_PROSTHETIC(organ) || BP_IS_CRYSTAL(organ))
 						continue

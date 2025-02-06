@@ -767,6 +767,10 @@ This function completely restores a damaged organ to perfect condition.
 		pain = 0
 	..()
 
+	//check if we've hit max_damage
+	if((brute_dam + burn_dam) >= max_damage)
+		die()
+
 //Updating germ levels. Handles organ germ levels and necrosis.
 /*
 The INFECTION_LEVEL values defined in setup.dm control the time it takes to reach the different
@@ -952,7 +956,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 		clamped |= wound.clamped
 		number_wounds += wound.amount
 
-	_organ_damage = brute_dam + burn_dam
 	update_damage_ratios()
 
 /obj/item/organ/external/proc/update_damage_ratios()
@@ -1548,7 +1551,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	else if(status & ORGAN_BROKEN)
 		. += max_delay * 3/8
 	else if(BP_IS_PROSTHETIC(src))
-		. += max_delay * CLAMP01(_organ_damage/max_damage)
+		. += max_delay * CLAMP01((brute_dam + burn_dam) / max_damage)
 
 /obj/item/organ/external/proc/is_robotic()
 	return bodytype.is_robotic
@@ -1563,7 +1566,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/die() //External organs dying on a dime causes some real issues in combat
 	if(!BP_IS_PROSTHETIC(src) && !BP_IS_CRYSTAL(src))
-		var/decay_rate = _organ_damage/(max_damage*2)
+		var/decay_rate = (brute_dam + burn_dam) / (max_damage*2)
 		germ_level += round(rand(decay_rate,decay_rate*1.5)) //So instead, we're going to say the damage is so severe its functions are slowly failing due to the extensive damage
 	else //TODO: more advanced system for synths
 		if(istype(src,/obj/item/organ/external/chest) || istype(src,/obj/item/organ/external/groin))
@@ -1639,3 +1642,5 @@ Note that amputating the affected organ does in fact remove the infection from t
 	_sprite_accessories = null
 	update_icon()
 
+/obj/item/organ/external/is_broken()
+	return (brute_dam + burn_dam) >= min_broken_damage || ..()

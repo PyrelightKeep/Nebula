@@ -135,13 +135,13 @@
 
 	return ..()
 
-/obj/item/flashlight/proc/inspect_vision(obj/item/organ/vision, mob/living/user)
+/obj/item/flashlight/proc/inspect_vision(obj/item/organ/internal/vision, mob/living/user)
 	var/mob/living/human/H = vision.owner
 
 	if(H == user)	//can't look into your own eyes buster
 		return
 
-	if(!BP_IS_PROSTHETIC(vision))
+	if(istype(vision) && !BP_IS_PROSTHETIC(vision))
 
 		if(vision.owner.stat == DEAD || H.is_blind())	//mob is dead or fully blind
 			to_chat(user, SPAN_WARNING("\The [H]'s pupils do not react to the light!"))

@@ -576,13 +576,13 @@
 	if(!charges)
 		return statuses
 	var/list/obj/item/organ/damaged = list()
-	for(var/obj/item/organ/organ in user.internal_organs)
+	for(var/obj/item/organ/internal/organ in user.internal_organs)
 		if(organ.get_organ_damage())
 			damaged += organ
 	if(damaged.len)
 		statuses += "you feel pain inside for a moment that passes quickly"
 		while(charges && damaged.len)
-			var/obj/item/organ/fix = pick(damaged)
+			var/obj/item/organ/internal/fix = pick(damaged)
 			fix.adjust_organ_damage(-(min(charges, 1)))
 			charges = max(charges - 1, 0)
 			if(fix.get_organ_damage() <= 0)

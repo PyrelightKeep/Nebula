@@ -369,7 +369,7 @@
 
 /decl/surgery_step/robotics/fix_organ_robotic/begin_step(mob/user, mob/living/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = GET_EXTERNAL_ORGAN(target, target_zone)
-	for(var/obj/item/organ/organ in affected.internal_organs)
+	for(var/obj/item/organ/internal/organ in affected.internal_organs)
 		if(organ.get_organ_damage() > 0)
 			if(BP_IS_PROSTHETIC(organ))
 				user.visible_message("[user] starts mending the damage to [target]'s [organ.name]'s mechanisms.", \
@@ -378,7 +378,7 @@
 
 /decl/surgery_step/robotics/fix_organ_robotic/end_step(mob/living/user, mob/living/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = GET_EXTERNAL_ORGAN(target, target_zone)
-	for(var/obj/item/organ/organ in affected.internal_organs)
+	for(var/obj/item/organ/internal/organ in affected.internal_organs)
 		if(organ.get_organ_damage() > 0)
 			if(BP_IS_PROSTHETIC(organ))
 				user.visible_message("<span class='notice'>[user] repairs [target]'s [organ.name] with [tool].</span>", \

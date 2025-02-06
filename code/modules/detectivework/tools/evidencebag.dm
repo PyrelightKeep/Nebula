@@ -95,4 +95,4 @@
 /obj/item/evidencebag/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
 	if (stored_item)
-		user.examine_verb(stored_item)
+		user.examined_by(user, distance, infix, suffix)

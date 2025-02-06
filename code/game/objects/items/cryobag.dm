@@ -110,7 +110,8 @@
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
 		to_chat(user, SPAN_INFO("You peer into \the [src]."))
 		for(var/mob/living/patient in contents)
-			. += patient.examined_by(user, distance, infix, suffix)
+			patient.examined_by(user, distance, infix, suffix)
+	return TRUE
 
 /obj/item/usedcryobag
 	name = "used stasis bag"

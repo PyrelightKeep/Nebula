@@ -50,10 +50,13 @@
 		return .
 	return ..()
 
-/obj/item/sticky_pad/examined_by(mob/user, distance, infix, suffix)
+/obj/item/sticky_pad/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	. += SPAN_NOTICE("It has [papers] sticky note\s left.")
-	. += SPAN_NOTICE("You can click it on grab intent to pick it up.")
+
+/obj/item/sticky_pad/get_examine_hints(mob/user, distance, infix, suffix)
+	. = ..()
+	LAZYADD(., SPAN_NOTICE("You can click it on grab intent to pick it up."))
 
 /obj/item/sticky_pad/dragged_onto(mob/user)
 	user.put_in_hands(top)

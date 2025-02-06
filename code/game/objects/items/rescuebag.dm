@@ -136,7 +136,9 @@
 	. += "The pressure meter on [src] shows '[atmo.return_pressure()] kPa'."
 
 /obj/structure/closet/body_bag/rescue/examined_by(mob/user, distance, infix, suffix)
+	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
-		. += SPAN_INFO("You peer into \the [src].")
-		for(var/mob/living/L in contents)
-			L.examined_by(user, distance, infix, suffix)
+		to_chat(user, SPAN_INFO("You peer into \the [src]."))
+		for(var/mob/living/patient in contents)
+			patient.examined_by(user, distance, infix, suffix)
+	return TRUE

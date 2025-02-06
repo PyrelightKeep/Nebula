@@ -157,7 +157,7 @@
 
 /atom/movable/openspace/mimic/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	. = associated_atom.examined_by(user, distance, infix, suffix)	// just pass all the args to the copied atom
+	return associated_atom.examined_by(user, distance, infix, suffix)
 
 /atom/movable/openspace/mimic/forceMove(turf/dest)
 	var/atom/old_loc = loc
@@ -207,7 +207,7 @@
 
 /atom/movable/openspace/turf_proxy/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	. = loc.examined_by(user, distance, infix, suffix)
+	return loc.examined_by(user, distance, infix, suffix)
 
 
 // -- TURF MIMIC --
@@ -236,4 +236,4 @@
 
 /atom/movable/openspace/turf_mimic/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	. = delegate.examined_by(user, distance, infix, suffix)
+	return delegate.examined_by(user, distance, infix, suffix)

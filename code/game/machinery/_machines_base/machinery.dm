@@ -403,7 +403,7 @@ Class Procs:
 /datum/proc/remove_visual(mob/M)
 	return
 
-/obj/machinery/proc/display_parts(mob/user, show_directly)
+/obj/machinery/proc/get_part_info_strings(mob/user)
 	. = list()
 	. += SPAN_NOTICE("The following parts are detected in \the [src]:")
 	for(var/obj/item/C in component_parts)
@@ -416,13 +416,11 @@ Class Procs:
 	for(var/path in uncreated_component_parts)
 		var/obj/item/thing = path
 		. += SPAN_NOTICE("	[initial(thing.name)] ([uncreated_component_parts[path] || 1])")
-	if(length(.) && show_directly)
-		to_chat(user, jointext(., "<br/>"))
 
 /obj/machinery/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(component_parts && (hasHUD(user, HUD_SCIENCE) || (construct_state && construct_state.visible_components)))
-		. += display_parts(user)
+		. += get_part_info_strings(user)
 	if(stat & NOSCREEN)
 		. += SPAN_WARNING("It is missing a screen, making it hard to interact with.")
 	else if(stat & NOINPUT)

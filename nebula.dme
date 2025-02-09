@@ -1590,6 +1590,7 @@
 #include "code\game\turfs\floors\floor_digging.dm"
 #include "code\game\turfs\floors\floor_height.dm"
 #include "code\game\turfs\floors\floor_icon.dm"
+#include "code\game\turfs\floors\floor_layers.dm"
 #include "code\game\turfs\floors\floor_materials.dm"
 #include "code\game\turfs\floors\subtypes\floor_carpet.dm"
 #include "code\game\turfs\floors\subtypes\floor_circuit.dm"

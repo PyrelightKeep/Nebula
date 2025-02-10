@@ -111,7 +111,7 @@ By design, d1 is the smallest direction and d2 is the highest
 // Ghost examining the cable -> tells him the power
 /obj/structure/cable/attack_ghost(mob/user)
 	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+		user.examine_verb(src)
 		// following code taken from attackby (multitool)
 		if(powernet && (powernet.avail > 0))
 			to_chat(user, SPAN_WARNING("[get_wattage()] in power network."))
@@ -614,18 +614,16 @@ By design, d1 is the smallest direction and d2 is the highest
 	else
 		w_class = ITEM_SIZE_SMALL
 
-/obj/item/stack/cable_coil/examine(mob/user, distance)
+/obj/item/stack/cable_coil/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1)
 		return
-
 	if(get_amount() == 1)
-		to_chat(user, "\A [singular_name] of cable.")
+		. += "\A [singular_name] of cable."
 	else if(get_amount() == 2)
-		to_chat(user, "Two [plural_name] of cable.")
+		. += "Two [plural_name] of cable."
 	else
-		to_chat(user, "A coil of power cable. There are [get_amount()] [plural_name] of cable in the coil.")
-
+		. += "A coil of power cable. There are [get_amount()] [plural_name] of cable in the coil."
 
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"

@@ -85,7 +85,7 @@ var/global/list/global/tank_gauge_cache = list()
 		. += gas_data.get_value() * air_contents.gas[gas] * GAS_WORTH_MULTIPLIER
 	. = max(1, round(.))
 
-/obj/item/tank/examine(mob/user)
+/obj/item/tank/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/descriptive
 	if(!air_contents)
@@ -107,13 +107,12 @@ var/global/list/global/tank_gauge_cache = list()
 				descriptive = "cold"
 			else
 				descriptive = "bitterly cold"
-	to_chat(user, "<span class='notice'>\The [src] feels [descriptive].</span>")
+	. += SPAN_NOTICE("\The [src] feels [descriptive].")
 
 	if(proxyassembly.assembly || wired)
-		to_chat(user, "<span class='warning'>It seems to have [wired? "some wires ": ""][wired && proxyassembly.assembly? "and ":""][proxyassembly.assembly ? "some sort of assembly ":""]attached to it.</span>")
+		. += SPAN_WARNING("It seems to have [wired? "some wires ": ""][wired && proxyassembly.assembly? "and ":""][proxyassembly.assembly ? "some sort of assembly ":""]attached to it.")
 	if(valve_welded)
-		to_chat(user, "<span class='warning'>\The [src] emergency relief valve has been welded shut!</span>")
-
+		. += SPAN_WARNING("\The [src] emergency relief valve has been welded shut!")
 
 /obj/item/tank/attackby(var/obj/item/W, var/mob/user)
 	if (istype(loc, /obj/item/assembly))

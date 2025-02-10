@@ -46,10 +46,10 @@
 
 	var/affected_by_emp_until = 0
 
-/obj/machinery/camera/examine(mob/user)
+/obj/machinery/camera/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(stat & BROKEN)
-		to_chat(user, SPAN_WARNING("It is completely demolished."))
+		. += SPAN_WARNING("It is completely demolished.")
 
 /obj/machinery/camera/apply_visual(mob/living/human/M)
 	if(!M.client || !istype(M))

@@ -183,18 +183,17 @@
 	. = ..(mapload, material_key, supplied_appearance, dna_species?.base_internal_prosthetics_model)
 	do_backup()
 
-/obj/item/organ/internal/voxstack/examine(mob/user)
+/obj/item/organ/internal/voxstack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-
 	var/user_vox = user.get_species_name() == SPECIES_VOX // TODO use bodytype flags instead so subspecies are included
 	if (istype(backup))
 		var/owner_viable = find_dead_player(stored_ckey, TRUE)
 		if (user_vox)
-			to_chat(user, SPAN_NOTICE("The integrity light on [src] blinks [owner_viable ? "rapidly. It can be implanted." : "slowly. It is dormant."]"))
+			. += SPAN_NOTICE("The integrity light on [src] blinks [owner_viable ? "rapidly. It can be implanted." : "slowly. It is dormant."]")
 		else
-			to_chat(user, SPAN_NOTICE("A light on [src] blinks [owner_viable ? "rapidly" : "slowly"]."))
+			. += SPAN_NOTICE("A light on [src] blinks [owner_viable ? "rapidly" : "slowly"].")
 	else if (user_vox)
-		to_chat(user, SPAN_NOTICE("The integrity light on [src] is off. It is empty and lifeless."))
+		. += SPAN_NOTICE("The integrity light on [src] is off. It is empty and lifeless.")
 
 /obj/item/organ/internal/voxstack/emp_act()
 	return

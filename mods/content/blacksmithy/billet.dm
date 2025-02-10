@@ -148,11 +148,11 @@
 		anvil.take_damage(rand(10, 20), BRUTE, silent = TRUE) // We are already going CLANG CLANG CLANG, don't need a THUNK
 	return TRUE
 
-/obj/item/billet/examine(mob/user, distance, infix, suffix)
+/obj/item/billet/get_examine_hints(mob/user, distance, infix, suffix)
 	. = ..()
 	for(var/decl/forging_step/next_step in current_forging_step?.steps)
 		if(user.skill_check(next_step.work_skill, next_step.skill_level))
-			to_chat(user, SPAN_INFO("It can be [next_step.work_verb] into \a [next_step.get_product_name(material)] on an anvil."))
+			LAZYADD(., SPAN_INFO("It can be [next_step.work_verb] into \a [next_step.get_product_name(material)] on an anvil."))
 
 /obj/item/billet/proc/standard_forging_checks(mob/user, obj/item/used_item, decl/forging_step/last_step, decl/forging_step/next_step, obj/structure/anvil/anvil)
 	// We cancelled or changed state, abort.

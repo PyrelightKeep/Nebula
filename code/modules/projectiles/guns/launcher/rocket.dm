@@ -17,10 +17,10 @@
 	var/max_rockets = 1
 	var/list/rockets = new/list()
 
-/obj/item/gun/launcher/rocket/examine(mob/user, distance)
+/obj/item/gun/launcher/rocket/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 2)
-		to_chat(user, "<span class='notice'>[rockets.len] / [max_rockets] rockets.</span>")
+		. += SPAN_NOTICE("[rockets.len]/[max_rockets] rocket\s.")
 
 /obj/item/gun/launcher/rocket/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/ammo_casing/rocket))

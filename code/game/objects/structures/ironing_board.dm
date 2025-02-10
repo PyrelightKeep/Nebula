@@ -42,10 +42,10 @@
 
 	. = ..()
 
-/obj/structure/bed/roller/ironingboard/examine(mob/user)
+/obj/structure/bed/roller/ironingboard/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(cloth)
-		to_chat(user, "<span class='notice'>\The [html_icon(cloth)] [cloth] lies on it.</span>")
+		. += SPAN_NOTICE("\The [html_icon(cloth)] [cloth] lies on it.")
 
 /obj/structure/bed/roller/ironingboard/on_update_icon()
 	if(density)

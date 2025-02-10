@@ -11,9 +11,9 @@
 	presentation_flags = PRESENTATION_FLAG_NAME
 	var/lid_color = COLOR_BEASTY_BROWN
 
-/obj/item/chems/glass/beaker/examine(mob/user, distance)
+/obj/item/chems/glass/beaker/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, " It can hold up to [volume] units.")
+	. += "It can hold up to [volume] units."
 
 /obj/item/chems/glass/beaker/on_picked_up(mob/user)
 	. = ..()

@@ -39,10 +39,10 @@
 	color = bcolor
 	desc = "A strange collection of symbols drawn in [blood]."
 
-/obj/effect/rune/examine(mob/user)
+/obj/effect/rune/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(iscultist(user))
-		to_chat(user, "This is \a [cultname] rune.")
+		. += "This is \a [cultname] rune."
 
 /obj/effect/rune/attackby(var/obj/item/used_item, var/mob/user)
 	if(istype(used_item, /obj/item/book/tome) && iscultist(user))
@@ -177,10 +177,10 @@
 			A.forceMove(T)
 	return ..()
 
-/obj/effect/rune/teleport/examine(mob/user)
+/obj/effect/rune/teleport/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(iscultist(user))
-		to_chat(user, "Its name is [destination].")
+		. += "Its name is [destination]."
 
 /obj/effect/rune/teleport/cast(var/mob/living/user)
 	if(user.loc == src)
@@ -297,16 +297,16 @@
 		rune = null
 	return ..()
 
-/obj/effect/cultwall/examine(mob/user)
+/obj/effect/cultwall/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(iscultist(user))
 		var/current_max_health = get_max_health()
 		if(current_health == current_max_health)
-			to_chat(user, SPAN_NOTICE("It is fully intact."))
+			. += SPAN_NOTICE("It is fully intact.")
 		else if(current_health > current_max_health * 0.5)
-			to_chat(user, SPAN_WARNING("It is damaged."))
+			. += SPAN_WARNING("It is damaged.")
 		else
-			to_chat(user, SPAN_DANGER("It is about to dissipate."))
+			. += SPAN_DANGER("It is about to dissipate.")
 
 /obj/effect/cultwall/attack_hand(var/mob/user)
 	SHOULD_CALL_PARENT(FALSE)

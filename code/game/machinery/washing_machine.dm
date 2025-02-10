@@ -62,9 +62,9 @@
 	create_reagents(100)
 	. = ..()
 
-/obj/machinery/washing_machine/examine(mob/user)
+/obj/machinery/washing_machine/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("The detergent port is [atom_flags & ATOM_FLAG_OPEN_CONTAINER ? "open" : "closed"]."))
+	. += SPAN_NOTICE("The detergent port is [atom_flags & ATOM_FLAG_OPEN_CONTAINER ? "open" : "closed"].")
 
 /obj/machinery/washing_machine/proc/wash()
 	if(operable())

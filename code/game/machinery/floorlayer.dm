@@ -67,13 +67,12 @@
 		return TRUE
 	return ..()
 
-/obj/machinery/floorlayer/examine(mob/user)
+/obj/machinery/floorlayer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/dismantle = mode["dismantle"]
-	var/laying = mode["laying"]
-	var/collect = mode["collect"]
-	var/message = "<span class='notice'>\The [src] [!T?"don't ":""]has [!T?"":"[T.get_amount()] [T] "]tile\s, dismantle is [dismantle?"on":"off"], laying is [laying?"on":"off"], collect is [collect?"on":"off"].</span>"
-	to_chat(user, message)
+	var/laying    = mode["laying"]
+	var/collect   = mode["collect"]
+	. += SPAN_NOTICE("\The [src] [!T?"don't ":""]has [!T?"":"[T.get_amount()] [T] "]tile\s, dismantle is [dismantle?"on":"off"], laying is [laying?"on":"off"], collect is [collect?"on":"off"].")
 
 /obj/machinery/floorlayer/proc/reset()
 	on = 0

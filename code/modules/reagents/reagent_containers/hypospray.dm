@@ -203,12 +203,12 @@
 	if(reagents?.total_volume <= 0)
 		icon_state = "[icon_state]_used"
 
-/obj/item/chems/hypospray/autoinjector/examine(mob/user)
+/obj/item/chems/hypospray/autoinjector/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
 	if(reagents?.total_volume)
-		to_chat(user, SPAN_NOTICE("It is currently loaded."))
+		. += SPAN_NOTICE("It is currently loaded.")
 	else
-		to_chat(user, SPAN_NOTICE("It is spent."))
+		. += SPAN_NOTICE("It is spent.")
 
 ////////////////////////////////////////////////////////////////////////////////
 // Autoinjector - Stabilizer

@@ -377,8 +377,8 @@
 /mob/proc/get_additional_stripping_options()
 	return
 
-//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
-/mob/verb/examinate(atom/A as mob|obj|turf in view())
+//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716
+/mob/verb/examine_verb(atom/A as mob|obj|turf in view())
 	set name = "Examine"
 	set category = "IC"
 
@@ -418,8 +418,8 @@
 
 	RAISE_EVENT(/decl/observ/mob_examining, src, A)
 
-	if(!A.examine(src, distance))
-		PRINT_STACK_TRACE("Improper /examine() override: [log_info_line(A)]")
+	if(!A.examined_by(src, distance))
+		PRINT_STACK_TRACE("Improper /examined_by() override: [log_info_line(A)]")
 
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"

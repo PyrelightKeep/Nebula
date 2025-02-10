@@ -43,13 +43,13 @@
 		overlay.add_overlay(overlay_image(icon, "[overlay.icon_state]-padding", padding_extension.get_padding_color(material_alteration & MAT_FLAG_ALTERATION_COLOR), RESET_COLOR | RESET_ALPHA))
 	. = ..()
 
-/obj/item/crutch/examine(mob/user, distance, infix, suffix)
+/obj/item/crutch/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/datum/extension/padding/padding_extension = get_extension(src, __IMPLIED_TYPE__)
 	var/decl/material/padding_material = padding_extension?.get_padding_material()
 	if(padding_material)
 		var/padding_paint_color = padding_extension.get_padding_color(FALSE) // do not include material color
-		to_chat(user, "It has been padded with [padding_paint_color ? "<font color='[padding_paint_color]'>[padding_material.paint_verb]</font> " : null][padding_material.use_name].")
+		. += "It has been padded with [padding_paint_color ? "<font color='[padding_paint_color]'>[padding_material.paint_verb]</font> " : null][padding_material.use_name]."
 
 /obj/item/crutch/aluminum
 	material = /decl/material/solid/metal/aluminium

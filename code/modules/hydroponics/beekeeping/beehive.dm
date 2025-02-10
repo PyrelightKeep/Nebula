@@ -40,10 +40,10 @@
 			if(81 to 100)
 				overlays += "bees5"
 
-/obj/machinery/beehive/examine(mob/user)
+/obj/machinery/beehive/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(!closed)
-		to_chat(user, "The lid is open.")
+		. += "The lid is open."
 
 /obj/machinery/beehive/attackby(var/obj/item/I, var/mob/user)
 	if(IS_CROWBAR(I))

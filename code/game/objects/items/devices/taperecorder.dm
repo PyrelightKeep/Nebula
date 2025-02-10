@@ -90,10 +90,10 @@
 	mytape = null
 	update_icon()
 
-/obj/item/taperecorder/examine(mob/user, distance)
+/obj/item/taperecorder/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1 && maintenance)
-		to_chat(user, "<span class='notice'>The wires are exposed.</span>")
+		. += SPAN_NOTICE("The wires are exposed.")
 
 /obj/item/taperecorder/hear_talk(mob/living/M, msg, var/verb="says", decl/language/speaking=null)
 	if(mytape && recording)
@@ -532,9 +532,9 @@
 /obj/item/magnetic_tape/loose/get_loose_tape()
 	return
 
-/obj/item/magnetic_tape/loose/examine(mob/user, distance)
+/obj/item/magnetic_tape/loose/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "<span class='notice'>It looks long enough to hold [max_capacity] seconds worth of recording.</span>")
+		. += SPAN_NOTICE("It looks long enough to hold [max_capacity] seconds worth of recording.")
 		if(doctored && user.skill_check(SKILL_FORENSICS, SKILL_PROF))
-			to_chat(user, "<span class='notice'>It has been tampered with...</span>")
+			. += SPAN_WARNING("It has been tampered with...")

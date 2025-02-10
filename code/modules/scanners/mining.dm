@@ -19,9 +19,9 @@
 
 	scan_sound = 'sound/effects/ping.ogg'
 
-/obj/item/scanner/mining/examine(mob/user)
+/obj/item/scanner/mining/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user,"A tiny indicator on \the [src] shows it holds [survey_data] good explorer point\s.")
+	. += "A tiny indicator on \the [src] shows it holds [survey_data] good explorer point\s."
 
 /obj/item/scanner/mining/is_valid_scan_target(turf/T)
 	return istype(T)

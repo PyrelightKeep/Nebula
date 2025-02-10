@@ -129,13 +129,13 @@
 	if (href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(I)
-			src.examinate(I)
+			src.examine_verb(I)
 			return TOPIC_HANDLED
 
 	if (href_list["lookmob"])
 		var/mob/M = locate(href_list["lookmob"])
 		if(M)
-			src.examinate(M)
+			src.examine_verb(M)
 			return TOPIC_HANDLED
 
 	return ..()

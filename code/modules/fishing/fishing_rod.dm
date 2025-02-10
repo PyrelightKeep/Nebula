@@ -144,13 +144,13 @@
 		line = null
 	return ..()
 
-/obj/item/fishing_rod/examine(mob/user, distance)
+/obj/item/fishing_rod/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && distance <= 1)
 		if(line)
-			to_chat(user, "\The [src] has been strung with some [get_line_damage()] [line.name].")
+			. += "\The [src] has been strung with some [get_line_damage()] [line.name]."
 		if(bait)
-			to_chat(user, "\The [src] has been baited with \a [bait].")
+			. += "\The [src] has been baited with \a [bait]."
 
 /obj/item/fishing_rod/apply_additional_mob_overlays(mob/living/user_mob, bodytype, image/overlay, slot, bodypart, use_fallback_if_icon_missing = TRUE)
 	if(overlay)

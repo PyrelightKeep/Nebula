@@ -109,9 +109,9 @@
 	if(reagents.total_volume < reagents.maximum_volume)
 		add_to_reagents(refill_reagent, refill_rate)
 
-/obj/item/mop/advanced/examine(mob/user)
+/obj/item/mop/advanced/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, SPAN_NOTICE("The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>."))
+	. += SPAN_NOTICE("The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.")
 
 /obj/item/mop/advanced/Destroy()
 	STOP_PROCESSING(SSobj, src)

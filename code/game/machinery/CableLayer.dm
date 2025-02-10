@@ -51,9 +51,9 @@
 		return TRUE
 	return ..()
 
-/obj/machinery/cablelayer/examine(mob/user)
+/obj/machinery/cablelayer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "\The [src]'s cable reel has [cable.amount] length\s left.")
+	. += "\The [src]'s cable reel has [cable.amount] length\s left."
 
 /obj/machinery/cablelayer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)

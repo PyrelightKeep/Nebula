@@ -54,13 +54,13 @@
 	unload_tank(user)
 	return TRUE
 
-/obj/item/gun/launcher/sealant/examine(mob/user, distance)
+/obj/item/gun/launcher/sealant/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(loc == user)
 		if(loaded_tank)
-			to_chat(user, SPAN_NOTICE("The loaded tank has about [loaded_tank.foam_charges] liter\s of sealant left."))
+			. += SPAN_NOTICE("The loaded tank has about [loaded_tank.foam_charges] liter\s of sealant left.")
 		else
-			to_chat(user, SPAN_WARNING("\The [src] has no sealant loaded."))
+			. += SPAN_WARNING("\The [src] has no sealant loaded.")
 
 /obj/item/gun/launcher/sealant/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/sealant_tank) && user.try_unequip(W, src))

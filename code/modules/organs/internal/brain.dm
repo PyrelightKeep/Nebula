@@ -58,16 +58,19 @@
 		QDEL_NULL(_brainmob)
 	. = ..()
 
-/obj/item/organ/internal/brain/examine(mob/user, var/distance)
+/obj/item/organ/internal/brain/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		show_brain_status(user)
+		var/brain_status = get_brain_status(user)
+		if(brain_status)
+			. += brain_status
 
-/obj/item/organ/internal/brain/proc/show_brain_status(mob/user)
+/obj/item/organ/internal/brain/proc/get_brain_status(mob/user)
+	. = list()
 	if(istype(_brainmob) && _brainmob?.client) //if thar be a brain inside... the brain.
-		to_chat(user, "You can feel the small spark of life still left in this one.")
+		. += "You can feel the small spark of life still left in this one."
 	else
-		to_chat(user, "This one seems particularly lifeless. Perhaps it will regain some of its luster later.")
+		. += "This one seems particularly lifeless. Perhaps it will regain some of its luster later."
 
 /obj/item/organ/internal/brain/do_install(mob/living/target, affected, in_place, update_icon, detached)
 	if(!(. = ..()))

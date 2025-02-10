@@ -140,10 +140,10 @@
 
 	return INITIALIZE_HINT_NORMAL
 
-/turf/examine(mob/user, distance, infix, suffix)
+/turf/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && weather)
-		weather.examine(user)
+		weather.examined_by(user, distance, infix, suffix)
 
 /turf/Destroy()
 

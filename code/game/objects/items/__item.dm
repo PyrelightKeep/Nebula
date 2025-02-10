@@ -324,7 +324,7 @@
 		return FALSE
 	return wielder.can_twohand_item(src)
 
-/obj/item/examine(mob/user, distance)
+/obj/item/get_examine_strings(mob/user, distance, infix, suffix)
 
 	var/list/desc_comp = list()
 	desc_comp += "It is a [w_class_description()] item."
@@ -403,8 +403,7 @@
 		desc_comp += "It is covered in [coating.get_coated_name()]." // It is covered in dilute oily slimy bloody mud.
 
 	if(check_rights(R_DEBUG, 0, user))
-		to_chat(user, "\The [src] has a temperature of [temperature]K.")
-
+		desc_comp += "\The [src] has a temperature of [temperature]K."
 
 	return ..(user, distance, "", jointext(desc_comp, "<br/>"))
 

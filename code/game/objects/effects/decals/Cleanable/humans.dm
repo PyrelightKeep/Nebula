@@ -202,11 +202,11 @@
 	else
 		icon_state = "writing1"
 
-/obj/effect/decal/cleanable/blood/writing/examine(mob/user)
+/obj/effect/decal/cleanable/blood/writing/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/processed_message = user.handle_reading_literacy(user, message)
 	if(processed_message)
-		to_chat(user, "It reads: <font color='[basecolor]'>\"[message]\"</font>")
+		. += "It reads: <font color='[basecolor]'>\"[message]\"</font>"
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"

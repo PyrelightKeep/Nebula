@@ -59,32 +59,28 @@
 	if(. && unwrenched)
 		leak()
 
-/obj/structure/reagent_dispensers/examine(mob/user, distance)
+/obj/structure/reagent_dispensers/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(unwrenched)
-		to_chat(user, SPAN_WARNING("Someone has wrenched open its tap - it's spilling everywhere!"))
-
+		. += SPAN_WARNING("Someone has wrenched open its tap - it's spilling everywhere!")
 	if(distance <= 2)
-
 		if(wrenchable)
 			if(ATOM_IS_OPEN_CONTAINER(src))
-				to_chat(user, "Its refilling cap is open.")
+				. += "Its refilling cap is open."
 			else
-				to_chat(user, "Its refilling cap is closed.")
-
-		to_chat(user, SPAN_NOTICE("It contains:"))
+				. += "Its refilling cap is closed."
+		. += SPAN_NOTICE("It contains:")
 		if(LAZYLEN(reagents?.reagent_volumes))
 			for(var/rtype in reagents.liquid_volumes)
 				var/decl/material/R = GET_DECL(rtype)
-				to_chat(user, SPAN_NOTICE("[LIQUID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_LIQUID)]."))
+				. += SPAN_NOTICE("[LIQUID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_LIQUID)].")
 			for(var/rtype in reagents.solid_volumes)
 				var/decl/material/R = GET_DECL(rtype)
-				to_chat(user, SPAN_NOTICE("[SOLID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_SOLID)]."))
+				. += SPAN_NOTICE("[SOLID_VOLUME(reagents, rtype)] unit\s of [R.get_reagent_name(reagents, MAT_PHASE_SOLID)].")
 		else
-			to_chat(user, SPAN_NOTICE("Nothing."))
-
+			. += SPAN_NOTICE("Nothing.")
 		if(reagents?.maximum_volume)
-			to_chat(user, "It may contain up to [reagents.maximum_volume] unit\s of fluid.")
+			. += "It may contain up to [reagents.maximum_volume] unit\s of fluid."
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user)
 
@@ -170,10 +166,10 @@
 /obj/structure/reagent_dispensers/fueltank/populate_reagents()
 	add_to_reagents(/decl/material/liquid/fuel, reagents.maximum_volume)
 
-/obj/structure/reagent_dispensers/fueltank/examine(mob/user, distance)
+/obj/structure/reagent_dispensers/fueltank/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(rig && distance < 2)
-		to_chat(user, SPAN_WARNING("There is some kind of device rigged to the tank."))
+		. += SPAN_WARNING("There is some kind of device rigged to the tank.")
 
 /obj/structure/reagent_dispensers/fueltank/attack_hand(var/mob/user)
 	if (!rig || !user.check_dexterity(DEXTERITY_HOLD_ITEM, TRUE))

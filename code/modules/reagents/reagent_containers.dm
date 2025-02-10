@@ -137,15 +137,15 @@
 	if(user.get_target_zone() != BP_MOUTH) //in case it is ever used as a surgery tool
 		return ..()
 
-/obj/item/chems/examine(mob/user)
+/obj/item/chems/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(!reagents)
 		return
 	if(hasHUD(user, HUD_SCIENCE))
 		var/prec = user.skill_fail_chance(SKILL_CHEMISTRY, 10)
-		to_chat(user, SPAN_NOTICE("\The [src] contains: [reagents.get_reagents(precision = prec)]."))
+		. += SPAN_NOTICE("\The [src] contains: [reagents.get_reagents(precision = prec)].")
 	else if((loc == user) && user.skill_check(SKILL_CHEMISTRY, SKILL_EXPERT))
-		to_chat(user, SPAN_NOTICE("Using your chemistry knowledge, you identify the following reagents in \the [src]: [reagents.get_reagents(!user.skill_check(SKILL_CHEMISTRY, SKILL_PROF), 5)]."))
+		. += SPAN_NOTICE("Using your chemistry knowledge, you identify the following reagents in \the [src]: [reagents.get_reagents(!user.skill_check(SKILL_CHEMISTRY, SKILL_PROF), 5)].")
 
 /obj/item/chems/shatter(consumed)
 	//Skip splashing if we are in nullspace, since splash isn't null guarded

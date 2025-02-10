@@ -62,10 +62,12 @@
 /obj/item/weldingtool/isflamesource()
 	. = isOn()
 
-/obj/item/weldingtool/examine(mob/user, distance)
+/obj/item/weldingtool/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	if (tank)
-		to_chat(user, (distance <= 1 ? "It has [round(get_fuel(), 0.1)] [welding_resource] remaining. " : "") + "[tank] is attached.")
+	if(distance <= 1)
+		. += "It has [round(get_fuel(), 0.1)] [welding_resource] remaining."
+		if (tank)
+			. += "\The [tank] is attached."
 
 /obj/item/weldingtool/proc/insert_tank(var/obj/item/chems/welder_tank/T, var/mob/user, var/no_updates = FALSE, var/quiet = FALSE)
 	if(tank && !ispath(tank))

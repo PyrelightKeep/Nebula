@@ -137,9 +137,9 @@
 	color = COLOR_DARK_BROWN
 	var/data = 0
 
-/obj/item/disk/survey/examine(mob/user)
+/obj/item/disk/survey/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "A tiny indicator on \the [src] shows it holds [data] good explorer point\s.")
+	. += "A tiny indicator on \the [src] shows it holds [data] good explorer point\s."
 
 /obj/item/disk/survey/get_base_value()
 	. = holographic ? 0 : (sqrt(data) * 5)

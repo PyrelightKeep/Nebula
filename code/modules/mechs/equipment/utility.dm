@@ -355,9 +355,9 @@
 		if (10 to 50) . = "is very worn"
 		else . = "looks close to breaking"
 
-/obj/item/drill_head/examine(mob/user, distance)
+/obj/item/drill_head/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It [get_visible_durability()].")
+	. += "It [get_visible_durability()]."
 
 /obj/item/drill_head/steel
 	material = /decl/material/solid/metal/steel
@@ -404,14 +404,14 @@
 		return "Integrity: [drill_head.get_percent_durability()]%"
 	return
 
-/obj/item/mech_equipment/drill/examine(mob/user, distance)
+/obj/item/mech_equipment/drill/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (drill_head)
-		to_chat(user, "It has a[distance > 3 ? "" : " [drill_head.material.name]"] drill head installed.")
+		. += "It has a[distance > 3 ? "" : " [drill_head.material.name]"] drill head installed."
 		if (distance < 4)
-			to_chat(user, "The drill head [drill_head.get_visible_durability()].")
+			. += "The drill head [drill_head.get_visible_durability()]."
 	else
-		to_chat(user, "It does not have a drill head installed.")
+		. += "It does not have a drill head installed."
 
 /obj/item/mech_equipment/drill/proc/attach_head(obj/item/drill_head/DH, mob/user)
 	if (user && !user.try_unequip(DH))
@@ -742,10 +742,10 @@
 	var/datum/extension/network_device/camera/mech/D = get_extension(src, /datum/extension/network_device)
 	D.display_name = "unregistered exocamera"
 
-/obj/item/mech_equipment/camera/examine(mob/user)
+/obj/item/mech_equipment/camera/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/datum/extension/network_device/camera/mech/D = get_extension(src, /datum/extension/network_device)
-	to_chat(user, "Channel: [english_list(D.channels)]; Feed is currently: [active ? "Online" : "Offline"].")
+	. += "Channel: [english_list(D.channels)]; Feed is currently: [active ? "Online" : "Offline"]."
 
 /obj/item/mech_equipment/camera/proc/activate()
 	passive_power_use = 0.2 KILOWATTS

@@ -103,15 +103,15 @@
 		return TRUE
 	return ..()
 
-/obj/item/paper_bin/examine(mob/user, distance)
+/obj/item/paper_bin/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1)
 		return
 	if(amount)
-		to_chat(user, SPAN_NOTICE("There [(amount > 1 ? "are [amount] papers" : "is one paper")] in the bin."))
+		. += SPAN_NOTICE("There [(amount > 1 ? "are [amount] papers" : "is one paper")] in the bin.")
 	else
-		to_chat(user, SPAN_NOTICE("There are no papers in the bin."))
-	to_chat(user, SPAN_NOTICE("It can contain at most [max_amount] papers."))
+		. += SPAN_NOTICE("There are no papers in the bin.")
+	. += SPAN_NOTICE("It can contain at most [max_amount] papers.")
 
 /obj/item/paper_bin/on_update_icon()
 	. = ..()

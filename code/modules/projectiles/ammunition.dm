@@ -127,12 +127,12 @@
 	if(!BB)
 		SetName("spent [name]")
 
-/obj/item/ammo_casing/examine(mob/user)
+/obj/item/ammo_casing/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(caliber)
-		to_chat(user, "Its caliber is [caliber].")
+		. += "Its caliber is [caliber]."
 	if (!BB)
-		to_chat(user, "This one is spent.")
+		. += "This one is spent."
 
 //An item that holds casings and can be used to put them inside guns
 /obj/item/ammo_magazine
@@ -258,10 +258,10 @@
 				break
 		icon_state = (new_state)? new_state : initial(icon_state)
 
-/obj/item/ammo_magazine/examine(mob/user)
+/obj/item/ammo_magazine/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/self_ammo_count = get_stored_ammo_count()
-	to_chat(user, "There [(self_ammo_count == 1)? "is" : "are"] [self_ammo_count] round\s left!")
+	. += "There [(self_ammo_count == 1)? "is" : "are"] [self_ammo_count] round\s left!"
 
 //magazine icon state caching
 var/global/list/magazine_icondata_keys = list()

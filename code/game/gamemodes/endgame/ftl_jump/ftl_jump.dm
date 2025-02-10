@@ -114,9 +114,9 @@
 /obj/effect/bluegoast/proc/mirror_dir(var/atom/movable/am, var/old_dir, var/new_dir)
 	set_dir(global.reverse_dir[new_dir])
 
-/obj/effect/bluegoast/examine()
+/obj/effect/bluegoast/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
-	return daddy.examine(arglist(args))
+	return daddy.examined_by(user, distance, infix, suffix)
 
 /obj/effect/bluegoast/proc/blueswitch()
 	var/mob/living/human/H

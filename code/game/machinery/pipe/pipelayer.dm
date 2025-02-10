@@ -79,9 +79,9 @@
 		return TRUE
 	return ..()
 
-/obj/machinery/pipelayer/examine(mob/user)
+/obj/machinery/pipelayer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "\The [src] has [metal] sheet\s, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated.")
+	. += "\The [src] has [metal] sheet\s, is set to produce [P_type_t], and auto-dismantling is [!a_dis?"de":""]activated."
 
 /obj/machinery/pipelayer/proc/reset()
 	on=0

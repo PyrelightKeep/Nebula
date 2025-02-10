@@ -93,10 +93,10 @@
 		set_icon_state(poster_design.icon_state)
 	update_icon()
 
-/obj/structure/sign/poster/examine(mob/user, distance, infix, suffix)
+/obj/structure/sign/poster/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "The bottom right of \the [src] reads: '[poster_design.serial_number]'.")
+		. += "The bottom right of \the [src] reads: '[poster_design.serial_number]'."
 
 /obj/structure/sign/poster/proc/set_design(var/decl/poster_design/_design_path)
 	if(ispath(_design_path, /decl))

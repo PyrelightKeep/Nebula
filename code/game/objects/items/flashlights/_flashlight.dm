@@ -73,10 +73,10 @@
 	else
 		set_light(0)
 
-/obj/item/flashlight/examine(mob/user, distance)
+/obj/item/flashlight/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(light_wedge && isturf(loc))
-		to_chat(user, FONT_SMALL(SPAN_NOTICE("\The [src] is facing [dir2text(dir)].")))
+		. += FONT_SMALL(SPAN_NOTICE("\The [src] is facing [dir2text(dir)]."))
 
 /obj/item/flashlight/dropped(mob/user)
 	. = ..()

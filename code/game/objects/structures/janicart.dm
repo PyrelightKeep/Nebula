@@ -18,10 +18,10 @@
 	. = ..()
 	create_reagents(180)
 
-/obj/structure/janitorialcart/examine(mob/user, distance)
+/obj/structure/janitorialcart/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "[src] [html_icon(src)] contains [reagents.total_volume] unit\s of liquid!")
+		. += "\The [src] [html_icon(src)] contains [reagents.total_volume] unit\s of liquid!"
 
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
@@ -210,12 +210,12 @@
 	. = ..()
 	create_reagents(100)
 
-/obj/structure/janicart/examine(mob/user, distance)
+/obj/structure/janicart/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "[html_icon(src)] This [callme] contains [reagents.total_volume] unit\s of water!")
+		. += "[html_icon(src)] This [callme] contains [reagents.total_volume] unit\s of water!"
 		if(mybag)
-			to_chat(user, "\A [mybag] is hanging on the [callme].")
+			. += "\A [mybag] is hanging on the [callme]."
 
 /obj/structure/janicart/attackby(obj/item/I, mob/user)
 

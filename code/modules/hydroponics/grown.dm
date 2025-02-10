@@ -15,13 +15,13 @@
 	var/seeds_extracted = FALSE
 	var/datum/seed/seed
 
-/obj/item/food/grown/examine(mob/user, distance)
+/obj/item/food/grown/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && distance <= 1 && seed && user.skill_check(work_skill, SKILL_BASIC))
 		if(seed.grown_is_seed)
-			to_chat(user, SPAN_NOTICE("\The [src] can be planted directly, without having to extract any seeds."))
+			. += SPAN_NOTICE("\The [src] can be planted directly, without having to extract any seeds.")
 		else if(!seeds_extracted && seed.min_seed_extracted)
-			to_chat(user, SPAN_NOTICE("With a knife, you could extract at least [seed.min_seed_extracted] seed\s."))
+			. += SPAN_NOTICE("With a knife, you could extract at least [seed.min_seed_extracted] seed\s.")
 
 /obj/item/food/grown/update_name()
 	if(!seed)

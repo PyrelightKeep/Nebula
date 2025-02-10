@@ -281,13 +281,17 @@
 			return TRUE
 	return FALSE
 
-/obj/item/organ/examine(mob/user)
-	. = ..(user)
-	show_decay_status(user)
+/obj/item/organ/get_examine_strings(mob/user, distance, infix, suffix)
+	. = ..()
+	var/decay_status = get_decay_status(user)
+	if(decay_status)
+		. += decay_status
 
-/obj/item/organ/proc/show_decay_status(mob/user)
+/obj/item/organ/proc/get_decay_status(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
+	. = list()
 	if(status & ORGAN_DEAD)
-		to_chat(user, "<span class='notice'>The decay has set into \the [src].</span>")
+		. += SPAN_WARNING("Decay has set into \the [src].")
 
 // TODO: bodytemp rework that handles this with better respect to
 // individual organs vs. expected body temperature for other organs.

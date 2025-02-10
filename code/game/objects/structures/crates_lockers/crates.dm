@@ -22,7 +22,7 @@
 			for(var/obj/item/assembly/A in src)
 				A.activate()
 
-/obj/structure/closet/crate/examine(mob/user)
+/obj/structure/closet/crate/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(rigged && opened)
 		var/list/devices = list()
@@ -30,7 +30,7 @@
 			devices += H
 		for(var/obj/item/assembly/A in src)
 			devices += A
-		to_chat(user,"There are some wires attached to the lid, connected to [english_list(devices)].")
+		. += "There are some wires attached to the lid, connected to [english_list(devices)]."
 
 /obj/structure/closet/crate/attackby(obj/item/W, mob/user)
 	if(opened)

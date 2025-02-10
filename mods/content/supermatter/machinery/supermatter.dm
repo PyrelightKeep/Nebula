@@ -354,7 +354,7 @@ var/global/list/supermatter_delam_accent_sounds = list(
 		explosion(TS, explosion_power/2, explosion_power, explosion_power * 2, explosion_power * 4, 1)
 		qdel(src)
 
-/obj/machinery/power/supermatter/examine(mob/user)
+/obj/machinery/power/supermatter/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user.skill_check(SKILL_ENGINES, SKILL_EXPERT))
 		var/integrity_message
@@ -365,12 +365,12 @@ var/global/list/supermatter_delam_accent_sounds = list(
 				integrity_message = "It appears to be losing cohesion!"
 			else
 				integrity_message = "At a glance, it seems to be in sound shape."
-		to_chat(user, integrity_message)
+		. += integrity_message
 		if(user.skill_check(SKILL_ENGINES, SKILL_PROF))
 			var/display_power = power
 			display_power *= (0.85 + 0.3 * rand())
 			display_power = round(display_power, 20)
-			to_chat(user, "Eyeballing it, you place the relative EER at around [display_power] MeV/cm3.")
+			. += "Eyeballing it, you place the relative EER at around [display_power] MeV/cm3."
 
 //Changes color and luminosity of the light to these values if they were not already set
 /obj/machinery/power/supermatter/proc/shift_light(var/lum, var/clr)

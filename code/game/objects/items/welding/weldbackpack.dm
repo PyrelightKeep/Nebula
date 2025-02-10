@@ -95,7 +95,11 @@
 	if(IS_WELDER(W))
 		var/obj/item/weldingtool/T = W
 		if(T.welding)
-			user.visible_message(SPAN_DANGER("\The [user] singes \his [src] with \his [W]!"), SPAN_DANGER("You singed your [src] with your [W]!"))
+			var/decl/pronouns/pronouns = user.get_pronouns()
+			user.visible_message(
+				SPAN_DANGER("\The [user] singes [pronouns.his] [name] with [pronouns.his] [W.name]!"),
+				SPAN_DANGER("You singed your [name] with your [W.name]!")
+			)
 
 		if(W == welder)
 			return reattach_gun(user)

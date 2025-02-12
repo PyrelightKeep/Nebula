@@ -38,7 +38,7 @@ exactly 18 "<< uses" '(?<![<\\])<<(?!<)' -P
 exactly 1 "direct_output uses" '\bdirect_output\('
 exactly 3 ">> uses" '(?<![>\\])>>(?!>)' -P
 exactly 0 "incorrect indentations" '^( {4,})' -P
-exactly 23 "text2path uses" 'text2path'
+exactly 22 "text2path uses" 'text2path'
 exactly 4 "update_icon() overrides" '\/update_icon\(' -P
 exactly 0 "goto uses" '\bgoto\b'
 exactly 9 "atom/New uses" '^/(obj|atom|area|mob|turf).*/New\('

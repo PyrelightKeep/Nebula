@@ -27,6 +27,9 @@
 	/// Whether or not we should try to transfer a brainmob when removed or replaced in a mob.
 	var/transfer_brainmob_with_organ = FALSE
 
+	// Current damage to the organ
+	VAR_PRIVATE/_organ_damage = 0
+
 /obj/item/organ/internal/Initialize(mapload, material_key, datum/mob_snapshot/supplied_appearance, decl/bodytype/new_bodytype)
 	if(!alive_icon)
 		alive_icon = initial(icon_state)
@@ -160,6 +163,9 @@
 /obj/item/organ/internal/Process()
 	SHOULD_CALL_PARENT(TRUE)
 	..()
+	//check if we've hit max_damage
+	if(_organ_damage >= max_damage)
+		die()
 	if(owner && _organ_damage && !(status & ORGAN_DEAD))
 		handle_damage_effects()
 
@@ -295,3 +301,30 @@
 /obj/item/organ/internal/preserve_in_cryopod(var/obj/machinery/cryopod/pod)
 	var/mob/living/brainmob = get_brainmob()
 	return brainmob?.key
+
+/obj/item/organ/internal/proc/set_organ_damage(amt)
+	_organ_damage = amt
+
+/obj/item/organ/internal/proc/adjust_organ_damage(amt)
+	_organ_damage = clamp(_organ_damage + amt, 0, max_damage)
+
+/obj/item/organ/internal/proc/get_organ_damage()
+	return _organ_damage // TODO: get_max_health() - current_health, unify organ/item damage handling.
+
+/obj/item/organ/internal/is_broken()
+	return _organ_damage >= min_broken_damage || ..()
+
+/obj/item/organ/internal/die()
+	_organ_damage = max_damage
+	return ..()
+
+/obj/item/organ/internal/rejuvenate(var/ignore_organ_traits)
+	_organ_damage = 0
+	return ..()
+
+/obj/item/organ/internal/heal_damage(amount)
+	if(can_recover())
+		_organ_damage = clamp(_organ_damage - round(amount, 0.1), 0, max_damage)
+		if(owner)
+			owner.update_health()
+

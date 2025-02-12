@@ -246,11 +246,11 @@
 		SET_HUD_ALERT(src, HUD_PRESSURE, -1)
 	else
 		var/list/obj/item/organ/external/parts = get_damageable_organs()
-		for(var/obj/item/organ/external/organ in parts)
-			if(QDELETED(organ) || !(organ.owner == src))
+		for(var/obj/item/organ/external/limb in parts)
+			if(QDELETED(limb) || !(limb.owner == src))
 				continue
-			if(organ.get_organ_damage() + (LOW_PRESSURE_DAMAGE) < organ.min_broken_damage) //vacuum does not break bones
-				organ.take_damage(LOW_PRESSURE_DAMAGE, inflicter = "Low Pressure")
+			if(limb.brute_dam + limb.burn_dam + (LOW_PRESSURE_DAMAGE) < limb.min_broken_damage) //vacuum does not break bones
+				limb.take_damage(LOW_PRESSURE_DAMAGE, inflicter = "Low Pressure")
 		if(getOxyLossPercent() < 55) // 11 OxyLoss per 4 ticks when wearing internals;    unconsciousness in 16 ticks, roughly half a minute
 			take_damage(4)  // 16 OxyLoss per 4 ticks when no internals present; unconsciousness in 13 ticks, OXY, roughly twenty seconds
 		SET_HUD_ALERT(src, HUD_PRESSURE, -2)

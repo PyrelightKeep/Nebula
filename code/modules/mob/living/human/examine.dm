@@ -150,7 +150,7 @@
 					wound_flavor_text[limb.name] += "[use_His] [limb.name] is irrecoverably damaged!"
 				else
 					wound_flavor_text[limb.name] += "[use_His] [limb.name] is grey and necrotic!<br>"
-			else if(limb.get_organ_damage() >= limb.max_damage && limb.germ_level >= INFECTION_LEVEL_TWO)
+			else if((limb.brute_dam + limb.burn_dam) >= limb.max_damage && limb.germ_level >= INFECTION_LEVEL_TWO)
 				wound_flavor_text[limb.name] += "[use_His] [limb.name] is likely beyond saving, and has begun to decay!"
 
 		for(var/datum/wound/wound in limb.wounds)

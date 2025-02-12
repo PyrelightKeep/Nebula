@@ -89,7 +89,7 @@
 			to_chat(user, "<hr>")
 			to_chat(user, SPAN_NOTICE("Internal prosthetics:"))
 			organ_found = null
-			for(var/obj/item/organ/organ in H.get_internal_organs())
+			for(var/obj/item/organ/internal/organ in H.get_internal_organs())
 				if(!BP_IS_PROSTHETIC(organ))
 					continue
 				organ_found = 1

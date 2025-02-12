@@ -95,8 +95,8 @@
 		LAZYADD(areas_added, A)
 
 /obj/machinery/door/firedoor/proc/unregister_area(area/A)
-		LAZYREMOVE(A.all_doors, src)
-		LAZYREMOVE(areas_added, A)
+	LAZYREMOVE(A.all_doors, src)
+	LAZYREMOVE(areas_added, A)
 
 /obj/machinery/door/firedoor/proc/update_area_registrations()
 	var/list/new_areas = list()

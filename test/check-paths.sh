@@ -49,6 +49,7 @@ exactly 0 "global-marked member variables" '\t+/?var.*/global/' -P
 exactly 0 "static-marked globally scoped variables" '^/?var.*/static/.+' -P
 exactly 1 "direct usage of decls_repository.get_decl()" 'decls_repository\.get_decl\(' -P
 exactly 19 "direct loc set" '[^ ,(/]\bloc\s*=(?!=)' -P
+exactly 6  "pronoun macro use" '\\(he|she|him|her|his|hers|himself|herself|He|She|Him|Her|His|Hers|Himself|Herself)\b' -P
 exactly 0 "magic number mouse opacity set" 'mouse_opacity\s*=\s*[0-2]' -P
 exactly 0 "magic number density set" '\bdensity\s*=\s*[01]\b' -P
 exactly 0 "magic number anchored set" '\banchored\s*=\s*[01]\b' -P

@@ -210,7 +210,8 @@
 	attack_damage = clamp(attack_damage, 1, 5) // We expect damage input of 1 to 5 for this proc. But we leave this check juuust in case.
 
 	if(target == user)
-		user.visible_message("<span class='danger'>[user] [pick(attack_verb)] \himself in \the [affecting]!</span>")
+		var/decl/pronouns/pronouns = user.get_pronouns()
+		user.visible_message(SPAN_DANGER("\The [user] [pick(attack_verb)] [pronouns.self] in \the [affecting]!"))
 		return 0
 
 	target.update_personal_goal(/datum/goal/achievement/fistfight, TRUE)

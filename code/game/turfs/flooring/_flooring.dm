@@ -35,12 +35,12 @@ var/global/list/flooring_cache = list()
 	/// BYOND ticks.
 	var/build_time = 0
 
-	var/drop_material_on_remove
+	var/drop_material_on_remove = FALSE
 
 	var/descriptor
 	var/flooring_flags
-	var/remove_timer = 10
-	var/can_paint
+	var/remove_timer = 1 SECOND
+	var/can_paint = FALSE
 	var/can_engrave = TRUE
 	var/can_collect = FALSE
 

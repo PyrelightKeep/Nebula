@@ -8,7 +8,7 @@
 	response_disarm = "bops"
 	see_in_dark = 5
 	mob_size = MOB_SIZE_SMALL
-	possession_candidate = 1
+	possession_candidate = TRUE
 	holder_type = /obj/item/holder/corgi
 	pass_flags = PASS_FLAG_TABLE
 	base_animal_type = /mob/living/simple_animal/corgi

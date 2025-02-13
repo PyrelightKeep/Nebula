@@ -761,7 +761,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 					thing.decontaminate()
 		if(dirtiness <= DIRTINESS_STERILE)
 			O.germ_level -= min(amount*20, O.germ_level)
-			O.was_bloodied = null
+			O.was_bloodied = FALSE
 		if(dirtiness <= DIRTINESS_CLEAN)
 			O.clean()
 
@@ -979,7 +979,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 /decl/material/proc/affect_touch(var/mob/living/victim, var/removed, var/datum/reagents/holder)
 
 	SHOULD_CALL_PARENT(TRUE)
-
+	. = FALSE
 	if(!istype(victim))
 		return FALSE
 
@@ -991,8 +991,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 		if(victim.germ_level < INFECTION_LEVEL_TWO) // rest and antibiotics is required to cure serious infections
 			victim.germ_level -= min(removed*20, victim.germ_level)
 		for(var/obj/item/organ in victim.contents)
-			organ.was_bloodied = null
-		victim.was_bloodied = null
+			organ.was_bloodied = FALSE
+		victim.was_bloodied = FALSE
 		. = TRUE
 
 	// TODO: clean should add the gross reagents washed off to a holder to dump on the loc.

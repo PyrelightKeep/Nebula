@@ -293,20 +293,21 @@
 			return TRUE
 	return ..()
 
-/obj/item/camera/proc/get_mobs(turf/the_turf)
+/obj/item/camera/proc/get_mob_details(turf/the_turf)
 	var/mob_detail
-	for(var/mob/living/A in the_turf)
-		if(A.invisibility)
+	for(var/mob/living/seen in the_turf)
+		if(seen.invisibility)
 			continue
 		var/holding
-		for(var/obj/item/thing in A.get_held_items())
+		for(var/obj/item/thing in seen.get_held_items())
 			LAZYADD(holding, "\a [thing]")
 		if(length(holding))
-			holding = "They are holding [english_list(holding)]"
+			var/decl/pronouns/mob_pronouns = seen.get_pronouns()
+			holding = "[mob_pronouns.He] [mob_pronouns.is] holding [english_list(holding)]."
 		if(!mob_detail)
-			mob_detail = "You can see [A] on the photo[A.get_health_ratio() < 0.75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]. "
+			mob_detail = "You can see [seen] on the photo[seen.get_health_ratio() < 0.75 ? " - [seen] looks hurt":""].[holding ? " [holding]":"."]. "
 		else
-			mob_detail += "You can also see [A] on the photo[A.get_health_ratio() < 0.75 ? " - [A] looks hurt":""].[holding ? " [holding]":"."]."
+			mob_detail += "You can also see [seen] on the photo[seen.get_health_ratio() < 0.75 ? " - [seen] looks hurt":""].[holding ? " [holding]":"."]."
 	return mob_detail
 
 /obj/item/camera/afterattack(atom/target, mob/user, flag)
@@ -347,20 +348,20 @@
 	var/x_c = target.x - (field_of_view-1)/2
 	var/y_c = target.y + (field_of_view-1)/2
 	var/z_c	= target.z
-	var/mobs = ""
+	var/mob_details = ""
 	for(var/i = 1 to field_of_view)
 		for(var/j = 1 to field_of_view)
 			var/turf/T = locate(x_c, y_c, z_c)
 			if(user.can_capture_turf(T))
-				mobs += get_mobs(T)
+				mob_details += get_mob_details(T)
 			x_c++
 		y_c--
 		x_c = x_c - field_of_view
 
-	var/obj/item/photo/p = createpicture(target, user, mobs, flag)
+	var/obj/item/photo/p = createpicture(target, user, mob_details, flag)
 	printpicture(user, p)
 
-/obj/item/camera/proc/createpicture(atom/target, mob/user, mobs, flag)
+/obj/item/camera/proc/createpicture(atom/target, mob/user, new_description, flag)
 	var/x_c = target.x - (field_of_view-1)/2
 	var/y_c = target.y - (field_of_view-1)/2
 	var/z_c	= target.z
@@ -368,7 +369,7 @@
 
 	var/obj/item/photo/p = new()
 	p.img = photoimage
-	p.desc = mobs
+	p.desc = new_description
 	p.photo_size = field_of_view
 	p.update_icon()
 

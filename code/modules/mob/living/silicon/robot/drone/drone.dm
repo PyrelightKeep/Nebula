@@ -15,7 +15,7 @@
 	integrated_light_power = 0.4
 	integrated_light_range = 3
 	local_transmit = 1
-	possession_candidate = 1
+	possession_candidate = TRUE
 	speed = -1
 
 	can_pull_size = ITEM_SIZE_NORMAL

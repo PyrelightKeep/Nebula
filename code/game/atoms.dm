@@ -24,7 +24,7 @@
 	/// (DICTIONARY) A lazy map. The `key` is a MD5 player name and the `value` is the blood type.
 	var/list/blood_DNA
 	/// (BOOL) If this atom was bloodied before.
-	var/was_bloodied
+	var/was_bloodied = FALSE
 	/// (COLOR) The color of the blood shown on blood overlays.
 	var/blood_color
 	/// (FALSE|DEFINES) How this atom is interacting with UV light. See misc.dm

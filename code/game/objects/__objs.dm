@@ -15,11 +15,13 @@
 	var/list/matter //Used to store information about the contents of the object.
 	var/w_class // Size of the object.
 
-	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
+	var/in_use = FALSE // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/armor_penetration = 0
 	var/anchor_fall = FALSE
-	var/holographic = 0 //if the obj is a holographic object spawned by the holodeck
-	var/list/directional_offset ///JSON list of directions to x,y offsets to be applied to the object depending on its direction EX: @'{"NORTH":{"x":12,"y":5}, "EAST":{"x":10,"y":50}}'
+	/// if the obj is a holographic object spawned by the holodeck
+	var/holographic = FALSE
+	///JSON list of directions to x,y offsets to be applied to the object depending on its direction EX: @'{"NORTH":{"x":12,"y":5}, "EAST":{"x":10,"y":50}}'
+	var/directional_offset
 
 /obj/Initialize(mapload)
 	//Health should be set to max_health only if it's null.

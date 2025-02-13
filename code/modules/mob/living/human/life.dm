@@ -288,11 +288,11 @@
 	for(var/slot in global.standard_clothing_slots)
 		var/obj/item/clothing/C = get_equipped_item(slot)
 		if(istype(C))
-			if(C.min_cold_protection_temperature && C.min_cold_protection_temperature <= temperature)
+			if(!isnull(C.min_cold_protection_temperature) && C.min_cold_protection_temperature <= temperature)
 				. |= C.cold_protection
 			if(LAZYLEN(C.accessories))
 				for(var/obj/item/clothing/accessory in C.accessories)
-					if(accessory.min_cold_protection_temperature && accessory.min_cold_protection_temperature <= temperature)
+					if(!isnull(accessory.min_cold_protection_temperature) && accessory.min_cold_protection_temperature <= temperature)
 						. |= accessory.cold_protection
 
 

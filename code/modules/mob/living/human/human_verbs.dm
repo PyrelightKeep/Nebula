@@ -13,7 +13,7 @@
 	var/list/creatures = list()
 	for(var/mob/living/h in global.player_list)
 		creatures += h
-	var/mob/target = input("Who do you want to project your mind to ?") as null|anything in creatures
+	var/mob/target = input(usr, "Who do you want to project your mind to?") as null|anything in creatures
 	if (isnull(target))
 		return
 
@@ -55,7 +55,7 @@
 			continue
 		creatures += h
 
-	var/mob/target = input ("Who do you want to project your mind to ?") as mob in creatures
+	var/mob/target = input(usr, "Who do you want to project your mind to?") as mob in creatures
 
 	if (target)
 		remoteview_target = target

@@ -2,6 +2,7 @@
 #include "unishi_jobs.dm"
 #include "../../../mods/content/xenobiology/_xenobiology.dme"
 #include "../../../mods/content/supermatter/_supermatter.dme"
+#include "../../../mods/content/beekeeping/_beekeeping.dme"
 
 /obj/abstract/submap_landmark/joinable_submap/unishi
 	name      = "SRV Verne"

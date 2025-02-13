@@ -1,7 +1,7 @@
 // Glass shards
 
 /obj/item/shard
-	name = "shard"
+	name = SHARD_SHARD
 	icon = 'icons/obj/items/shards.dmi'
 	desc = "Made of nothing. How does this even exist?" // set based on material, if this desc is visible it's a bug (shards default to being made of glass)
 	icon_state = "large"
@@ -14,7 +14,7 @@
 	material = /decl/material/solid/glass
 	material_alteration = MAT_FLAG_ALTERATION_COLOR | MAT_FLAG_ALTERATION_NAME
 	item_flags = ITEM_FLAG_CAN_HIDE_IN_SHOES
-	var/has_handle
+	var/has_handle = FALSE
 
 /obj/item/shard/Initialize(ml, material_key)
 	. = ..()
@@ -38,10 +38,10 @@
 	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
 	update_icon()
 
-	if(material.shard_type)
-		SetName("[material.solid_name] [material.shard_type]")
+	if(material.shard_name)
+		SetName("[material.solid_name] [material.shard_name]")
 		desc = "A small piece of [material.solid_name]. It looks sharp, you wouldn't want to step on it barefoot. Could probably be used as ... a throwing weapon?"
-		switch(material.shard_type)
+		switch(material.shard_name)
 			if(SHARD_SPLINTER, SHARD_SHRAPNEL)
 				gender = PLURAL
 			else
@@ -65,7 +65,7 @@
 			return TRUE
 	if(istype(W, /obj/item/stack/cable_coil))
 
-		if(!material || (material.shard_type in list(SHARD_SPLINTER, SHARD_SHRAPNEL)))
+		if(!material || (material.shard_name in list(SHARD_SPLINTER, SHARD_SHRAPNEL)))
 			to_chat(user, SPAN_WARNING("\The [src] is not suitable for using as a shank."))
 			return TRUE
 		if(has_handle)

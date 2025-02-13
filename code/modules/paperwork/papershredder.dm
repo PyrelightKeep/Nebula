@@ -129,6 +129,9 @@
 /obj/machinery/papershredder/proc/create_shredded()
 	for(var/key in shredder_bin)
 		var/decl/material/M = GET_DECL(key)
+		var/shard_type = M.shard_type
+		if(!shard_type)
+			continue
 		var/amt_per_shard = atom_info_repository.get_matter_for(M.shard_type, key, 1)
 		if(shredder_bin[key] > amt_per_shard)
 			LAZYADD(., M.place_cuttings(src, shredder_bin[key]))

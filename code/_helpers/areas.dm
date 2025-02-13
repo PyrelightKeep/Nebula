@@ -41,6 +41,8 @@
 		if(!(candidate_area.area_flags & area_flags))
 			continue
 		valid_areas[candidate_area] = TRUE
+	if(!length(valid_areas)) // no turfs at all have that flag
+		return FALSE
 	// Each area contents loop is an in-world loop, so we just do one here.
 	for(var/turf/turf_candidate in world)
 		var/area/candidate_area = get_area(turf_candidate)

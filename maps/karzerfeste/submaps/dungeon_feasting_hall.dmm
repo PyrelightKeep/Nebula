@@ -29,13 +29,13 @@
 /turf/floor/path/herringbone/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "n" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "p" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/random/hostile/dungeon,
@@ -66,7 +66,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "E" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/remains/human,
@@ -74,14 +74,14 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "G" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/stack/material/bolt/mapped/cloth/five,
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "J" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/remains/human,
@@ -102,7 +102,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "S" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/random/hostile/dungeon,
@@ -117,7 +117,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "Z" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/basalt,

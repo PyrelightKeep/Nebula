@@ -148,7 +148,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/above/indoors/west)
 "gB" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/granite,
@@ -264,7 +264,7 @@
 /obj/structure/railing/mapped/wooden/ebony{
 	dir = 1
 	},
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/granite,
@@ -298,7 +298,7 @@
 /obj/structure/railing/mapped/wooden/ebony{
 	dir = 1
 	},
-/obj/structure/bed/chair/wood/ebony,
+/obj/structure/chair/wood/ebony,
 /obj/structure/railing/mapped/wooden/ebony{
 	dir = 8
 	},
@@ -325,7 +325,7 @@
 	dir = 4
 	},
 /obj/structure/railing/mapped/wooden/ebony,
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 1
 	},
 /turf/floor/wood/maple,
@@ -416,7 +416,7 @@
 /turf/unsimulated/mask,
 /area/karzerfeste/caves/upper_east)
 "uo" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/granite,
@@ -676,7 +676,7 @@
 /turf/open,
 /area/karzerfeste/outside/ward/wall)
 "FZ" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/granite,
@@ -694,7 +694,7 @@
 /turf/open,
 /area/karzerfeste/outside/keep/tower/four)
 "GX" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 1
 	},
 /turf/floor/path/running_bond/granite,
@@ -745,7 +745,7 @@
 /area/karzerfeste/outside/road)
 "IY" = (
 /obj/structure/railing/mapped/wooden/ebony,
-/obj/structure/bed/chair/wood/ebony,
+/obj/structure/chair/wood/ebony,
 /turf/floor/wood/maple,
 /area/karzerfeste/outside/ward)
 "IZ" = (
@@ -764,7 +764,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/gatehouse)
 "KA" = (
-/obj/structure/bed/chair/wood/ebony,
+/obj/structure/chair/wood/ebony,
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/above/indoors/west)
 "Lc" = (
@@ -779,7 +779,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/tower/four)
 "LL" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 8
 	},
 /obj/effect/floor_decal/spline/fancy/wood/walnut{
@@ -823,7 +823,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/tower/three)
 "Ns" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 8
 	},
 /turf/floor/path/running_bond/granite,
@@ -844,7 +844,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/tower/four)
 "NS" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 8
 	},
 /turf/floor/path/running_bond/granite,
@@ -863,7 +863,7 @@
 /area/karzerfeste/outside/keep/tower/three)
 "PH" = (
 /obj/structure/railing/mapped/wooden/ebony,
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 1
 	},
 /obj/structure/railing/mapped/wooden/ebony{
@@ -911,7 +911,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/above/indoors)
 "Si" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 8
 	},
 /turf/floor/wood/maple,
@@ -986,7 +986,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/above/indoors/southwest)
 "VC" = (
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 1
 	},
 /turf/floor/wood/maple,
@@ -1005,7 +1005,7 @@
 /obj/structure/railing/mapped/wooden/ebony{
 	dir = 1
 	},
-/obj/structure/bed/chair/wood/ebony,
+/obj/structure/chair/wood/ebony,
 /turf/floor/wood/maple,
 /area/karzerfeste/outside/keep/above/indoors/west)
 "VS" = (
@@ -1042,7 +1042,7 @@
 /obj/structure/railing/mapped/wooden/ebony{
 	dir = 1
 	},
-/obj/structure/bed/chair/wood/ebony{
+/obj/structure/chair/wood/ebony{
 	dir = 8
 	},
 /turf/floor/path/running_bond/granite,
@@ -1080,7 +1080,7 @@
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/tower/three)
 "ZI" = (
-/obj/structure/bed/chair/wood/ebony,
+/obj/structure/chair/wood/ebony,
 /turf/floor/path/running_bond/granite,
 /area/karzerfeste/outside/keep/above/indoors/east)
 "ZJ" = (

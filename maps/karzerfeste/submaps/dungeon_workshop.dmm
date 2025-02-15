@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "c" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /turf/floor/path/running_bond/basalt,
@@ -53,7 +53,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "K" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/basalt,

@@ -40,10 +40,10 @@ var/global/list/all_gps_units = list()
 	update_holder()
 	update_icon()
 
-/obj/item/gps/examine(mob/user, distance)
+/obj/item/gps/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, SPAN_NOTICE("\The [src]'s screen shows: <i>[get_coordinates()]</i>."))
+		. += SPAN_NOTICE("\The [src]'s screen shows: <i>[get_coordinates()]</i>.")
 
 /obj/item/gps/proc/get_coordinates()
 	var/turf/T = get_turf(src)

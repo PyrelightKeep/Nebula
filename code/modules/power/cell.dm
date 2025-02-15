@@ -79,10 +79,10 @@
 	update_icon()
 	return amount_used
 
-/obj/item/cell/examine(mob/user)
+/obj/item/cell/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "The label states it's capacity is [maxcharge] Wh.")
-	to_chat(user, "The charge meter reads [round(src.percent(), 0.1)]%.")
+	. += "The label states it's capacity is [maxcharge] Wh."
+	. += "The charge meter reads [round(src.percent(), 0.1)]%."
 
 /obj/item/cell/emp_act(severity)
 	// remove this if EMPs are ever rebalanced so that they don't instantly drain borg cells

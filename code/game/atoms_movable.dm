@@ -543,7 +543,7 @@
 	var/burn_damage = rand(my_size, round(my_size * 1.5))
 	var/obj/item/organ/external/organ = check_organ && holder.get_organ(check_organ)
 	if(istype(organ))
-		organ.take_external_damage(0, burn_damage)
+		organ.take_damage(burn_damage, BURN)
 	else
 		holder.take_damage(burn_damage, BURN)
 	if(held_slot in holder.get_held_item_slots())

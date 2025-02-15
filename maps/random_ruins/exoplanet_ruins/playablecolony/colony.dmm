@@ -317,7 +317,7 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/colony/command)
 "aW" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /obj/effect/floor_decal/techfloor{
@@ -849,7 +849,7 @@
 /turf/floor/reinforced/oxygen,
 /area/map_template/colony/atmospherics)
 "bX" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red{
@@ -2468,7 +2468,7 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/colony/atmospherics)
 "fn" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -2477,7 +2477,7 @@
 /turf/floor/laminate/walnut,
 /area/map_template/colony/messhall)
 "fo" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/structure/sign/double/maltesefalcon/right{
@@ -2548,7 +2548,7 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/colony/atmospherics)
 "fu" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/structure/sign/double/maltesefalcon/left{
@@ -2725,7 +2725,7 @@
 /area/map_template/colony/messhall)
 "fK" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -3790,7 +3790,7 @@
 	dir = 9
 	},
 /obj/effect/floor_decal/corner/red,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/techfloor,
@@ -4158,7 +4158,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_y = 36
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/techfloor,
@@ -4865,7 +4865,7 @@
 /obj/effect/floor_decal/techfloor{
 	dir = 6
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/red{
@@ -5636,7 +5636,7 @@
 /turf/floor/lino,
 /area/map_template/colony)
 "kQ" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/lino,
@@ -6338,7 +6338,7 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/colony/airlock)
 "mi" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /turf/floor/tiled/techfloor/grid,
@@ -6709,7 +6709,7 @@
 /turf/floor/concrete,
 /area/map_template/colony/mineralprocessing)
 "mR" = (
-/obj/structure/bed/chair/comfy/beige{
+/obj/structure/chair/comfy/beige{
 	dir = 4
 	},
 /obj/effect/floor_decal/techfloor,
@@ -6950,7 +6950,7 @@
 /turf/floor/tiled/dark/monotile,
 /area/map_template/colony/jail)
 "np" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/corner/red{
 	dir = 6
 	},
@@ -7075,7 +7075,7 @@
 /turf/floor/tiled/dark/monotile,
 /area/map_template/colony/jail)
 "nD" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/red{

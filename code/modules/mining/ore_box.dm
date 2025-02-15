@@ -116,18 +116,18 @@
 	total_ores = 0
 	return TRUE
 
-/obj/structure/ore_box/examine(mob/user, distance)
+/obj/structure/ore_box/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1) //Can only check the contents of ore boxes if you can physically reach them.
 		return
 
 	add_fingerprint(user)
 	if(total_ores <= 0)
-		to_chat(user, "It is empty.")
+		. += "It is empty."
 		return
-	to_chat(user, "It holds:")
+	. += "It holds:"
 	for(var/ore in stored_ore)
-		to_chat(user, "- [stored_ore[ore]] [ore]")
+		. += "- [stored_ore[ore]] [ore]"
 
 /obj/structure/ore_box/explosion_act(severity)
 	. = ..()

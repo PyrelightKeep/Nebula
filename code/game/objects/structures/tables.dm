@@ -276,10 +276,10 @@
 
 	return TRUE
 
-/obj/structure/table/examine(mob/user, distance)
+/obj/structure/table/get_examine_hints(mob/user, distance, infix, suffix)
 	. = ..()
 	if(felted || reinf_material || additional_reinf_material)
-		to_chat(user, SPAN_SUBTLE("The cladding must be removed with a screwdriver prior to deconstructing \the [src]."))
+		LAZYADD(., SPAN_SUBTLE("The cladding must be removed with a screwdriver prior to deconstructing \the [src]."))
 
 /obj/structure/table/update_material_name(override_name)
 	if(reinf_material)

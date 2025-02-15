@@ -630,14 +630,14 @@
 		accuracy = initial(accuracy)
 		screen_shake = initial(screen_shake)
 
-/obj/item/gun/examine(mob/user)
+/obj/item/gun/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user.skill_check(SKILL_WEAPONS, SKILL_BASIC))
 		if(firemodes.len > 1)
 			var/datum/firemode/current_mode = firemodes[sel_mode]
-			to_chat(user, "The fire selector is set to [current_mode.name].")
+			. += "The fire selector is set to [current_mode.name]."
 	if(has_safety)
-		to_chat(user, "The safety is [safety() ? "on" : "off"].")
+		. += "The safety is [safety() ? "on" : "off"]."
 	last_safety_check = world.time
 
 /obj/item/gun/proc/try_switch_firemodes(mob/user)

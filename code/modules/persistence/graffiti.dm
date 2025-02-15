@@ -31,11 +31,11 @@
 	SSpersistence.forget_value(src, /decl/persistence_handler/graffiti)
 	. = ..()
 
-/obj/effect/decal/writing/examine(mob/user)
+/obj/effect/decal/writing/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
 	var/processed_message = user.handle_reading_literacy(user, message)
 	if(processed_message)
-		to_chat(user,  "It reads \"[processed_message]\".")
+		. += "It reads \"[processed_message]\"."
 
 /obj/effect/decal/writing/attackby(var/obj/item/thing, var/mob/user)
 	if(IS_WELDER(thing) && thing.do_tool_interaction(TOOL_WELDER, user, src, 3 SECONDS))

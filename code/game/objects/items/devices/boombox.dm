@@ -36,12 +36,12 @@
 /obj/item/boombox/emp_act(severity)
 	boombox_break()
 
-/obj/item/boombox/examine(mob/user)
+/obj/item/boombox/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(!panel)
-		to_chat(user, SPAN_NOTICE("The front panel is unhinged."))
+		. += SPAN_NOTICE("The front panel is unhinged.")
 	if(broken)
-		to_chat(user, SPAN_WARNING("It's broken."))
+		. += SPAN_WARNING("It's broken.")
 
 /obj/item/boombox/Destroy()
 	stop()

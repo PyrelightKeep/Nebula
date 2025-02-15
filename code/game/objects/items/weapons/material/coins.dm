@@ -85,11 +85,11 @@
 	..()
 	transform = null
 
-/obj/item/coin/examine(mob/user, distance)
+/obj/item/coin/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(denomination && (distance <= 1 || loc == user) && user.skill_check(SKILL_FINANCE, SKILL_ADEPT))
 		var/decl/currency/map_cur = GET_DECL(global.using_map.default_currency)
-		to_chat(user, "It looks like an antiquated minting of \a [denomination.name]. These days it would be worth around [map_cur.format_value(get_combined_monetary_worth())].")
+		. += "It looks like an antiquated minting of \a [denomination.name]. These days it would be worth around [map_cur.format_value(get_combined_monetary_worth())]."
 
 // Subtypes.
 /obj/item/coin/gold

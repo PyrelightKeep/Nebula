@@ -186,24 +186,24 @@
 /obj/structure/fire_source/proc/get_removable_atoms()
 	return get_contained_external_atoms()
 
-/obj/structure/fire_source/examine(mob/user, distance)
+/obj/structure/fire_source/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 		if(has_draught)
-			to_chat(user, "\The [src]'s draught is [draught_values[current_draught]].")
+			. += "\The [src]'s draught is [draught_values[current_draught]]."
 		var/list/burn_strings = get_descriptive_temperature_strings(get_effective_burn_temperature())
 		if(length(burn_strings))
-			to_chat(user, "\The [src] is burning hot enough to [english_list(burn_strings)].")
+			. += "\The [src] is burning hot enough to [english_list(burn_strings)]."
 		var/list/removable = get_removable_atoms()
 		if(length(removable))
-			to_chat(user, "Looking within \the [src], you see:")
+			. += "Looking within \the [src], you see:"
 			for(var/atom/thing in removable)
-				to_chat(user, "\icon[thing] \the [thing]")
+				. += "\icon[thing] \the [thing]"
 		else
-			to_chat(user, "\The [src] is empty.")
+			. += "\The [src] is empty."
 
 	if(check_rights(R_DEBUG, 0, user))
-		to_chat(user, "\The [src] has a temperature of [temperature]K, an effective burn temperature of [get_effective_burn_temperature()]K and a fuel value of [fuel].")
+		. += "\The [src] has a temperature of [temperature]K, an effective burn temperature of [get_effective_burn_temperature()]K and a fuel value of [fuel]."
 
 /obj/structure/fire_source/attack_hand(var/mob/user)
 

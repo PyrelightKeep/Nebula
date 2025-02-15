@@ -77,10 +77,10 @@ var/global/list/laser_wavelengths
 	power_supply_extension_type = power_supply_extension_type || /datum/extension/loaded_cell/secured
 	return ..(loaded_cell_type, accepted_cell_type, power_supply_extension_type, charge_value)
 
-/obj/item/gun/energy/capacitor/examine(mob/user, distance)
+/obj/item/gun/energy/capacitor/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(loc == user || distance <= 1)
-		to_chat(user, "The wavelength selector is dialled to [selected_wavelength.name].")
+		. += "The wavelength selector is dialled to [selected_wavelength.name]."
 
 /obj/item/gun/energy/capacitor/Destroy()
 	if(capacitors)

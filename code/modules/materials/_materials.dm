@@ -135,8 +135,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/table_icon_base = "metal"
 	var/table_icon_reinforced = "reinf_metal"
 
-	var/bench_icon = 'icons/obj/structures/benches.dmi'
-	var/pew_icon = 'icons/obj/structures/pews.dmi'
+	// TODO: Refactor these to just apply a generic material overlay (e.g. wood grain) instead of entirely-separate icon files?
+	// Alternatively, find some other way for icon variation based on material.
+	// You can't do it by having separate states in the base icons,
+	// because then modpacked materials can't add new states,
+	// and what if we really really want a special nullglass pew sprite or something?
+	var/bench_icon = 'icons/obj/structures/furniture/bench.dmi'
+	var/pew_icon = 'icons/obj/structures/furniture/pew.dmi'
+	var/slatted_seat_icon = 'icons/obj/structures/furniture/chair_slatted.dmi'
+	var/backed_chair_icon = 'icons/obj/structures/furniture/chair_backed.dmi'
 
 	var/list/stack_origin_tech = @'{"materials":1}' // Research level for stacks.
 
@@ -749,9 +756,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	else
 		if(dirtiness <= DIRTINESS_DECONTAMINATE)
 			if(amount >= decontamination_dose && istype(O, /obj/item))
-				var/obj/item/I = O
-				if(I.contaminated)
-					I.decontaminate()
+				var/obj/item/thing = O
+				if(thing.contaminated)
+					thing.decontaminate()
 		if(dirtiness <= DIRTINESS_STERILE)
 			O.germ_level -= min(amount*20, O.germ_level)
 			O.was_bloodied = null
@@ -872,15 +879,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 			var/organ_damage = dam * M.get_toxin_resistance()
 			if(organ_damage > 0)
 				var/mob/living/human/H = M
-				var/obj/item/organ/internal/I = GET_INTERNAL_ORGAN(H, toxicity_targets_organ)
-				if(I)
-					var/can_damage = I.max_damage - I.damage
+				var/obj/item/organ/internal/organ = GET_INTERNAL_ORGAN(H, toxicity_targets_organ)
+				if(organ)
+					var/can_damage = organ.max_damage - organ.get_organ_damage()
 					if(can_damage > 0)
 						if(organ_damage > can_damage)
-							I.take_internal_damage(can_damage, silent=TRUE)
+							organ.take_damage(can_damage, silent=TRUE)
 							dam -= can_damage
 						else
-							I.take_internal_damage(organ_damage, silent=TRUE)
+							organ.take_damage(organ_damage, silent=TRUE)
 							dam = 0
 		if(dam > 0)
 			M.take_damage(toxicity_targets_organ ? (dam * 0.75) : dam, TOX)
@@ -983,8 +990,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	if(dirtiness <= DIRTINESS_STERILE)
 		if(victim.germ_level < INFECTION_LEVEL_TWO) // rest and antibiotics is required to cure serious infections
 			victim.germ_level -= min(removed*20, victim.germ_level)
-		for(var/obj/item/I in victim.contents)
-			I.was_bloodied = null
+		for(var/obj/item/organ in victim.contents)
+			organ.was_bloodied = null
 		victim.was_bloodied = null
 		. = TRUE
 

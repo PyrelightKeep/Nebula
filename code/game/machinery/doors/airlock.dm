@@ -1119,15 +1119,15 @@ About the new airlock wires panel:
 		..()
 	update_icon()
 
-/obj/machinery/door/airlock/examine(mob/user)
+/obj/machinery/door/airlock/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (lock_cut_state == BOLTS_EXPOSED)
-		to_chat(user, "The bolt cover has been cut open.")
+		. += SPAN_WARNING("The bolt cover has been cut open.")
 	if (lock_cut_state == BOLTS_CUT)
-		to_chat(user, "The door bolts have been cut.")
+		. += SPAN_DANGER("The door bolts have been cut!")
 	if(brace)
-		to_chat(user, "\The [brace] is installed on \the [src], preventing it from opening.")
-		to_chat(user, brace.examine_health())
+		. += "\The [brace] is installed on \the [src], preventing it from opening."
+		. += brace.examine_health()
 
 /obj/machinery/door/airlock/autoname/Initialize()
 	var/area/A = get_area(src)

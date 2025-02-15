@@ -68,10 +68,10 @@ var/global/list/hygiene_props = list()
 		return TRUE
 	. = ..()
 
-/obj/structure/hygiene/examine(mob/user)
+/obj/structure/hygiene/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(clogged > 0)
-		to_chat(user, SPAN_WARNING("It seems to be badly clogged."))
+		. += SPAN_WARNING("It seems to be badly clogged.")
 
 /obj/structure/hygiene/Process()
 	if(clogged <= 0)
@@ -582,6 +582,6 @@ var/global/list/hygiene_props = list()
 	if(open)
 		water_flow()
 
-/obj/structure/hygiene/faucet/examine(mob/user)
+/obj/structure/hygiene/faucet/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It is turned [open ? "on" : "off"].")
+	. += "It is turned [open ? "on" : "off"]."

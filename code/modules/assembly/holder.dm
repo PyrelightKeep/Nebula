@@ -168,13 +168,13 @@
 	if(a_left)
 		a_left.hear_talk(M,msg,verb,speaking)
 
-/obj/item/assembly_holder/examine(mob/user, distance)
+/obj/item/assembly_holder/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (distance <= 1 || src.loc == user)
 		if (src.secured)
-			to_chat(user, "\The [src] is ready!")
+			. += "\The [src] is ready!"
 		else
-			to_chat(user, "\The [src] can be attached!")
+			. += "\The [src] can be attached!"
 
 /obj/item/assembly_holder/on_update_icon()
 	. = ..()

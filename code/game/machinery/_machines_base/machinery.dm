@@ -403,45 +403,49 @@ Class Procs:
 /datum/proc/remove_visual(mob/M)
 	return
 
-/obj/machinery/proc/display_parts(mob/user)
-	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
+/obj/machinery/proc/get_part_info_strings(mob/user)
+	. = list()
+	. += SPAN_NOTICE("The following parts are detected in \the [src]:")
 	for(var/obj/item/C in component_parts)
-		var/line = "<span class='notice'>	[C.name]</span>"
+		var/line = SPAN_NOTICE("	[C.name]")
 		if(!C.current_health)
-			line = "<span class='warning'>	[C.name] (destroyed)</span>"
+			line = SPAN_WARNING("	[C.name] (destroyed)")
 		else if(C.get_percent_health() < 75)
-			line = "<span class='notice'>	[C.name] (damaged)</span>"
-		to_chat(user, line)
+			line = SPAN_NOTICE("	[C.name] (damaged)")
+		. += line
 	for(var/path in uncreated_component_parts)
 		var/obj/item/thing = path
-		to_chat(user, "<span class='notice'>	[initial(thing.name)] ([uncreated_component_parts[path] || 1])</span>")
+		. += SPAN_NOTICE("	[initial(thing.name)] ([uncreated_component_parts[path] || 1])")
 
-/obj/machinery/examine(mob/user)
+/obj/machinery/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(component_parts && (hasHUD(user, HUD_SCIENCE) || (construct_state && construct_state.visible_components)))
-		display_parts(user)
+		. += get_part_info_strings(user)
 	if(stat & NOSCREEN)
-		to_chat(user, "It is missing a screen, making it hard to interact with.")
+		. += SPAN_WARNING("It is missing a screen, making it hard to interact with.")
 	else if(stat & NOINPUT)
-		to_chat(user, "It is missing any input device.")
+		. += SPAN_WARNING("It is missing any input device.")
 
 	if((stat & NOPOWER))
 		if(interact_offline)
-			to_chat(user, "It is not receiving <a href='byond://?src=\ref[src];power_text=1'>power</a>.")
+			. += SPAN_WARNING("It is not receiving <a href='byond://?src=\ref[src];power_text=1'>power</a>.")
 		else
-			to_chat(user, "It is not receiving <a href='byond://?src=\ref[src];power_text=1'>power</a>, making it hard to interact with.")
+			. += SPAN_WARNING("It is not receiving <a href='byond://?src=\ref[src];power_text=1'>power</a>, making it hard to interact with.")
 
-	if(construct_state && construct_state.mechanics_info())
-		to_chat(user, "It can be <a href='byond://?src=\ref[src];mechanics_text=1'>manipulated</a> using tools.")
+	if(construct_state?.mechanics_info())
+		. += SPAN_NOTICE("It can be <a href='byond://?src=\ref[src];mechanics_text=1'>manipulated</a> using tools.")
+
 	var/list/missing = missing_parts()
 	if(missing)
 		var/list/parts = list()
 		for(var/type in missing)
 			var/obj/item/fake_thing = type
 			parts += "[num2text(missing[type])] [initial(fake_thing.name)]"
-		to_chat(user, "\The [src] is missing [english_list(parts)], rendering it inoperable.")
+		. += SPAN_WARNING("\The [src] is missing [english_list(parts)], rendering it inoperable.")
 	for(var/obj/item/stock_parts/part in component_parts)
-		part.on_machine_examined(user)
+		var/part_strings = part.on_machine_examined(user)
+		if(LAZYLEN(part_strings))
+			. += part_strings
 
 // This is really pretty crap and should be overridden for specific machines.
 /obj/machinery/fluid_act(var/datum/reagents/fluids)

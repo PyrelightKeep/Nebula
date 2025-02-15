@@ -17,13 +17,15 @@
 	loaded_cell_type = loaded_cell_type || /obj/item/cell/high
 	return ..(loaded_cell_type, /obj/item/cell, /datum/extension/loaded_cell, charge_value)
 
-/obj/item/weldingtool/electric/examine(mob/user, distance)
+/obj/item/weldingtool/electric/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/obj/item/cell/cell = get_cell()
-	if(!cell)
-		to_chat(user, "There is no [welding_resource] source attached.")
+	if(cell)
+		if(distance == 0)
+			. += "It has [get_fuel()] [welding_resource] remaining."
+		. += "\The [cell] is attached."
 	else
-		to_chat(user, (distance == 0 ? "It has [get_fuel()] [welding_resource] remaining. " : "") + "[cell] is attached.")
+		. += "There is no [welding_resource] source attached."
 
 /obj/item/weldingtool/electric/afterattack(var/obj/O, var/mob/user, var/proximity)
 	if(proximity && istype(O, /obj/structure/reagent_dispensers/fueltank) && !welding)

@@ -139,11 +139,11 @@ var/global/list/card_decks = list()
 	draw_card(user)
 	return TRUE
 
-/obj/item/deck/examine(mob/user)
+/obj/item/deck/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(cards.len)
-		to_chat(user, "<br>There [cards.len == 1 ? "is" : "are"] still <b>[cards.len] card\s</b>.")
-	to_chat(user, SPAN_NOTICE("You can deal cards at a table by clicking on it with grab intent."))
+		. += "<br>There [cards.len == 1 ? "is" : "are"] still <b>[cards.len] card\s</b>."
+	. += SPAN_NOTICE("You can deal cards at a table by clicking on it with grab intent.")
 
 /obj/item/deck/attackby(obj/O, mob/user)
 	if(istype(O,/obj/item/hand))
@@ -333,12 +333,12 @@ var/global/list/card_decks = list()
 	user.put_in_hands(new_hand)
 	return TRUE
 
-/obj/item/hand/examine(mob/user)
+/obj/item/hand/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if((!concealed || src.loc == user) && cards.len)
-		to_chat(user, "It contains:")
+		. += "It contains:"
 		for(var/datum/playingcard/P in cards)
-			to_chat(user, "\The [APPEND_FULLSTOP_IF_NEEDED(P.name)]")
+			. += "\The [APPEND_FULLSTOP_IF_NEEDED(P.name)]"
 
 /obj/item/hand/on_update_icon()
 	. = ..()

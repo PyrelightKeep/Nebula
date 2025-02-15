@@ -68,14 +68,14 @@
 	flick("portable_analyzer_load", src)
 	icon_state = "portable_analyzer_full"
 
-/obj/item/portable_destructive_analyzer/examine(mob/user, distance)
+/obj/item/portable_destructive_analyzer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 		if(loaded_item)
-			to_chat(user, "It is holding \the [loaded_item].")
-		to_chat(user, "It has the following data saved:")
+			. += "It is holding \the [loaded_item]."
+		. += "It has the following data saved:"
 		for(var/tech in saved_tech_levels)
-			to_chat(user, "[tech]: [saved_tech_levels[tech]]")
+			. += "[tech]: [saved_tech_levels[tech]]"
 
 //This is used to unlock other borg covers.
 /obj/item/card/robot //This is not a child of id cards, as to avoid dumb typechecks on computers.
@@ -233,10 +233,10 @@
 	max_doors = 5
 	max_health = ITEM_HEALTH_NO_DAMAGE
 
-/obj/item/inflatable_dispenser/examine(mob/user)
+/obj/item/inflatable_dispenser/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored.")
-	to_chat(user, "It is set to deploy [mode ? "doors" : "walls"]")
+	. += "It has [stored_walls] wall segment\s and [stored_doors] door segment\s stored."
+	. += "It is set to deploy [mode ? "doors" : "walls"]"
 
 /obj/item/inflatable_dispenser/attack_self(mob/user)
 	mode = !mode
@@ -326,9 +326,9 @@
 	var/capacity = 1                   //How many objects can be held.
 	var/list/obj/item/held = list()    //What is being held.
 
-/obj/item/robot_rack/examine(mob/user)
+/obj/item/robot_rack/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It can hold up to [capacity] item\s.")
+	. += "It can hold up to [capacity] item\s."
 
 /obj/item/robot_rack/Initialize(mapload, starting_objects = 0)
 	. = ..()

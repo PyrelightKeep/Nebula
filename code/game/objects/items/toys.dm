@@ -56,10 +56,10 @@
 		overlay.icon_state = "[overlay.icon_state]_empty"
 	. = ..()
 
-/obj/item/chems/water_balloon/examine(mob/user, distance, infix, suffix)
+/obj/item/chems/water_balloon/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	if(distance == 1)
-		to_chat(user, "It's [reagents?.total_volume > 0? "filled with liquid sloshing around" : "empty"].")
+	if(distance <= 1)
+		. += "It's [reagents?.total_volume > 0? "filled with liquid sloshing around" : "empty"]."
 
 /obj/item/chems/water_balloon/on_reagent_change()
 	if(!(. = ..()))
@@ -672,10 +672,10 @@
 	_base_attack_force = 1
 	var/rule_info
 
-/obj/item/toy/chess/examine(mob/user, distance, infix, suffix)
+/obj/item/toy/chess/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(rule_info)
-		to_chat(user, SPAN_NOTICE(rule_info))
+		. += SPAN_NOTICE(rule_info)
 
 /obj/item/toy/chess/pawn
 	name = "oversized white pawn"

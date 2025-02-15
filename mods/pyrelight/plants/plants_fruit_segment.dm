@@ -32,7 +32,7 @@
 		reagents.add_reagent(rid, fruit_template.reagents[rid])
 	return ..()
 
-/obj/item/food/fruit_segment/examine(mob/user, distance)
+/obj/item/food/fruit_segment/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1 && fruit_template.examine_info && (!fruit_template.examine_info_skill || !fruit_template.examine_info_rank || user.skill_check(fruit_template.examine_info_skill, fruit_template.examine_info_rank)))
-		to_chat(user, fruit_template.examine_info)
+		. += fruit_template.examine_info

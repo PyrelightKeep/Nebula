@@ -28,7 +28,7 @@
 			var/obj/item/organ/external/hand = GET_EXTERNAL_ORGAN(H, H.get_active_held_item_slot())
 			if(istype(hand) && !BP_IS_PROSTHETIC(hand))
 				to_chat(H, SPAN_DANGER("You slice your hand on \the [src]!"))
-				hand.take_external_damage(rand(5,10), used_weapon = src)
+				hand.take_damage(rand(5,10), inflicter = src)
 
 /obj/item/shard/set_material(var/new_material)
 	..(new_material)
@@ -111,7 +111,7 @@
 		if(!affecting || BP_IS_PROSTHETIC(affecting))
 			continue
 		to_chat(victim, SPAN_DANGER("You step on \the [src]!"))
-		affecting.take_external_damage(5, 0)
+		affecting.take_damage(5)
 		if(affecting.can_feel_pain())
 			SET_STATUS_MAX(victim, STAT_WEAK, 3)
 		return

@@ -300,7 +300,7 @@ var/global/list/flooring_cache = list()
 		if(!user.do_skilled(remove_timer, SKILL_CONSTRUCTION, floor) || floor.get_topmost_flooring() != src)
 			return TRUE
 		to_chat(user, SPAN_NOTICE("You remove the [get_surface_descriptor()] with \the [item]."))
-		floor.set_flooring(null, place_product = TRUE)
+		floor.remove_flooring(floor.get_topmost_flooring(), place_product = TRUE)
 		playsound(floor, 'sound/items/Deconstruct.ogg', 80, 1)
 		return TRUE
 
@@ -313,21 +313,21 @@ var/global/list/flooring_cache = list()
 				if(floor.get_topmost_flooring() != src)
 					return
 				to_chat(user, SPAN_NOTICE("You remove the broken [get_surface_descriptor()]."))
-				floor.set_flooring(null)
+				floor.remove_flooring(floor.get_topmost_flooring())
 			else if(flooring_flags & TURF_IS_FRAGILE)
 				if(!user.do_skilled(remove_timer, SKILL_CONSTRUCTION, floor, 0.15))
 					return TRUE
 				if(floor.get_topmost_flooring() != src)
 					return
 				to_chat(user, SPAN_DANGER("You forcefully pry off the [get_surface_descriptor()], destroying them in the process."))
-				floor.set_flooring(null)
+				floor.remove_flooring(floor.get_topmost_flooring())
 			else if(flooring_flags & TURF_REMOVE_CROWBAR)
 				if(!user.do_skilled(remove_timer, SKILL_CONSTRUCTION, floor))
 					return TRUE
 				if(floor.get_topmost_flooring() != src)
 					return
 				to_chat(user, SPAN_NOTICE("You lever off the [get_surface_descriptor()]."))
-				floor.set_flooring(null, place_product = TRUE)
+				floor.remove_flooring(floor.get_topmost_flooring(), place_product = TRUE)
 			else
 				return
 			playsound(floor, 'sound/items/Crowbar.ogg', 80, 1)
@@ -339,7 +339,7 @@ var/global/list/flooring_cache = list()
 			if(!user.do_skilled(remove_timer, SKILL_CONSTRUCTION, floor) || floor.get_topmost_flooring() != src)
 				return TRUE
 			to_chat(user, SPAN_NOTICE("You unscrew and remove the [get_surface_descriptor()]."))
-			floor.set_flooring(null, place_product = TRUE)
+			floor.remove_flooring(floor.get_topmost_flooring(), place_product = TRUE)
 			playsound(floor, 'sound/items/Screwdriver.ogg', 80, 1)
 			return TRUE
 
@@ -347,7 +347,7 @@ var/global/list/flooring_cache = list()
 			if(!user.do_skilled(remove_timer, SKILL_CONSTRUCTION, floor) || floor.get_topmost_flooring() != src)
 				return TRUE
 			to_chat(user, SPAN_NOTICE("You unwrench and remove the [get_surface_descriptor()]."))
-			floor.set_flooring(null, place_product = TRUE)
+			floor.remove_flooring(floor.get_topmost_flooring(), place_product = TRUE)
 			playsound(floor, 'sound/items/Ratchet.ogg', 80, 1)
 			return TRUE
 

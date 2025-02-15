@@ -42,12 +42,12 @@
 	update_icon()
 	return TRUE
 
-/obj/item/camera_film/examine(mob/user, distance, infix, suffix)
+/obj/item/camera_film/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(uses_left < 1)
-		to_chat(user, SPAN_WARNING("This cartridge is completely spent!"))
+		. += SPAN_WARNING("This cartridge is completely spent!")
 	else
-		to_chat(user, "[uses_left] uses left.")
+		. += "[uses_left] uses left."
 
 /obj/item/camera_film/proc/get_remaining()
 	return uses_left
@@ -88,7 +88,7 @@
 	return clone
 
 /obj/item/photo/attack_self(mob/user)
-	user.examinate(src)
+	user.examine_verb(src)
 
 /obj/item/photo/get_matter_amount_modifier()
 	return 0.2
@@ -117,7 +117,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/photo/examine(mob/user, distance)
+/obj/item/photo/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1)
 		to_chat(user, SPAN_NOTICE("It is too far away."))
@@ -336,12 +336,12 @@
 	to_chat(user, SPAN_NOTICE("[film.get_remaining()] photo\s left."))
 	return TRUE
 
-/obj/item/camera/examine(mob/user)
+/obj/item/camera/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(film)
-		to_chat(user, "It has [film?.get_remaining()] photo\s left.")
+		. += "It has [film?.get_remaining()] photo\s left."
 	else
-		to_chat(user, "It doesn't have a film cartridge.")
+		. += "It doesn't have a film cartridge."
 
 /obj/item/camera/proc/captureimage(atom/target, mob/living/user, flag)
 	var/x_c = target.x - (field_of_view-1)/2

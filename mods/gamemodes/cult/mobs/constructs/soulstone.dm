@@ -37,14 +37,14 @@
 	QDEL_NULL(shade)
 	return ..()
 
-/obj/item/soulstone/examine(mob/user)
+/obj/item/soulstone/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(full == SOULSTONE_EMPTY)
-		to_chat(user, "The shard still flickers with a fraction of the full artifact's power, but it needs to be filled with the essence of someone's life before it can be used.")
+		. += "The shard still flickers with a fraction of the full artifact's power, but it needs to be filled with the essence of someone's life before it can be used."
 	if(full == SOULSTONE_ESSENCE)
-		to_chat(user,"The shard has gone transparent, a seeming window into a dimension of unspeakable horror.")
+		. += "The shard has gone transparent, a seeming window into a dimension of unspeakable horror."
 	if(full == SOULSTONE_CRACKED)
-		to_chat(user, "This one is cracked and useless.")
+		. += "This one is cracked and useless."
 
 /obj/item/soulstone/attackby(var/obj/item/I, var/mob/user)
 	if(is_evil && istype(I, /obj/item/nullrod))

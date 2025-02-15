@@ -479,9 +479,9 @@
 		var/obj/item/organ/internal/heart = GET_INTERNAL_ORGAN(H, BP_HEART)
 		if(heart)
 			if(dose < 120)
-				heart.take_internal_damage(10 * removed, 0)
+				heart.take_damage(10 * removed, 0)
 			else
-				heart.take_internal_damage(100, 0)
+				heart.take_damage(100, 0)
 
 /decl/material/liquid/alcohol/aged_whiskey // I have no idea what this is and where it comes from.  //It comes from Dinnlan now
 	name = "aged whiskey"

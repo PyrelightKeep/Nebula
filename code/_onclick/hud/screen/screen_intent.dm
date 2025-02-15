@@ -34,10 +34,11 @@
 	if(. && intent && parent)
 		parent.set_intent(intent)
 
-/obj/screen/intent_button/examine(mob/user, distance)
+/obj/screen/intent_button/examined_by(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(FALSE)
 	if(desc)
 		to_chat(user, desc)
+	return TRUE
 
 /obj/screen/intent_button/on_update_icon()
 	. = ..()

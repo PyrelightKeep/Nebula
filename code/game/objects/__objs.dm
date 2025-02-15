@@ -136,6 +136,9 @@
 			wrench_floor_bolts(user, null, used_item)
 			update_icon()
 			return TRUE
+	var/datum/extension/padding/padding_extension = get_extension(src, __IMPLIED_TYPE__)
+	if(padding_extension && padding_extension.handle_use_item(used_item, user))
+		return TRUE
 	return ..()
 
 /obj/proc/wrench_floor_bolts(mob/user, delay = 2 SECONDS, obj/item/tool)
@@ -165,12 +168,12 @@
 /obj/proc/can_embed()
 	return FALSE
 
-/obj/examine(mob/user, distance, infix, suffix)
+/obj/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if((obj_flags & OBJ_FLAG_ROTATABLE))
-		to_chat(user, SPAN_SUBTLE("\The [src] can be rotated with alt-click."))
+		. += SPAN_SUBTLE("\The [src] can be rotated with alt-click.")
 	if((obj_flags & OBJ_FLAG_ANCHORABLE))
-		to_chat(user, SPAN_SUBTLE("\The [src] can be anchored or unanchored with a wrench."))
+		. += SPAN_SUBTLE("\The [src] can be anchored or unanchored with a wrench.")
 
 /obj/proc/rotate(mob/user)
 	if(!CanPhysicallyInteract(user))

@@ -170,7 +170,7 @@
 
 	var/safe_pressure_min = min_breath_pressure // Minimum safe partial pressure of breathable gas in kPa
 	// Lung damage increases the minimum safe pressure.
-	safe_pressure_min *= 1 + rand(1,4) * damage/max_damage
+	safe_pressure_min *= 1 + rand(1,4) * _organ_damage/max_damage
 
 	var/breatheffect = GET_CHEMICAL_EFFECT(owner, CE_BREATHLOSS)
 	if(!forced && breatheffect && !GET_CHEMICAL_EFFECT(owner, CE_STABLE)) //opiates are bad mmkay
@@ -263,7 +263,7 @@
 		else
 			owner.emote(pick(/decl/emote/visible/shiver,/decl/emote/visible/twitch))
 
-	if(damage || GET_CHEMICAL_EFFECT(owner, CE_BREATHLOSS) || world.time > last_successful_breath + 2 MINUTES)
+	if(_organ_damage || GET_CHEMICAL_EFFECT(owner, CE_BREATHLOSS) || world.time > last_successful_breath + 2 MINUTES)
 		owner.take_damage(HUMAN_MAX_OXYLOSS*breath_fail_ratio, OXY)
 
 	SET_HUD_ALERT_MAX(owner, HUD_OXY, 2)
@@ -274,37 +274,37 @@
 	var/cold_1 = bodytype.get_body_temperature_threshold(COLD_LEVEL_1)
 	var/heat_1 = bodytype.get_body_temperature_threshold(HEAT_LEVEL_1)
 	if((breath.temperature < cold_1 || breath.temperature > heat_1) && !owner.has_genetic_condition(GENE_COND_COLD_RESISTANCE))
-		var/damage = 0
+		var/breath_damage = 0
 		if(breath.temperature <= cold_1)
 			if(prob(20))
 				to_chat(owner, "<span class='danger'>You feel your face freezing and icicles forming in your lungs!</span>")
 			if(breath.temperature < bodytype.get_body_temperature_threshold(COLD_LEVEL_3))
-				damage = COLD_GAS_DAMAGE_LEVEL_3
+				breath_damage = COLD_GAS_DAMAGE_LEVEL_3
 			else if(breath.temperature < bodytype.get_body_temperature_threshold(COLD_LEVEL_2))
-				damage = COLD_GAS_DAMAGE_LEVEL_2
+				breath_damage = COLD_GAS_DAMAGE_LEVEL_2
 			else
-				damage = COLD_GAS_DAMAGE_LEVEL_1
+				breath_damage = COLD_GAS_DAMAGE_LEVEL_1
 
 			if(prob(20))
-				owner.apply_damage(damage, BURN, BP_HEAD, used_weapon = "Excessive Cold")
+				owner.apply_damage(breath_damage, BURN, BP_HEAD, used_weapon = "Excessive Cold")
 			else
-				src.damage += damage
+				_organ_damage += breath_damage
 			SET_HUD_ALERT(owner, HUD_FIRE, 1)
 		else if(breath.temperature >= heat_1)
 			if(prob(20))
 				to_chat(owner, "<span class='danger'>You feel your face burning and a searing heat in your lungs!</span>")
 
 			if(breath.temperature < bodytype.get_body_temperature_threshold(HEAT_LEVEL_2))
-				damage = HEAT_GAS_DAMAGE_LEVEL_1
+				breath_damage = HEAT_GAS_DAMAGE_LEVEL_1
 			else if(breath.temperature < bodytype.get_body_temperature_threshold(HEAT_LEVEL_3))
-				damage = HEAT_GAS_DAMAGE_LEVEL_2
+				breath_damage = HEAT_GAS_DAMAGE_LEVEL_2
 			else
-				damage = HEAT_GAS_DAMAGE_LEVEL_3
+				breath_damage = HEAT_GAS_DAMAGE_LEVEL_3
 
 			if(prob(20))
-				owner.apply_damage(damage, BURN, BP_HEAD, used_weapon = "Excessive Heat")
+				owner.apply_damage(breath_damage, BURN, BP_HEAD, used_weapon = "Excessive Heat")
 			else
-				src.damage += damage
+				_organ_damage += breath_damage
 			SET_HUD_ALERT(owner, HUD_FIRE, 2)
 
 		//breathing in hot/cold air also heats/cools you a bit

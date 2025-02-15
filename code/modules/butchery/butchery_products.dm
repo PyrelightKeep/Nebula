@@ -137,15 +137,15 @@
 	var/_cleaned        = FALSE
 	var/work_skill      = SKILL_CONSTRUCTION
 
-/obj/item/food/butchery/offal/examine(mob/user, distance)
+/obj/item/food/butchery/offal/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1 && user.skill_check(work_skill, SKILL_BASIC) && !dry)
 		if(_cleaned && drying_wetness)
-			to_chat(user, "\The [src] can be hung on a drying rack to dry it in preparation for being twisted into thread.")
+			. += "\The [src] can be hung on a drying rack to dry it in preparation for being twisted into thread."
 		else if(!_cleaned)
-			to_chat(user, "\The [src] can be scraped clean with a sharp object like a knife.")
+			. += "\The [src] can be scraped clean with a sharp object like a knife."
 		else if(!drying_wetness)
-			to_chat(user, "\The [src] can be soaked in water to prepare it for drying.")
+			. += "\The [src] can be soaked in water to prepare it for drying."
 
 /obj/item/food/butchery/offal/attackby(obj/item/W, mob/user)
 	if(IS_KNIFE(W) && !_cleaned && !dry)

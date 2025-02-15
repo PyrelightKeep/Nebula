@@ -1334,7 +1334,7 @@
 /turf/floor/tiled,
 /area/ship/trade/disused)
 "rt" = (
-/obj/structure/bed/chair/padded/beige,
+/obj/structure/chair/padded/beige,
 /turf/floor/carpet/red,
 /area/ship/trade/disused)
 "rv" = (
@@ -1767,7 +1767,7 @@
 /turf/floor/carpet/green,
 /area/ship/trade/disused)
 "IG" = (
-/obj/structure/bed/chair/comfy/green{
+/obj/structure/chair/comfy/green{
 	dir = 1
 	},
 /obj/machinery/power/apc{
@@ -2107,7 +2107,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/ship/trade/livestock)
 "Ua" = (
-/obj/structure/bed/chair/wood/walnut,
+/obj/structure/chair/wood/walnut,
 /turf/floor/carpet/red,
 /area/ship/trade/disused)
 "Ug" = (

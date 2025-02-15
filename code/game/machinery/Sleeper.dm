@@ -106,21 +106,21 @@
 		beaker = new /obj/item/chems/glass/beaker/large(src)
 	update_icon()
 
-/obj/machinery/sleeper/examine(mob/user, distance)
+/obj/machinery/sleeper/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if (distance <= 1)
 		if(beaker)
-			to_chat(user, SPAN_NOTICE("It is loaded with a beaker."))
+			. += SPAN_NOTICE("It is loaded with \a [beaker].")
 		if(occupant)
-			occupant.examine(arglist(args))
+			. += occupant.get_examine_strings(user, distance, infix, suffix)
 		if(emagged && user.skill_check(SKILL_MEDICAL, SKILL_EXPERT))
-			to_chat(user, SPAN_NOTICE("The chemical input system looks like it has been tampered with."))
+			. += SPAN_NOTICE("The chemical input system looks like it has been tampered with.")
 		if(length(loaded_canisters))
-			to_chat(user, SPAN_NOTICE("There are [length(loaded_canisters)] chemical canister\s loaded:"))
+			. += SPAN_NOTICE("There are [length(loaded_canisters)] chemical canister\s loaded:")
 			for(var/thing in loaded_canisters)
-				to_chat(user, SPAN_NOTICE("- \The [thing]"))
+				. += SPAN_NOTICE("- \The [thing]")
 		else
-			to_chat(user, SPAN_NOTICE("There are no chemical canisters loaded."))
+			. += SPAN_NOTICE("There are no chemical canisters loaded.")
 
 /obj/machinery/sleeper/proc/has_room_in_beaker()
 	return beaker && beaker.reagents.total_volume < beaker.reagents.maximum_volume

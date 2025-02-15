@@ -47,7 +47,7 @@
 		COLOR_ASSEMBLY_PURPLE
 		)
 
-/obj/item/electronic_assembly/examine(mob/user)
+/obj/item/electronic_assembly/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(obj_flags & OBJ_FLAG_ANCHORABLE)
 		to_chat(user, "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>")
@@ -61,6 +61,16 @@
 
 	if((isobserver(user) && ckeys_allowed_to_scan[user.ckey]) || check_rights(R_ADMIN, 0, user))
 		to_chat(user, "You can <a href='byond://?src=\ref[src];ghostscan=1'>scan</a> this circuit.");
+
+/obj/item/electronic_assembly/examined_by(mob/user, distance, infix, suffix)
+	. = ..()
+	for(var/I in assembly_components)
+		var/obj/item/integrated_circuit/IC = I
+		IC.external_examine(user)
+		if(opened)
+			IC.internal_examine(user)
+	if(opened)
+		interact(user)
 
 /obj/item/electronic_assembly/check_health(lastdamage, lastdamtype, lastdamflags, consumed)
 	if(!can_take_damage())
@@ -293,16 +303,6 @@
 	if(detail_color == COLOR_ASSEMBLY_BLACK) //Black colored overlay looks almost but not exactly like the base sprite, so just cut the overlay and avoid it looking kinda off.
 		return
 	add_overlay(overlay_image('icons/obj/assemblies/electronic_setups.dmi', "[icon_state]-color", detail_color))
-
-/obj/item/electronic_assembly/examine(mob/user)
-	. = ..()
-	for(var/I in assembly_components)
-		var/obj/item/integrated_circuit/IC = I
-		IC.external_examine(user)
-		if(opened)
-			IC.internal_examine(user)
-	if(opened)
-		interact(user)
 
 //This only happens when this EA is loaded via the printer
 /obj/item/electronic_assembly/proc/post_load()

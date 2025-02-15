@@ -33,17 +33,17 @@
 
 	update_icon()
 
-/obj/item/flamethrower/examine(mob/user, distance)
+/obj/item/flamethrower/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 		if(tank)
-			to_chat(user, SPAN_NOTICE("Release pressure is set to [throw_amount] kPa. The tank has about [round(tank.air_contents.return_pressure(), 10)] kPa left in it."))
+			. += SPAN_NOTICE("Release pressure is set to [throw_amount] kPa. The tank has about [round(tank.air_contents.return_pressure(), 10)] kPa left in it.")
 		else
-			to_chat(user, SPAN_WARNING("It has no tank installed."))
+			. += SPAN_WARNING("It has no tank installed.")
 		if(igniter)
-			to_chat(user, SPAN_NOTICE("It has \an [igniter] installed."))
+			. += SPAN_NOTICE("It has \an [igniter] installed.")
 		else
-			to_chat(user, SPAN_WARNING("It has no igniter installed."))
+			. += SPAN_WARNING("It has no igniter installed.")
 
 /obj/item/flamethrower/Destroy()
 	QDEL_NULL(welding_tool)

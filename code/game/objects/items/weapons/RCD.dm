@@ -40,11 +40,11 @@
 /obj/item/rcd/proc/can_use(var/mob/user,var/turf/T)
 	return (user.Adjacent(T) && user.get_active_held_item() == src && !user.incapacitated())
 
-/obj/item/rcd/examine(mob/user)
+/obj/item/rcd/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	if(src.type == /obj/item/rcd && loc == user)
-		to_chat(user, "The current mode is '[work_mode]'.")
-		to_chat(user, "It currently holds [stored_matter]/[max_stored_matter] matter-units.")
+	if(src.type == /obj/item/rcd && loc == user) // why tho
+		. += "The current mode is '[work_mode]'."
+		. += "It currently holds [stored_matter]/[max_stored_matter] matter-units."
 
 /obj/item/rcd/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/rcd_ammo))
@@ -133,10 +133,10 @@
 		/decl/material/solid/glass       = sheets
 	)
 
-/obj/item/rcd_ammo/examine(mob/user, distance)
+/obj/item/rcd_ammo/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
-		to_chat(user, "<span class='notice'>It has [remaining] unit\s of matter left.</span>")
+		. += SPAN_NOTICE("It has [remaining] unit\s of matter left.")
 
 /obj/item/rcd_ammo/large
 	name = "high-capacity matter cartridge"
@@ -302,7 +302,7 @@
 	cost = 9
 	delay = 2 SECONDS
 	handles_type = /turf/wall
-	work_type = /turf/floor
+	work_type = /turf/floor/plating
 
 /decl/hierarchy/rcd_mode/deconstruction/wall/can_handle_work(var/obj/item/rcd/rcd, var/turf/wall/target)
 	return ..() && (rcd.canRwall || !target.reinf_material)

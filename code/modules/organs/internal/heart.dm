@@ -28,9 +28,9 @@
 		if(pulse)
 			handle_heartbeat()
 			if(pulse == PULSE_2FAST && prob(1))
-				take_internal_damage(0.5)
+				take_damage(0.5)
 			if(pulse == PULSE_THREADY && prob(5))
-				take_internal_damage(0.5)
+				take_damage(0.5)
 		handle_blood()
 	..()
 
@@ -47,7 +47,7 @@
 	if(pulse_mod > 2 && !is_stable)
 		var/damage_chance = (pulse_mod - 2) ** 2
 		if(prob(damage_chance))
-			take_internal_damage(0.5)
+			take_damage(0.5)
 
 	// Now pulse mod is impacted by shock stage and other things too
 	if(owner.shock_stage > 30)

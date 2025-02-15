@@ -1,115 +1,104 @@
 // These are benches with backs. For backless benches that can't be buckled to, check for /obj/structure/table/bench.
-/obj/structure/bed/chair/bench
+/obj/structure/chair/bench
 	name = "bench"
 	desc = "A simple slatted bench."
-	icon = 'icons/obj/structures/benches.dmi'
-	icon_state = "bench_standing"
-	base_icon = "bench"
+	icon = 'icons/obj/structures/furniture/bench.dmi'
+	icon_state = ICON_STATE_WORLD + "_standing"
 	color = WOOD_COLOR_GENERIC
-	reinf_material = null
+	initial_padding_material = null
 	material = /decl/material/solid/organic/wood/oak
 	obj_flags = 0
 	anchored = TRUE
-	var/connect_neighbors = TRUE
+	/// A bitfield of connected neighbors.
+	var/neighbors = 0
 
-/obj/structure/bed/chair/bench/should_have_alpha_mask()
-	return simulated && isturf(loc) && connect_neighbors && !(locate(/obj/structure/bed/chair/bench) in get_step(loc, SOUTH))
+/obj/structure/chair/bench/should_have_alpha_mask()
+	if(!simulated || !isturf(loc))
+		return FALSE
+	var/obj/structure/chair/bench/south_neighbor = locate() in get_step(loc, SOUTH)
+	if(can_visually_connect_to(south_neighbor)) // if we're connected to a south neighbor don't add an alpha mask
+		return TRUE
+	return TRUE
 
-/obj/structure/bed/chair/bench/single
-	name = "slatted seat"
-	base_icon = "bench_standing"
-	anchored = FALSE
-	connect_neighbors = FALSE
+// TODO: make this use the generic structure smoothing system?
+/obj/structure/chair/bench/can_visually_connect_to(var/obj/structure/chair/bench/other)
+	return istype(other) && other.dir == dir && other.icon == icon && other.material == material
 
-/obj/structure/bed/chair/bench/Initialize(mapload)
-	. = ..()
-	if(connect_neighbors)
-		. = INITIALIZE_HINT_LATELOAD
-
-/obj/structure/bed/chair/bench/LateInitialize(mapload)
+/obj/structure/chair/bench/Initialize(mapload)
 	..()
-	if(connect_neighbors)
-		if(mapload)
-			update_base_icon()
-		else
-			update_neighbors()
+	return INITIALIZE_HINT_LATELOAD
 
-/obj/structure/bed/chair/bench/Destroy()
+/obj/structure/chair/bench/LateInitialize(mapload)
+	..()
+	if(mapload)
+		recalculate_connections()
+	else
+		update_neighbors()
+
+/obj/structure/chair/bench/Destroy()
 	var/oldloc = loc
 	. = ..()
-	if(connect_neighbors)
-		update_neighbors(oldloc)
+	update_neighbors(oldloc)
 
-/obj/structure/bed/chair/bench/set_dir()
+/obj/structure/chair/bench/set_dir()
 	var/olddir = dir
 	. = ..()
-	if(. && connect_neighbors)
+	if(.)
 		update_neighbors(update_dir = olddir, skip_icon_update = TRUE)
 		update_neighbors(update_dir = dir)
 
-/obj/structure/bed/chair/bench/Move()
+/obj/structure/chair/bench/Move()
 	var/oldloc = loc
 	. = ..()
-	if(. && connect_neighbors)
+	if(.)
 		update_neighbors(oldloc, skip_icon_update = TRUE)
 		update_neighbors(loc)
 
-/obj/structure/bed/chair/bench/proc/update_neighbors(update_loc = loc, update_dir = dir, skip_icon_update)
-	if(!connect_neighbors)
-		return
+/obj/structure/chair/bench/proc/update_neighbors(update_loc = loc, update_dir = dir, skip_icon_update)
 	if(!skip_icon_update)
-		update_base_icon()
+		recalculate_connections()
 	if(!isturf(update_loc))
 		return
 	for(var/stepdir in list(turn(update_dir, -90), turn(update_dir, 90)))
-		for(var/obj/structure/bed/chair/bench/other in get_step(update_loc, stepdir))
-			other.update_base_icon()
+		for(var/obj/structure/chair/bench/other in get_step(update_loc, stepdir))
+			other.recalculate_connections()
 
-/obj/structure/bed/chair/bench/proc/update_base_icon()
-
-	if(!connect_neighbors)
-		return
-
-	base_icon = initial(base_icon)
-
+// TODO: Make this use base structure smoothing eventually? Somehow?
+/obj/structure/chair/bench/proc/recalculate_connections()
+	neighbors = 0
 	if(!isturf(loc))
-		base_icon = "[base_icon]_standing"
+		neighbors = 0
 	else
-		var/neighbors = 0
-		var/left_dir  = turn(dir, -90)
-		var/right_dir = turn(dir,  90)
-		for(var/checkdir in list(left_dir, right_dir))
+		for(var/checkdir in list(turn(dir, -90), turn(dir,  90)))
 			var/turf/check_turf = get_step(loc, checkdir)
-			for(var/obj/structure/bed/chair/bench/other in check_turf)
-				if(other.connect_neighbors && other.dir == dir && initial(other.base_icon) == base_icon && other.material == material)
+			for(var/obj/structure/chair/bench/other in check_turf)
+				// TODO: Make this use normal structure smoothing helpers.
+				if(other.dir == dir && other.icon == icon && other.material == material)
 					neighbors |= checkdir
 					break
-
-		if(neighbors & left_dir)
-			if(neighbors & right_dir)
-				base_icon = "[base_icon]_middle"
-			else
-				base_icon = "[base_icon]_right"
-		else if(neighbors & right_dir)
-			base_icon = "[base_icon]_left"
-		else
-			base_icon = "[base_icon]_standing"
-
 	update_icon()
 
-/obj/structure/bed/chair/bench/proc/get_material_icon()
-	return material?.bench_icon
-
-/obj/structure/bed/chair/bench/update_materials()
+/obj/structure/chair/bench/get_base_icon()
 	. = ..()
-	var/icon/material_icon = get_material_icon()
-	if(material_icon)
-		icon = material_icon
+	var/left_dir  = turn(dir, -90)
+	var/right_dir = turn(dir,  90)
+	if(neighbors & left_dir)
+		if(neighbors & right_dir)
+			. += "_middle"
+		else
+			. += "_right"
+	else if(neighbors & right_dir)
+		. += "_left"
+	else
+		. += "_standing"
 
-/obj/structure/bed/chair/bench/mahogany
+/obj/structure/chair/bench/get_material_icon()
+	return material?.bench_icon || initial(icon)
+
+/obj/structure/chair/bench/mahogany
 	color = WOOD_COLOR_RICH
 	material = /decl/material/solid/organic/wood/mahogany
 
-/obj/structure/bed/chair/bench/ebony
+/obj/structure/chair/bench/ebony
 	color = WOOD_COLOR_BLACK
 	material = /decl/material/solid/organic/wood/ebony

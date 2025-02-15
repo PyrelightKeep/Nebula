@@ -25,7 +25,7 @@
 	if(can_feel_pain() && get_shock() >= 10)
 		tally += (get_shock() / 10) //pain shouldn't slow you down if you can't even feel it
 
-	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
+	if(istype(buckled, /obj/structure/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
 			var/obj/item/organ/external/E = GET_EXTERNAL_ORGAN(src, organ_name)
 			tally += E ? E.get_movement_delay(4) : 4

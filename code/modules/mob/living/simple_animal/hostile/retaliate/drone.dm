@@ -264,6 +264,9 @@
 			C.origin_tech = @'{"[TECH_ESOTERIC]":[rand(3, 6)]}'
 	return ..()
 
+/mob/living/simple_animal/hostile/malf_drone/isSynthetic()
+	return TRUE
+
 /obj/item/projectile/beam/drone
 	damage = 15
 

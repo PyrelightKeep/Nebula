@@ -35,7 +35,7 @@
 #define TICKS_IN_SECOND 	10
 
 #if DM_VERSION < 516
-#define SIGN(X) ((X) < 0 ? -1 : 1)
+#define SIGN(X) ( (X) ? ( (X) < 0 ? -1 : 1 ) : 0 )
 #else
 #define SIGN(X) sign(X)
 #endif

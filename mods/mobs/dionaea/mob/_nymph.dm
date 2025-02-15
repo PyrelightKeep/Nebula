@@ -24,7 +24,7 @@
 	can_pull_mobs = MOB_PULL_SMALLER
 
 	holder_type = /obj/item/holder/diona
-	possession_candidate = 1
+	possession_candidate = TRUE
 	atom_flags = ATOM_FLAG_NO_CHEM_CHANGE
 	hud_used = /datum/hud/diona_nymph
 

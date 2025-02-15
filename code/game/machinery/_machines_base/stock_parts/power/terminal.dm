@@ -154,7 +154,7 @@
 	return FALSE
 
 /obj/item/stock_parts/power/terminal/get_source_info()
-	. =  "The machine can receive power by direct connection to the powernet. "
+	. = list("The machine can receive power by direct connection to the powernet.")
 	if(terminal)
 		if(!terminal.get_powernet())
 			. += "The power terminal must be connected to the powernet using additional cables."

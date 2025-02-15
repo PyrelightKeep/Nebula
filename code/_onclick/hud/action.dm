@@ -18,7 +18,7 @@
 	var/procname = null
 	var/atom/movable/target = null
 	var/check_flags = 0
-	var/active = 0
+	var/active = FALSE
 	var/obj/screen/action_button/button = null
 	var/button_icon = 'icons/obj/action_buttons/actions.dmi'
 	var/button_icon_state = "default"

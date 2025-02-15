@@ -22,7 +22,8 @@
 	var/heat_capacity = 1
 
 	//Properties for both
-	var/blocks_air = 0          // Does this turf contain air/let air through?
+	/// Does this turf contain air/let air through?
+	var/blocks_air = FALSE
 
 	// General properties.
 	var/pathweight = 1          // How much does it cost to pathfind over this turf?
@@ -30,10 +31,10 @@
 	var/list/decals
 
 	// Used for slowdown.
-	var/movement_delay
+	var/movement_delay = 0
 
 	var/fluid_can_pass
-	var/fluid_blocked_dirs = 0
+	var/fluid_blocked_dirs = null
 	var/flooded // Whether or not this turf is absolutely flooded ie. a water source.
 	var/footstep_type
 	var/open_turf_type = /turf/open // Which open turf type to use by default above this turf in a multiz context. Overridden by area.

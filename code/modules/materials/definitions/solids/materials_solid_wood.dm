@@ -26,7 +26,7 @@
 	slatted_seat_icon = 'icons/obj/structures/furniture/chair_slatted_wood.dmi'
 	backed_chair_icon = 'icons/obj/structures/furniture/chair_backed_wood.dmi'
 	explosion_resistance = 2
-	shard_type = SHARD_SPLINTER
+	shard_name = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks
 	hardness = MAT_VALUE_FLEXIBLE + 10
 	brute_armor = 1

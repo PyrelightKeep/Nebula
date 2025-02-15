@@ -129,6 +129,7 @@
 /obj/item/grab/can_be_dropped_by_client(mob/M)
 	if(M == assailant)
 		return TRUE
+	return FALSE
 
 /obj/item/grab/Destroy()
 	var/atom/old_affecting = affecting

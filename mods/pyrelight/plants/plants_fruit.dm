@@ -41,14 +41,17 @@
 			for(var/i = 1 to remaining)
 				add_overlay(image(icon, "[comp.icon_state][++comp_count[comp.name]]"))
 
-/obj/item/food/fruit/examine(mob/user, distance)
+/obj/item/food/fruit/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance > 1)
 		return
-
 	if(examine_info && (!examine_info_skill || !examine_info_rank || user.skill_check(examine_info_skill, examine_info_rank)))
-		to_chat(user, examine_info)
+		. += examine_info
 
+/obj/item/food/fruit/get_examine_hints(mob/user, distance, infix, suffix)
+	. = ..()
+	if(distance > 1)
+		return
 	var/list/fruit_comp_strings = list()
 	for(var/datum/fruit_segment/comp as anything in get_composition())
 		var/remaining = comp.dissect_amount - LAZYACCESS(removed_segments, comp)
@@ -65,7 +68,7 @@
 		for(var/comp_string in fruit_comp_strings[comp_ind])
 			comp_string_comps += "[fruit_comp_strings[comp_ind][comp_string]] [comp_string]\s"
 		if(length(comp_string_comps))
-			to_chat(user, SPAN_NOTICE("With [comp_ind], you could harvest [english_list(comp_string_comps)]."))
+			LAZYADD(., SPAN_NOTICE("With [comp_ind], you could harvest [english_list(comp_string_comps)]."))
 
 /obj/item/food/fruit/attackby(obj/item/W, mob/living/user)
 	if(!user?.check_intent(I_FLAG_HARM))

@@ -850,11 +850,11 @@ FIRE ALARM
 	var/sound_id
 	var/datum/sound_token/sound_token
 
-/obj/machinery/firealarm/examine(mob/user)
+/obj/machinery/firealarm/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(isContactLevel(loc.z))
 		var/decl/security_state/security_state = GET_DECL(global.using_map.security_state)
-		to_chat(user, "The current alert level is [security_state.current_security_level.name].")
+		. += "The current alert level is [security_state.current_security_level.name]."
 
 /obj/machinery/firealarm/on_update_icon()
 	cut_overlays()

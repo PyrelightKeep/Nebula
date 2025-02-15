@@ -407,9 +407,10 @@ var/global/bomb_set
 		/obj/item/modular_computer/laptop/preset/custom_loadout/cheap
 	)
 
-/obj/item/secure_storage/briefcase/nukedisk/examine(mob/user)
+/obj/item/secure_storage/briefcase/nukedisk/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user,"On closer inspection, you see \a [global.using_map.company_name] emblem is etched into the front of it.")
+	if(distance <= 1)
+		. += "On closer inspection, you see \a [global.using_map.company_name] emblem is etched into the front of it."
 
 /obj/item/folder/envelope/nuke_instructions
 	name = "instructions envelope"

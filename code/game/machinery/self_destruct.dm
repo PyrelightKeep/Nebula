@@ -101,16 +101,16 @@
 		visible_message(SPAN_DANGER("\The [src] dents and chars."))
 		damaged = 1
 
-/obj/machinery/self_destruct/examine(mob/user)
+/obj/machinery/self_destruct/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(damaged)
-		to_chat(user, "<span class='warning'>[src] is damaged, it needs repairs.</span>")
+		. += SPAN_WARNING("\The [src] is damaged and needs to be repaired.")
 		return
 	if(armed)
-		to_chat(user, "[src] is armed and ready.")
+		. += SPAN_DANGER("\The [src] is armed and ready.")
 		return
 	if(cylinder)
-		to_chat(user, "[src] is loaded and ready to be armed.")
+		. += "\the [src] is loaded and ready to be armed."
 
 /obj/machinery/self_destruct/on_update_icon()
 	if(armed)

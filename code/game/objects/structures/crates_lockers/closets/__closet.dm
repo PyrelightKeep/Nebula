@@ -61,7 +61,7 @@ var/global/list/closets = list()
 /obj/structure/closet/can_install_lock()
 	return !(setup & CLOSET_HAS_LOCK) // CLOSET_HAS_LOCK refers to the access lock, not a physical lock.
 
-/obj/structure/closet/examine(mob/user, distance)
+/obj/structure/closet/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1 && !opened)
 		var/content_size = 0
@@ -69,19 +69,19 @@ var/global/list/closets = list()
 			if(!AM.anchored)
 				content_size += content_size(AM)
 		if(!content_size)
-			to_chat(user, "It is empty.")
+			. += "It is empty."
 		else if(storage_capacity > content_size*4)
-			to_chat(user, "It is barely filled.")
+			. += "It is barely filled."
 		else if(storage_capacity > content_size*2)
-			to_chat(user, "It is less than half full.")
+			. += "It is less than half full."
 		else if(storage_capacity > content_size)
-			to_chat(user, "There is still some free space.")
+			. += "There is still some free space."
 		else
-			to_chat(user, "It is full.")
+			. += "It is full."
 
 	var/mob/observer/ghost/G = user
 	if(isghost(G) && (G.client?.holder || G.antagHUD))
-		to_chat(user, "It contains: [counting_english_list(contents)]")
+		. += "It contains: [counting_english_list(contents)]"
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group || (height==0 || wall_mounted)) return 1
@@ -367,7 +367,7 @@ var/global/list/closets = list()
 
 /obj/structure/closet/attack_ghost(mob/ghost)
 	if(ghost.client && ghost.client.inquisitive_ghost)
-		ghost.examinate(src)
+		ghost.examine_verb(src)
 		if (!opened)
 			to_chat(ghost, "It contains: [english_list(contents)].")
 

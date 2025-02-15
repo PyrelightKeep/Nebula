@@ -36,7 +36,7 @@
 	/// State used to update intent selector.
 	var/icon_state
 	/// Whether or not this intent is available if you have an item in your hand.
-	var/requires_empty_hand
+	var/requires_empty_hand = FALSE
 	/// Intents to be removed from the available list if this intent is present.
 	var/list/blocks_other_intents
 

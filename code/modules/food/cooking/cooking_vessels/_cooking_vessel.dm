@@ -87,16 +87,16 @@
 			else
 				. += "[reagents.liquid_volumes[liquid_type]]u of [reagent_name]"
 
-/obj/item/chems/cooking_vessel/examine(mob/user, distance)
+/obj/item/chems/cooking_vessel/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && distance <= 1)
 		var/list/contents_strings = get_cooking_contents_strings()
 		if(length(contents_strings))
-			to_chat(user, SPAN_NOTICE("\The [src] contains:"))
+			. += SPAN_NOTICE("\The [src] contains:")
 			for(var/content_string in contents_strings)
-				to_chat(user, SPAN_NOTICE("- [content_string]"))
+				. += SPAN_NOTICE("- [content_string]")
 		else
-			to_chat(user, SPAN_NOTICE("\The [src] is empty."))
+			. += SPAN_NOTICE("\The [src] is empty.")
 
 /obj/item/chems/cooking_vessel/Process()
 	var/decl/recipe/recipe = select_recipe(cooking_category, src, temperature)

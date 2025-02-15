@@ -15,7 +15,7 @@
 	cable.amount = 100
 
 /obj/machinery/cablelayer/Move(new_turf,M_Dir)
-	..()
+	. = ..()
 	layCable(new_turf,M_Dir)
 
 /obj/machinery/cablelayer/physical_attack_hand(mob/user)
@@ -51,9 +51,9 @@
 		return TRUE
 	return ..()
 
-/obj/machinery/cablelayer/examine(mob/user)
+/obj/machinery/cablelayer/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "\The [src]'s cable reel has [cable.amount] length\s left.")
+	. += "\The [src]'s cable reel has [cable.amount] length\s left."
 
 /obj/machinery/cablelayer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)
@@ -87,7 +87,7 @@
 	if(istype(new_turf, /turf/floor))
 		var/turf/floor/T = new_turf
 		if(!T.is_plating())
-			T.set_flooring(null, place_product = !T.is_floor_damaged())
+			T.clear_flooring(place_product = !T.is_floor_damaged())
 	return new_turf.is_plating()
 
 /obj/machinery/cablelayer/proc/layCable(var/turf/new_turf,var/M_Dir)

@@ -336,6 +336,6 @@
 	update_icon()
 	..()
 
-/obj/machinery/power/smes/examine(mob/user)
+/obj/machinery/power/smes/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "The service hatch is [panel_open ? "open" : "closed"].")
+	. += "The service hatch is [panel_open ? "open" : "closed"]."

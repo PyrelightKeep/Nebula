@@ -151,10 +151,10 @@
 	hitcost = 20
 
 // Addition made by Techhead0, thanks for fullfilling the todo!
-/obj/item/baton/robot/examine(mob/user, distance, infix, suffix)
+/obj/item/baton/robot/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance == 1)
-		to_chat(user, SPAN_NOTICE("The baton is running off an external power supply."))
+		. += SPAN_NOTICE("The baton is running off an external power supply.")
 
 // Override proc for the stun baton module, found in PC Security synthetics
 // Refactored to fix #14470 - old proc defination increased the hitcost beyond

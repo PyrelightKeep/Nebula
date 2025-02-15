@@ -49,13 +49,13 @@
 	else
 		return ..()
 
-/obj/item/bodybag/rescue/examine(mob/user)
+/obj/item/bodybag/rescue/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(airtank)
-		to_chat(user,"The pressure meter on \the [airtank] shows '[airtank.air_contents.return_pressure()] kPa'.")
-		to_chat(user,"The distribution valve on \the [airtank] is set to '[airtank.distribute_pressure] kPa'.")
+		. += "The pressure meter on \the [airtank] shows '[airtank.air_contents.return_pressure()] kPa'."
+		. += "The distribution valve on \the [airtank] is set to '[airtank.distribute_pressure] kPa'."
 	else
-		to_chat(user, "<span class='warning'>The air tank is missing.</span>")
+		. += SPAN_WARNING("The air tank is missing.")
 
 /obj/structure/closet/body_bag/rescue
 	name = "rescue bag"
@@ -126,15 +126,19 @@
 /obj/structure/closet/body_bag/rescue/return_air() //Used to make stasis bags protect from vacuum.
 	return atmo
 
-/obj/structure/closet/body_bag/rescue/examine(mob/user)
+/obj/structure/closet/body_bag/rescue/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(airtank)
-		to_chat(user,"The pressure meter on \the [airtank] shows '[airtank.air_contents.return_pressure()] kPa'.")
-		to_chat(user,"The distribution valve on \the [airtank] is set to '[airtank.distribute_pressure] kPa'.")
+		. += "The pressure meter on \the [airtank] shows '[airtank.air_contents.return_pressure()] kPa'."
+		. += "The distribution valve on \the [airtank] is set to '[airtank.distribute_pressure] kPa'."
 	else
-		to_chat(user, "<span class='warning'>The air tank is missing.</span>")
-	to_chat(user,"The pressure meter on [src] shows '[atmo.return_pressure()] kPa'.")
+		. += SPAN_WARNING("The air tank is missing.")
+	. += "The pressure meter on [src] shows '[atmo.return_pressure()] kPa'."
+
+/obj/structure/closet/body_bag/rescue/examined_by(mob/user, distance, infix, suffix)
+	. = ..()
 	if(Adjacent(user)) //The bag's rather thick and opaque from a distance.
-		to_chat(user, "<span class='info'>You peer into \the [src].</span>")
-		for(var/mob/living/L in contents)
-			L.examine(arglist(args))
+		to_chat(user, SPAN_INFO("You peer into \the [src]."))
+		for(var/mob/living/patient in contents)
+			patient.examined_by(user, distance, infix, suffix)
+	return TRUE

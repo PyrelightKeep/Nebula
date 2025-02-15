@@ -52,12 +52,12 @@
 	else
 		add_overlay("[icon_state]-nocell")
 
-/obj/item/defibrillator/examine(mob/user)
+/obj/item/defibrillator/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(bcell)
-		to_chat(user, "The charge meter is showing [bcell.percent()]% charge left.")
+		. += "The charge meter is showing [bcell.percent()]% charge left."
 	else
-		to_chat(user, "There is no cell inside.")
+		. += SPAN_WARNING("There is no cell inside.")
 
 /obj/item/defibrillator/ui_action_click()
 	toggle_paddles()

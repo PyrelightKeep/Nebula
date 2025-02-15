@@ -421,7 +421,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/structure/bed/chair/comfy/captain,
+/obj/structure/chair/comfy/captain,
 /turf/floor/tiled,
 /area/ministation/bridge)
 "bA" = (
@@ -486,7 +486,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/bed/chair/comfy/captain{
+/obj/structure/chair/comfy/captain{
 	dir = 4
 	},
 /obj/machinery/camera/network/command{
@@ -1594,7 +1594,7 @@
 /turf/floor/tiled/white,
 /area/ministation/science)
 "gN" = (
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -2053,7 +2053,7 @@
 /obj/abstract/landmark/start{
 	name = "Scientist"
 	},
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/item/radio/intercom{
 	dir = 8;
 	pixel_x = 22
@@ -2752,7 +2752,7 @@
 /obj/effect/floor_decal/corner/red{
 	dir = 5
 	},
-/obj/structure/bed/chair/padded/blue{
+/obj/structure/chair/padded/blue{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -2771,7 +2771,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet{
@@ -2927,7 +2927,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -3322,7 +3322,7 @@
 /obj/effect/floor_decal/corner/yellow{
 	dir = 5
 	},
-/obj/structure/bed/chair/padded/blue{
+/obj/structure/chair/padded/blue{
 	dir = 1
 	},
 /turf/floor/tiled,
@@ -4619,7 +4619,7 @@
 /turf/floor/tiled/white,
 /area/ministation/science)
 "Bb" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
@@ -4756,7 +4756,7 @@
 /turf/floor/lino,
 /area/ministation/telecomms)
 "BE" = (
-/obj/structure/bed/chair/padded/blue{
+/obj/structure/chair/padded/blue{
 	dir = 1
 	},
 /turf/floor/lino,
@@ -5304,7 +5304,7 @@
 /turf/floor/carpet/green,
 /area/ministation/library)
 "DS" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -5370,7 +5370,7 @@
 /turf/floor/carpet/magenta,
 /area/ministation/science)
 "Ex" = (
-/obj/structure/bed/chair/armchair/black{
+/obj/structure/chair/armchair/black{
 	dir = 4
 	},
 /turf/floor/carpet/green,
@@ -5795,7 +5795,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/bed/chair/wood/maple{
+/obj/structure/chair/wood/maple{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -6180,7 +6180,7 @@
 /turf/floor/plating,
 /area/ministation/maint/l3central)
 "LT" = (
-/obj/structure/bed/chair/armchair/black{
+/obj/structure/chair/armchair/black{
 	dir = 4
 	},
 /turf/floor/laminate/mahogany,
@@ -6319,7 +6319,7 @@
 /turf/floor/tiled/white,
 /area/ministation/science)
 "MJ" = (
-/obj/structure/bed/chair/armchair/black,
+/obj/structure/chair/armchair/black,
 /turf/floor/carpet/green,
 /area/ministation/library)
 "MP" = (
@@ -6560,7 +6560,7 @@
 /turf/floor/tiled,
 /area/ministation/bridge)
 "Od" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 4
 	},
 /turf/floor/laminate/yew,
@@ -6573,7 +6573,7 @@
 /turf/wall/titanium,
 /area/ministation/shuttle/outgoing)
 "Om" = (
-/obj/structure/bed/chair/armchair/black{
+/obj/structure/chair/armchair/black{
 	dir = 8
 	},
 /turf/floor/carpet/green,
@@ -6630,7 +6630,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/floor/tiled/white,
@@ -6810,7 +6810,7 @@
 /turf/floor/laminate/mahogany,
 /area/ministation/library)
 "PE" = (
-/obj/structure/bed/chair/armchair/black{
+/obj/structure/chair/armchair/black{
 	dir = 8
 	},
 /turf/floor/laminate/mahogany,
@@ -6883,7 +6883,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6904,7 +6904,7 @@
 /turf/floor/tiled/white,
 /area/ministation/science)
 "Qh" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -7480,7 +7480,7 @@
 	dir = 5
 	},
 /obj/effect/overmap/visitable/ship/ministation,
-/obj/structure/bed/chair/padded/blue,
+/obj/structure/chair/padded/blue,
 /turf/floor/tiled,
 /area/ministation/bridge)
 "TF" = (
@@ -7783,7 +7783,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/structure/bed/chair/comfy/captain{
+/obj/structure/chair/comfy/captain{
 	dir = 8
 	},
 /obj/machinery/camera/autoname{
@@ -8077,7 +8077,7 @@
 /turf/floor/tiled,
 /area/ministation/hall/n3)
 "Xe" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 4
 	},
 /obj/machinery/light,
@@ -8483,7 +8483,7 @@
 /turf/floor/plating,
 /area/ministation/maint/l3ne)
 "Zt" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 4
 	},
 /obj/machinery/firealarm{
@@ -8550,7 +8550,7 @@
 /turf/floor/tiled,
 /area/ministation/hall/s3)
 "ZS" = (
-/obj/structure/bed/chair/shuttle/blue{
+/obj/structure/chair/shuttle/blue{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{

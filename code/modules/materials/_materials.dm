@@ -1,5 +1,5 @@
 var/global/list/_descriptive_temperature_strings
-/proc/get_descriptive_temperature_strings(temperature)
+/proc/get_descriptive_temperature_strings(temperature as num)
 	if(!_descriptive_temperature_strings)
 		_descriptive_temperature_strings = list()
 
@@ -41,7 +41,7 @@ var/global/list/materials_by_gas_symbol = list()
 
 INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
-/obj/effect/gas_overlay/proc/update_alpha_animation(var/new_alpha)
+/obj/effect/gas_overlay/proc/update_alpha_animation(var/new_alpha as num)
 	animate(src, alpha = new_alpha)
 	alpha = new_alpha
 	animate(src, alpha = 0.8 * new_alpha, time = 10, easing = SINE_EASING | EASE_OUT, loop = -1)
@@ -115,7 +115,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/can_backfill_floor_type
 
 	// Shards/tables/structures
-	var/shard_type = SHARD_SHRAPNEL       // Path of debris object.
+	var/shard_type = /obj/item/shard
+	var/shard_name = SHARD_SHRAPNEL as text // Path of debris object.
 	var/shard_icon                        // Related to above.
 	var/shard_can_repair = 1              // Can shards be turned into sheets with a welder?
 	var/list/recipes                      // Holder for all recipes usable with a sheet of this material.
@@ -135,8 +136,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	var/table_icon_base = "metal"
 	var/table_icon_reinforced = "reinf_metal"
 
-	var/bench_icon = 'icons/obj/structures/benches.dmi'
-	var/pew_icon = 'icons/obj/structures/pews.dmi'
+	// TODO: Refactor these to just apply a generic material overlay (e.g. wood grain) instead of entirely-separate icon files?
+	// Alternatively, find some other way for icon variation based on material.
+	// You can't do it by having separate states in the base icons,
+	// because then modpacked materials can't add new states,
+	// and what if we really really want a special nullglass pew sprite or something?
+	var/bench_icon = 'icons/obj/structures/furniture/bench.dmi'
+	var/pew_icon = 'icons/obj/structures/furniture/pew.dmi'
+	var/slatted_seat_icon = 'icons/obj/structures/furniture/chair_slatted.dmi'
+	var/backed_chair_icon = 'icons/obj/structures/furniture/chair_backed.dmi'
 
 	var/list/stack_origin_tech = @'{"materials":1}' // Research level for stacks.
 
@@ -427,7 +435,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	if(holographic)
 		temperature_burn_milestone_material = null
 		can_boil_to_gas              = FALSE
-		shard_type                   = SHARD_NONE
+		shard_name                   = SHARD_NONE
+		shard_type                   = null
 		conductive                   = 0
 		hidden_from_codex            = TRUE
 		value                        = 0
@@ -462,7 +471,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 			temperature_damage_threshold = new_temperature_damage_threshold
 
 	if(!shard_icon)
-		shard_icon = shard_type
+		shard_icon = shard_name
 	if(!burn_armor)
 		burn_armor = brute_armor
 	if(!gas_symbol)
@@ -687,7 +696,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 
 // As above.
 /decl/material/proc/place_shards(var/turf/target, var/amount = 1)
-	if(shard_type)
+	if(shard_name)
 		return create_object(target, amount, /obj/item/shard)
 
 /**Places downa as many shards as needed for the given amount of matter units. Returns a list of all the cuttings. */
@@ -749,12 +758,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	else
 		if(dirtiness <= DIRTINESS_DECONTAMINATE)
 			if(amount >= decontamination_dose && istype(O, /obj/item))
-				var/obj/item/I = O
-				if(I.contaminated)
-					I.decontaminate()
+				var/obj/item/thing = O
+				if(thing.contaminated)
+					thing.decontaminate()
 		if(dirtiness <= DIRTINESS_STERILE)
 			O.germ_level -= min(amount*20, O.germ_level)
-			O.was_bloodied = null
+			O.was_bloodied = FALSE
 		if(dirtiness <= DIRTINESS_CLEAN)
 			O.clean()
 
@@ -872,15 +881,15 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 			var/organ_damage = dam * M.get_toxin_resistance()
 			if(organ_damage > 0)
 				var/mob/living/human/H = M
-				var/obj/item/organ/internal/I = GET_INTERNAL_ORGAN(H, toxicity_targets_organ)
-				if(I)
-					var/can_damage = I.max_damage - I.damage
+				var/obj/item/organ/internal/organ = GET_INTERNAL_ORGAN(H, toxicity_targets_organ)
+				if(organ)
+					var/can_damage = organ.max_damage - organ.get_organ_damage()
 					if(can_damage > 0)
 						if(organ_damage > can_damage)
-							I.take_internal_damage(can_damage, silent=TRUE)
+							organ.take_damage(can_damage, silent=TRUE)
 							dam -= can_damage
 						else
-							I.take_internal_damage(organ_damage, silent=TRUE)
+							organ.take_damage(organ_damage, silent=TRUE)
 							dam = 0
 		if(dam > 0)
 			M.take_damage(toxicity_targets_organ ? (dam * 0.75) : dam, TOX)
@@ -972,7 +981,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 /decl/material/proc/affect_touch(var/mob/living/victim, var/removed, var/datum/reagents/holder)
 
 	SHOULD_CALL_PARENT(TRUE)
-
+	. = FALSE
 	if(!istype(victim))
 		return FALSE
 
@@ -983,9 +992,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/gas_overlay)
 	if(dirtiness <= DIRTINESS_STERILE)
 		if(victim.germ_level < INFECTION_LEVEL_TWO) // rest and antibiotics is required to cure serious infections
 			victim.germ_level -= min(removed*20, victim.germ_level)
-		for(var/obj/item/I in victim.contents)
-			I.was_bloodied = null
-		victim.was_bloodied = null
+		for(var/obj/item/organ in victim.contents)
+			organ.was_bloodied = FALSE
+		victim.was_bloodied = FALSE
 		. = TRUE
 
 	// TODO: clean should add the gross reagents washed off to a holder to dump on the loc.

@@ -1,7 +1,7 @@
-/obj/structure/bed/chair/wheelchair
+/obj/structure/chair/wheelchair
 	name = "wheelchair"
 	desc = "Now we're getting somewhere."
-	icon_state = "wheelchair"
+	icon = 'icons/obj/structures/furniture/wheelchair.dmi'
 	anchored = FALSE
 	buckle_movable = TRUE
 	movement_handlers = list(
@@ -9,31 +9,27 @@
 		/datum/movement_handler/delay = list(5),
 		/datum/movement_handler/move_relay_self
 	)
-	tool_interaction_flags = 0
+	tool_interaction_flags = TOOL_INTERACTION_NONE
+	material_alteration = MAT_FLAG_ALTERATION_NONE
+	padding_extension_type = null // Cannot be padded.
 
 	var/item_form_type = /obj/item/wheelchair_kit
 	// TODO: Replace with reagent holder? This doesn't even properly handle non-human bloodstains.
 	var/bloodiness
 
-/obj/structure/bed/chair/wheelchair/Initialize()
+/obj/structure/chair/wheelchair/Initialize()
 	. = ..()
 
 	if(!item_form_type)
 		verbs -= .verb/collapse
 
-/obj/structure/bed/chair/wheelchair/on_update_icon()
-	set_overlays(image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = ABOVE_HUMAN_LAYER))
-
-/obj/structure/bed/chair/wheelchair/can_apply_padding()
-	return FALSE
-
-/obj/structure/bed/chair/wheelchair/attack_hand(mob/user)
+/obj/structure/chair/wheelchair/attack_hand(mob/user)
 	if(!user.check_dexterity(DEXTERITY_SIMPLE_MACHINES, TRUE))
 		return ..()
 	user_unbuckle_mob(user)
 	return TRUE
 
-/obj/structure/bed/chair/wheelchair/Bump(atom/A)
+/obj/structure/chair/wheelchair/Bump(atom/A)
 	..()
 	if(!buckled_mob)
 		return
@@ -62,7 +58,7 @@
 		victim.apply_damage(10, BRUTE, def_zone)
 	occupant.visible_message(SPAN_DANGER("\The [occupant] crashed into \the [A]!"))
 
-/obj/structure/bed/chair/wheelchair/proc/create_track()
+/obj/structure/chair/wheelchair/proc/create_track()
 	var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
 	var/newdir = get_dir(get_step(loc, dir), loc)
 	if(newdir == dir)
@@ -77,11 +73,11 @@
 	bloodiness--
 
 /proc/equip_wheelchair(mob/living/human/H) //Proc for spawning in a wheelchair if a new character has no legs. Used in new_player.dm
-	var/obj/structure/bed/chair/wheelchair/W = new(get_turf(H))
+	var/obj/structure/chair/wheelchair/W = new(get_turf(H))
 	if(isturf(H.loc))
 		W.buckle_mob(H)
 
-/obj/structure/bed/chair/wheelchair/verb/collapse()
+/obj/structure/chair/wheelchair/verb/collapse()
 	set name = "Collapse Wheelchair"
 	set category = "Object"
 	set src in oview(1)
@@ -109,7 +105,7 @@
 		K.add_fingerprint(usr)
 		qdel(src)
 
-/obj/structure/bed/chair/wheelchair/handle_buckled_relaymove(var/datum/movement_handler/mh, var/mob/mob, var/direction, var/mover)
+/obj/structure/chair/wheelchair/handle_buckled_relaymove(var/datum/movement_handler/mh, var/mob/mob, var/direction, var/mover)
 	if(isspaceturf(loc))
 		return // No wheelchair driving in space
 	. = MOVEMENT_HANDLED
@@ -119,7 +115,7 @@
 	direction = mob.AdjustMovementDirection(direction, mover)
 	DoMove(direction, mob)
 
-/obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
+/obj/structure/chair/wheelchair/relaymove(mob/user, direction)
 	if(user)
 		user.glide_size = glide_size
 	step(src, direction)
@@ -129,11 +125,10 @@
 	name = "compressed wheelchair kit"
 	desc = "Collapsed parts, prepared to immediately spring into the shape of a wheelchair."
 	icon = 'icons/obj/items/wheelchairkit.dmi'
-	icon_state = "wheelchair-item"
-	item_state = "rbed"
+	icon_state = ICON_STATE_WORLD
 	w_class = ITEM_SIZE_LARGE
 	max_health = 50
-	var/structure_form_type = /obj/structure/bed/chair/wheelchair
+	var/structure_form_type = /obj/structure/chair/wheelchair
 
 /obj/item/wheelchair_kit/attack_self(mob/user)
 	if(!structure_form_type)
@@ -141,8 +136,8 @@
 
 	user.visible_message("<b>[user]</b> starts to lay out \the [src].")
 	if(do_after(user, 4 SECONDS, src))
-		var/obj/structure/bed/chair/wheelchair/W = new structure_form_type(get_turf(user))
-		user.visible_message(SPAN_NOTICE("<b>[user]</b> lays out \the [W]."))
+		var/obj/structure/chair/wheelchair/W = new structure_form_type(get_turf(user))
+		user.visible_message("<b>[user]</b> lays out \the [W].")
 		W.add_fingerprint(user)
 		qdel(src)
 

@@ -190,7 +190,7 @@ var/global/list/possible_say_verbs = list(
 			var/mob/living/human/H = holder
 			for(var/obj/item/organ/external/affecting in H.get_external_organs())
 				if(card in affecting.implants)
-					affecting.take_external_damage(rand(30,50))
+					affecting.take_damage(rand(30,50))
 					LAZYREMOVE(affecting.implants, card)
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in a shower of gore!</span>")
 					break

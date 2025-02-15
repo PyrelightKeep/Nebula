@@ -75,7 +75,7 @@
 			target.visible_message(SPAN_DANGER("A screeching creature bursts out of \the [target]!"))
 			var/obj/item/organ/external/organ = GET_EXTERNAL_ORGAN(target, BP_CHEST)
 			if(organ)
-				organ.take_external_damage(50, 0, 0, "Animal escaping the ribcage")
+				organ.take_damage(50, inflicter = "Animal escaping the ribcage")
 		spawn_creature(get_turf(target))
 
 /obj/item/food/animal_cube/on_reagent_change()

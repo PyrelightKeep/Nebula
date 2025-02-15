@@ -87,7 +87,7 @@
 	interact(user)
 	return TRUE
 
-/obj/structure/noticeboard/examine(mob/user, distance, infix, suffix)
+/obj/structure/noticeboard/examined_by(mob/user, distance, infix, suffix)
 	. = ..()
 	interact(user)
 

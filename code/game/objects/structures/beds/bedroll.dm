@@ -1,7 +1,7 @@
 /obj/item/bedroll
 	name = "bedroll"
 	desc = "A thick, padded bag big enough for a human to huddle in, rolled into a tight tube for easy-ish transport."
-	icon = 'icons/obj/structures/bedroll.dmi'
+	icon = 'icons/obj/structures/bedroll_rolled.dmi'
 	icon_state = ICON_STATE_WORLD
 	w_class = ITEM_SIZE_LARGE
 	material = /decl/material/solid/organic/leather
@@ -44,8 +44,6 @@
 	desc = "A thick, padded bag big enough for a human to huddle in. It's better than sleeping on the ground."
 	user_comfort = 0.65
 	icon = 'icons/obj/structures/bedroll.dmi'
-	icon_state = "bedroll"
-	base_icon = "bedroll"
 	w_class = ITEM_SIZE_LARGE
 	anchored = FALSE
 	material = /decl/material/solid/organic/leather

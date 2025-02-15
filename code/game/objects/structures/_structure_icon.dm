@@ -56,6 +56,7 @@ var/global/list/default_noblend_objects = list(/obj/machinery/door/window, /obj/
 
 	var/list/dirs
 	var/list/other_dirs
+	// TODO: Allow structures to limit dirs?
 	for(var/direction in global.alldirs)
 		var/turf/T = get_step(src, direction)
 		if(T)

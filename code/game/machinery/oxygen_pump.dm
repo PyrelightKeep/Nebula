@@ -159,12 +159,12 @@
 		return TRUE
 	return FALSE // TODO: should this be a parent call? do we want this to be (de)constructable?
 
-/obj/machinery/oxygen_pump/examine(mob/user)
+/obj/machinery/oxygen_pump/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(tank)
-		to_chat(user, "The meter shows [round(tank.air_contents.return_pressure())].")
+		. += "The meter shows [round(tank.air_contents.return_pressure())]."
 	else
-		to_chat(user, SPAN_WARNING("It is missing a tank!"))
+		. += SPAN_WARNING("It is missing a tank!")
 
 /obj/machinery/oxygen_pump/Process()
 	if(istype(breather))

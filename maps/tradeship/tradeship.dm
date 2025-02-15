@@ -11,6 +11,7 @@
 	#include "../../mods/content/government/away_sites/icarus/icarus.dm"
 	#include "../../mods/content/corporate/away_sites/lar_maria/lar_maria.dm"
 
+	#include "../../mods/content/beekeeping/_beekeeping.dme"
 	#include "../../mods/content/mundane.dm"
 	#include "../../mods/content/scaling_descriptors.dm"
 

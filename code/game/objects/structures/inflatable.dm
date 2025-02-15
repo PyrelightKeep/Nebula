@@ -66,10 +66,10 @@
 	STOP_PROCESSING(SSobj,src)
 	return ..()
 
-/obj/structure/inflatable/examine(mob/user, distance)
+/obj/structure/inflatable/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(taped)
-		to_chat(user, SPAN_NOTICE("It's been duct taped in few places."))
+		. += SPAN_NOTICE("It's been duct taped in few places.")
 
 /obj/structure/inflatable/Process()
 	check_environment()

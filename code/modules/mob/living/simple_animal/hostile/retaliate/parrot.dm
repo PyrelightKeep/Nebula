@@ -49,7 +49,7 @@
 	//These vars store their preffered perch and if they dont have one, what they can use as a perch
 	var/obj/parrot_perch = null
 	var/static/list/desired_perches = list(
-		/obj/structure/bed/chair,
+		/obj/structure/chair,
 		/obj/structure/table,
 		/obj/machinery/constructable_frame/computerframe,
 		/obj/structure/displaycase,

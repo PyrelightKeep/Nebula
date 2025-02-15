@@ -119,9 +119,9 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/atmospherics/valve/examine(mob/user)
+/obj/machinery/atmospherics/valve/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-	to_chat(user, "It is [open ? "open" : "closed"].")
+	. += "It is [open ? "open" : "closed"]."
 
 /decl/public_access/public_variable/valve_open
 	expected_type = /obj/machinery/atmospherics/valve

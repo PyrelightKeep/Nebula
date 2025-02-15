@@ -6,7 +6,7 @@
 	icon_state = "open"
 	density = FALSE
 	anchored = TRUE
-	can_buckle = 1
+	can_buckle = TRUE
 	buckle_dir = SOUTH
 	var/exposed = 0
 	var/busy

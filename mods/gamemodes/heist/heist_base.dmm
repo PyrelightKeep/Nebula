@@ -830,7 +830,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "cL" = (
-/obj/structure/bed/chair/shuttle{
+/obj/structure/chair/shuttle{
 	dir = 8
 	},
 /turf/floor/shuttle/red,
@@ -856,7 +856,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "cN" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /turf/floor/shuttle/red,
@@ -1229,7 +1229,7 @@
 /turf/floor/plating,
 /area/map_template/skipjack_station/start)
 "dM" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -1243,7 +1243,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "dO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light/small{
@@ -1298,7 +1298,7 @@
 /turf/floor/plating,
 /area/map_template/skipjack_station/start)
 "dX" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/shuttle/red,
@@ -1310,7 +1310,7 @@
 /turf/floor/shuttle/red,
 /area/map_template/skipjack_station/start)
 "dZ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/shuttle/red,

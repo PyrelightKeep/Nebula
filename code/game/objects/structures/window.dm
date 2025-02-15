@@ -377,7 +377,7 @@
 /obj/structure/window/Move()
 	var/ini_dir = dir
 	update_nearby_tiles(need_rebuild=1)
-	..()
+	. = ..()
 	set_dir(ini_dir)
 	update_nearby_tiles(need_rebuild=1)
 
@@ -387,24 +387,24 @@
 		return 1
 	return 0
 
-/obj/structure/window/examine(mob/user)
+/obj/structure/window/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..(user)
 	if(reinf_material)
-		to_chat(user, SPAN_NOTICE("It is reinforced with the [reinf_material.solid_name] lattice."))
+		. += SPAN_NOTICE("It is reinforced with the [reinf_material.solid_name] lattice.")
 	if (reinf_material)
 		switch (construction_state)
 			if (CONSTRUCTION_STATE_NO_FRAME)
-				to_chat(user, SPAN_WARNING("The window is not in the frame."))
+				. += SPAN_WARNING("The window is not in the frame.")
 			if (CONSTRUCTION_STATE_IN_FRAME)
-				to_chat(user, SPAN_WARNING("The window is pried into the frame but not yet fastened."))
+				. += SPAN_WARNING("The window is pried into the frame but not yet fastened.")
 			if (CONSTRUCTION_STATE_FASTENED)
-				to_chat(user, SPAN_NOTICE("The window is fastened to the frame."))
+				. += SPAN_NOTICE("The window is fastened to the frame.")
 	if (anchored)
-		to_chat(user, SPAN_NOTICE("It is fastened to \the [get_turf(src)]."))
+		. += SPAN_NOTICE("It is fastened to \the [get_turf(src)].")
 	else
-		to_chat(user, SPAN_WARNING("It is not fastened to anything."))
+		. += SPAN_WARNING("It is not fastened to anything.")
 	if (polarized)
-		to_chat(user, SPAN_NOTICE("It appears to be wired."))
+		. += SPAN_NOTICE("It appears to be wired.")
 
 /obj/structure/window/set_anchored(new_anchored)
 	if((. = ..()))

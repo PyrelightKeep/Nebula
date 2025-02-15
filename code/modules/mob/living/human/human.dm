@@ -129,13 +129,13 @@
 	if (href_list["lookitem"])
 		var/obj/item/I = locate(href_list["lookitem"])
 		if(I)
-			src.examinate(I)
+			src.examine_verb(I)
 			return TOPIC_HANDLED
 
 	if (href_list["lookmob"])
 		var/mob/M = locate(href_list["lookmob"])
 		if(M)
-			src.examinate(M)
+			src.examine_verb(M)
 			return TOPIC_HANDLED
 
 	return ..()
@@ -453,7 +453,7 @@
 			SPAN_DANGER("Your movement jostles [O] in your [organ.name] painfully."),       \
 			SPAN_DANGER("Your movement jostles [O] in your [organ.name] painfully."))
 		custom_pain(msg,40,affecting = organ)
-	organ.take_external_damage(rand(1,3) + O.w_class, DAM_EDGE, 0)
+	organ.take_damage(rand(1,3) + O.w_class, damage_flags = DAM_EDGE)
 
 /mob/proc/set_bodytype(var/decl/bodytype/new_bodytype)
 	return
@@ -914,7 +914,7 @@
 	..()
 	if(should_have_organ(BP_STOMACH))
 		var/obj/item/organ/internal/stomach = GET_INTERNAL_ORGAN(src, BP_STOMACH)
-		if(!stomach || stomach.is_broken() || (stomach.is_bruised() && prob(stomach.damage)))
+		if(!stomach || stomach.is_broken() || (stomach.is_bruised() && prob(stomach.get_organ_damage())))
 			if(should_have_organ(BP_HEART))
 				vessel.trans_to_obj(vomit, 5)
 			else
@@ -1164,3 +1164,14 @@
 			return
 
 	. = ..()
+
+/mob/living/human/isSynthetic()
+	if(isnull(full_prosthetic))
+		robolimb_count = 0
+		var/list/limbs = get_external_organs()
+		for(var/obj/item/organ/external/E in limbs)
+			if(BP_IS_PROSTHETIC(E))
+				robolimb_count++
+		full_prosthetic = robolimb_count > 0 && (robolimb_count == LAZYLEN(limbs)) //If no organs, no way to tell
+	return full_prosthetic
+

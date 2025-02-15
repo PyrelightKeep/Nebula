@@ -11,13 +11,13 @@
 	. = ..()
 	lock_data = generateRandomString(round(material.integrity/50))
 
-/obj/item/lock_construct/examine(mob/user, distance)
+/obj/item/lock_construct/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(user && distance <= 1)
 		if(lock_data)
-			to_chat(user, SPAN_NOTICE("\The [src] is unlocked with '[lock_data]'."))
+			. += SPAN_NOTICE("\The [src] is unlocked with '[lock_data]'.")
 		else
-			to_chat(user, SPAN_NOTICE("\The [src] is blank. Use a key on the lock to pair the two items."))
+			. += SPAN_NOTICE("\The [src] is blank. Use a key on the lock to pair the two items.")
 
 /obj/item/lock_construct/attackby(var/obj/item/I, var/mob/user)
 	if(istype(I, /obj/item/key))

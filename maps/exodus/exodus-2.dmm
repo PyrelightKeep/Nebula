@@ -1034,7 +1034,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/foresolar)
 "acn" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/item/radio/intercom{
@@ -1386,7 +1386,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/meeting)
 "acZ" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
@@ -1523,7 +1523,7 @@
 /obj/structure/sign/warning/vacuum{
 	pixel_x = 32
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/plating,
@@ -1775,7 +1775,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/main)
 "adV" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/abstract/landmark/start{
 	name = "Security Officer"
 	},
@@ -1962,7 +1962,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/main)
 "aep" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -2049,7 +2049,7 @@
 /turf/floor/plating,
 /area/exodus/crew_quarters/heads/hos)
 "aex" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -2119,7 +2119,7 @@
 /turf/wall/prepainted,
 /area/exodus/security/warden)
 "aeG" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -2306,7 +2306,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/meeting)
 "afb" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -2342,7 +2342,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/meeting)
 "afe" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -2506,7 +2506,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/meeting)
 "afx" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -2556,7 +2556,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/security_starboard)
 "afB" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/light/small/emergency{
@@ -2689,7 +2689,7 @@
 /area/shuttle/escape_pod_3)
 "afQ" = (
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/steel_grid,
@@ -2822,7 +2822,7 @@
 /turf/floor/plating,
 /area/exodus/security/meeting)
 "agh" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/status_display{
@@ -3560,7 +3560,7 @@
 /turf/floor/carpet,
 /area/exodus/crew_quarters/heads/hos)
 "ahM" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/light/small/emergency{
@@ -3583,7 +3583,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/carpet,
 /area/exodus/crew_quarters/heads/hos)
 "ahO" = (
@@ -3743,7 +3743,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/security/brig/processing)
 "aik" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/tiled/dark,
@@ -3829,7 +3829,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/dormitory)
 "aiv" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/brig/processing)
 "aiw" = (
@@ -3875,7 +3875,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/security/brig)
 "aiC" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/plating,
@@ -3885,7 +3885,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/security_port)
 "aiE" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -3911,7 +3911,7 @@
 /turf/floor/plating,
 /area/exodus/security/brig/interrogation)
 "aiG" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/power/apc{
@@ -3946,7 +3946,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/substation/security)
 "aiK" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -4039,7 +4039,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/security/warden)
 "aiV" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -4056,7 +4056,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/brig/processing)
 "aiX" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -4133,7 +4133,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/security/brig/processing)
 "ajf" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -4207,7 +4207,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/security/warden)
 "ajk" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 8
 	},
 /obj/machinery/status_display{
@@ -5480,7 +5480,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/security/brig/processing)
 "alC" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -5765,7 +5765,7 @@
 /turf/wall/prepainted,
 /area/exodus/lawoffice)
 "amj" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/machinery/button/alternate/door{
@@ -5800,7 +5800,7 @@
 /turf/wall/prepainted,
 /area/exodus/security/main)
 "amm" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/machinery/button/alternate/door{
@@ -6074,7 +6074,7 @@
 /turf/floor/plating,
 /area/exodus/security/prison)
 "amP" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/abstract/landmark/start{
 	name = "Internal Affairs Agent"
 	},
@@ -6723,7 +6723,7 @@
 /turf/floor/lino,
 /area/exodus/security/detectives_office)
 "aoe" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -6753,7 +6753,7 @@
 /area/exodus/security/detectives_office)
 "aoh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/dark,
@@ -7340,7 +7340,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/dormitory)
 "apw" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -7394,7 +7394,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/dormitory)
 "apC" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/status_display{
@@ -7416,7 +7416,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/red{
@@ -7428,7 +7428,7 @@
 /turf/floor/laminate,
 /area/exodus/maintenance/dormitory)
 "apG" = (
-/obj/structure/bed/chair/wood/wings,
+/obj/structure/chair/wood/wings,
 /turf/floor/laminate,
 /area/exodus/maintenance/dormitory)
 "apH" = (
@@ -7539,7 +7539,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/lawoffice)
 "apS" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/floor/tiled/white,
@@ -7630,7 +7630,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/prison)
 "aqb" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -7646,7 +7646,7 @@
 	id_tag = "air_in";
 	use_power = 1
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -7668,7 +7668,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/prison)
 "aqe" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -7729,7 +7729,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/dormitory)
 "aqj" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -7856,7 +7856,7 @@
 /turf/floor/laminate,
 /area/exodus/maintenance/dormitory)
 "aqv" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
@@ -7879,7 +7879,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/brig/solitaryB)
 "aqy" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -8107,7 +8107,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/prison)
 "aqY" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -8668,13 +8668,13 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/security/brig/solitaryB)
 "asa" = (
-/obj/structure/bed/chair/wood/wings{
+/obj/structure/chair/wood/wings{
 	dir = 1
 	},
 /turf/floor/laminate,
 /area/exodus/maintenance/dormitory)
 "asb" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/plating,
@@ -8752,7 +8752,7 @@
 /turf/floor/plating/airless,
 /area/exodus/solar/auxstarboard)
 "asi" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/steel_grid,
@@ -8766,7 +8766,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/maintenance/dormitory)
 "ask" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8883,7 +8883,7 @@
 /turf/wall/r_wall/prepainted,
 /area/exodus/security/brig/solitaryA)
 "asx" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/status_display{
@@ -9151,7 +9151,7 @@
 /turf/wall/prepainted,
 /area/exodus/security/prison/dorm)
 "asX" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /mob/living/simple_animal/passive/mouse,
@@ -9893,7 +9893,7 @@
 /turf/wall/prepainted,
 /area/exodus/maintenance/arrivals)
 "auR" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -10145,7 +10145,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/security/prison)
 "avt" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/alarm{
@@ -10557,7 +10557,7 @@
 /turf/floor/laminate/walnut,
 /area/exodus/crew_quarters/sleep/bedrooms)
 "awk" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -11512,7 +11512,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/entry/pods)
 "ays" = (
-/obj/structure/bed/chair/comfy/beige{
+/obj/structure/chair/comfy/beige{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -13171,7 +13171,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/ai_monitored/storage/eva)
 "aBR" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable{
@@ -13398,7 +13398,7 @@
 /turf/floor/plating,
 /area/exodus/storage/emergency2)
 "aCr" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -13541,7 +13541,7 @@
 /turf/floor/plating,
 /area/exodus/bridge)
 "aCI" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -14549,7 +14549,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/security/checkpoint2)
 "aEO" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -16405,7 +16405,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 10
 	},
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /obj/abstract/landmark/latejoin,
@@ -16526,7 +16526,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 5
 	},
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /obj/abstract/landmark/latejoin,
@@ -16567,7 +16567,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /turf/floor/tiled/dark/monotile,
@@ -16814,7 +16814,7 @@
 /turf/floor/lino,
 /area/exodus/chapel/office)
 "aJk" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
@@ -16828,7 +16828,7 @@
 /obj/abstract/landmark/start{
 	name = "Chaplain"
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/floor/lino,
 /area/exodus/chapel/office)
@@ -17152,7 +17152,7 @@
 /turf/floor/tiled/monotile,
 /area/exodus/storage/primary)
 "aJW" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -17205,7 +17205,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/substation/civilian_west)
 "aKb" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -17732,7 +17732,7 @@
 /turf/wall/prepainted,
 /area/exodus/hydroponics)
 "aLi" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
@@ -17761,7 +17761,7 @@
 /turf/floor/laminate/walnut,
 /area/exodus/library)
 "aLm" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/dark,
@@ -17829,7 +17829,7 @@
 	name = "north bump";
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -18144,7 +18144,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/library)
 "aMg" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/laminate/walnut,
@@ -18187,7 +18187,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/item/radio/intercom{
@@ -18218,7 +18218,7 @@
 /turf/floor/lino,
 /area/exodus/crew_quarters/bar)
 "aMq" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/laminate/walnut,
@@ -18431,7 +18431,7 @@
 /turf/wall/r_wall/prepainted,
 /area/exodus/research/docking)
 "aMN" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -18525,14 +18525,14 @@
 /turf/floor/plating,
 /area/exodus/maintenance/arrivals)
 "aMX" = (
-/obj/structure/bed/chair/comfy/beige,
+/obj/structure/chair/comfy/beige,
 /turf/floor/lino,
 /area/exodus/hallway/secondary/entry/starboard)
 "aMY" = (
 /turf/floor/lino,
 /area/exodus/hallway/secondary/entry/starboard)
 "aMZ" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -18566,7 +18566,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/hydroponics)
 "aNd" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -18630,7 +18630,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/port)
 "aNj" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/laminate/walnut,
@@ -19123,7 +19123,7 @@
 /turf/floor/lino,
 /area/exodus/crew_quarters/bar)
 "aOf" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
@@ -19425,7 +19425,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
@@ -20546,7 +20546,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/library)
 "aRn" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/machinery/button/windowtint{
@@ -20762,7 +20762,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/entry/port)
 "aRJ" = (
-/obj/structure/bed/chair/comfy/beige{
+/obj/structure/chair/comfy/beige{
 	dir = 1
 	},
 /turf/floor/lino,
@@ -20997,7 +20997,7 @@
 /area/exodus/medical/medbay)
 "aSl" = (
 /obj/machinery/light/small,
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/alarm{
@@ -21287,7 +21287,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/locker)
 "aSP" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 4
 	},
 /turf/floor/laminate/walnut,
@@ -21458,7 +21458,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/hallway/secondary/entry/aft)
 "aTk" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 8
 	},
 /turf/floor/laminate/walnut,
@@ -21784,7 +21784,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/central_one)
 "aTW" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/yellow/full,
@@ -22522,7 +22522,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/storage/tools)
 "aVN" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/steel_grid,
@@ -22555,7 +22555,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/bridge)
 "aVS" = (
-/obj/structure/bed/chair/wood/walnut,
+/obj/structure/chair/wood/walnut,
 /turf/floor/laminate/walnut,
 /area/exodus/crew_quarters/bar)
 "aVT" = (
@@ -22581,11 +22581,11 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/structure/bed/chair/wood/walnut,
+/obj/structure/chair/wood/walnut,
 /turf/floor/laminate/walnut,
 /area/exodus/crew_quarters/bar)
 "aVX" = (
-/obj/structure/bed/chair/wood/walnut,
+/obj/structure/chair/wood/walnut,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/floor/laminate/walnut,
 /area/exodus/crew_quarters/bar)
@@ -22619,7 +22619,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/bed/chair/wood/walnut,
+/obj/structure/chair/wood/walnut,
 /obj/structure/disposalpipe/segment,
 /turf/floor/laminate/walnut,
 /area/exodus/crew_quarters/bar)
@@ -22734,7 +22734,7 @@
 /turf/floor/tiled/white,
 /area/exodus/crew_quarters/kitchen)
 "aWl" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /turf/floor/laminate/walnut,
 /area/exodus/library)
 "aWm" = (
@@ -22835,7 +22835,7 @@
 /obj/abstract/landmark/start{
 	name = "Librarian"
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/laminate/walnut,
 /area/exodus/library)
 "aWA" = (
@@ -23622,7 +23622,7 @@
 /turf/floor/lino,
 /area/exodus/security/vacantoffice)
 "aYt" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /turf/floor/laminate/walnut,
@@ -23834,7 +23834,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/locker)
 "aYS" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -24057,7 +24057,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/bridge)
 "aZg" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -24164,7 +24164,7 @@
 /turf/floor/plating,
 /area/exodus/research/xenobiology/xenoflora)
 "aZr" = (
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 1
 	},
 /turf/floor/laminate/walnut,
@@ -24239,7 +24239,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 1
 	},
 /turf/floor/laminate/walnut,
@@ -24272,7 +24272,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 1
 	},
 /turf/floor/laminate/walnut,
@@ -24312,13 +24312,13 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 1
 	},
 /turf/floor/laminate/walnut,
 /area/exodus/crew_quarters/bar)
 "aZL" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -24388,13 +24388,13 @@
 /turf/wall/prepainted,
 /area/exodus/engineering/engine_eva)
 "aZV" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /turf/floor/lino,
 /area/exodus/security/vacantoffice)
 "aZW" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/lino,
@@ -25085,7 +25085,7 @@
 /turf/floor/tiled/white,
 /area/exodus/crew_quarters/kitchen)
 "bbs" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
@@ -25184,7 +25184,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/security/vacantoffice)
 "bbE" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /turf/floor/laminate/walnut,
@@ -25502,7 +25502,7 @@
 /turf/floor/plating/airless,
 /area/exodus/turret_protected/ai)
 "bcm" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -25979,7 +25979,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/entry/aft)
 "bdk" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/lino,
@@ -26282,7 +26282,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/starboard)
 "bdR" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/lime{
@@ -26389,7 +26389,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/structure/bed/chair/wood/walnut{
+/obj/structure/chair/wood/walnut{
 	dir = 4
 	},
 /turf/floor/laminate/walnut,
@@ -26505,7 +26505,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/security/vacantoffice)
 "bex" = (
-/obj/structure/bed/chair/comfy/black,
+/obj/structure/chair/comfy/black,
 /turf/floor/carpet,
 /area/exodus/bridge/meeting_room)
 "bey" = (
@@ -26543,7 +26543,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/locker)
 "beC" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -26564,7 +26564,7 @@
 /turf/floor/laminate/walnut,
 /area/exodus/library)
 "beE" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -26869,7 +26869,7 @@
 /turf/floor/plating,
 /area/exodus/quartermaster/office)
 "bfj" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -26882,7 +26882,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/starboard)
 "bfl" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on,
@@ -27015,7 +27015,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/exit)
 "bfB" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -27570,7 +27570,7 @@
 /turf/floor/carpet,
 /area/exodus/bridge/meeting_room)
 "bgQ" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -27653,7 +27653,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/entry/aft)
 "bgZ" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /turf/floor/carpet,
@@ -27682,7 +27682,7 @@
 /turf/floor/laminate/walnut,
 /area/exodus/crew_quarters/captain)
 "bhd" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -27698,7 +27698,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/starboard)
 "bhf" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 8
 	},
 /turf/floor/carpet,
@@ -29966,7 +29966,7 @@
 /turf/floor/bluegrid,
 /area/exodus/turret_protected/ai)
 "blE" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -30464,7 +30464,7 @@
 	name = "north bump";
 	pixel_y = 24
 	},
-/obj/structure/bed/chair/wheelchair,
+/obj/structure/chair/wheelchair,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
@@ -30861,7 +30861,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/carpet,
 /area/exodus/crew_quarters/captain)
 "bns" = (
@@ -31088,7 +31088,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/turret_protected/ai)
 "bnK" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /turf/floor/tiled/white,
@@ -31121,7 +31121,7 @@
 /turf/floor/tiled/freezer,
 /area/exodus/medical/patient_wing/washroom)
 "bnQ" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -31337,7 +31337,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/turret_protected/ai_upload)
 "bou" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -31482,7 +31482,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/engineering/workshop)
 "boK" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -31560,7 +31560,7 @@
 /obj/effect/floor_decal/corner/purple{
 	dir = 5
 	},
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /obj/effect/floor_decal/industrial/warning{
@@ -31569,7 +31569,7 @@
 /turf/floor/tiled/white,
 /area/exodus/research/lab)
 "boT" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /turf/floor/tiled/white,
@@ -33845,7 +33845,7 @@
 	pixel_x = -16;
 	pixel_y = 28
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -33979,7 +33979,7 @@
 	pixel_x = 6;
 	pixel_y = 28
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -34038,7 +34038,7 @@
 /turf/floor/carpet,
 /area/exodus/crew_quarters/captain)
 "btT" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -34583,7 +34583,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/office)
 "buT" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/firealarm{
@@ -35239,7 +35239,7 @@
 /obj/abstract/landmark/start{
 	name = "Cargo Technician"
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /turf/floor/tiled/steel_grid,
@@ -35303,7 +35303,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/quartermaster/office)
 "bws" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -35416,7 +35416,7 @@
 /turf/floor/plating,
 /area/exodus/storage/emergency)
 "bwG" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -35457,7 +35457,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/white,
@@ -35518,7 +35518,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/turret_protected/ai_upload)
 "bwR" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -35995,7 +35995,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/research)
 "bxQ" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -37848,7 +37848,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/quartermaster/office)
 "bBw" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/steel_grid,
@@ -38128,7 +38128,7 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/medbay3)
 "bCb" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -38496,7 +38496,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/central_three)
 "bCR" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -38532,7 +38532,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/crew_quarters/heads/hop)
 "bCT" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /turf/floor/tiled/steel_grid,
@@ -41003,7 +41003,7 @@
 /turf/floor/reinforced,
 /area/exodus/research/misc_lab)
 "bHH" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/abstract/landmark/start{
 	name = "Quartermaster"
 	},
@@ -41170,7 +41170,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/central_three)
 "bHV" = (
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /turf/floor/tiled/dark,
 /area/exodus/research/server)
 "bHW" = (
@@ -41540,7 +41540,7 @@
 /turf/floor/plating,
 /area/exodus/medical/genetics/cloning)
 "bIH" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/abstract/landmark/start{
 	name = "Geneticist"
 	},
@@ -42632,7 +42632,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/qm)
 "bKO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/steel_grid,
@@ -43149,7 +43149,7 @@
 /turf/floor/plating/airless,
 /area/exodus/research/test_area)
 "bLU" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/steel_grid,
@@ -43267,7 +43267,7 @@
 /obj/machinery/atmospherics/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -43837,7 +43837,7 @@
 /turf/floor,
 /area/exodus/quartermaster/miningdock)
 "bNh" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/purple/diagonal{
@@ -44233,7 +44233,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/crew_quarters/heads/cmo)
 "bOe" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
@@ -44243,7 +44243,7 @@
 /turf/floor/tiled/white,
 /area/exodus/crew_quarters/heads/cmo)
 "bOf" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled/white,
 /area/exodus/crew_quarters/heads/cmo)
 "bOg" = (
@@ -45722,7 +45722,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/medical/medbay)
 "bRc" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -46444,7 +46444,7 @@
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -46503,7 +46503,7 @@
 /obj/machinery/camera/network/medbay{
 	c_tag = "Medbay Examination Room"
 	},
-/obj/structure/bed/chair/wheelchair,
+/obj/structure/chair/wheelchair,
 /turf/floor/tiled/white,
 /area/exodus/medical/exam_room)
 "bSz" = (
@@ -46511,7 +46511,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/effect/floor_decal/corner/pink{
 	dir = 9
 	},
@@ -46522,7 +46522,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/effect/floor_decal/corner/pink{
 	dir = 9
 	},
@@ -46607,7 +46607,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/research/storage)
 "bSJ" = (
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/paleblue{
@@ -46763,7 +46763,7 @@
 /turf/floor/plating,
 /area/exodus/storage/tech)
 "bTc" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/atmospherics/unary/vent_pump/on{
@@ -47563,7 +47563,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/paleblue{
@@ -47659,7 +47659,7 @@
 /turf/floor/laminate/walnut,
 /area/exodus/engineering/break_room)
 "bUY" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/status_display{
@@ -48034,7 +48034,7 @@
 /turf/floor/tiled/airless,
 /area/exodus/research/test_area)
 "bVM" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/item/radio/intercom{
@@ -48366,7 +48366,7 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/patient_wing)
 "bWx" = (
-/obj/structure/bed/chair/comfy/teal,
+/obj/structure/chair/comfy/teal,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -48451,7 +48451,7 @@
 /turf/floor/tiled/white,
 /area/exodus/research/misc_lab)
 "bWH" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 1
 	},
 /obj/abstract/landmark/start{
@@ -48815,7 +48815,7 @@
 /obj/abstract/landmark/start{
 	name = "Station Engineer"
 	},
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /turf/floor/carpet,
 /area/exodus/engineering/break_room)
 "bXv" = (
@@ -49517,7 +49517,7 @@
 /turf/floor/plating,
 /area/exodus/engineering/storage)
 "bYH" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -49600,7 +49600,7 @@
 /obj/abstract/landmark/start{
 	name = "Station Engineer"
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/carpet,
@@ -49951,7 +49951,7 @@
 /turf/floor/tiled/freezer,
 /area/exodus/medical/patient_wing/washroom)
 "bZH" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/plating,
@@ -50168,7 +50168,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/crew_quarters/heads/chief)
 "cae" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -50207,7 +50207,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/crew_quarters/heads/chief)
 "cag" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -50377,7 +50377,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair/comfy/teal{
+/obj/structure/chair/comfy/teal{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/pink/three_quarters{
@@ -50439,7 +50439,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/effect/floor_decal/corner/pink{
@@ -50714,7 +50714,7 @@
 /obj/abstract/landmark/start{
 	name = "Atmospheric Technician"
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 8
 	},
 /turf/floor/carpet,
@@ -52167,7 +52167,7 @@
 /obj/abstract/landmark/start{
 	name = "Station Engineer"
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /turf/floor/carpet,
@@ -52176,7 +52176,7 @@
 /obj/abstract/landmark/start{
 	name = "Atmospheric Technician"
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /turf/floor/carpet,
@@ -52282,7 +52282,7 @@
 /turf/floor/laminate/walnut,
 /area/exodus/engineering/break_room)
 "cel" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -52447,7 +52447,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/engineering/foyer)
 "ceB" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/effect/floor_decal/corner/white/diagonal,
 /turf/floor/tiled/steel_grid,
 /area/exodus/engineering/break_room)
@@ -52554,7 +52554,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/medical/surgeryobs)
 "ceP" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled/steel_grid,
 /area/exodus/medical/surgeryobs)
 "ceQ" = (
@@ -53075,7 +53075,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 4
 	},
 /turf/floor/carpet/blue,
@@ -53225,7 +53225,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/engineering/foyer)
 "cgp" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /obj/abstract/landmark/start{
 	name = "Psychiatrist"
 	},
@@ -53312,7 +53312,7 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -54138,7 +54138,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -54801,7 +54801,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/bed/chair/office/light{
+/obj/structure/chair/office/light{
 	dir = 8
 	},
 /obj/abstract/landmark/start{
@@ -54844,7 +54844,7 @@
 /area/exodus/research/xenobiology/xenoflora)
 "cjG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -55493,7 +55493,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/engi_engine)
 "cle" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -56425,7 +56425,7 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/surgery)
 "cmY" = (
-/obj/structure/bed/chair/comfy/black{
+/obj/structure/chair/comfy/black{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/blue{
@@ -56657,7 +56657,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /turf/floor/tiled/steel_grid,
 /area/exodus/engineering/engineering_monitoring)
 "cnA" = (
@@ -57703,7 +57703,7 @@
 /turf/floor/plating/airless,
 /area/space)
 "cqa" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -58055,7 +58055,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/engi_shuttle)
 "cre" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 4
 	},
 /obj/abstract/landmark/start{
@@ -59039,7 +59039,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/atmospherics/unary/vent_scrubber/on,
 /obj/machinery/camera/network/medbay{
 	c_tag = "Virology Monkey Pen"
@@ -59471,7 +59471,7 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/virology)
 "cuN" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
@@ -59494,7 +59494,7 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/virology)
 "cuR" = (
-/obj/structure/bed/chair/office/dark{
+/obj/structure/chair/office/dark{
 	dir = 1
 	},
 /turf/floor/tiled/white,
@@ -60054,7 +60054,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 5
 	},
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /obj/abstract/landmark/latejoin,
@@ -60360,7 +60360,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/engineering/workshop)
 "cyz" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/abstract/landmark/start{
 	name = "Station Engineer"
 	},
@@ -60405,7 +60405,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/secondary/entry/port)
 "cyI" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/machinery/atmospherics/unary/vent_pump/on{
 	dir = 1
 	},
@@ -60658,13 +60658,13 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/plating,
 /area/exodus/maintenance/engi_shuttle)
 "czE" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -60697,7 +60697,7 @@
 /turf/floor/plating,
 /area/exodus/maintenance/engi_shuttle)
 "czO" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/power/apc{
@@ -61202,7 +61202,7 @@
 /turf/wall/r_wall/prepainted,
 /area/exodus/engineering/engine_airlock)
 "cDt" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
@@ -61241,7 +61241,7 @@
 /turf/floor/tiled/techfloor/grid,
 /area/exodus/engineering/engine_airlock)
 "cDy" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/plating,
@@ -61544,7 +61544,7 @@
 /turf/floor/tiled/white,
 /area/exodus/medical/virology)
 "cEV" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/plating,
@@ -61755,7 +61755,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/engineering/engine_monitoring)
 "cGn" = (
-/obj/structure/bed/chair/office/dark,
+/obj/structure/chair/office/dark,
 /obj/abstract/landmark/start{
 	name = "Station Engineer"
 	},
@@ -61949,7 +61949,7 @@
 /turf/floor/plating,
 /area/exodus/engineering/drone_fabrication)
 "cHg" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/floor_decal/industrial/warning,
@@ -62923,7 +62923,7 @@
 	pixel_y = 25;
 	tag_door = "engineering_shuttle_hatch"
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -62980,7 +62980,7 @@
 /turf/floor/tiled/dark,
 /area/ship/exodus_pod_engineering)
 "cLk" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/dark,
@@ -63031,7 +63031,7 @@
 /turf/floor/plating,
 /area/ship/exodus_pod_engineering)
 "cLu" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/machinery/light,
@@ -63708,7 +63708,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/central_two)
 "gOE" = (
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /obj/abstract/landmark/latejoin,
@@ -63824,7 +63824,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/hallway/primary/starboard)
 "hWZ" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -63844,7 +63844,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/steel_grid,
@@ -63878,7 +63878,7 @@
 /obj/effect/floor_decal/corner/white{
 	dir = 10
 	},
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /obj/abstract/landmark/latejoin,
@@ -63924,13 +63924,13 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /turf/floor/tiled/dark/monotile,
 /area/shuttle/arrival/station)
 "iTt" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -64031,7 +64031,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/floor/tiled/white,
@@ -64096,7 +64096,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -64198,7 +64198,7 @@
 /turf/floor/plating,
 /area/ship/exodus_pod_research)
 "mYp" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/window/reinforced{
@@ -64305,7 +64305,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/steel_grid,
@@ -64354,7 +64354,7 @@
 /turf/floor/tiled/dark,
 /area/exodus/chapel/main)
 "pqS" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -64516,7 +64516,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -64740,7 +64740,7 @@
 /turf/floor/plating,
 /area/ship/exodus_pod_mining)
 "tQY" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -65065,7 +65065,7 @@
 /turf/floor/tiled/steel_grid,
 /area/exodus/quartermaster/office)
 "xVx" = (
-/obj/structure/bed/chair/shuttle/black{
+/obj/structure/chair/shuttle/black{
 	dir = 8
 	},
 /obj/abstract/landmark/latejoin,

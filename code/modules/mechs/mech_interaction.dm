@@ -99,7 +99,7 @@
 
 	var/modifiers = params2list(params)
 	if(modifiers["shift"])
-		user.examinate(A)
+		user.examine_verb(A)
 		return
 
 	if(modifiers["ctrl"] && selected_system == A)

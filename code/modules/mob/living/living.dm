@@ -21,11 +21,12 @@
 		return my_species.ai
 	return ..()
 
-/mob/living/show_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
+/mob/living/get_other_examine_strings(mob/user, distance, infix, suffix, hideflags, decl/pronouns/pronouns)
+	. = ..()
 	if(admin_paralyzed)
-		to_chat(user, SPAN_OCCULT("OOC: [pronouns.He] [pronouns.has] been paralyzed by staff. Please avoid interacting with [pronouns.him] unless cleared to do so by staff."))
+		. += SPAN_OCCULT("OOC: [pronouns.He] [pronouns.has] been paralyzed by staff. Please avoid interacting with [pronouns.him] unless cleared to do so by staff.")
 	if(!length(get_external_organs()) && length(embedded)) // fallback for simple embedding used by limbless mobs
-		to_chat(user, SPAN_WARNING("[pronouns.He] [pronouns.has] [inline_counting_english_list(embedded, determiners = DET_INDEFINITE)] embedded in [pronouns.him]."))
+		. += SPAN_WARNING("[pronouns.He] [pronouns.has] [inline_counting_english_list(embedded, determiners = DET_INDEFINITE)] embedded in [pronouns.him].")
 
 //mob verbs are faster than object verbs. See above.
 /mob/living/pointed(atom/A as mob|obj|turf in view())
@@ -374,8 +375,8 @@ default behaviour is:
 		repair_brain = FALSE
 		var/obj/item/organ/internal/brain = GET_INTERNAL_ORGAN(src, BP_BRAIN)
 		if(brain)
-			if(brain.damage > (brain.max_damage/2))
-				brain.damage = (brain.max_damage/2)
+			if(brain.get_organ_damage() > (brain.max_damage/2))
+				brain.set_organ_damage(brain.max_damage/2)
 			if(brain.status & ORGAN_DEAD)
 				brain.status &= ~ORGAN_DEAD
 				START_PROCESSING(SSobj, brain)
@@ -1665,7 +1666,7 @@ default behaviour is:
 		for(var/datum/wound/wound in affected.wounds)
 			LAZYREMOVE(wound.embedded_objects, implant)
 		if(!surgical_removal)
-			affected.take_external_damage((implant.w_class * 3), 0, DAM_EDGE, "Embedded object extraction")
+			affected.take_damage((implant.w_class * 3), damage_flags = DAM_EDGE, inflicter = "Embedded object extraction")
 			if(!BP_IS_PROSTHETIC(affected) && prob(implant.w_class * 5) && affected.sever_artery()) //I'M SO ANEMIC I COULD JUST -DIE-.
 				custom_pain("Something tears wetly in your [affected.name] as [implant] is pulled free!", 50, affecting = affected)
 
@@ -1762,7 +1763,7 @@ default behaviour is:
 	playsound(user.loc, 'sound/effects/attackblob.ogg', 50, 1)
 	var/obj/item/organ/external/organ = GET_EXTERNAL_ORGAN(src, BP_CHEST)
 	if(istype(organ))
-		organ.take_external_damage(d, 0)
+		organ.take_damage(d)
 	else
 		take_organ_damage(d)
 	if(prob(get_damage(BRUTE) - 50))
@@ -1964,23 +1965,20 @@ default behaviour is:
 		set_moving_slowly()
 	start_automove(target, metadata = upset ? _flee_automove_metadata : _annoyed_automove_metadata)
 
-/mob/living/examine(mob/user, distance, infix, suffix)
-
+/mob/living/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
-
 	if(has_extension(src, /datum/extension/shearable))
 		var/datum/extension/shearable/shearable = get_extension(src, /datum/extension/shearable)
 		if(world.time >= shearable.next_fleece || shearable.has_fleece)
-			to_chat(user, SPAN_NOTICE("\The [src] can be sheared with shears, or a similar tool."))
+			. += SPAN_NOTICE("\The [src] can be sheared with shears, or a similar tool.")
 		else
-			to_chat(user, SPAN_WARNING("\The [src] will be ready to be sheared in [ceil((shearable.next_fleece-world.time) / 10)] second\s."))
-
+			. += SPAN_WARNING("\The [src] will be ready to be sheared in [ceil((shearable.next_fleece-world.time) / 10)] second\s.")
 	if(has_extension(src, /datum/extension/milkable))
 		var/datum/extension/milkable/milkable = get_extension(src, /datum/extension/milkable)
 		if(milkable.udder.total_volume > 0)
-			to_chat(user, SPAN_NOTICE("\The [src] can be milked into a bucket or other container."))
+			. += SPAN_NOTICE("\The [src] can be milked into a bucket or other container.")
 		else
-			to_chat(user, SPAN_WARNING("\The [src] cannot currently be milked."))
+			. += SPAN_WARNING("\The [src] cannot currently be milked.")
 
 /mob/living/proc/get_age()
 	. = LAZYACCESS(appearance_descriptors, "age") || 30

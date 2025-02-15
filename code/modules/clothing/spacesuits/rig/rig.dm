@@ -113,22 +113,20 @@
 /obj/item/rig/get_cell()
 	return cell
 
-/obj/item/rig/examine(mob/user)
+/obj/item/rig/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(wearer)
 		for(var/obj/item/piece in list(helmet,gloves,chest,boots))
 			if(!piece || piece.loc != wearer)
 				continue
-			to_chat(user, "[html_icon(piece)] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed.")
-
+			. += "[html_icon(piece)] \The [piece] [piece.gender == PLURAL ? "are" : "is"] deployed."
 	if(src.loc == user)
-		to_chat(user, "The access panel is [locked? "locked" : "unlocked"].")
-		to_chat(user, "The maintenance panel is [open ? "open" : "closed"].")
-		to_chat(user, "The wire panel is [p_open ? "open" : "closed"].")
-		to_chat(user, "Hardsuit systems are [offline ? SPAN_BAD("offline") : SPAN_GOOD("online")].")
-
+		. += "The access panel is [locked? "locked" : "unlocked"]."
+		. += "The maintenance panel is [open ? "open" : "closed"]."
+		. += "The wire panel is [p_open ? "open" : "closed"]."
+		. += "Hardsuit systems are [offline ? SPAN_BAD("offline") : SPAN_GOOD("online")]."
 		if(open)
-			to_chat(user, "It's equipped with [english_list(installed_modules)].")
+			. += "It's equipped with [english_list(installed_modules)]."
 
 /obj/item/rig/Initialize()
 	. = ..()

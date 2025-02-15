@@ -24,6 +24,7 @@
 	#include "../../mods/content/shackles/_shackles.dme"
 	#include "../../mods/content/supermatter/_supermatter.dme"
 	#include "../../mods/content/xenobiology/_xenobiology.dme"
+	#include "../../mods/content/blacksmithy/_blacksmithy.dme"
 	#include "../../mods/content/item_sharpening/_item_sharpening.dme"
 	#include "../../mods/pyrelight/_pyrelight.dme" // include after _fantasy.dme so overrides work
 

@@ -116,16 +116,16 @@ LINEN BINS
 /obj/structure/bedsheetbin/proc/get_amount()
 	return stored + LAZYLEN(sheets)
 
-/obj/structure/bedsheetbin/examine(mob/user)
+/obj/structure/bedsheetbin/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/curamount = get_amount()
 	if(curamount < 1)
-		to_chat(user, "There are no bed sheets in the bin.")
+		. += "There are no bed sheets in the bin."
 		return
 	if(curamount == 1)
-		to_chat(user, "There is one bed sheet in the bin.")
+		. += "There is one bed sheet in the bin."
 		return
-	to_chat(user, "There are [curamount] bed sheets in the bin.")
+	. += "There are [curamount] bed sheets in the bin."
 
 /obj/structure/bedsheetbin/on_update_icon()
 	..()

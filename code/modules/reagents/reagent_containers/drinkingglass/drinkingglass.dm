@@ -32,6 +32,12 @@ var/global/const/DRINK_ICON_NOISY = "noise"
 	var/custom_name
 	var/custom_desc
 
+/obj/item/chems/drinks/glass2/update_name()
+	if(custom_name)
+		SetName(custom_name)
+		return
+	return ..()
+
 // Reverse the matter effect of the hollow flag, keep the force effect.
 // Glasses are so tiny that their effective matter is ten times lower than forks/knives due to OBJ_FLAG_HOLLOW.
 /obj/item/chems/drinks/glass2/get_matter_amount_modifier()
@@ -94,7 +100,7 @@ var/global/const/DRINK_ICON_NOISY = "noise"
 		return FALSE
 	return TRUE
 
-/obj/item/chems/drinks/glass2/examine(mob/user, distance)
+/obj/item/chems/drinks/glass2/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(!istype(user))
 		return
@@ -106,14 +112,13 @@ var/global/const/DRINK_ICON_NOISY = "noise"
 		else if(istype(extra, /obj/item/food/processed_grown/slice))
 			LAZYADD(extra_text, "There is \a [extra] on the rim.")
 		else
-			to_chat(user, "There is \a [extra] somewhere on the glass. Somehow.")
+			. += "There is \a [extra] somewhere on the glass. Somehow."
 	if(length(extra_text))
-		to_chat(user, SPAN_NOTICE(jointext(extra_text," ")))
+		. += SPAN_NOTICE(jointext(extra_text," "))
 	if(has_ice())
-		to_chat(user, "There is some ice floating in the drink.")
+		. += "There is some ice floating in the drink."
 	if(has_fizz())
-		to_chat(user, "It is fizzing slightly.")
-
+		. += "It is fizzing slightly."
 
 /obj/item/chems/drinks/glass2/proc/get_filling_overlay(amount, overlay)
 	var/image/I = new()

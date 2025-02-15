@@ -26,7 +26,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/clothing/webbing/holster/examine(mob/user)
+/obj/item/clothing/webbing/holster/examined_by(mob/user, distance, infix, suffix)
 	. = ..(user)
 	var/datum/extension/holster/holster = get_extension(src, /datum/extension/holster)
 	holster.examine_holster(user)

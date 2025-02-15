@@ -23,7 +23,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "k" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /turf/floor/path/running_bond/basalt,
@@ -87,7 +87,7 @@
 /turf/floor/path/herringbone/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "X" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /turf/floor/path/running_bond/basalt,

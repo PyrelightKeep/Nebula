@@ -125,11 +125,11 @@
 
 		// Repair crystalline internal organs.
 		if(prob(10))
-			for(var/obj/item/organ/internal/I in occupant.get_internal_organs())
-				if(BP_IS_CRYSTAL(I) && I.damage)
-					I.heal_damage(rand(3,5))
+			for(var/obj/item/organ/internal/organ in occupant.get_internal_organs())
+				if(BP_IS_CRYSTAL(organ) && organ.get_organ_damage())
+					organ.heal_damage(rand(3,5))
 					if(prob(25))
-						to_chat(occupant, SPAN_NOTICE("The mineral-rich bath mends your [I.name]."))
+						to_chat(occupant, SPAN_NOTICE("The mineral-rich bath mends your [organ.name]."))
 
 		// Repair robotic external organs.
 		if(!repaired_organ && prob(25))

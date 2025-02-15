@@ -26,14 +26,14 @@
 	stored_pen = null
 	return ..()
 
-/obj/item/clipboard/examine(mob/user, distance, infix, suffix)
+/obj/item/clipboard/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(stored_pen)
-		to_chat(user, "It's holding \a [stored_pen].")
+		. += "It's holding \a [stored_pen]."
 	if(!LAZYLEN(papers))
-		to_chat(user, "It contains [length(papers)] / [max_papers] paper\s.")
+		. += "It contains [length(papers)] / [max_papers] paper\s."
 	else
-		to_chat(user, "It has room for [max_papers] paper\s.")
+		. += "It has room for [max_papers] paper\s."
 
 /obj/item/clipboard/proc/top_paper()
 	return LAZYACCESS(papers, 1)

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /turf/floor/path/herringbone/basalt,
@@ -78,7 +78,7 @@
 /turf/floor/path/herringbone/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "A" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/stack/medical/bandage/crafted/five,
@@ -94,7 +94,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "I" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/stack/material/bolt/mapped/cloth/five,
@@ -122,7 +122,7 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "O" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/food/grown/dried_tobacco/bad,
@@ -140,27 +140,27 @@
 /turf/floor/path/running_bond/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "R" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 8
 	},
 /obj/item/bladed/folding,
 /turf/floor/path/herringbone/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "U" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/food/grown/dried_tobacco/bad,
 /turf/floor/path/herringbone/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "X" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /turf/floor/path/herringbone/basalt,
 /area/karzerfeste/caves/point_of_interest/dungeon)
 "Z" = (
-/obj/structure/bed/chair/bench/ebony{
+/obj/structure/chair/bench/ebony{
 	dir = 4
 	},
 /obj/item/stack/medical/bandage/crafted/five,

@@ -82,14 +82,14 @@
 		return TRUE
 	return FALSE
 
-/obj/item/grab/examine(mob/user)
+/obj/item/grab/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	var/mob/M = get_affecting_mob()
 	var/obj/item/O = get_targeted_organ()
 	if(M && O)
-		to_chat(user, "A grip on \the [M]'s [O.name].")
+		. += "A grip on \the [M]'s [O.name]."
 	else
-		to_chat(user, "A grip on \the [affecting].")
+		. += "A grip on \the [affecting]."
 
 /obj/item/grab/Process()
 	current_grab.process(src)
@@ -129,6 +129,7 @@
 /obj/item/grab/can_be_dropped_by_client(mob/M)
 	if(M == assailant)
 		return TRUE
+	return FALSE
 
 /obj/item/grab/Destroy()
 	var/atom/old_affecting = affecting

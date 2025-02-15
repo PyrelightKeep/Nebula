@@ -19,8 +19,14 @@
 
 	for(var/obj/item/organ/organ in get_organs())
 		organ.die()
-		organ.damage = 0 // die() sets to max damage
 		organ.germ_level = INFECTION_LEVEL_THREE
+
+	// die() sets to max damage
+	for(var/obj/item/organ/internal/organ in get_internal_organs())
+		organ.set_organ_damage(0)
+	for(var/obj/item/organ/external/limb in get_internal_organs())
+		limb.brute_dam = 0
+		limb.burn_dam  = 0
 
 	// Set this so nonhumans look appropriately gross.
 	reset_hair()

@@ -91,17 +91,17 @@
 /obj/item/stock_parts/proc/is_functional()
 	return (!can_take_damage()) || (current_health > 0)
 
-/obj/item/stock_parts/examine(mob/user)
+/obj/item/stock_parts/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(can_take_damage())
 		if(!is_functional())
-			to_chat(user, SPAN_WARNING("It is completely broken."))
+			. += SPAN_WARNING("It is completely broken.")
 		else if(get_percent_health() < 50)
-			to_chat(user, SPAN_WARNING("It is heavily damaged."))
+			. += SPAN_WARNING("It is heavily damaged.")
 		else if(get_percent_health() < 75)
-			to_chat(user, SPAN_NOTICE("It is showing signs of damage."))
+			. += SPAN_NOTICE("It is showing signs of damage.")
 		else if(is_damaged())
-			to_chat(user, SPAN_NOTICE("It is showing some wear and tear."))
+			. += SPAN_NOTICE("It is showing some wear and tear.")
 
 //Machines handle damaging for us, so don't do it twice
 /obj/item/stock_parts/explosion_act(severity)
@@ -119,3 +119,4 @@
 
 /// A stub for showing messages based on part status when a machine is examined.
 /obj/item/stock_parts/proc/on_machine_examined(mob/user)
+	SHOULD_CALL_PARENT(TRUE)

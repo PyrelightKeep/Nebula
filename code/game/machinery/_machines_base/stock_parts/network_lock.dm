@@ -70,10 +70,10 @@
 		return list("NO_PERMISSIONS_DENY_ALL")
 	return list()
 
-/obj/item/stock_parts/network_receiver/network_lock/examine(mob/user)
+/obj/item/stock_parts/network_receiver/network_lock/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(emagged && user.skill_check_multiple(list(SKILL_FORENSICS = SKILL_EXPERT, SKILL_COMPUTER = SKILL_EXPERT)))
-		to_chat(user, SPAN_WARNING("On close inspection, there is something odd about the interface. You suspect it may have been tampered with."))
+		. += SPAN_WARNING("On closer inspection, there is something odd about the interface. You suspect it may have been tampered with.")
 
 /obj/item/stock_parts/network_receiver/network_lock/attackby(obj/item/W, mob/user)
 	. = ..()

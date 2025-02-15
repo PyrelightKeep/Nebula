@@ -42,12 +42,11 @@
 		// Lose memory
 		locked = null
 
-/obj/machinery/computer/teleporter/examine(mob/user)
+/obj/machinery/computer/teleporter/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(locked)
 		var/turf/T = get_turf(locked)
-		to_chat(user, SPAN_NOTICE("The console is locked on to \[[T.loc.name]\]."))
-
+		. += SPAN_NOTICE("The console is locked on to \[[T.loc.name]\].")
 
 /obj/machinery/computer/teleporter/attackby(var/obj/I, var/mob/user)
 

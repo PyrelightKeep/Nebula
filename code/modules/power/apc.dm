@@ -246,18 +246,18 @@ var/global/list/all_apcs = list()
 	if(term && (!functional_only || term.is_functional()))
 		return term.terminal
 
-/obj/machinery/power/apc/examine(mob/user, distance)
+/obj/machinery/power/apc/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
 	if(distance <= 1)
 		if(stat & BROKEN)
-			to_chat(user, "Looks broken.")
+			. += "Looks broken."
 			return
 		var/terminal = terminal()
-		to_chat(user, "\The [src] is [terminal ? "" : "not "]connected to external power.")
+		. += "\The [src] is [terminal ? "" : "not "]connected to external power."
 		if(!panel_open)
-			to_chat(user, "The cover is closed.")
+			. += "The cover is closed."
 		else
-			to_chat(user, "The cover is [cover_removed ? "removed" : "open"] and the power cell is [ get_cell(FALSE) ? "installed" : "missing"].")
+			. += "The cover is [cover_removed ? "removed" : "open"] and the power cell is [ get_cell(FALSE) ? "installed" : "missing"]."
 //  Broken/missing board should be shown by parent.
 
 // update the APC icon to show the three base states

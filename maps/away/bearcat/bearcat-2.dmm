@@ -63,7 +63,7 @@
 /area/ship/scrap/command/bridge)
 "aj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /obj/abstract/landmark/corpse/deadcap,
@@ -126,7 +126,7 @@
 /turf/wall/r_wall,
 /area/ship/scrap/command/bridge)
 "au" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/machinery/power/apc/derelict{
@@ -152,7 +152,7 @@
 	dir = 4;
 	
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /turf/floor/tiled/dark/usedup,
@@ -407,7 +407,7 @@
 /turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aV" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /turf/floor/laminate,
 /area/ship/scrap/command/captain)
 "aW" = (
@@ -1090,7 +1090,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /turf/floor/tiled/usedup,
 /area/ship/scrap/crew/saloon)
 "cn" = (
@@ -1106,7 +1106,7 @@
 /area/ship/scrap/crew/saloon)
 "co" = (
 /obj/structure/emergency_dispenser/north,
-/obj/structure/bed/chair/wood,
+/obj/structure/chair/wood,
 /obj/item/deck/tarot,
 /turf/floor/tiled/usedup,
 /area/ship/scrap/crew/saloon)
@@ -1585,7 +1585,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/chair/comfy/brown{
 	dir = 1
 	},
 /turf/floor/tiled/usedup,
@@ -2216,7 +2216,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/structure/bed/chair/office/light,
+/obj/structure/chair/office/light,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -3775,7 +3775,7 @@
 /turf/floor/tiled/usedup,
 /area/ship/scrap/maintenance/engineering)
 "hr" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/chair/comfy/brown,
 /obj/effect/floor_decal/corner/yellow{
 	dir = 5
 	},

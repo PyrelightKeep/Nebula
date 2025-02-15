@@ -688,7 +688,7 @@
 	pixel_x = -24;
 	locked = 0
 	},
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/visible,
@@ -955,7 +955,7 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/crashed_pod)
 "bC" = (
-/obj/structure/bed/chair{
+/obj/structure/chair{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/visible,
@@ -992,13 +992,13 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/crashed_pod)
 "bH" = (
-/obj/structure/bed/chair/shuttle/black,
+/obj/structure/chair/shuttle/black,
 /obj/abstract/submap_landmark/spawnpoint/crashed_pod_survivor,
 /obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled/dark,
 /area/map_template/crashed_pod)
 "bI" = (
-/obj/structure/bed/chair/shuttle/black,
+/obj/structure/chair/shuttle/black,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -1143,7 +1143,7 @@
 /turf/floor/tiled/white,
 /area/map_template/crashed_pod)
 "bW" = (
-/obj/structure/bed/chair/shuttle/black,
+/obj/structure/chair/shuttle/black,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -1200,7 +1200,7 @@
 /turf/floor/tiled/techfloor,
 /area/map_template/crashed_pod)
 "ca" = (
-/obj/structure/bed/chair,
+/obj/structure/chair,
 /obj/effect/decal/cleanable/dirt/visible,
 /turf/floor/tiled/dark,
 /area/map_template/crashed_pod)

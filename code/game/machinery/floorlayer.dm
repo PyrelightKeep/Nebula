@@ -15,7 +15,7 @@
 	T = new /obj/item/stack/tile/floor(src)
 
 /obj/machinery/floorlayer/Move(new_turf,M_Dir)
-	..()
+	. = ..()
 
 	if(on)
 		if(mode["dismantle"])

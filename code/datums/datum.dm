@@ -29,7 +29,7 @@
 	tag = null
 	weakref = null // Clear this reference to ensure it's kept for as brief duration as possible.
 
-	if(istype(SSnano))
+	if(length(open_uis)) // inline the open ui check to avoid unnecessary proc call overhead
 		SSnano.close_uis(src)
 
 	if(active_timers)

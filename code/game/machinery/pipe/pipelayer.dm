@@ -22,7 +22,7 @@
 	W = new(src)
 
 /obj/machinery/pipelayer/Move(new_turf,M_Dir)
-	..()
+	. = ..()
 
 	if(on && a_dis)
 		dismantle_floor(old_turf)

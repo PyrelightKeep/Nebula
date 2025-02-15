@@ -28,6 +28,7 @@
 // Note that this proc is checking if the organ can be attached -to-, not attached itself.
 /obj/item/organ/external/proc/can_attach_modular_limb_here(var/mob/living/human/user)
 	var/list/limb_data = user?.get_bodytype()?.has_limbs[organ_tag]
+	. = FALSE
 	if(islist(limb_data) && limb_data["has_children"] > 0)
 		. = (LAZYLEN(children) < limb_data["has_children"])
 

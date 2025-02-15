@@ -172,20 +172,17 @@
 	return FALSE
 
 /decl/flooring/proc/test_link(var/turf/origin, var/turf/opponent)
-	if(!istype(origin) || !istype(opponent))
-		return FALSE
-
 	// Just a normal floor
 	if (istype(opponent, /turf/floor))
-		var/turf/floor/floor_opponent = opponent
-		var/decl/flooring/opponent_flooring = floor_opponent.get_topmost_flooring()
 		if (floor_smooth == SMOOTH_ALL)
 			return TRUE
+		var/turf/floor/floor_opponent = opponent
+		var/decl/flooring/opponent_flooring = floor_opponent.get_topmost_flooring()
 		//If the floor is the same as us,then we're linked,
-		else if (istype(opponent_flooring, neighbour_type))
+		if (istype(opponent_flooring, neighbour_type))
 			return TRUE
 		//If we get here it must be using a whitelist or blacklist
-		else if (floor_smooth == SMOOTH_WHITELIST)
+		if (floor_smooth == SMOOTH_WHITELIST)
 			if (flooring_whitelist[opponent_flooring.type])
 				//Found a match on the typecache
 				return TRUE
@@ -194,9 +191,8 @@
 				//No match on the typecache
 				return TRUE
 		//Check for window frames.
-		if (wall_smooth == SMOOTH_ALL)
-			if(locate(/obj/structure/wall_frame) in opponent)
-				return TRUE
+		if (wall_smooth == SMOOTH_ALL && locate(/obj/structure/wall_frame) in opponent)
+			return TRUE
 	// Wall turf
 	else if(opponent.is_wall())
 		if(wall_smooth == SMOOTH_ALL)

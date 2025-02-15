@@ -37,8 +37,8 @@
 
 /obj/abstract/landmark/costume/proc/make_costumes()
 	var/list/options = typesof(/obj/abstract/landmark/costume)
-	var/PICK= options[rand(1,options.len)]
-	new PICK(loc)
+	var/costume = pick(options)
+	new costume(loc)
 
 //SUBCLASSES.  Spawn a bunch of items and disappear likewise
 /obj/abstract/landmark/costume/chameleon/make_costumes()

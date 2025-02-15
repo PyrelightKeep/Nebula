@@ -35,12 +35,12 @@ var/global/list/flooring_cache = list()
 	/// BYOND ticks.
 	var/build_time = 0
 
-	var/drop_material_on_remove
+	var/drop_material_on_remove = FALSE
 
 	var/descriptor
 	var/flooring_flags
-	var/remove_timer = 10
-	var/can_paint
+	var/remove_timer = 1 SECOND
+	var/can_paint = FALSE
 	var/can_engrave = TRUE
 	var/can_collect = FALSE
 
@@ -200,40 +200,39 @@ var/global/list/flooring_cache = list()
 		var/decl/material/use_material = target.get_material()
 		target.color = use_material?.color
 
-	var/edge_layer = (icon_edge_layer != FLOOR_EDGE_NONE) ? target.layer + icon_edge_layer : target.layer
-	var/list/edge_overlays = list()
-	var/has_border = 0
-	for(var/step_dir in global.cardinal)
-		var/turf/T = get_step_resolving_mimic(target, step_dir)
-		if(!istype(T) || symmetric_test_link(target, T))
-			continue
-		has_border |= step_dir
-		if(icon_edge_layer != FLOOR_EDGE_NONE)
-			if(has_internal_edges)
-				edge_overlays += get_flooring_overlay("[icon]_[icon_base]-edge-[step_dir]", edge_state, step_dir, edge_layer = edge_layer)
-			if(has_external_edges && target.can_draw_edge_over(T))
-				edge_overlays += get_flooring_overlay("[icon]_[icon_base]-outer-edge-[step_dir]", outer_edge_state, step_dir, TRUE, edge_layer = edge_layer)
+	if (icon_edge_layer != FLOOR_EDGE_NONE && (has_internal_edges || has_external_edges))
+		var/edge_layer = target.layer + icon_edge_layer
+		var/list/edge_overlays = list()
+		var/has_border = 0
+		for(var/step_dir in global.cardinal)
+			var/turf/T = get_step_resolving_mimic(target, step_dir)
+			if(!istype(T) || symmetric_test_link(target, T))
+				continue
+			has_border |= step_dir
+			if(icon_edge_layer != FLOOR_EDGE_NONE)
+				if(has_internal_edges)
+					edge_overlays += get_flooring_overlay("[icon]_[icon_base]-edge-[step_dir]", edge_state, step_dir, edge_layer = edge_layer)
+				if(has_external_edges && target.can_draw_edge_over(T))
+					edge_overlays += get_flooring_overlay("[icon]_[icon_base]-outer-edge-[step_dir]", outer_edge_state, step_dir, TRUE, edge_layer = edge_layer)
 
-	if (has_internal_edges || has_external_edges)
 		var/has_smooth = ~(has_border & (NORTH | SOUTH | EAST | WEST))
 		for(var/step_dir in global.cornerdirs)
 			var/turf/T = get_step_resolving_mimic(target, step_dir)
 			if(!istype(T) || symmetric_test_link(target, T))
 				continue
-			if(icon_edge_layer != FLOOR_EDGE_NONE)
-				if(has_internal_edges)
-					if((has_smooth & step_dir) == step_dir)
-						edge_overlays += get_flooring_overlay("[icon]_[icon_base]-corner-[step_dir]", corner_state, step_dir, edge_layer = edge_layer)
-					else if((has_border & step_dir) == step_dir)
-						edge_overlays += get_flooring_overlay("[icon]_[icon_base]-edge-[step_dir]", edge_state, step_dir, edge_layer = edge_layer)
-				if(has_external_edges && target.can_draw_edge_over(T))
-					if((has_smooth & step_dir) == step_dir)
-						edge_overlays += get_flooring_overlay("[icon]_[icon_base]-outer-corner-[step_dir]", outer_corner_state, step_dir, TRUE, edge_layer = edge_layer)
-					else if((has_border & step_dir) == step_dir)
-						edge_overlays += get_flooring_overlay("[icon]_[icon_base]-outer-edge-[step_dir]", outer_edge_state, step_dir, TRUE, edge_layer = edge_layer)
+			if(has_internal_edges)
+				if((has_smooth & step_dir) == step_dir)
+					edge_overlays += get_flooring_overlay("[icon]_[icon_base]-corner-[step_dir]", corner_state, step_dir, edge_layer = edge_layer)
+				else if((has_border & step_dir) == step_dir)
+					edge_overlays += get_flooring_overlay("[icon]_[icon_base]-edge-[step_dir]", edge_state, step_dir, edge_layer = edge_layer)
+			if(has_external_edges && target.can_draw_edge_over(T))
+				if((has_smooth & step_dir) == step_dir)
+					edge_overlays += get_flooring_overlay("[icon]_[icon_base]-outer-corner-[step_dir]", outer_corner_state, step_dir, TRUE, edge_layer = edge_layer)
+				else if((has_border & step_dir) == step_dir)
+					edge_overlays += get_flooring_overlay("[icon]_[icon_base]-outer-edge-[step_dir]", outer_edge_state, step_dir, TRUE, edge_layer = edge_layer)
 
-	if(length(edge_overlays))
-		target.add_overlay(edge_overlays)
+		if(length(edge_overlays))
+			target.add_overlay(edge_overlays)
 
 	if(target.is_floor_broken())
 		target.add_overlay(get_damage_overlay(target._floor_broken))

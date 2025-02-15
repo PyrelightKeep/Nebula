@@ -24,7 +24,7 @@
 	/// (DICTIONARY) A lazy map. The `key` is a MD5 player name and the `value` is the blood type.
 	var/list/blood_DNA
 	/// (BOOL) If this atom was bloodied before.
-	var/was_bloodied
+	var/was_bloodied = FALSE
 	/// (COLOR) The color of the blood shown on blood overlays.
 	var/blood_color
 	/// (FALSE|DEFINES) How this atom is interacting with UV light. See misc.dm
@@ -295,11 +295,14 @@
 // Name, displayed at the top.
 /atom/proc/get_examine_header(mob/user, distance, infix, suffix)
 	SHOULD_CALL_PARENT(TRUE)
-	//This reformats names to get a/an properly working on item descriptions when they are bloody or coated in reagents.
-	var/examine_prefix = get_examine_prefix()
-	if(examine_prefix)
-		examine_prefix += " " // add a space to the end to be polite
-	return list("[html_icon(src)] That's [ADD_ARTICLE_GENDER("[examine_prefix][name]", gender)][infix][get_examine_punctuation()] [suffix]")
+	var/article_name = name
+	if(is_improper(name)) // no 'that's bloody oily slimy Bob', that's just Bob
+		//This reformats names to get a/an properly working on item descriptions when they are bloody or coated in reagents.
+		var/examine_prefix = get_examine_prefix()
+		if(examine_prefix)
+			examine_prefix += " " // add a space to the end to be polite
+		article_name = ADD_ARTICLE_GENDER("[examine_prefix][name]", gender)
+	return list("[html_icon(src)] That's [article_name][infix][get_examine_punctuation()] [suffix]")
 
 // Main body of examine, displayed after the header and before hints.
 /atom/proc/get_examine_strings(mob/user, distance, infix, suffix)

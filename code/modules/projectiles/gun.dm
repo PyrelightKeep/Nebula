@@ -706,14 +706,13 @@
 	last_handled = world.time
 
 /obj/item/gun/on_disarm_attempt(mob/target, mob/attacker)
-	var/list/turfs = list()
-	for(var/turf/T in view())
-		turfs += T
-	if(turfs.len)
+	var/list/turfs = view()
+	if(length(turfs))
 		var/turf/shoot_to = pick(turfs)
-		target.visible_message("<span class='danger'>\The [src] goes off during the struggle!</span>")
+		target.visible_message(SPAN_DANGER("\The [src] goes off during the struggle!"))
 		afterattack(shoot_to,target)
-		return 1
+		return TRUE
+	return FALSE
 
 /obj/item/gun/proc/can_autofire()
 	return (autofire_enabled && world.time >= next_fire_time)

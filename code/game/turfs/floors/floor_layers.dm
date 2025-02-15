@@ -1,7 +1,7 @@
 /turf/floor
 	VAR_PROTECTED/decl/flooring/_base_flooring = /decl/flooring/plating
 	VAR_PROTECTED/list/decl/flooring/_flooring
-	VAR_PRIVATE/decl/flooring/_topmost_flooring
+	VAR_PRIVATE/tmp/decl/flooring/_topmost_flooring
 
 /turf/floor/proc/get_all_flooring()
 	. = list()
@@ -44,16 +44,15 @@
 
 	if(isnull(_topmost_flooring))
 		var/flooring_length = length(_flooring)
-		if(isnull(_flooring))
-			_topmost_flooring = FALSE
-		else if(islist(_flooring) && flooring_length)
+		if(flooring_length) // no need to check islist, length is only nonzero for lists and strings, and strings are invalid here
 			_topmost_flooring = _flooring[flooring_length]
 		else if(istype(_flooring, /decl/flooring))
 			_topmost_flooring = _flooring
-
-	if(istype(_topmost_flooring))
-		return _topmost_flooring
-	return get_base_flooring()
+		else if(ispath(_flooring, /decl/flooring))
+			_topmost_flooring = GET_DECL(_flooring)
+		else
+			_topmost_flooring = FALSE
+	return _topmost_flooring || get_base_flooring()
 
 /turf/floor/proc/clear_flooring(skip_update = FALSE, place_product)
 	if(isnull(_flooring))

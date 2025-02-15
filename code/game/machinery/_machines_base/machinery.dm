@@ -91,37 +91,59 @@ Class Procs:
 	var/stat = 0
 	var/waterproof = TRUE
 	var/reason_broken = 0
-	var/stat_immune = NOSCREEN | NOINPUT // The machine will never set stat to these flags.
-	var/emagged = 0
-	var/datum/wires/wires //wire datum, if any. If you place a type path, it will be autoinitialized.
+	/// The machine will never set stat to these flags.
+	var/stat_immune = NOSCREEN | NOINPUT
+	var/emagged = FALSE
+	/// wire datum, if any. If you place a type path, it will be autoinitialized.
+	var/datum/wires/wires
 	var/use_power = POWER_USE_IDLE
 		//0 = dont run the auto
 		//1 = run auto, use idle
 		//2 = run auto, use active
 	var/idle_power_usage = 0
 	var/active_power_usage = 0
-	var/power_channel = EQUIP //EQUIP, ENVIRON or LIGHT
-	var/power_init_complete = FALSE // Helps with bookkeeping when initializing atoms. Don't modify.
-	var/list/component_parts           //List of component instances. Expected type: /obj/item/stock_parts
-	var/list/uncreated_component_parts = list(/obj/item/stock_parts/power/apc) //List of component paths which have delayed init. Indeces = number of components.
-	var/list/maximum_component_parts = list(/obj/item/stock_parts = 10)         //null - no max. list(type part = number max).
+	/// Valid values: EQUIP, ENVIRON, LIGHT. If it should use a direct terminal connection instead, use LOCAL.
+	var/power_channel = EQUIP
+	/// Helps with bookkeeping when initializing atoms. Don't modify.
+	var/power_init_complete = FALSE
+	/// List of component instances. Expected type: /obj/item/stock_parts
+	var/list/component_parts
+	/// List of component paths which have lazy init (created when needed). Keys are part typepaths, values are the number of components.
+	var/list/uncreated_component_parts = list(/obj/item/stock_parts/power/apc)
+	/// null - no max. list(type part = number max).
+	var/list/maximum_component_parts = list(/obj/item/stock_parts = 10)
 	var/uid
-	var/panel_open = 0
+	var/panel_open = FALSE
 	var/static/gl_uid = 1
-	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
-	var/clicksound			// sound played on succesful interface use by a carbon lifeform
-	var/clickvol = 40		// sound played on succesful interface use
-	var/core_skill = SKILL_DEVICES //The skill used for skill checks for this machine (mostly so subtypes can use different skills).
-	var/operator_skill      // Machines often do all operations on Process(). This caches the user's skill while the operations are running.
-	var/base_type           // For mapped buildable types, set this to be the base type actually buildable.
-	var/id_tag              // This generic variable is to be used by mappers to give related machines a string key. In principle used by radio stock parts.
-	var/frame_type = /obj/machinery/constructable_frame/machine_frame/deconstruct // what is created when the machine is dismantled.
+	/// Can the machine be interacted with while de-powered.
+	var/interact_offline = FALSE
+	/// sound played on successful interface use
+	var/clicksound
+	/// volume of sound played on successful interface use
+	var/clickvol = 40
+	///The skill used for skill checks for this machine (mostly so subtypes can use different skills).
+	var/core_skill = SKILL_DEVICES
+	/// Machines often do all operations on Process(). This caches the user's skill while the operations are running.
+	var/operator_skill
+	/// For mapped buildable types, set this to be the base type actually buildable.
+	var/base_type
+	/// This generic variable is to be used by mappers to give related machines a string key. In principle used by radio stock parts.
+	var/id_tag
+	/// what is created when the machine is dismantled.
+	var/frame_type = /obj/machinery/constructable_frame/machine_frame/deconstruct
 	var/required_interaction_dexterity = DEXTERITY_KEYBOARDS
 
-	var/list/processing_parts // Component parts queued for processing by the machine. Expected type: /obj/item/stock_parts
-	var/processing_flags         // What is being processed
+	/// Component parts queued for processing by the machine. Expected type: /obj/item/stock_parts
+	var/list/processing_parts
+	/// Controls whether components, the machine itself, or both run their processing in Process().
+	var/processing_flags
 
-	var/list/initial_access		// Used to setup network locks on machinery at populate_parts.
+	/// Used to setup network locks on machinery at populate_parts.
+	/// list(a, b) means access requires either A or B.
+	/// list(list(a, b)) means access requires A and B.
+	/// These can be combined, e.g. list(a, list(b, c)) requires either a, or both b and c.
+	/// Null means no access requirement.
+	var/list/initial_access
 
 /obj/machinery/Initialize(mapload, d=0, populate_parts = TRUE)
 	. = ..()

@@ -20,7 +20,7 @@
 	/// This is used to determine on which slots an item can fit.
 	var/slot_flags = SLOT_NONE
 	/// If it's an item we don't want to log attack_logs with, set this to TRUE
-	var/no_attack_log = 0
+	var/no_attack_log = FALSE
 	var/obj/item/master = null
 	var/origin_tech                    //Used by R&D to determine what research bonuses it grants.
 	var/list/attack_verb = list("hit") //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
@@ -31,12 +31,22 @@
 	/// Flag for ZAS based contamination (chlorine etc)
 	var/contaminated = FALSE
 
-	var/heat_protection = 0 //flags which determine which body parts are protected from heat. Use the SLOT_HEAD, SLOT_UPPER_BODY, SLOT_LOWER_BODY, etc. flags. See setup.dm
-	var/cold_protection = 0 //flags which determine which body parts are protected from cold. Use the SLOT_HEAD, SLOT_UPPER_BODY, SLOT_LOWER_BODY, etc. flags. See setup.dm
-	var/max_heat_protection_temperature //Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by heat_protection flags
-	var/min_cold_protection_temperature //Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by cold_protection flags
-	var/max_pressure_protection // Set this variable if the item protects its wearer against high pressures below an upper bound. Keep at null to disable protection.
-	var/min_pressure_protection // Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
+	/// flags which determine which body parts are protected from heat. Use the SLOT_HEAD, SLOT_UPPER_BODY, SLOT_LOWER_BODY, etc. flags. See setup.dm
+	var/heat_protection = 0
+	/// flags which determine which body parts are protected from cold. Use the SLOT_HEAD, SLOT_UPPER_BODY, SLOT_LOWER_BODY, etc. flags. See setup.dm
+	var/cold_protection = 0
+	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage.
+	/// Keep at null to disable protection. Only protects areas set by heat_protection flags.
+	var/max_heat_protection_temperature
+	///Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage.
+	/// Keep at null to disable protection. Only protects areas set by cold_protection flags
+	var/min_cold_protection_temperature
+	/// Set this variable if the item protects its wearer against high pressures below an upper bound.
+	/// Keep at null to disable protection.
+	var/max_pressure_protection
+	/// Set this variable if the item protects its wearer against low pressures above a lower bound.
+	/// Keep at null to disable protection. 0 represents protection against hard vacuum.
+	var/min_pressure_protection
 
 	var/datum/action/item_action/action
 	var/action_button_name //It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
@@ -54,25 +64,31 @@
 	var/gas_transfer_coefficient = 1 // for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/permeability_coefficient = 1 // for chemicals/diseases
 	var/siemens_coefficient = 1 // for electrical admittance/conductance (electrocution checks and shit)
-	var/slowdown_general = 0 // How much clothing is slowing you down. Negative values speeds you up. This is a general slowdown, no matter equipment slot.
-	var/slowdown_per_slot // How much clothing is slowing you down. This is an associative list: item slot - slowdown
-	var/slowdown_accessory // How much an accessory will slow you down when attached to a worn article of clothing.
-	var/canremove = 1 //Mostly for Ninja code at this point but basically will not allow the item to be removed if set to 0. /N
-	var/material_armor_multiplier  // if set, item will use material's armor values multiplied by this.
+	var/slowdown_general = 0 // How this item slows its holder down. Negative values speeds them up. This is a general slowdown, no matter the equipment slot.
+	/// How much this item slows its holder down, based on the slot it's in. This is an associative list: slot_string = slowdown
+	var/slowdown_per_slot
+	/// An additional slowdown amount, contributed by accessories attached to this item. Not to be confused with /obj/item/clothing/var/accessory_slowdown.
+	var/tmp/slowdown_accessory
+	/// If TRUE, the item cannot be removed except via destruction or using the force flag in unequip procs.
+	var/canremove = TRUE
+	/// if set, item will use material's armor values multiplied by this.
+	var/material_armor_multiplier
 	var/armor_type = /datum/extension/armor
 	var/list/armor
 	var/armor_degradation_speed //How fast armor will degrade, multiplier to blocked damage to get armor damage value.
 	var/list/allowed = null //suit storage stuff.
 	var/obj/item/uplink/hidden_uplink = null // All items can have an uplink hidden inside, just remember to add the triggers.
 	var/zoomdevicename = null //name used for message when binoculars/scope is used
-	var/zoom = 0 //1 if item is actively being used to zoom. For scoped guns and binoculars.
+	/// if the item is actively being used to zoom. For scoped guns and binoculars.
+	var/zoom = FALSE
 
-	var/base_parry_chance	// Will allow weapon to parry melee attacks if non-zero
+	var/base_parry_chance = 0 // Will allow weapon to parry melee attacks if non-zero
 	var/wielded_parry_bonus = 15
 
 	var/use_alt_layer = FALSE // Use the slot's alternative layer when rendering on a mob
 
-	var/list/sprite_sheets // Assoc list of bodytype to icon for producing onmob overlays when this item is held or worn.
+	/// Assoc list of bodytype category to icon for producing onmob overlays when this item is held or worn.
+	var/list/sprite_sheets
 
 	// Material handling for material weapons (not used by default, unless material is supplied or set)
 	var/decl/material/material                      // Reference to material decl. If set to a string corresponding to a material ID, will init the item with that material.
@@ -778,7 +794,7 @@
 //handle_shield should return a positive value to indicate that the attack is blocked and should be prevented.
 //If a negative value is returned, it should be treated as a special return value for bullet_act() and handled appropriately.
 //For non-projectile attacks this usually means the attack is blocked.
-//Otherwise should return 0 to indicate that the attack is not affected in any way.
+//Otherwise should return FALSE to indicate that the attack is not affected in any way.
 /obj/item/proc/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	var/parry_chance = get_parry_chance(user)
 	if(attacker)
@@ -788,8 +804,8 @@
 			user.visible_message(SPAN_DANGER("\The [user] parries [attack_text] with \the [src]!"))
 			playsound(user.loc, 'sound/weapons/punchmiss.ogg', 50, 1)
 			on_parry(user, damage_source, attacker)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /obj/item/proc/on_parry(mob/user, damage_source, mob/attacker)
 	return
@@ -802,18 +818,20 @@
 		if(is_held_twohanded())
 			. += wielded_parry_bonus
 
+/// Occurs when a disarm attempt fails a skill check, resulting in the attacker being damaged.
+/// Return TRUE to block further checks for other objects.
 /obj/item/proc/on_disarm_attempt(mob/target, mob/living/attacker)
 	var/force = get_attack_force(attacker)
 	if(force < 1)
-		return 0
+		return FALSE
 	if(!istype(attacker))
-		return 0
+		return FALSE
 	var/decl/pronouns/pronouns = attacker.get_pronouns()
 	attacker.apply_damage(force, atom_damage_type, attacker.get_active_held_item_slot(), used_weapon = src)
 	attacker.visible_message(SPAN_DANGER("\The [attacker] hurts [pronouns.his] hand on \the [src]!"))
 	playsound(target, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 	playsound(target, hitsound, 50, 1, -1)
-	return 1
+	return TRUE
 
 /obj/item/reveal_blood()
 	if(was_bloodied && !fluorescent)
@@ -893,7 +911,7 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 	if(user.hud_used.is_hud_shown())
 		user.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
 	user.client.view = viewsize
-	zoom = 1
+	zoom = TRUE
 
 	var/viewoffset = WORLD_ICON_SIZE * tileoffset
 	switch(user.dir)
@@ -925,7 +943,7 @@ modules/mob/living/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/unzoom(var/mob/user)
 	if(!zoom)
 		return
-	zoom = 0
+	zoom = FALSE
 
 	events_repository.unregister(/decl/observ/destroyed, user, src, TYPE_PROC_REF(/obj/item, unzoom))
 	events_repository.unregister(/decl/observ/moved, user, src, TYPE_PROC_REF(/obj/item, unzoom))

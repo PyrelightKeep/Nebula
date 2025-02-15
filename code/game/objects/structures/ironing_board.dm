@@ -35,12 +35,13 @@
 
 // make a screeching noise to drive people mad
 /obj/structure/bed/roller/ironingboard/Move()
+	. = ..()
+	if(!.)
+		return
 	var/turf/T = get_turf(src)
 	if(isspaceturf(T) || istype(T, /turf/floor/carpet))
-		return
+		return FALSE
 	playsound(T, pick(move_sounds), 75, 1)
-
-	. = ..()
 
 /obj/structure/bed/roller/ironingboard/get_examine_strings(mob/user, distance, infix, suffix)
 	. = ..()
